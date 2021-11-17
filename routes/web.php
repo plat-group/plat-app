@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Web\{Login, Register};
+use App\Http\Controllers\Web\Pool;
+use App\Http\Controllers\Web\Template;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +15,18 @@ use App\Http\Controllers\Auth\Web\{Login, Register};
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route(LOGIN_ROUTE);
-});
-
 // Authentication
 Route::prefix('auth')->group(function () {
     Route::get('/login', [Login::class, 'showForm'])->name(LOGIN_ROUTE);
     Route::get('/register', [Register::class, 'showForm'])->name(REGISTER_ROUTE);
 });
+
+
+//Pool
+Route::get('/', [Pool::class, 'index'])->name(HOME_ROUTE);
+Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
+Route::get('/template', [Template::class, 'index'])->name(TEMPLATE_GAME_ROUTE);
+Route::get('/my-games', [Template::class, 'index'])->name(MY_GAME_ROUTE)->middleware('auth');
+Route::get('/my-orders', [Template::class, 'index'])->name(MY_ORDER_GAME_ROUTE)->middleware('auth');
+
+

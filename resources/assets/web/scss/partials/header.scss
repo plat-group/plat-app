@@ -1,0 +1,30 @@
+header {
+    background-image: image-url('bg_header.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+
+    .navbar {
+        .navbar-nav {
+            .nav-item {
+                margin-right: 25px;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            .nav-link {
+                color: #fff;
+                font-weight: 700;
+                font-size: 18px;
+                padding: 5px 20px;
+
+                &.active, &:hover {
+                    color: #fff;
+                    background: linear-gradient(72.39deg, #EC2986 -5.18%, #AC035B 98.44%);
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+}
