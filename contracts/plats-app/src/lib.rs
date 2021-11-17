@@ -17,7 +17,7 @@ pub type GameID = u32;
 #[derive(Default,Clone,BorshDeserialize, BorshSerialize)]
 pub struct Plats {
     owner_id: AccountId,
-    reward: HashMap<GameID,Vec<(AccountId,u128,Actor)>>
+    reward: HashMap<GameID,Vec<(AccountId,u128)>>
     
 }
 
@@ -39,10 +39,10 @@ impl Plats {
 
     //payer: Client
     //actor_reward: Creator, Referral, User
-    pub fn finish_game(&mut self, game_id:GameID, payer: AccountId, actor_reward:Vec<(AccountId,u128, Actor)>){
+    pub fn finish_game(&mut self, game_id:GameID, payer: AccountId, actor_reward:Vec<(AccountId,u128)>){
         let deposit = env::attached_deposit();
         let mut total_amount = 0;
-        for (_, balance, _) in &actor_reward{
+        for (_, balance) in &actor_reward{
             total_amount += balance;
         }  
 
