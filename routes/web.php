@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Auth\Web\{Login, Register};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route(LOGIN_ROUTE);
+});
+
+// Authentication
+Route::prefix('auth')->group(function () {
+    Route::get('/login', [Login::class, 'showForm'])->name(LOGIN_ROUTE);
+    Route::get('/register', [Register::class, 'showForm'])->name(REGISTER_ROUTE);
 });

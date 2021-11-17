@@ -1,0 +1,9 @@
+.form-group {
+    &.has-error{
+        margin-bottom: 5px;
+    }
+}
+
+.help-block-error {
+    color: #F64E60;
+}

@@ -1,0 +1,53 @@
+$image-path: '/static/images/web/';
+//icon font
+$font-path: '/static/fonts';
+$fa-font-path: $font-path;
+// Body
+$body-bg: #09001F;
+$body-color: #E9DFEE;
+
+$font-size-base: 0.875rem;
+$line-height-base: 1.5;
+
+// Links
+$link-color: #CAC1CD;
+
+
+// Typography
+$font-family-sans-serif:  'Nunito Sans', sans-serif;
+
+// Grid containers
+
+
+//Colors
+$blue: #0d6efd;
+$gray-400: #C4C4C4;
+$red-pink: #DC207B;
+
+$theme-colors: (
+    "primary": $blue,
+    "gray-400": $gray-400,
+    "red-pink": $red-pink,
+);
+
+$font-sizes: (
+   16: 16px,
+   18: 18px,
+);
+
+// Form
+$input-bg: #fff;
+$input-color: #4A3A59;
+$input-border-radius: 0;
+$input-border-radius-lg:0;
+
+$input-btn-focus-box-shadow: none;
+$input-btn-focus-width: 0;
+$btn-focus-box-shadow: none;
+$input-height: 40px;
+$input-height-inner:  40px;
+
+
+//Alerts
+$alert-bg-scale: 0;
+$alert-border-scale:0;

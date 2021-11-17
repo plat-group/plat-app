@@ -1,0 +1,28 @@
+@import "../var";
+@import "../mixins";
+
+body {
+    background-image: image-url('bg_login.png');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+}
+
+.auth-container {
+}
+
+.register_form {
+    .form-check {
+    }
+
+    .form-check-input {
+        width: 30px;
+        height: 30px;
+    }
+
+    .form-check-label {
+        line-height: 40px;
+        margin-left: 6px;
+        cursor: pointer;
+    }
+}
