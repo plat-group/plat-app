@@ -1,3 +1,4 @@
+
 $image-path: '/static/images/web/';
 //icon font
 $font-path: '/static/fonts';
@@ -20,15 +21,15 @@ $font-family-sans-serif:  'Nunito Sans', sans-serif;
 
 
 //Colors
-$blue: #0d6efd;
 $gray-400: #C4C4C4;
 $red-pink: #DC207B;
 
-$theme-colors: (
-    "primary": $blue,
+// Create own map
+$custom-colors: (
     "gray-400": $gray-400,
     "red-pink": $red-pink,
-);
+) !default;
+
 
 $font-sizes: (
    16: 16px,

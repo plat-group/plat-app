@@ -8,6 +8,8 @@
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/root";
 
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
 // 4. Include any optional Bootstrap CSS as needed
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/reboot";

@@ -8,7 +8,6 @@ use Illuminate\Validation\ValidationException;
 
 trait Authenticates
 {
-
     use ThrottlesLogins;
 
     /**
@@ -16,7 +15,7 @@ trait Authenticates
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Http\Response | void
+     * @return \Illuminate\Http\RedirectResponse|void
      *
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -27,7 +26,8 @@ trait Authenticates
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
-        if (method_exists($this, 'hasTooManyLoginAttempts')
+        if (
+            method_exists($this, 'hasTooManyLoginAttempts')
             && $this->hasTooManyLoginAttempts($request)
         ) {
             //TODO: FireLockoutEvent
@@ -83,7 +83,8 @@ trait Authenticates
     protected function attemptLogin(Request $request)
     {
         return $this->guard()->attempt(
-            $this->credentials($request), $request->filled('remember')
+            $this->credentials($request),
+            $request->filled('remember')
         );
     }
 
@@ -114,7 +115,7 @@ trait Authenticates
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     protected function sendLoginResponse(Request $request)
     {
@@ -174,7 +175,7 @@ trait Authenticates
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function logout(Request $request)
     {
@@ -192,7 +193,7 @@ trait Authenticates
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return mixed
+     * @return void
      */
     protected function loggedOut(Request $request)
     {

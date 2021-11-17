@@ -18,6 +18,7 @@ use App\Http\Controllers\Web\Template;
 // Authentication
 Route::prefix('auth')->group(function () {
     Route::get('/login', [Login::class, 'showForm'])->name(LOGIN_ROUTE);
+    Route::post('/login', [Login::class, 'login'])->name(LOGIN_ROUTE);
     Route::get('/register', [Register::class, 'showForm'])->name(REGISTER_ROUTE);
 });
 
