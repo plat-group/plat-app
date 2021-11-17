@@ -1,55 +1,23 @@
 
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::{Balance, env, near_bindgen, AccountId};
+use near_sdk::{Balance, env, near_bindgen, AccountId,Promise};
 use near_sdk::collections::{UnorderedMap};
+use near_sdk::json_types::U128;
 use std::collections::HashMap;
 near_sdk::setup_alloc!();
 
 
-#[derive(Clone,BorshDeserialize, BorshSerialize)]
-pub enum Status {
-    PENDING,
-    AVAILABLE, // Creator push game
-    CREATOR_CANCELLED, // Creator cancel game
-    ORDERED, // Client order game
-    ORDER_CANCELLED, // Client cancel game
-    PROMOTING // Referral generate link
-}
 
 // Game index
 pub type GameID = u32;
 
-// Game information 
-#[derive(Clone,BorshDeserialize, BorshSerialize)]
-pub struct GameInfo {
-    creator_id: AccountId,
-    clients: Vec<AccountId>,
-    referrals: Vec<AccountId>,
-    status: Status
-}
-
-impl Default for Status{
-    fn default() -> Self{
-        Status::PENDING
-    }
-}
-impl Default for GameInfo{
-    fn default() -> Self{
-        
-        Self {
-            creator_id:"".to_string(),
-            clients: Vec::new(),
-            referrals:Vec::new(),
-            status:Default::default()
-        }
-    }
-}
 
 // Storage on-chain
 #[near_bindgen]
 #[derive(Default,Clone,BorshDeserialize, BorshSerialize)]
 pub struct Plats {
-    games: HashMap<GameID, Option<GameInfo>>,
+    owner_id: AccountId,
+    reward: HashMap<GameID,Vec<(AccountId,u128,Actor)>>
     
 }
 
@@ -58,31 +26,29 @@ pub struct Plats {
 #[near_bindgen]
 impl Plats {
 
-    pub fn create_game(&mut self, game_id: GameID) {
-        
-        let creator = env::signer_account_id();
-
-        assert!(
-            !self.games.contains_key(&game_id),
-            "Game is duplicated"
-        );
-
-        let game_info = GameInfo{
-            creator_id: creator,
-            clients: Default::default(),
-            referrals: Default::default(),
-            status: Status::AVAILABLE
-        };
-        self.games.insert(game_id,Some(game_info) );
-        env::log(format!("Created game successfully").as_bytes());
-
-
+    #[init]
+    pub fn new(owner_id: AccountId) -> Self{
+        assert!(env::is_valid_account_id(owner_id.as_bytes()), "Invalid Account Owner");
+        assert!(env::state_exists(),"Already initialized");
+        Self {
+            owner_id,
+            reward: Default::default()
+        }
     }
 
 
+    //payer: Client
+    //actor_reward: Creator, Referral, User
+    pub fn finish_game(&mut self, game_id:GameID, payer: AccountId, actor_reward:Vec<(AccountId,u128, Actor)>){
+        let deposit = env::attached_deposit();
+        let mut total_amount = 0;
+        for (_, balance, _) in &actor_reward{
+            total_amount += balance;
+        }  
 
-    pub fn get_game_id_created(&mut self) -> Vec<GameID>{
-        self.games.clone().into_iter().map(|val| val.0).collect()
+        assert!(total_amount < deposit, "Not enough tokens");
+
+
     }
 
 
@@ -148,19 +114,7 @@ mod tests {
     }
 
 
-    /*
-    fn check_create_game_duplicate_game(){
-        // set up the mock context into the testing environment
-        let context = get_context(vec![], false);
-        testing_env!(context);
-        
-        let mut game = Plats{games: Default::default()};
-        game.create_game(1);
 
-        //assert_eq!(game.create_game(1),"Game is duplicated");
-        //assert_ne!(vec![1],game.get_game_id_created());
-    }
-    */
 
 
 }
