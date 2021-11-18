@@ -12,6 +12,7 @@ return [
     'link_create_acc' => 'Create an account',
     'link_forgot_pass' => 'Forgot password?',
     'login_username' => 'Email',
+    'name' => 'Name',
     'password' => 'Password',
     'btn_login' => 'Login',
     'btn_signup' => 'Signup',

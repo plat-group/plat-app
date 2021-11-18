@@ -5,7 +5,7 @@
     <div class="form-group mb-4">
         @foreach([CREATOR_ROLE, CLIENT_ROLE, REFERRAL_ROLE, USER_ROLE] as $roleCode)
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="request_role" id="request_role_{{ $roleCode }}" value="{{ $roleCode }}">
+            <input class="form-check-input" type="radio" name="kind" id="request_role_{{ $roleCode }}" @if($roleCode === 1) checked @endif  value="{{ $roleCode }}">
             <label class="form-check-label cursor-pointer fs-16 fw-bold" for="request_role_{{ $roleCode }}">
                 {{ trans('web.roles.' . $roleCode) }}
             </label>
@@ -13,11 +13,14 @@
         @endforeach
     </div>
     <x-form::group class="required">
+        <x-form::input type="text" name="name" class="required form-control-lg" placeholder="{{ trans('web.name') }}"/>
+    </x-form::group>
+    <x-form::group class="required">
         <x-form::input type="email" name="email" class="required form-control-lg" placeholder="{{ trans('web.login_username') }}"/>
     </x-form::group>
 
     <x-form::group class="required">
-        <x-form::input type="password" name="name" class="required form-control-lg" placeholder="{{ trans('web.password') }}"/>
+        <x-form::input type="password" name="password" class="required form-control-lg" placeholder="{{ trans('web.password') }}"/>
     </x-form::group>
 
     <x-form::group class="required">

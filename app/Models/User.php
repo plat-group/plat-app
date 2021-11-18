@@ -16,6 +16,8 @@ class User extends Authenticatable
     use Notifiable;
     use UuidTrait;
 
+    protected $table = 'user';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,7 +26,13 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'kind',
+        'sex',
+        'birth',
         'password',
+        'wallet_addr',
+        'ballance',
+        'lock_ballance'
     ];
 
     /**

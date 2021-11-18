@@ -17,13 +17,16 @@ use App\Http\Controllers\Web\Template;
 
 // Authentication
 Route::prefix('auth')->group(function () {
-    Route::get('/login', [Login::class, 'showForm'])->name(LOGIN_ROUTE);
+    Route::get('/login', [Login::class, 'showForm'])->name(LOGIN_ROUTE)->middleware('guest');
     Route::post('/login', [Login::class, 'login'])->name(LOGIN_ROUTE);
     Route::get('/register', [Register::class, 'showForm'])->name(REGISTER_ROUTE);
+    Route::post('/register', [Register::class, 'register'])->name(REGISTER_ROUTE);
 });
 
 
 //Pool
+
+
 Route::get('/', [Pool::class, 'index'])->name(HOME_ROUTE);
 Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
 Route::get('/template', [Template::class, 'index'])->name(TEMPLATE_GAME_ROUTE);
