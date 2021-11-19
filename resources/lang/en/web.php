@@ -7,6 +7,11 @@ return [
         CLIENT_ROLE => 'Client',
         REFERRAL_ROLE => 'Referral',
     ],
+    'sexs' => [
+        MALE_SEX => 'Male',
+        FEMALE_SEX => 'Female',
+
+    ],
     'need_create_acc' => 'New to Plats?',
     'need_login' => 'Already have an account?',
     'link_create_acc' => 'Create an account',
@@ -19,4 +24,6 @@ return [
     'sex' => 'Sex',
     'birthday' => 'Birthday',
     'have_account_need_login' => 'Sign in →',
+    'btn_upload' => 'Upload',
+
 ];

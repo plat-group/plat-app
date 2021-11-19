@@ -8,4 +8,5 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
     define('TEMPLATE_GAME_ROUTE', 'game.template.route');
     define('MY_GAME_ROUTE', 'game.my.route');
     define('MY_ORDER_GAME_ROUTE', 'game.my_order.route');
+    define('UPLOAD_GAME_ROUTE','upload.game.route');
 }

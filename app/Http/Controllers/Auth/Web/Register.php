@@ -36,7 +36,7 @@ class Register extends AuthController
 
         $this->userService->create($request, $data['kind']);
 
-        return route(LOGIN_ROUTE);
+        return redirect(LOGIN_ROUTE);
 
     }
 }

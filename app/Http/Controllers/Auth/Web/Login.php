@@ -13,4 +13,5 @@ class Login extends Controller
     {
         return view('auth.web.login');
     }
+
 }

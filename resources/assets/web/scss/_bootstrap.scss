@@ -27,3 +27,6 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "~bootstrap/scss/forms";
 @import "~bootstrap/scss/buttons";
 @import "~bootstrap/scss/navbar";
+
+//7. Include icon bootstrap 5
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css");

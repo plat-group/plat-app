@@ -7,8 +7,10 @@
 
     <!-- Fonts -->
     <link href="{{ mix('static/css/web/vendor.css') }}" rel="stylesheet">
+    @yield('css')
     <link href="{{ mix('static/css/web/app.css') }}" rel="stylesheet">
     <link href="{{ mix('static/css/web/pages/authentication.css') }}" rel="stylesheet">
+
 </head>
 <body>
 <div class="auth-container container vh-100">
@@ -25,6 +27,8 @@
 </div>
 <script src="{{ asset('js/'.app()->getLocale().'.js') }}"></script>
 <script src="{{ mix('static/js/web/vendor.js') }}" type="text/javascript"></script>
+@yield('js')
 <script src="{{ mix('static/js/web/app.js') }}" type="text/javascript"></script>
+
 </body>
 </html>

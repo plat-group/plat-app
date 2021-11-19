@@ -1,0 +1,72 @@
+@import "../var";
+@import "../mixins";
+.form-upload-game{
+    .form-control-lg{
+        background: #E9DFEE;
+        border: 1px solid #C1C7CD;
+        border-radius: 6px;
+    }
+    .form-control-description{
+        background: #E9DFEE;
+        border: 1px solid #C1C7CD;
+        border-radius: 6px;
+        min-height: 250px;
+    }
+    .thumbnail{
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+        label{
+            background-image: image-url('bg_thumbnail.svg');
+            background-repeat: no-repeat;
+            background-color: #250D2D;
+            min-height: 250px;
+            border-radius: 6px;
+        }
+        input{
+            min-height: 250px;
+            opacity: 0;
+        }
+        .title{
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #F9F9F9;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .game-file{
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+        label{
+            background: image-url('bg_game_file.svg') center;
+            background-repeat: no-repeat;
+            background-color: #250D2D;
+            min-height: 210px;
+            border-radius: 6px;
+            width: 100%;
+            background-size: 100%;
+        }
+        input{
+            min-height: 210px;
+            opacity: 0;
+        }
+        .title{
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #F9F9F9;
+            width: 100%;
+            text-align: center;
+        }
+    }
+}

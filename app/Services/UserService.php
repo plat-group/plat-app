@@ -32,8 +32,7 @@ class UserService extends BaseService
     public function create(Request $request, string $roleDefault = USER_ROLE)
     {
 
-        $data = $request->only(['email', 'sex', 'birthday']);
-        $data['name'] = "Hoàng";
+        $data = $request->only(['name','email', 'sex', 'birthday']);
         $data['password'] = $this->passwordHash($request->input('password'));
         $data['kind'] = $roleDefault;
 

@@ -19,15 +19,15 @@ class CreateUserTable extends Migration
             $table->string('name', 256);
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('sex')->nullable();
+            $table->unsignedTinyInteger('sex')->nullable();
             $table->date('birthday')->nullable();
             $table->string('avatar', 256)->nullable();
-            $table->string('wallet_addr', 256);
+            $table->string('wallet_addr', 256)->nullable();
             $table->unsignedInteger('ballance')->nullable();
             $table->unsignedInteger('locked_ballance')->nullable();
 
             $table->timestamps();
-            $table->softDeletes();
+            // $table->softDeletes();
         });
     }
 

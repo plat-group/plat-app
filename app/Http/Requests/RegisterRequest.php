@@ -28,8 +28,8 @@ class RegisterRequest extends FormRequest
             'kind' => 'required',
             'email' => 'required|email|unique:user|min:5|max:255',
             'password' => 'required|min:8|max:32',
-            'sex' => 'required|max:8',
-            'birthday' => 'required|date_format:"d/m/Y"',
+            'sex' => 'required',
+            'birthday' => 'required|date_format:"d/m/Y"|before:"01/01/2011"|after:"31/12/1949"',
         ];
     }
 }
