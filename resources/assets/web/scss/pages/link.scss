@@ -1,0 +1,42 @@
+@import "../var";
+@import "../mixins";
+.bg_order{
+    background: image-url('bg_order.svg') no-repeat center 100%;
+}
+.referral_m{
+    display: block;
+    background: rgba(60, 35, 95, 0.88);
+    border: 1px solid rgba(233, 223, 238, 0.33);
+    box-shadow: inset 0px 1px 19px #BB86FF;
+    border-radius: 9px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+}
+.pt-6{
+    padding-top: 80px;
+}
+.main-link{
+    padding: 25px 80px;
+    background: #4A3A59;
+    border-radius: 9px;
+    .title{
+        font-size: 24px;
+        color: #FFFFFF;
+    }
+    .link{
+        background: #715B85;
+        border: 1px solid #4A3A59;
+        border-radius: 5px;
+        color: #fff;
+    }
+    .box-link{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .btn-copy{
+        background: #DC207B;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+}

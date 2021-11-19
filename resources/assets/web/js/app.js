@@ -29,14 +29,14 @@ var WEB = (function () {
     var gameOrderSlide = function () {
         if($('.game-order-slide').length === 0) return;
         var swiper = new Swiper(".game-order-slide", {
-
+            loop: true,
             watchSlidesProgress: true,
             autoplay: {
                 delay: 3000,
             },
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                nextEl: ".button-control-slide .swiper-next",
+                prevEl: ".button-control-slide .swiper-prev",
             },
         });
     }

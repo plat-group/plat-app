@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\Web\{Login, Register};
 use App\Http\Controllers\Web\Client;
 use App\Http\Controllers\Web\Creator;
 use App\Http\Controllers\Web\Pool;
+use App\Http\Controllers\Web\Refferal;
 use App\Http\Controllers\Web\Template;
 
 /*
@@ -38,8 +39,17 @@ Route::get('/my-games', [Client::class, 'myGame'])->name(MY_GAME_ROUTE)->middlew
 Route::get('/my-orders', [Client::class, 'myOrder'])->name(MY_ORDER_GAME_ROUTE)->middleware('auth');
 Route::get('/upload-game', [Creator::class, 'uploadGame'])->name(UPLOAD_GAME_ROUTE);
 Route::get('/game-detail', [Creator::class, 'uploadGame'])->name(UPLOAD_GAME_ROUTE);
+Route::get('/link', [Refferal::class, 'link'])->name(LINK_ROUTE);
+
 Route::get('/game-order', function () {
     return view('web.gameOrder.index');
 });
+Route::get('/publish', function () {
+    return view('web.publish.index');
+});
+Route::get('/game-detail', function () {
+    return view('web.gameDetail.index');
+});
+
 
 

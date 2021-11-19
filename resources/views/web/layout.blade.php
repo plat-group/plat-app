@@ -67,10 +67,10 @@
             </div>
         </div>
     </header>
-    <div class="main-container py-5">
-        <div class="container">
-            @yield('content')
-        </div>
+    <div class="main-container bg_order py-5">
+
+        @yield('content')
+
     </div>
     <footer class="">
         <div class="container">

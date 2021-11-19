@@ -24,8 +24,9 @@
                         <div class="box-img">
                             <img src="https://via.placeholder.com/550x290" alt="">
                         </div>
+                    </div>
+                    @endfor
                 </div>
-                @endfor
             </div>
         </div>
         <div class="button-control-slide mt-3">
@@ -33,33 +34,22 @@
             <div class="swiper-prev"><i class="bi bi-chevron-right"></i></div>
         </div>
     </div>
-</div>
+
 </div>
 <div class="container">
-    <form action="" class="form-order row">
-        <div class="col-10">
-            <div class="row">
-                <div class="form-group col-5">
-                    <p class="title">Order token</p>
-                    <p class="title_b">* Token amount will be paid after game ok</p>
+    <div class=" row">
+        <div class="col-6">
+            <form action="" class=" form-order">
+                <div class="form-group ">
+                    <p class="title">Token for each play for referal</p>
+                    <p class="title_b">* Token amount will be paid to referal every time user finish playing game</p>
                     <input type="text" class="form-control form-control-order" placeholder="">
                 </div>
-                <div class="form-group col-7">
-                    <p class="title">Token for each play</p>
-                    <p class="title_b">* Token amount will be paid to creator every time user finish playing game</p>
-                    <input type="text" class="form-control form-control-order" placeholder="">
-                </div>
-                <div class="form-group mb-0 col-12">
-                    <p class="title mb-2">Other request</p>
 
-                    <textarea name="" class="form-control form-control-order"></textarea>
-                </div>
-            </div>
+                <button class="btn btn-order-submit">Generate link</button>
+            </form>
         </div>
-        <div class="col-2 align-seft-end">
-            <button class="btn btn-order-submit">Order</button>
-        </div>
-    </form>
+    </div>
 </div>
 @endsection
 @section('js')

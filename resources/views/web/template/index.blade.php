@@ -1,5 +1,6 @@
 @extends('web.layout')
 @section('content')
+    <div class="container">
     <div class="row gx-5">
         @for($i=1; $i <= 8; $i++)
             <div class="col-md-3 mb-3">
@@ -23,5 +24,6 @@
             <a href="#" title="" class="btn btn-red-pink btn-lg fw-bold">More Games</a>
             <div class="bottom-gradient"></div>
         </div>
+    </div>
     </div>
 @stop

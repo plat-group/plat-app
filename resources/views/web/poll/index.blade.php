@@ -1,10 +1,11 @@
 @extends('web.layout')
 @section('content')
+<div class="container">
     <div class="row gx-5">
         <div class="col-md-4 game-item-highlight">
             <div class="thumb-item mb-3">
                 <a href="#" title="">
-                    <img src="https://via.placeholder.com/375x272" alt="" class="w-100"/>
+                    <img src="https://via.placeholder.com/375x272" alt="" class="w-100" />
                 </a>
             </div>
             <h4 class="item-name text-uppercase fw-bold mb-3">
@@ -26,12 +27,11 @@
         </div>
         <div class="col-md-8">
             <div class="row gx-5">
-                @for($i=1; $i <= 6; $i++)
-                <div class="col-md-4 mb-3">
+                @for($i=1; $i <= 6; $i++) <div class="col-md-4 mb-3">
                     <div class="box-game-item">
                         <div class="thumb-item mb-2">
                             <a href="#" title="">
-                                <img src="https://via.placeholder.com/240x200" alt="" class="w-100"/>
+                                <img src="https://via.placeholder.com/240x200" alt="" class="w-100" />
                             </a>
                         </div>
                         <h5 class="">
@@ -41,8 +41,9 @@
                         </h5>
                     </div>
                 </div>
-                    @endfor
+                @endfor
             </div>
         </div>
     </div>
+</div>
 @stop
