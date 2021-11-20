@@ -7,6 +7,11 @@ if (!defined('DEFINE_CONSTANT')) {
     define('FORM_INPUT_MAX_LENGTH', 255);
 
     /**
+     * Genders
+     */
+    define('MALE_GENDER', 1);
+    define('FEMALE_GENDER', 2);
+    /**
      * List role of application
      */
     define('USER_ROLE', 1);

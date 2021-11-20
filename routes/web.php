@@ -20,6 +20,7 @@ Route::prefix('auth')->group(function () {
     Route::get('/login', [Login::class, 'showForm'])->name(LOGIN_ROUTE);
     Route::post('/login', [Login::class, 'login'])->name(LOGIN_ROUTE);
     Route::get('/register', [Register::class, 'showForm'])->name(REGISTER_ROUTE);
+    Route::post('/register', [Register::class, 'register'])->name(REGISTER_ROUTE);
 });
 
 

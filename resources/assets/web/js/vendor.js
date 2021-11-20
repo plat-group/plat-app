@@ -7,6 +7,10 @@ $.ajaxSetup({
 
 import {Tooltip, Toast, Popover} from "bootstrap";
 
+require('select2');
+
+require('jquery-datetimepicker');
+
 require('../../_common/js/lodash-install');
 require('../../_common/js/translator');
 require('../../_common/js/form-validation');
