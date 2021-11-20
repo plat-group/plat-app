@@ -18,4 +18,12 @@ return [
     'sex' => 'Sex',
     'birthday' => 'Birthday',
     'have_account_need_login' => 'Sign in →',
+    'pool' => 'Pool',
+    'template' => 'Template',
+    'my_game' => 'My game',
+    'my_order' => 'My order',
+    'login' => 'Login',
+    'logout' => 'Logout',
+    'register' => 'Register',
+    'profile' => 'Profile',
 ];
