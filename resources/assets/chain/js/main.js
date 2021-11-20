@@ -65,10 +65,10 @@ function signedInFlow() {
   document.getElementById('account-id').innerText = window.accountId;
 
   // Adding an event to a say-hi button.
-  document.getElementById('say-hi').addEventListener('click', () => {
-    // We call say Hi and then update who said Hi last.
-    window.contract.sayHi().then(updateWhoSaidHi);
-  });
+//   document.getElementById('say-hi').addEventListener('click', () => {
+//     // We call say Hi and then update who said Hi last.
+//     window.contract.sayHi().then(updateWhoSaidHi);
+//   });
 
   // Adding an event to a sing-out button.
   document.getElementById('sign-out').addEventListener('click', e => {
@@ -90,17 +90,17 @@ function updateWhoSaidHi() {
   // we can't await for `contract.whoSaidHi()`, instead we attaching a callback function
   // usin `.then()`.
   contract.whoSaidHi().then((who) => {
-    const el = document.getElementById('who');
-    el.innerText = who || 'No one';
+    // const el = document.getElementById('who');
+    // el.innerText = who || 'No one';
 
-    // only link to profile if there's a profile to link to
-    if (who) {
-      el.href = 'https://explorer.testnet.near.org/accounts/' + who;
-    }
+    // // only link to profile if there's a profile to link to
+    // if (who) {
+    //   el.href = 'https://explorer.testnet.near.org/accounts/' + who;
+    // }
 
-    // change the ? to a !
-    const parent = el.parentNode;
-    parent.innerHTML = parent.innerHTML.replace('?', '!');
+    // // change the ? to a !
+    // const parent = el.parentNode;
+    // parent.innerHTML = parent.innerHTML.replace('?', '!');
   });
 }
 
