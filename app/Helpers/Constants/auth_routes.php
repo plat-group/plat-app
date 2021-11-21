@@ -8,6 +8,4 @@ if (!defined('DEFINE_AUTH_ROUTER')) {
     define('LOGOUT_ROUTE', 'logout.route');
     define('REGISTER_ROUTE', 'register.route');
     define('REGISTER_CONFIRM_ROUTE', 'register.confirm.route');
-    define('LOGOUT_ROUTE', 'logout.route');
-
 }
