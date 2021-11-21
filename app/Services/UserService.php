@@ -29,9 +29,9 @@ class UserService extends BaseService
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function create(Request $request, string $roleDefault = MEMBER_ROLE)
+    public function create(Request $request, string $roleDefault = USER_ROLE)
     {
-        $data             = $request->only(['first_name', 'last_name', 'email']);
+        $data             = $request->toArray();
         $data['password'] = $this->passwordHash($request->input('password'));
         $data['role'] = $roleDefault;
 

@@ -2,3 +2,7 @@
 @import "./bootstrap";
 @import "./family_fonts";
 @import "../../_common/scss/form-validate";
+
+@import "~select2/src/scss/core";
+
+@import "~jquery-datetimepicker/build/jquery.datetimepicker.min.css";

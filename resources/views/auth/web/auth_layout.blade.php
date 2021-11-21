@@ -15,7 +15,7 @@
     <div class="row justify-content-center h-100">
         <div class="col-md-4 align-self-center">
             <div class="logo text-center mb-5">
-                <a href="#" title="">
+                <a href="{{ url('') }}" title="">
                     <img src="{{ asset('images/web/logo.svg') }}" alt="PlatChain" style="width: 281px; height: 117px"/>
                 </a>
             </div>
