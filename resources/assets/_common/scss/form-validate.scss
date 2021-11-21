@@ -6,7 +6,9 @@
 
 .help-block-error {
     color: #F64E60;
-    display: none !important;
+    &:empty {
+        display: none !important;
+    }
     .has-error & {
         display: inline-block !important;;
     }

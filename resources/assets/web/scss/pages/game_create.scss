@@ -1,0 +1,26 @@
+@import "../var";
+@import "../mixins";
+
+.create_new_game {
+    .box-upload {
+        background: #250D2D  image-url('bg_concentric_circle.svg') no-repeat center center;
+        background-size: 90%;
+        border: 1px solid #584C56;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+
+        input[type="file"] {
+            visibility: hidden;
+            height: 0;
+            width: 0;
+        }
+    }
+
+    .upload-thumb {
+    }
+
+    .upload-file {
+        height: 210px;
+    }
+}

@@ -1,6 +1,6 @@
 @extends('auth.web.auth_layout')
 @section('auth_container')
-    <x-form::message/>
+    <x-alert/>
     {{ Form::open(['route' => LOGIN_ROUTE, 'class' => 'has_validate']) }}
     <x-form::group class="required">
         <x-form::input type="email" name="email" class="required form-control-lg" placeholder="{{ trans('web.login_username') }}"/>

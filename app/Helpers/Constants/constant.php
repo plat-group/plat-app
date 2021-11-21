@@ -19,4 +19,9 @@ if (!defined('DEFINE_CONSTANT')) {
     define('CLIENT_ROLE', 3);
     define('REFERRAL_ROLE', 4);
     define('ADMIN_ROLE', 9);
+
+    /**
+     * Game status
+     */
+    define('CREATING_GAME_STATUS', 1);
 }

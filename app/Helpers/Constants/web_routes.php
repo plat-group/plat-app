@@ -7,5 +7,7 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
     define('POOL_GAME_ROUTE', 'game.pool.route');
     define('TEMPLATE_GAME_ROUTE', 'game.template.route');
     define('MY_GAME_ROUTE', 'game.my.route');
+    define('CREATE_GAME_ROUTE', 'game.create.route');
+    define('STORE_TEMPLATE_GAME_ROUTE', 'game.store.template.route');
     define('MY_ORDER_GAME_ROUTE', 'game.my_order.route');
 }
