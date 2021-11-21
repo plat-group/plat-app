@@ -25,4 +25,18 @@
             {{ trans('web.link_create_acc') }}
         </a>
     </div>
+
+    <div class="register-box alert alert-gray-400 fs-16 text-black rounded-0 text-center mt-5" role="alert">
+        <button id="sign-in" class="signed-out">
+            Sign in with NEAR!
+        </button>
+
+    </div>
+    <p class="signed-in">
+      Signed in as <a id="account-id" href="https://wallet.testnet.near.org/profile" target="_blank"></a>
+      • <a href="#signout" id="sign-out">sign out</a>
+    </p>
 @stop
+@section('js')
+    <script src="{{ mix('static/js/chain/main.js') }}" type="text/javascript"></script>
+@endsection
