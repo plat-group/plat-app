@@ -10,18 +10,18 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "assemblyscript": "^0.19.3",
         "axios": "^0.21",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "sass": "^1.43.4",
-        "sass-loader": "^12.3.0",
         "jest": "^27.3.1",
         "jest-environment-node": "^27.3.1",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
         "near-cli": "^2.2.0",
         "near-sdk-as": "3.2.3",
         "parcel-bundler": "^1.12.5",
-        "assemblyscript": "^0.19.3"
+        "postcss": "^8.1.14",
+        "sass": "^1.43.4",
+        "sass-loader": "^12.3.0"
     },
     "dependencies": {
         "@fontsource/nunito-sans": "^4.5.1",
@@ -29,10 +29,13 @@
         "bootstrap": "^5.1.3",
         "glob": "^7.2.0",
         "jquery": "^3.6.0",
+        "jquery-datetimepicker": "^2.5.21",
         "jquery-validation": "^1.19.3",
-        "popper.js": "^1.16.1",
         "near-api-js": "^0.43.1",
-        "regenerator-runtime": "^0.13.9"
+        "path": "^0.12.7",
+        "popper.js": "^1.16.1",
+        "regenerator-runtime": "^0.13.9",
+        "select2": "^4.1.0-rc.0"
     },
     "jest": {
         "testPathIgnorePatterns": [
