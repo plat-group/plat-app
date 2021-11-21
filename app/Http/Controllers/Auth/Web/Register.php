@@ -12,7 +12,7 @@ class Register extends AuthController
     /**
      * @var \App\Services\UserService
      */
-    protected $userService;
+    protected UserService $userService;
 
     /**
      * @param \App\Services\UserService $userService

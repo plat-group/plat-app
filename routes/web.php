@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Web\{Login, Register};
-use App\Http\Controllers\Web\Pool;
-use App\Http\Controllers\Web\Template;
+use App\Http\Controllers\Web\{Pool, Template, MyGame};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +28,12 @@ Route::prefix('auth')->group(function () {
 Route::get('/', [Pool::class, 'index'])->name(HOME_ROUTE);
 Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
 Route::get('/template', [Template::class, 'index'])->name(TEMPLATE_GAME_ROUTE);
-Route::get('/my-games', [Template::class, 'index'])->name(MY_GAME_ROUTE)->middleware('auth');
+Route::resource('my-games', MyGame::class)->names([
+    'index' => MY_GAME_ROUTE,
+    'create' => CREATE_GAME_ROUTE,
+    'store' => STORE_TEMPLATE_GAME_ROUTE,
+])->middleware('auth');
+
 Route::get('/my-orders', [Template::class, 'index'])->name(MY_ORDER_GAME_ROUTE)->middleware('auth');
 
 

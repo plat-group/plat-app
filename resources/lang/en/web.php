@@ -21,4 +21,10 @@ return [
     'logout' => 'Logout',
     'register' => 'Register',
     'profile' => 'Profile',
+    'create_new_game' => 'Upload new game',
+    'game_name' => 'Game title',
+    'game_intro' => 'Game introduction',
+    'upload_game_thumb' => 'Drag and drop thumbnail',
+    'upload_game_file' => 'Drag and drop game file',
+    'btn_create_game' => 'Upload',
 ];

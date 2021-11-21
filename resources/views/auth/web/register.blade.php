@@ -1,6 +1,6 @@
 @extends('auth.web.auth_layout')
 @section('auth_container')
-    <x-form::message/>
+    <x-alert/>
     {{ Form::open(['route' => REGISTER_ROUTE, 'class' => 'register_form has_validate']) }}
     <div class="form-group mb-4">
         @foreach(trans('app.roles') as $roleId => $roleName)

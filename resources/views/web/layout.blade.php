@@ -8,7 +8,7 @@
     <!-- Fonts -->
     <link href="{{ mix('static/css/web/vendor.css') }}" rel="stylesheet">
     <link href="{{ mix('static/css/web/app.css') }}" rel="stylesheet">
-    @yield('css')
+    @stack('css')
 </head>
 <body>
 <header class="py-4">
@@ -36,7 +36,7 @@
                     @auth
                         <li class="list-inline-item menu-item">
                             <a href="{{ route(MY_GAME_ROUTE) }}" title="{{ trans('web.my_game')}}"
-                                @class(['menu-link', 'active' => request()->routeIs(MY_GAME_ROUTE)])>
+                                @class(['menu-link', 'active' => request()->routeIs(MY_GAME_ROUTE, CREATE_GAME_ROUTE)])>
                                 {{ trans('web.my_game') }}
                             </a>
                         </li>
@@ -107,6 +107,6 @@
 <script src="{{ asset('js/'.app()->getLocale().'.js') }}"></script>
 <script src="{{ mix('static/js/web/vendor.js') }}" type="text/javascript"></script>
 <script src="{{ mix('static/js/web/app.js') }}" type="text/javascript"></script>
-@yield('js')
+@stack('js')
 </body>
 </html>
