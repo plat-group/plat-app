@@ -12,27 +12,77 @@
 </head>
 <body>
 <header class="py-4">
-    <nav class="navbar navbar-expand-lg navbar-light p-0">
-        <div class="container">
-            <a class="navbar-brand me-auto p-0" href="{{ url('') }}">
-                <img src="{{ asset('images/web/logo.svg') }}" alt="PlatChain" style="width: 193px; height: 80px"/>
-            </a>
-            <ul class="navbar-nav">
-                @foreach([
-                    POOL_GAME_ROUTE => 'Pool',
-                    TEMPLATE_GAME_ROUTE => 'Template',
-                    MY_GAME_ROUTE => 'My game',
-                    MY_ORDER_GAME_ROUTE => 'My order',
-                ] as $route => $name)
-                <li class="nav-item">
-                    <a class="nav-link {{ (request()->routeIs($route)) ? 'active' : '' }}" aria-current="page" href="{{ route($route) }}">
-                        {{ $name }}
-                    </a>
-                </li>
-                @endforeach
-            </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-2 me-auto order-1">
+                <a class="app-brand p-0" href="{{ url('') }}">
+                    <img src="{{ asset('images/web/logo.svg') }}" alt="PlatChain" class="w-100"/>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 align-self-md-center mt-4 mt-md-0 order-3 order-md-2">
+                <ul class="menu-header list-unstyled list-inline mb-0">
+                    <li class="list-inline-item menu-item">
+                        <a href="{{ route(POOL_GAME_ROUTE) }}" title="{{ trans('web.pool')}}"
+                            @class(['menu-link', 'active' => request()->routeIs(POOL_GAME_ROUTE, HOME_ROUTE)])>
+                            {{ trans('web.pool') }}
+                        </a>
+                    </li>
+                    <li class="list-inline-item menu-item">
+                        <a href="{{ route(TEMPLATE_GAME_ROUTE) }}" title="{{ trans('web.template')}}"
+                            @class(['menu-link', 'active' => request()->routeIs(TEMPLATE_GAME_ROUTE)])>
+                            {{ trans('web.template') }}
+                        </a>
+                    </li>
+                    @auth
+                        <li class="list-inline-item menu-item">
+                            <a href="{{ route(MY_GAME_ROUTE) }}" title="{{ trans('web.my_game')}}"
+                                @class(['menu-link', 'active' => request()->routeIs(MY_GAME_ROUTE)])>
+                                {{ trans('web.my_game') }}
+                            </a>
+                        </li>
+                        <li class="list-inline-item menu-item">
+                            <a href="{{ route(MY_ORDER_GAME_ROUTE) }}" title="{{ trans('web.my_order')}}"
+                                @class(['menu-link', 'active' => request()->routeIs(MY_ORDER_GAME_ROUTE)])>
+                                {{ trans('web.my_order') }}
+                            </a>
+                        </li>
+                    @endauth
+                    @guest
+                        <li class="list-inline-item menu-item">
+                            <a class="menu-link" href="{{ route(LOGIN_ROUTE) }}" title="{{ trans('web.login')}}">
+                                {{ trans('web.login')}}
+                            </a>
+                        </li>
+                        <li class="list-inline-item menu-item">
+                            <a class="menu-link" href="{{ route(REGISTER_ROUTE) }}" title="{{ trans('web.register')}}">
+                                {{ trans('web.register')}}
+                            </a>
+                        </li>
+                    @endguest
+                </ul>
+            </div>
+        @auth
+            <div class="col-3 col-md-1 align-self-center order-2 order-md-3">
+                <div class="dropdown-toggle cursor-pointer"
+                   id="userDropbox" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                    <img src="https://via.placeholder.com/50" alt="" class="rounded-circle"/>
+                </div>
+                <ul class="dropdown-menu" aria-labelledby="userDropbox">
+                    <li>
+                        <a class="dropdown-item" href="#" class="" title="{{ trans('web.profile') }}">
+                            {{ trans('web.profile') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route(LOGOUT_ROUTE) }}" title="{{ trans('web.logout') }}">
+                            {{ trans('web.logout') }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        @endauth
         </div>
-    </nav>
+    </div>
 </header>
 <div class="main-container py-5">
     <div class="container">
