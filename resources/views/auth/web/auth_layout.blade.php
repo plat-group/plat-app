@@ -26,5 +26,6 @@
 <script src="{{ asset('js/'.app()->getLocale().'.js') }}"></script>
 <script src="{{ mix('static/js/web/vendor.js') }}" type="text/javascript"></script>
 <script src="{{ mix('static/js/web/app.js') }}" type="text/javascript"></script>
+@stack('js')
 </body>
 </html>

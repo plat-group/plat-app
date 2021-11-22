@@ -37,6 +37,6 @@
       • <a href="#signout" id="sign-out">sign out</a>
     </p>
 @stop
-@section('js')
+@push('js')
     <script src="{{ mix('static/js/chain/main.js') }}" type="text/javascript"></script>
-@endsection
+@endpush
