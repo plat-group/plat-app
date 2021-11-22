@@ -57,7 +57,7 @@ class MyGame extends Controller
      */
     public function store(CreateGameRequest $request)
     {
-        $this->gameTemplateService->create($request, $request->user());
+        $this->gameTemplateService->create($request, $request->user()->id);
 
         return redirect()->route(MY_GAME_ROUTE);
     }

@@ -22,15 +22,13 @@ class GameTemplateService extends BaseService
      * Create a new game template
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\User $creator
+     * @param string $creatorId
      *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function create(Request $request, $creator)
+    public function create(Request $request, $creatorId)
     {
-        $creatorId = $creator->getAuthIdentifier();
-
         $data = $request->only(['name', 'introduction']);
         $data['creator_id'] = $creatorId;
         $data['status']     = CREATING_GAME_STATUS;
