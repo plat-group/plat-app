@@ -1,5 +1,6 @@
 @import "../var";
 @import "../mixins";
+@import "../breakpoints";
 
 .create_new_game {
     .box-upload {
@@ -16,11 +17,15 @@
             width: 0;
         }
     }
-
-    .upload-thumb {
-    }
-
     .upload-file {
         height: 210px;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .create_new_game {
+        .upload-thumb {
+            height: 150px;
+        }
     }
 }

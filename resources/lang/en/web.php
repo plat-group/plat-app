@@ -27,4 +27,5 @@ return [
     'upload_game_thumb' => 'Drag and drop thumbnail',
     'upload_game_file' => 'Drag and drop game file',
     'btn_create_game' => 'Upload',
+    'next_page_game' => 'More Games',
 ];

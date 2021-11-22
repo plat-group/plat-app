@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\CreateGameRequest;
 use App\Services\GameTemplateService;
+use Illuminate\Http\Request;
 
 class MyGame extends Controller
 {
@@ -27,9 +28,13 @@ class MyGame extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('web.my_game.index');
+        $assign = [
+            'myGames' => $this->gameTemplateService->search(['creator_id' => $request->user()->id])
+        ];
+
+        return view('web.game.my_game', $assign);
     }
 
     /**
@@ -39,7 +44,7 @@ class MyGame extends Controller
      */
     public function create()
     {
-        return view('web.game.create');
+        return view('web.game.template.create');
     }
 
     /**
@@ -48,9 +53,12 @@ class MyGame extends Controller
      * @param \App\Http\Requests\Web\CreateGameRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function store(CreateGameRequest $request)
     {
+        $this->gameTemplateService->create($request, $request->user());
+
         return redirect()->route(MY_GAME_ROUTE);
     }
 }

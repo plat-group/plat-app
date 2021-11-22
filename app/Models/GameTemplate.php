@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class GameTemplate extends Model
 {
@@ -24,6 +25,16 @@ class GameTemplate extends Model
      * @var string[]
      */
     protected $fillable = ['creator_id', 'name', 'introduction', 'description', 'thumb', 'file', 'status'];
+
+    /**
+     * Set attribute thumb_url with full url
+     *
+     * @return string
+     */
+    public function getThumbUrlAttribute()
+    {
+        return Storage::url($this->thumb);
+    }
 
     /**
      * Creator information by relationship
