@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\Forms;
+namespace App\View\Components;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\MessageBag;
 use Illuminate\View\Component;
 
-class Message extends Component
+class Alert extends Component
 {
 
     /**
@@ -40,6 +40,6 @@ class Message extends Component
             $this->messages = Session::get('success', Session::get('message'));
         }
 
-        return view('components.forms.message');
+        return view('components.alert');
     }
 }

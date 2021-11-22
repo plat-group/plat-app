@@ -10,6 +10,16 @@ class Login extends Controller
     use Authenticates;
 
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
+    /**
      * Show form login
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
@@ -22,10 +32,10 @@ class Login extends Controller
     /**
      * Redirect after authenticated
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return string
      */
     public function redirectTo()
     {
-        return redirect()->route(HOME_ROUTE);
+        return route(HOME_ROUTE);
     }
 }
