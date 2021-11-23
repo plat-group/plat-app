@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Web\{Login, Register};
-use App\Http\Controllers\Web\{Pool, Template, MyGame};
+use App\Http\Controllers\Web\{Pool, Market, MyGame};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,13 +27,22 @@ Route::prefix('auth')->group(function () {
 //Pool
 Route::get('/', [Pool::class, 'index'])->name(HOME_ROUTE);
 Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
-Route::get('/template', [Template::class, 'index'])->name(TEMPLATE_GAME_ROUTE);
+
+//Market
+Route::prefix('market')->group(function () {
+    Route::get('/', [Market::class, 'index'])->name(MARKET_GAME_ROUTE);
+    Route::get('/{id}', [Market::class, 'show'])->name(MARKET_GAME_DETAIL_ROUTE)->whereUuid('id');
+    Route::post('/{id}/order', [Market::class, 'order'])->name(ORDER_GAME_ROUTE)->whereUuid('id');
+});
+
+// My Game
 Route::resource('my-games', MyGame::class)->names([
     'index' => MY_GAME_ROUTE,
+    'show' => DETAIL_GAME_TEMPLATE_ROUTE,
     'create' => CREATE_GAME_ROUTE,
     'store' => STORE_TEMPLATE_GAME_ROUTE,
-])->middleware('auth');
+])->only(['index', 'show', 'create', 'store'])->middleware('auth');
 
-Route::get('/my-orders', [Template::class, 'index'])->name(MY_ORDER_GAME_ROUTE)->middleware('auth');
+Route::get('/my-orders', [Market::class, 'index'])->name(MY_ORDER_GAME_ROUTE)->middleware('auth');
 
 

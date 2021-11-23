@@ -31,11 +31,15 @@ $grid-breakpoints: (
 //Colors
 $gray-400: #C4C4C4;
 $red-pink: #DC207B;
+$amethyst: #715B85;
+$mauve-400: #4A3A59;
 
 // Create own map
 $custom-colors: (
     "gray-400": $gray-400,
     "red-pink": $red-pink,
+    "amethyst": $amethyst,
+    "mauve-400": $mauve-400,
 );
 
 
@@ -45,16 +49,20 @@ $font-sizes: (
 );
 
 // Form
-$input-bg: #fff;
-$input-color: #4A3A59;
-$input-border-radius: 0;
-$input-border-radius-lg:0;
+$input-bg: $amethyst;
+$input-color: #fff;
+
+$input-border-color: $amethyst;
+$input-border-radius: 3px;
+$input-border-radius-lg: 5px;
+
+$input-plaintext-color: #fff;
 
 $input-btn-focus-box-shadow: none;
 $input-btn-focus-width: 0;
 $btn-focus-box-shadow: none;
 $input-height: 40px;
-$input-height-inner:  40px;
+$input-height-inner: 40px;
 
 
 //Alerts

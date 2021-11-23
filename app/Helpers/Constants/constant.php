@@ -24,4 +24,5 @@ if (!defined('DEFINE_CONSTANT')) {
      * Game status
      */
     define('CREATING_GAME_STATUS', 1);
+    define('PUBLISHED_GAME_STATUS', 9);
 }

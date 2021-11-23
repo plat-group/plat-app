@@ -19,6 +19,20 @@ class GameTemplateService extends BaseService
     }
 
     /**
+     * Get list game published on market
+     *
+     * @param array $conditions
+     *
+     * @return mixed
+     */
+    public function market($conditions = [])
+    {
+        $this->makeBuilder($conditions);
+
+        return $this->endFilter();
+    }
+
+    /**
      * Create a new game template
      *
      * @param \Illuminate\Http\Request $request

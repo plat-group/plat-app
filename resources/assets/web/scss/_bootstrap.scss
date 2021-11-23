@@ -33,3 +33,4 @@ $utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
 @import "~bootstrap/scss/buttons";
 @import "~bootstrap/scss/navbar";
 @import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/carousel";
