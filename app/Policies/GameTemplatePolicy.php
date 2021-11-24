@@ -11,6 +11,18 @@ class GameTemplatePolicy
     use HandlesAuthorization;
 
     /**
+     * Determine whether the user can create models.
+     *
+     * @param \App\Models\User $user
+     *
+     * @return bool
+     */
+    public function create(User $user)
+    {
+        return $user->isCreator();
+    }
+
+    /**
      * Determine whether the user can order game from market
      *
      * @param \App\Models\User $user
@@ -20,7 +32,6 @@ class GameTemplatePolicy
      */
     public function order(User $user, GameTemplate $game)
     {
-        return true;
-        //return $game->on_market && !$game->isAuthor($user->getAuthIdentifier());
+        return $game->on_market && !$game->isAuthor($user->getAuthIdentifier());
     }
 }

@@ -27,6 +27,31 @@ class GameTemplate extends Model
     protected $fillable = ['creator_id', 'name', 'introduction', 'description', 'thumb', 'file', 'status'];
 
     /**
+     * Make query builder for all game by creator
+     *
+     * @param GameTemplate $model
+     * @param string $userId
+     *
+     * @return mixed
+     */
+    public function scopeCreator($model, $userId)
+    {
+        return $model->where('creator_id', $userId);
+    }
+
+    /**
+     * Query builder find games has status is on the market
+     *
+     * @param GameTemplate $model
+     *
+     * @return mixed
+     */
+    public function scopeOnMarket($model)
+    {
+        return $model->where('status', ON_MARKET_GAME_STATUS);
+    }
+
+    /**
      * Set attribute thumb_url with full url
      *
      * @return string
@@ -57,7 +82,7 @@ class GameTemplate extends Model
      */
     public function getOnMarketAttribute()
     {
-        return $this->status == PUBLISHED_GAME_STATUS;
+        return $this->status == ON_MARKET_GAME_STATUS;
     }
 
     /**

@@ -1,38 +1,59 @@
 @extends('web.layout')
 @section('title_page') {{ trans('web.my_order') }} @stop
 @section('content')
+    <x-alert/>
     <div class="table-responsive">
         <table class="table table-flat table-borderless table-striped table-mauve-400">
             <thead>
                 <tr class="text-uppercase">
-                    <th class="py-3" scope="col">ID</th>
-                    <th class="py-3" scope="col">Creator</th>
-                    <th class="py-3" scope="col">Order game</th>
-                    <th class="py-3" scope="col">Order token</th>
-                    <th class="py-3" scope="col">Token per play</th>
-                    <th class="py-3" scope="col">Status</th>
+                    <th class="py-3" scope="col">{{ trans('web.my_order_id') }}</th>
+                    <th class="py-3" scope="col">
+                        {{ Auth::user()->isCreator() ? trans('web.client') : trans('web.creator') }}
+                    </th>
+                    <th class="py-3" scope="col">{{ trans('web.order_game') }}</th>
+                    <th class="py-3" scope="col">{{ trans('web.agreement_amount') }}</th>
+                    <th class="py-3" scope="col">{{ trans('web.royalty_fee') }}</th>
+                    <th class="py-3" scope="col">{{ trans('web.status') }}</th>
                 </tr>
             </thead>
             <tbody>
-            @for ($i = 1; $i <= 20; $i++)
+            @foreach ($orders as $order)
             <tr>
                 <th class="text-center" scope="row">
-                    {{ $i }}
+                    {{ $loop->iteration }}
                 </th>
-                <td class="text-center">Mark</td>
-                <td class="">Funny car racing</td>
-                <td class="text-end">1,000</td>
-                <td class="text-end">5</td>
+                <td class="text-center">
+                    {{ Auth::user()->isCreator() ? $order->client->name : $order->game->creator->name }}
+                </td>
+                <td class="">{{ $order->game->name }}</td>
+                <td class="text-end">
+                    {{ $order->agreement_amount }}
+                </td>
+                <td class="text-end">
+                    {{ $order->royalty_fee }}
+                </td>
                 <td class="">
                     <div class="hstack gap-3">
-                        <span>Creating</span>
-                        <a href="#" title="" class="btn btn-red-pink fw-bold ms-auto">
-                            Push to pool
-                        </a>
+                        <span>
+                            {{ $order->status_text }}
+                        </span>
+                        @if (Auth::user()->isClient() && $order->canPushToPool())
+                            <a href="#" title="" class="btn btn-red-pink fw-bold ms-auto">
+                                Push to pool
+                            </a>
+                        @endif
+                        @if (Auth::user()->isCreator() && $order->status == ORDERING_ORDER_STATUS)
+                            <a href="#" title="" class="btn btn-red-pink fw-bold ms-auto px-3">
+                                Accept
+                            </a>
+                            <a href="#" title="" class="btn btn-mauve-400 fw-bold px-3">
+                                Deny
+                            </a>
+                        @endif
                     </div>
                 </td>
             </tr>
-            @endfor
+            @endforeach
             </tbody>
         </table>
     </div>

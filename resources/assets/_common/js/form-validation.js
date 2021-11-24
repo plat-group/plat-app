@@ -6,7 +6,7 @@
 require('jquery-validation');
 require('jquery-validation/dist/additional-methods.min');
 require('./form-validation-additional');
-require('./i18n/jquery-validation');
+//require('./i18n/jquery-validation');
 
 // Init function
 const init = function () {
@@ -109,9 +109,8 @@ jQuery.fn.formValidation = function (options = {}) {
     };
 };
 
-jQuery(document).ready(function () {
+(function( $ ) {
     $('form.has_validate').formValidation();
-
     init();
-});
+})( jQuery );
 

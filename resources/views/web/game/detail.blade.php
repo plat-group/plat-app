@@ -38,5 +38,5 @@
             </div>
         </div>
     </div>
-    @includeWhen(!auth()->guest() && auth()->user()->can('order', $game), 'web.game._forms.order', ['game' => $game])
+    @includeWhen(optional(auth()->user())->can('order', $game), 'web.game._forms.order', ['game' => $game])
 @stop

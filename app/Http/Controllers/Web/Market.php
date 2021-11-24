@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\OrderGameRequest;
 use App\Services\GameTemplateService;
+use App\Services\OrderService;
 use Illuminate\Http\Request;
 
 class Market extends Controller
@@ -16,11 +17,18 @@ class Market extends Controller
     protected $gameService;
 
     /**
-     * @param \App\Services\GameTemplateService $gameService
+     * @var \App\Services\OrderService
      */
-    public function __construct(GameTemplateService $gameService)
+    protected $orderService;
+
+    /**
+     * @param \App\Services\GameTemplateService $gameService
+     * @param \App\Services\OrderService $orderService
+     */
+    public function __construct(GameTemplateService $gameService, OrderService $orderService)
     {
         $this->gameService = $gameService;
+        $this->orderService = $orderService;
     }
 
     /**
@@ -30,8 +38,10 @@ class Market extends Controller
      */
     public function index(Request $request)
     {
+        $requestConditions = [];
+
         $assign = [
-            'games' => $this->gameService->market()
+            'games' => $this->gameService->market($requestConditions)
         ];
 
         return view('web.game.market.index', $assign);
@@ -53,6 +63,8 @@ class Market extends Controller
 
     public function order(OrderGameRequest $request)
     {
+        $this->orderService->create($request);
 
+        return redirect()->route(MY_ORDER_GAME_ROUTE);
     }
 }

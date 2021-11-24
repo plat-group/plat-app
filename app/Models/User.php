@@ -55,4 +55,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'birthday' => 'date',
     ];
+
+    /**
+     * Role of user is Creator
+     *
+     * @return boolean
+     */
+    public function isCreator()
+    {
+        return $this->role == CREATOR_ROLE;
+    }
+
+    /**
+     * Role of user is Client
+     *
+     * @return boolean
+     */
+    public function isClient()
+    {
+        return $this->role == CLIENT_ROLE;
+    }
 }

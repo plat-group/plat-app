@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Web;
 
+use App\Models\GameTemplate;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class OrderGameRequest extends FormRequest
 {
@@ -15,6 +15,9 @@ class OrderGameRequest extends FormRequest
     public function rules()
     {
         return [
+            'game_id'          => ['required', 'uuid'],
+            'agreement_amount' => ['required', 'min:0'],
+            'royalty_fee'      => ['required', 'min:0'],
         ];
     }
 }
