@@ -13,6 +13,8 @@ $utilities-colors: map-merge($utilities-colors, $theme-colors-rgb);
 $utilities-text-colors: map-loop($utilities-colors, rgba-css-var, "$key", "text");
 $utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
 
+$table-variants: map-merge($table-variants, $table-custom-variants);
+
 @import "~bootstrap/scss/root";
 
 // 4. Include any optional Bootstrap CSS as needed
@@ -34,3 +36,4 @@ $utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
 @import "~bootstrap/scss/navbar";
 @import "~bootstrap/scss/dropdown";
 @import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/tables";

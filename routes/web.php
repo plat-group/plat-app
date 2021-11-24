@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Web\{Login, Register};
-use App\Http\Controllers\Web\{Pool, Market, MyGame};
+use App\Http\Controllers\Web\{Pool, Market, MyGame, MyOrder};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +43,9 @@ Route::resource('my-games', MyGame::class)->names([
     'store' => STORE_TEMPLATE_GAME_ROUTE,
 ])->only(['index', 'show', 'create', 'store'])->middleware('auth');
 
-Route::get('/my-orders', [Market::class, 'index'])->name(MY_ORDER_GAME_ROUTE)->middleware('auth');
+// My Order
+Route::prefix('orders')->middleware('auth')->group(function () {
+    Route::get('/', [MyOrder::class, 'index'])->name(MY_ORDER_GAME_ROUTE);
+});
 
 

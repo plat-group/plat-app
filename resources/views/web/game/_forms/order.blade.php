@@ -3,14 +3,14 @@
         <x-form::open action="{{ route(ORDER_GAME_ROUTE, $game->id) }}" class="form-default has_validate">
         <div class="row gx-5 mb-4">
             <div class="col-md-5">
-                <x-form::label :label="trans('web.order_form.agreement_amount')" class="fs-18 fw-bold"/>
+                <x-form::label :label="trans('web.order_form.agreement_amount_label')" class="fs-18 fw-bold"/>
                 <p class="mb-3">{{ trans('web.order_form.agreement_amount_help') }}</p>
                 <x-form::input name="agreement_amount" class="required"/>
             </div>
             <div class="col-md-5">
-                <x-form::label label="Token for each play" class="fs-18 fw-bold"/>
-                <p class="mb-3">* Token amount will be paid to creator every time user finish playing game</p>
-                <x-form::input name="play_amount" class="required"/>
+                <x-form::label :label="trans('web.order_form.royalty_fee_label')" class="fs-18 fw-bold"/>
+                <p class="mb-3">{{ trans('web.order_form.royalty_fee_help') }}</p>
+                <x-form::input name="royalty_fee" class="required"/>
             </div>
         </div>
         <div class="row">
