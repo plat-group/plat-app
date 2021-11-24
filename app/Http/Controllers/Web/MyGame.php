@@ -38,13 +38,29 @@ class MyGame extends Controller
     }
 
     /**
+     * Show detail game of creator
+     *
+     * @param $gameId
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function show($gameId)
+    {
+        $assign = [
+            'game' => $this->gameTemplateService->find($gameId)
+        ];
+
+        return view('web.game.detail', $assign);
+    }
+
+    /**
      * Show form create a new template game
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
-        return view('web.game.template.create');
+        return view('web.game.market.create_template');
     }
 
     /**

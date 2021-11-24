@@ -28,15 +28,16 @@
                         </a>
                     </li>
                     <li class="list-inline-item menu-item">
-                        <a href="{{ route(TEMPLATE_GAME_ROUTE) }}" title="{{ trans('web.template')}}"
-                            @class(['menu-link', 'active' => request()->routeIs(TEMPLATE_GAME_ROUTE)])>
-                            {{ trans('web.template') }}
+                        <a href="{{ route(MARKET_GAME_ROUTE) }}" title="{{ trans('web.market')}}"
+                            @class(['menu-link',
+                                'active' => request()->routeIs(MARKET_GAME_ROUTE, MARKET_GAME_DETAIL_ROUTE)])>
+                            {{ trans('web.market') }}
                         </a>
                     </li>
                     @auth
                         <li class="list-inline-item menu-item">
                             <a href="{{ route(MY_GAME_ROUTE) }}" title="{{ trans('web.my_game')}}"
-                                @class(['menu-link', 'active' => request()->routeIs(MY_GAME_ROUTE, CREATE_GAME_ROUTE)])>
+                                @class(['menu-link', 'active' => request()->routeIs(MY_GAME_ROUTE, CREATE_GAME_ROUTE, DETAIL_GAME_TEMPLATE_ROUTE)])>
                                 {{ trans('web.my_game') }}
                             </a>
                         </li>

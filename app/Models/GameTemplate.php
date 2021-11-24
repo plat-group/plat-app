@@ -37,6 +37,42 @@ class GameTemplate extends Model
     }
 
     /**
+     * Define url for show detail game template
+     *
+     * @return string
+     */
+    public function getDetailUrlAttribute()
+    {
+        //if ($this->on_market) {
+            return route(MARKET_GAME_DETAIL_ROUTE, $this->id);
+        //}
+
+        //return route(DETAIL_GAME_TEMPLATE_ROUTE, $this->id);
+    }
+
+    /**
+     * Check the status of the game has been published on the market
+     *
+     * @return boolean
+     */
+    public function getOnMarketAttribute()
+    {
+        return $this->status == PUBLISHED_GAME_STATUS;
+    }
+
+    /**
+     * Check user is the author of the game by User ID
+     *
+     * @param string $userId
+     *
+     * @return boolean
+     */
+    public function isAuthor($userId)
+    {
+        return $this->creator_id == $userId;
+    }
+
+    /**
      * Creator information by relationship
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

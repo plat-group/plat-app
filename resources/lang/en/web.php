@@ -14,8 +14,8 @@ return [
     'birthday' => 'Birthday',
     'have_account_need_login' => 'Sign in →',
     'pool' => 'Pool',
-    'template' => 'Template',
-    'my_game' => 'My game',
+    'market' => 'Market',
+    'my_game' => 'My BaGame',
     'my_order' => 'My order',
     'login' => 'Login',
     'logout' => 'Logout',
@@ -28,4 +28,12 @@ return [
     'upload_game_file' => 'Drag and drop game file',
     'btn_create_game' => 'Upload',
     'next_page_game' => 'More Games',
+    'order_form' => [
+        'agreement_amount_label' => 'Order token',
+        'agreement_amount_help' => '* Token amount will be paid after game ok',
+        'royalty_fee_label' => 'Token for each play',
+        'royalty_fee_help' => '* Token amount will be paid to creator every time user finish playing game',
+        'btn_submit' => 'Order',
+    ],
+
 ];
