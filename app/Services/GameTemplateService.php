@@ -29,6 +29,10 @@ class GameTemplateService extends BaseService
     {
         $this->makeBuilder($conditions);
 
+        $this->builder->onMarket();
+
+        //$this->cleanFilterBuilder([]);
+
         return $this->endFilter();
     }
 
@@ -45,7 +49,8 @@ class GameTemplateService extends BaseService
     {
         $data = $request->only(['name', 'introduction']);
         $data['creator_id'] = $creatorId;
-        $data['status']     = CREATING_GAME_STATUS;
+        // TODO: Need process before publish on the market
+        $data['status'] = ON_MARKET_GAME_STATUS;
 
         if ($request->hasFile('thumb')) {
             $data['thumb'] = $this->uploadThumb($request->file('thumb'), $creatorId);

@@ -21,6 +21,8 @@ return [
     'logout' => 'Logout',
     'register' => 'Register',
     'profile' => 'Profile',
+    'client' => 'Client',
+    'creator' => 'Creator',
     'create_new_game' => 'Upload new game',
     'game_name' => 'Game title',
     'game_intro' => 'Game introduction',
@@ -35,5 +37,13 @@ return [
         'royalty_fee_help' => '* Token amount will be paid to creator every time user finish playing game',
         'btn_submit' => 'Order',
     ],
+    'list_order_status' => [
+        ORDERING_ORDER_STATUS => 'Ordering',
+    ],
+    'my_order_id' => 'ID',
+    'order_game' => 'Order game',
+    'agreement_amount' => 'Order token',
+    'royalty_fee' => 'Token per play',
+    'status' => 'Status',
 
 ];

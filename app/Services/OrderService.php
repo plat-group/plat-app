@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Services;
+
+use App\Events\OrderCreatedEvent;
+use App\Repositories\GameTemplateRepository;
+use App\Repositories\OrderRepository;
+use App\Services\Concerns\BaseService;
+use Illuminate\Http\Request;
+
+class OrderService extends BaseService
+{
+
+    /**
+     * @var \App\Repositories\GameTemplateRepository
+     */
+    protected $gameTemplateRepository;
+
+    /**
+     * @param \App\Repositories\OrderRepository $repository
+     * @param \App\Repositories\GameTemplateRepository $gameTemplateRepository
+     */
+    public function __construct(OrderRepository $repository, GameTemplateRepository $gameTemplateRepository)
+    {
+        $this->repository = $repository;
+        $this->gameTemplateRepository = $gameTemplateRepository;
+    }
+
+    /**
+     * Get all orders of client
+     *
+     * @param string $userId User Id
+     *
+     * @return mixed
+     */
+    public function clientOrders($userId)
+    {
+        return $this->repository->clientOrders($userId)->loadMissing('game.creator');
+    }
+
+    /**
+     * Get all orders of Creator
+     *
+     * @param string $userId User Id
+     *
+     * @return mixed
+     */
+    public function creatorOrders($userId)
+    {
+        return $this->repository->creatorOrders($userId)->loadMissing(['game', 'client']);
+    }
+
+    /**
+     * Create an order
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function create(Request $request)
+    {
+        // Find game template
+        $gameTemplate = $this->gameTemplateRepository->find($request->input('game_id'));
+
+        //authorization user can create order
+        $request->user()->can('order', $gameTemplate);
+
+        // Create order from request
+        $order = $this->repository->create(['client_id' => $request->user()->id] + $request->toArray());
+
+        // Send alert
+        $this->withSuccess(trans('message.created_order_game_template'));
+
+        // Fire event
+        OrderCreatedEvent::dispatch($order);
+
+        return $order;
+    }
+}

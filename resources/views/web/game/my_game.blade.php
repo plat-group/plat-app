@@ -1,10 +1,12 @@
 @extends('web.layout')
 @section('content')
+@if (Auth::user()->isCreator())
     <div class="d-flex justify-content-end mb-4">
-        <a href="{{ route(CREATE_GAME_ROUTE) }}" title="" class="btn btn-primary">
+        <a href="{{ route(CREATE_GAME_ROUTE) }}" title="{{ trans('web.create_new_game') }}" class="btn btn-inner-glow rounded-pill fw-bold px-4 py-2">
             {{ trans('web.create_new_game') }}
         </a>
     </div>
+@endif
     <div class="row gx-5">
         @foreach($myGames as $game)
         <div class="col-md-3 mb-3">

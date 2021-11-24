@@ -29,6 +29,8 @@ $grid-breakpoints: (
 
 
 //Colors
+$white: #fff;
+$black: #000;
 $gray-400: #C4C4C4;
 $red-pink: #DC207B;
 $amethyst: #715B85;
@@ -36,17 +38,20 @@ $mauve-400: #4A3A59;
 
 // Create own map
 $custom-colors: (
+    "white": $white,
+    "black": $black,
     "gray-400": $gray-400,
     "red-pink": $red-pink,
     "amethyst": $amethyst,
     "mauve-400": $mauve-400,
 );
-
+// Table Colors:
 $table-custom-variants: (
     "amethyst": $amethyst,
     "mauve-400": $mauve-400,
 );
 
+// Font size
 $font-sizes: (
    16: 16px,
    18: 18px,

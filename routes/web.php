@@ -36,12 +36,12 @@ Route::prefix('market')->group(function () {
 });
 
 // My Game
-Route::resource('my-games', MyGame::class)->names([
-    'index' => MY_GAME_ROUTE,
-    'show' => DETAIL_GAME_TEMPLATE_ROUTE,
-    'create' => CREATE_GAME_ROUTE,
-    'store' => STORE_TEMPLATE_GAME_ROUTE,
-])->only(['index', 'show', 'create', 'store'])->middleware('auth');
+Route::prefix('my-games')->middleware('auth')->group(function () {
+    Route::get('/', [MyGame::class, 'index'])->name(MY_GAME_ROUTE);
+    Route::get('/{id}', [MyGame::class, 'show'])->name(DETAIL_GAME_TEMPLATE_ROUTE)->whereUuid('id');
+    Route::get('/create', [MyGame::class, 'create'])->name(CREATE_GAME_ROUTE)->can('create', \App\Models\GameTemplate::class);
+    Route::post('/store', [MyGame::class, 'store'])->name(STORE_TEMPLATE_GAME_ROUTE);
+});
 
 // My Order
 Route::prefix('orders')->middleware('auth')->group(function () {
