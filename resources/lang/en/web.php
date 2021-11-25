@@ -39,11 +39,15 @@ return [
     ],
     'list_order_status' => [
         ORDERING_ORDER_STATUS => 'Ordering',
+        ACCEPTED_ORDER_STATUS => 'Accepted',
+        DENIED_ORDER_STATUS => 'Denied',
     ],
     'my_order_id' => 'ID',
     'order_game' => 'Order game',
     'agreement_amount' => 'Order token',
     'royalty_fee' => 'Token per play',
     'status' => 'Status',
+    'accept' => 'Accept',
+    'deny' => 'Deny',
 
 ];

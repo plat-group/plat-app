@@ -30,4 +30,7 @@ if (!defined('DEFINE_CONSTANT')) {
      * Order status
      */
     define('ORDERING_ORDER_STATUS', 1);
+    //For Creator confirm
+    define('ACCEPTED_ORDER_STATUS', 2);
+    define('DENIED_ORDER_STATUS', 3);
 }

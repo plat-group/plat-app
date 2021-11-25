@@ -12,11 +12,23 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
     define('MARKET_GAME_DETAIL_ROUTE', 'game.market.detail.route');
     define('ORDER_GAME_ROUTE', 'game.order.route');
 
-    //My Game
+    /**
+     * My Game routes
+     */
     define('MY_GAME_ROUTE', 'game.my.route');
     define('CREATE_GAME_ROUTE', 'game.create.route');
     define('STORE_TEMPLATE_GAME_ROUTE', 'game.store.template.route');
     define('DETAIL_GAME_TEMPLATE_ROUTE', 'game.detail.template.route');
 
-    define('MY_ORDER_GAME_ROUTE', 'game.my_order.route');
+    /**
+     * My Order routes
+     */
+    define('MY_ORDER_GAME_ROUTE', 'order.route');
+    define('CONFIRM_ORDER_GAME_ROUTE', 'order.confirm.route'); // For Creator
+
+    /**
+     * Game
+     * All game has been push to pool
+     */
+    define('DETAIL_GAME_ROUTE', 'game.detail.route');
 }

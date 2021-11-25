@@ -32,6 +32,19 @@ class OrderRepository extends BaseRepository
 
     public function creatorOrders($userId)
     {
-        return $this->model->byCreator($userId)->latest()->get();
+        return $this->model->ofCreator($userId)->latest()->get();
+    }
+
+    /**
+     * Get order detail of creator by order id
+     *
+     * @param string $userId
+     * @param string $orderId
+     *
+     * @return mixed
+     */
+    public function ofCreator($userId, $orderId)
+    {
+        return $this->model->ofCreator($userId)->firstWhere('id', $orderId);
     }
 }

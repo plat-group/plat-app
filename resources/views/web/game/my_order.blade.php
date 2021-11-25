@@ -37,17 +37,19 @@
                         <span>
                             {{ $order->status_text }}
                         </span>
-                        @if (Auth::user()->isClient() && $order->canPushToPool())
+                        @if (Auth::user()->isClient() && $order->isAccepted())
                             <a href="#" title="" class="btn btn-red-pink fw-bold ms-auto">
                                 Push to pool
                             </a>
                         @endif
-                        @if (Auth::user()->isCreator() && $order->status == ORDERING_ORDER_STATUS)
-                            <a href="#" title="" class="btn btn-red-pink fw-bold ms-auto px-3">
-                                Accept
+                        @if (Auth::user()->isCreator() && $order->waitingConfirm())
+                            <a href="{{ route(CONFIRM_ORDER_GAME_ROUTE, [$order->id, ACCEPTED_ORDER_STATUS]) }}" title="{{ trans('web.accept') }}"
+                               class="btn btn-red-pink fw-bold ms-auto px-3">
+                                {{ trans('web.accept') }}
                             </a>
-                            <a href="#" title="" class="btn btn-mauve-400 fw-bold px-3">
-                                Deny
+                            <a href="{{ route(CONFIRM_ORDER_GAME_ROUTE, [$order->id, DENIED_ORDER_STATUS]) }}" title="{{ trans('web.deny') }}" class="btn btn-mauve-400 fw-bold
+                            px-3">
+                                {{ trans('web.deny') }}
                             </a>
                         @endif
                     </div>

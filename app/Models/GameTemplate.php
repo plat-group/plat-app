@@ -92,7 +92,7 @@ class GameTemplate extends Model
      *
      * @return boolean
      */
-    public function isAuthor($userId)
+    public function isOwner($userId)
     {
         return $this->creator_id == $userId;
     }

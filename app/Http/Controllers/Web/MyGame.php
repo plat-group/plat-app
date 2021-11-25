@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\CreateGameRequest;
+use App\Services\GameService;
 use App\Services\GameTemplateService;
 use Illuminate\Http\Request;
 
@@ -16,11 +17,18 @@ class MyGame extends Controller
     protected GameTemplateService $gameTemplateService;
 
     /**
-     * @param \App\Services\GameTemplateService $gameTemplateService
+     * @var \App\Services\GameService
      */
-    public function __construct(GameTemplateService $gameTemplateService)
+    protected GameService $gameService;
+
+    /**
+     * @param \App\Services\GameTemplateService $gameTemplateService
+     * @param \App\Services\GameService $gameService
+     */
+    public function __construct(GameTemplateService $gameTemplateService, GameService $gameService)
     {
         $this->gameTemplateService = $gameTemplateService;
+        $this->gameService = $gameService;
     }
 
     /**
@@ -30,11 +38,13 @@ class MyGame extends Controller
      */
     public function index(Request $request)
     {
-        $assign = [
-            'myGames' => $this->gameTemplateService->search(['creator_id' => $request->user()->id])
-        ];
+        if ($request->user()->isClient()) {
+            $games = $this->gameService->search(['owner_id' => $request->user()->id]);
+        } else {
+            $games = $this->gameTemplateService->search(['creator_id' => $request->user()->id]);
+        }
 
-        return view('web.game.my_game', $assign);
+        return view('web.game.my_game', ['games' => $games]);
     }
 
     /**

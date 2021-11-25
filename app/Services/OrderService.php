@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\OrderConfirmedEvent;
 use App\Events\OrderCreatedEvent;
 use App\Repositories\GameTemplateRepository;
 use App\Repositories\OrderRepository;
@@ -76,5 +77,27 @@ class OrderService extends BaseService
         OrderCreatedEvent::dispatch($order);
 
         return $order;
+    }
+
+    /**
+     * Creator confirm request order game of client
+     *
+     * @return bool
+     */
+    public function confirm($creator, $orderId, $accepted = false)
+    {
+        $order = $this->repository->ofCreator($creator->id, $orderId);
+        if (is_null($order) || !$order->waitingConfirm()) {
+            abort(404);
+        }
+
+        // Update status of order
+        $order->status = ($accepted) ? ACCEPTED_ORDER_STATUS : DENIED_ORDER_STATUS;
+        $order->save();
+
+        // Fire event
+        OrderConfirmedEvent::dispatch($order, $accepted);
+
+        return $this->withSuccess(trans('message.order_status_changed'));
     }
 }

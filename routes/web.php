@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Web\{Login, Register};
-use App\Http\Controllers\Web\{Pool, Market, MyGame, MyOrder};
+use App\Http\Controllers\Web\{Pool, Market, MyGame, MyOrder, Game};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +28,12 @@ Route::prefix('auth')->group(function () {
 Route::get('/', [Pool::class, 'index'])->name(HOME_ROUTE);
 Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
 
+//Game
+
+Route::prefix('games')->group(function () {
+    Route::get('/{id}', [Game::class, 'show'])->name(DETAIL_GAME_ROUTE)->whereUuid('id');
+});
+
 //Market
 Route::prefix('market')->group(function () {
     Route::get('/', [Market::class, 'index'])->name(MARKET_GAME_ROUTE);
@@ -46,6 +52,8 @@ Route::prefix('my-games')->middleware('auth')->group(function () {
 // My Order
 Route::prefix('orders')->middleware('auth')->group(function () {
     Route::get('/', [MyOrder::class, 'index'])->name(MY_ORDER_GAME_ROUTE);
+    Route::get('/{id}/confirms/{action}', [MyOrder::class, 'confirm'])->name(CONFIRM_ORDER_GAME_ROUTE)
+        ->whereUuid('id')->where(['action' => ACCEPTED_ORDER_STATUS.'|'.DENIED_ORDER_STATUS]);
 });
 
 
