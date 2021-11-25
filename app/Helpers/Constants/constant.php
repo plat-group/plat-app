@@ -24,7 +24,9 @@ if (!defined('DEFINE_CONSTANT')) {
      * Game status
      */
     define('CREATING_GAME_STATUS', 1);
+    define('FINISHED_CREATING_GAME_STATUS', 8);
     define('ON_MARKET_GAME_STATUS', 9);
+    define('ON_POOL_GAME_STATUS', 10);
 
     /**
      * Order status

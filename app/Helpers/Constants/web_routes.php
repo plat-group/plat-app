@@ -31,4 +31,5 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
      * All game has been push to pool
      */
     define('DETAIL_GAME_ROUTE', 'game.detail.route');
+    define('PUSH_TO_POOL_GAME_ROUTE', 'game.push_to_pool.route');
 }

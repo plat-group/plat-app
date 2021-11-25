@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\GameModelHelper;
 use App\Models\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,6 +12,7 @@ class GameTemplate extends Model
 {
     use UuidTrait;
     use SoftDeletes;
+    use GameModelHelper;
 
     /**
      * The table associated with the model.
@@ -52,16 +54,6 @@ class GameTemplate extends Model
     }
 
     /**
-     * Set attribute thumb_url with full url
-     *
-     * @return string
-     */
-    public function getThumbUrlAttribute()
-    {
-        return Storage::url($this->thumb);
-    }
-
-    /**
      * Define url for show detail game template
      *
      * @return string
@@ -73,16 +65,6 @@ class GameTemplate extends Model
         //}
 
         //return route(DETAIL_GAME_TEMPLATE_ROUTE, $this->id);
-    }
-
-    /**
-     * Check the status of the game has been published on the market
-     *
-     * @return boolean
-     */
-    public function getOnMarketAttribute()
-    {
-        return $this->status == ON_MARKET_GAME_STATUS;
     }
 
     /**

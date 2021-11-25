@@ -36,7 +36,7 @@ class OrderService extends BaseService
      */
     public function clientOrders($userId)
     {
-        return $this->repository->clientOrders($userId)->loadMissing('game.creator');
+        return $this->repository->clientOrders($userId)->loadMissing('gameTemplate.creator');
     }
 
     /**
@@ -48,7 +48,7 @@ class OrderService extends BaseService
      */
     public function creatorOrders($userId)
     {
-        return $this->repository->creatorOrders($userId)->loadMissing(['game', 'client']);
+        return $this->repository->creatorOrders($userId)->loadMissing(['gameTemplate', 'client']);
     }
 
     /**
@@ -62,7 +62,7 @@ class OrderService extends BaseService
     public function create(Request $request)
     {
         // Find game template
-        $gameTemplate = $this->gameTemplateRepository->find($request->input('game_id'));
+        $gameTemplate = $this->gameTemplateRepository->find($request->input('game_template_id'));
 
         //authorization user can create order
         $request->user()->can('order', $gameTemplate);
