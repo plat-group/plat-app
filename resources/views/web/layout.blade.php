@@ -70,6 +70,10 @@
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="userDropbox">
                     <li>
+                       <span class="dropdown-item-text fw-bold">{{ auth()->user()->name }} </span>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
                         <a class="dropdown-item" href="#" class="" title="{{ trans('web.profile') }}">
                             {{ trans('web.profile') }}
                         </a>

@@ -8,16 +8,16 @@
     </div>
 @endif
     <div class="row gx-5">
-        @foreach($myGames as $game)
+        @foreach($games as $game)
         <div class="col-md-3 mb-3">
             @include('web.game._common.item_list', ['item' => $game])
         </div>
         @endforeach
     </div>
-    @if ($myGames->hasMorePages())
+    @if ($games->hasMorePages())
     <div class="row mt-4">
         <div class="col-md-2 btn-more-game d-grid mx-auto">
-            <a href="{{ $myGames->nextPageUrl() }}" title="{{ trans('web.next_page_game') }}" class="btn btn-red-pink btn-lg fw-bold">
+            <a href="{{ $games->nextPageUrl() }}" title="{{ trans('web.next_page_game') }}" class="btn btn-red-pink btn-lg fw-bold">
                 {{ trans('web.next_page_game') }}
             </a>
             <div class="bottom-gradient"></div>

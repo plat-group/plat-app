@@ -46,7 +46,7 @@ class Order extends Model
      *
      * @return mixed
      */
-    public function scopeByCreator($model, $userId)
+    public function scopeOfCreator($model, $userId)
     {
        return $model->whereHas('game', function (Builder $builder) use ($userId) {
            $builder->creator($userId);
@@ -64,14 +64,23 @@ class Order extends Model
     }
 
     /**
-     * Determine whether the game can push to pool
+     * The status of the order to be confirming
+     *
+     * @return bool
+     */
+    public function waitingConfirm()
+    {
+        return $this->status == ORDERING_ORDER_STATUS;
+    }
+
+    /**
+     * Determine whether the order is accepted
      *
      * @return boolean
      */
-    public function canPushToPool()
+    public function isAccepted()
     {
-        // TODO: Define status of game for push to poll
-        return $this->status != ORDERING_ORDER_STATUS;
+        return $this->status == ACCEPTED_ORDER_STATUS;
     }
 
     /**

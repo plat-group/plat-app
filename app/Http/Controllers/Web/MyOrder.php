@@ -38,4 +38,17 @@ class MyOrder extends Controller
 
         return view('web.game.my_order', ['orders' => $orders]);
     }
+
+    /**
+     * Creator confirm request order game of client
+     *
+     * @param string $orderId
+     * @param int|string $action
+     */
+    public function confirm($orderId, $action = DENIED_ORDER_STATUS)
+    {
+        $this->orderService->confirm(request()->user(), $orderId, ($action == ACCEPTED_ORDER_STATUS));
+
+        return redirect()->back();
+    }
 }

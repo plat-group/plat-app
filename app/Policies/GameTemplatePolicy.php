@@ -32,6 +32,6 @@ class GameTemplatePolicy
      */
     public function order(User $user, GameTemplate $game)
     {
-        return $game->on_market && !$game->isAuthor($user->getAuthIdentifier());
+        return $game->on_market && !$game->isOwner($user->getAuthIdentifier());
     }
 }
