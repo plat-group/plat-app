@@ -17,6 +17,26 @@ class GameService extends BaseService
     }
 
     /**
+     * Push game on the pool
+     *
+     * @param string $gameId
+     * @param \App\Models\User $owner
+     */
+    public function pushToPool($gameId, $owner)
+    {
+        // Get record of game
+        $game = $this->repository->find($gameId);
+
+        //authorization user can push game on the pool
+        $owner->can('pushToGame', $game);
+
+        $game->status = ON_POOL_GAME_STATUS;
+        $game->save();
+
+        return $game;
+    }
+
+    /**
      * Clone data from template to game data and transfer owner
      *
      * @param \App\Models\GameTemplate $template
@@ -32,7 +52,7 @@ class GameService extends BaseService
             'introduction' => $template->introduction,
             'description'  => $template->description,
             'thumb'        => $template->thumb,
-            'status'       => CREATING_GAME_STATUS,
+            'status'       => FINISHED_CREATING_GAME_STATUS,
         ];
 
         return $this->repository->create($data);

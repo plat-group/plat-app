@@ -49,5 +49,7 @@ return [
     'status' => 'Status',
     'accept' => 'Accept',
     'deny' => 'Deny',
+    'view_game' => 'View game',
+    'push_to_pool' => 'Push to pool',
 
 ];

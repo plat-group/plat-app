@@ -26,7 +26,7 @@ class Order extends Model
      *
      * @var string[]
      */
-    protected $fillable = ['client_id', 'game_id', 'content', 'agreement_amount', 'royalty_fee', 'status'];
+    protected $fillable = ['client_id', 'game_template_id', 'game_id', 'content', 'agreement_amount', 'royalty_fee', 'status'];
 
     /**
      * The attributes that should be cast.
@@ -48,7 +48,7 @@ class Order extends Model
      */
     public function scopeOfCreator($model, $userId)
     {
-       return $model->whereHas('game', function (Builder $builder) use ($userId) {
+       return $model->whereHas('gameTemplate', function (Builder $builder) use ($userId) {
            $builder->creator($userId);
        });
     }
@@ -84,13 +84,23 @@ class Order extends Model
     }
 
     /**
-     * Game detail of order by Eloquent relationship
+     * Game Template detail of order by Eloquent relationship
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function gameTemplate()
+    {
+        return $this->belongsTo(GameTemplate::class, 'game_template_id', 'id');
+    }
+
+    /**
+     * Game detail of order by Eloquent relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function game()
     {
-        return $this->belongsTo(GameTemplate::class, 'game_id', 'id');
+        return $this->hasOne(Game::class, 'id', 'game_id');
     }
 
     /**

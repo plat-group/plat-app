@@ -23,7 +23,7 @@
                 <ul class="menu-header list-unstyled list-inline mb-0">
                     <li class="list-inline-item menu-item">
                         <a href="{{ route(POOL_GAME_ROUTE) }}" title="{{ trans('web.pool')}}"
-                            @class(['menu-link', 'active' => request()->routeIs(POOL_GAME_ROUTE, HOME_ROUTE)])>
+                            @class(['menu-link', 'active' => request()->routeIs(POOL_GAME_ROUTE, HOME_ROUTE, DETAIL_GAME_ROUTE)])>
                             {{ trans('web.pool') }}
                         </a>
                     </li>

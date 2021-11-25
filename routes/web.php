@@ -32,6 +32,8 @@ Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
 
 Route::prefix('games')->group(function () {
     Route::get('/{id}', [Game::class, 'show'])->name(DETAIL_GAME_ROUTE)->whereUuid('id');
+    Route::get('/{id}/push-to-pool', [Game::class, 'pushToPool'])
+        ->name(PUSH_TO_POOL_GAME_ROUTE)->whereUuid('id')->middleware('auth');
 });
 
 //Market

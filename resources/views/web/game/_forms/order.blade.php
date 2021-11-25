@@ -1,7 +1,7 @@
 <div class="box-order-game mt-5">
     <div class="inner-box bg-mauve-400 rounded-3 px-4 pt-3 pb-5">
         <x-form::open action="{{ route(ORDER_GAME_ROUTE, $game->id) }}" class="form-default has_validate">
-            <x-form::input type="hidden" name="game_id" :value="$game->id"/>
+            <x-form::input type="hidden" name="game_template_id" :value="$game->id"/>
         <div class="row gx-5 mb-4">
             <div class="col-md-5">
                 <x-form::label :label="trans('web.order_form.agreement_amount_label')" class="fs-18 fw-bold"/>

@@ -39,10 +39,14 @@ class TransferGameToOwnerListener
             return true;
         }
 
-        $order = $event->order->loadMissing('game');
+        $order = $event->order->loadMissing('gameTemplate');
 
         // Clone data from template to game data and transfer owner
-        $this->gameService->cloneTemplate($order->game, $order->client_id);
+        $game = $this->gameService->cloneTemplate($order->gameTemplate, $order->client_id);
+
+        //Update game id to order
+        $order->game_id = $game->id;
+        $order->save();
 
         // Finish
         return true;

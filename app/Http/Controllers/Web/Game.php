@@ -30,4 +30,11 @@ class Game extends Controller
     {
         return view('web.game.detail', ['game' => $this->gameService->find($id)]);
     }
+
+    public function pushToPool($id)
+    {
+        $this->gameService->pushToPool($id, request()->user());
+
+        return redirect()->back();
+    }
 }
