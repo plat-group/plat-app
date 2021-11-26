@@ -5,4 +5,6 @@ return [
     'game_template_created' => 'Register game template successfully. Processing is in progress',
     'created_order_game_template' => 'Created an order request for the game. Waiting for accept, please!',
     'order_status_changed' => 'Status of the order has been changed!',
+    'campaign_form_helper' => '*Campaign will be finished once total token empty',
+    'campaign_created' => 'Successful campaign created!',
 ];

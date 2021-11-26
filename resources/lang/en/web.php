@@ -51,5 +51,12 @@ return [
     'deny' => 'Deny',
     'view_game' => 'View game',
     'push_to_pool' => 'Push to pool',
+    'campaign_total_budget_label' => 'Total token for this campaign',
+    'campaign_creator_budget_label' => 'Token for each play for creator',
+    'campaign_creator_budget_help' => '* Token amount will be paid to creator every time user finish playing game',
+    'campaign_referral_budget_label' => 'Token for each play for referral',
+    'campaign_referral_budget_help' => '* Token amount will be paid to referral every time user finish playing game',
+    'campaign_user_budget_label' => 'Token for each play for user',
+    'campaign_user_budget_help' => '* Token amount will be paid to user every time the game played',
 
 ];

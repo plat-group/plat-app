@@ -18,7 +18,7 @@ class GamePolicy
      *
      * @return bool
      */
-    public function pushToPool(User $user, Game $game)
+    public function createCampaign(User $user, Game $game)
     {
         return $user->isClient() && $game->isOwner($user->getAuthIdentifier()) && $game->canPushToPool();
     }

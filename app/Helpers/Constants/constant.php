@@ -35,4 +35,9 @@ if (!defined('DEFINE_CONSTANT')) {
     //For Creator confirm
     define('ACCEPTED_ORDER_STATUS', 2);
     define('DENIED_ORDER_STATUS', 3);
+
+    /**
+     * Campaign
+     */
+    define('MIN_AMOUNT_CAMPAIGN', 0.001);
 }

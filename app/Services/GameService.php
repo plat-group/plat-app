@@ -16,19 +16,24 @@ class GameService extends BaseService
         $this->repository = $repository;
     }
 
+    public function onPool($conditions = [])
+    {
+        $this->makeBuilder($conditions);
+
+        $this->builder->onPool();
+
+        return $this->endFilter();
+    }
+
     /**
      * Push game on the pool
      *
      * @param string $gameId
-     * @param \App\Models\User $owner
      */
-    public function pushToPool($gameId, $owner)
+    public function pushToPool($gameId)
     {
         // Get record of game
         $game = $this->repository->find($gameId);
-
-        //authorization user can push game on the pool
-        $owner->can('pushToGame', $game);
 
         $game->status = ON_POOL_GAME_STATUS;
         $game->save();
