@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Web\{Login, Register};
-use App\Http\Controllers\Web\{Pool, Market, MyGame, MyOrder, Game};
+use App\Http\Controllers\Web\{Pool, Market, MyGame, MyOrder, Game, Campaign};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,12 +29,15 @@ Route::get('/', [Pool::class, 'index'])->name(HOME_ROUTE);
 Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
 
 //Game
-
 Route::prefix('games')->group(function () {
     Route::get('/{id}', [Game::class, 'show'])->name(DETAIL_GAME_ROUTE)->whereUuid('id');
-    Route::get('/{id}/push-to-pool', [Game::class, 'pushToPool'])
-        ->name(PUSH_TO_POOL_GAME_ROUTE)->whereUuid('id')->middleware('auth');
 });
+
+// Campaign
+Route::prefix('campaigns')->middleware('auth')->group(function () {
+    Route::post('/', [Campaign::class, 'store'])->name(CREATE_CAMPAIGN_ROUTE);
+});
+
 
 //Market
 Route::prefix('market')->group(function () {
@@ -57,5 +60,3 @@ Route::prefix('orders')->middleware('auth')->group(function () {
     Route::get('/{id}/confirms/{action}', [MyOrder::class, 'confirm'])->name(CONFIRM_ORDER_GAME_ROUTE)
         ->whereUuid('id')->where(['action' => ACCEPTED_ORDER_STATUS.'|'.DENIED_ORDER_STATUS]);
 });
-
-

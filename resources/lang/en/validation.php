@@ -157,4 +157,11 @@ return [
 
     'attributes' => [],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Message For Application
+    |--------------------------------------------------------------------------
+    |
+    */
+    'total_budget_gte_sum' => 'The :attribute not enough for each people',
 ];

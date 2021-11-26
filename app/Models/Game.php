@@ -30,6 +30,18 @@ class Game extends Model
     protected $fillable = ['owner_id', 'name', 'introduction', 'description', 'thumb', 'file', 'status'];
 
     /**
+     * Query builder find games has status is on the pool
+     *
+     * @param GameTemplate $model
+     *
+     * @return mixed
+     */
+    public function scopeOnPool($model)
+    {
+        return $model->where('status', ON_POOL_GAME_STATUS);
+    }
+
+    /**
      * Check user is the owner of the game by User ID
      *
      * @param string $userId
@@ -39,5 +51,15 @@ class Game extends Model
     public function isOwner($userId)
     {
         return $this->owner_id == $userId;
+    }
+
+    /**
+     * Relationship campaign of game
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function campaign()
+    {
+        return $this->hasOne(Campaign::class, 'game_id', 'id');
     }
 }

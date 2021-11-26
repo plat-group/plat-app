@@ -26,22 +26,11 @@
         </div>
         <div class="col-md-8">
             <div class="row gx-5">
-                @for($i=1; $i <= 6; $i++)
-                <div class="col-md-4 mb-3">
-                    <div class="box-game-item">
-                        <div class="thumb-item mb-2">
-                            <a href="#" title="">
-                                <img src="https://via.placeholder.com/240x200" alt="" class="w-100"/>
-                            </a>
-                        </div>
-                        <h5 class="">
-                            <a href="#" title="">
-                                He made his passenger captain of one
-                            </a>
-                        </h5>
+                @foreach($games as $game)
+                    <div class="col-md-4 mb-3">
+                        @include('web.game._common.item_list', ['item' => $game])
                     </div>
-                </div>
-                    @endfor
+                @endforeach
             </div>
         </div>
     </div>

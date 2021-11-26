@@ -1,14 +1,7 @@
 @extends('web.layout')
 @section('title_page') {{ $game->name }} @stop
 @section('content')
-    @if (optional(auth()->user())->can('pushToPool', $game))
-        <div class="d-flex justify-content-end mb-4">
-            <a href="{{ route(PUSH_TO_POOL_GAME_ROUTE, $game->id) }}" title="{{ trans('web.create_new_game') }}"
-               class="btn btn-inner-glow rounded-pill fw-bold text-uppercase px-4 py-2">
-                {{ trans('web.push_to_pool') }}
-            </a>
-        </div>
-    @endif
+    <x-alert/>
     <div class="row gx-5">
         <div class="col-md-6">
             <h2 class="fw-bold text-red-pink mb-3">
@@ -21,7 +14,7 @@
                 {{ $game->description }}
             </div>
             {{--@includeWhen(!$game->onMarket && $game->isOwner(auth()->id()), 'web.game._forms.publish_box')--}}
-            @includeWhen(optional(auth()->user())->isClient() && $game->isOwner(auth()->user()->id) && $game->on_pool,
+            @includeWhen(optional(auth()->user())->can('createCampaign', $game),
                 'web.game._forms.campaign', ['game' => $game])
         </div>
         <div class="col-md-6">
