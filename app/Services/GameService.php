@@ -16,6 +16,35 @@ class GameService extends BaseService
         $this->repository = $repository;
     }
 
+    /**
+     * Find detail of game by ID with role of user logged in
+     *
+     * @param string $id
+     * @param null|\App\Models\User $user
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed|void
+     */
+    public function detailWithUser($id, $user = null)
+    {
+        // When guest
+        if (is_null($user) || $user->isCreator()) {
+            return $this->find($id);
+        }
+
+        if ($user->isReferraler()) {
+            return $this->repository->detailOfReferral($id, $user->id);
+        }
+
+        return $this->find($id)->loadMissing('campaign');
+    }
+
+    /**
+     * Get all game published on pool
+     *
+     * @param array $conditions
+     *
+     * @return mixed
+     */
     public function onPool($conditions = [])
     {
         $this->makeBuilder($conditions);

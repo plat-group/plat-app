@@ -17,4 +17,17 @@ class CampaignRepository extends BaseRepository
     {
         return Campaign::class;
     }
+
+    /**
+     * Get campaign of game
+     *
+     * @param string $id Campaign ID
+     * @param string $gameId Game Id
+     *
+     * @return mixed
+     */
+    public function ofGame($id, $gameId)
+    {
+        return $this->model->ofGame($gameId, $id)->firstOrFail();
+    }
 }

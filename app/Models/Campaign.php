@@ -46,4 +46,49 @@ class Campaign extends Model
         'referral_budget' => 'decimal:3',
         'user_budget' => 'decimal:3',
     ];
+
+    /**
+     * Search all campaigns of game
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $gameId
+     * @param string|null $campaignId
+     *
+     * @return mixed
+     */
+    public function scopeOfGame($query, $gameId, $campaignId = null)
+    {
+        $query = $query->where('game_id', $gameId);
+
+        if (!is_null($campaignId)) {
+            return $query->where('id', $campaignId);
+        }
+
+        return $query;
+    }
+
+    /**
+     * Query builder of referrals relationship and get one record when existed.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $referralId
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfReferral($query, $referralId)
+    {
+        return $query->with(['referrals' => function($q) use ($referralId) {
+            return $q->wherePivot('referral_id', $referralId)->limit(1);
+        }]);
+    }
+
+    /**
+     * Relationship: Referrals generated link
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function referrals()
+    {
+        return $this->belongsToMany(User::class, 'campaign_referrals', 'campaign_id', 'referral_id')->withTimestamps();
+    }
 }
