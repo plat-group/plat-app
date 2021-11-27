@@ -22,4 +22,17 @@ class GamePolicy
     {
         return $user->isClient() && $game->isOwner($user->getAuthIdentifier()) && $game->canPushToPool();
     }
+
+    /**
+     * User can generate link of game
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\Game $game
+     *
+     * @return bool
+     */
+    public function referral(User $user, Game $game)
+    {
+        return $user->isReferraler() && $game->on_pool;
+    }
 }

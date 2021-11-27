@@ -54,6 +54,24 @@ class Game extends Model
     }
 
     /**
+     * Check if the referral generated the referral link in the game's campaign.
+     * If already created, return the referral link
+     *
+     * @param string $advertiserId User ID has role Referral
+     *
+     * @return string|null
+     */
+    public function referable($advertiserId)
+    {
+        if (is_null($advertiserId) || is_null($this->loadMissing('campaign.referrals')->campaign->referrals->first())) {
+            return null;
+        }
+
+        // generate link
+        return route(PLAY_GAME_ROUTE, [$this->id, $advertiserId]);
+    }
+
+    /**
      * Relationship campaign of game
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

@@ -31,11 +31,14 @@ Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
 //Game
 Route::prefix('games')->group(function () {
     Route::get('/{id}', [Game::class, 'show'])->name(DETAIL_GAME_ROUTE)->whereUuid('id');
+    Route::get('/{id}/play/{referralId}', [Game::class, 'play'])->name(PLAY_GAME_ROUTE)->whereUuid(['id', 'referralId']);
 });
 
 // Campaign
 Route::prefix('campaigns')->middleware('auth')->group(function () {
     Route::post('/', [Campaign::class, 'store'])->name(CREATE_CAMPAIGN_ROUTE);
+    Route::get('/{id}/games/{gameId}/generate-link', [Campaign::class, 'generateLink'])
+        ->name(GENERATE_LINK_CAMPAIGN_ROUTE)->whereUuid(['id', 'gameId']);
 });
 
 

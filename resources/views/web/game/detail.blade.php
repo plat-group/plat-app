@@ -13,9 +13,10 @@
             <div class="game-description text-justify fs-16">
                 {{ $game->description }}
             </div>
-            {{--@includeWhen(!$game->onMarket && $game->isOwner(auth()->id()), 'web.game._forms.publish_box')--}}
             @includeWhen(optional(auth()->user())->can('createCampaign', $game),
                 'web.game._forms.campaign', ['game' => $game])
+
+            @includeWhen(optional(auth()->user())->can('referral', $game), 'web.game._forms.referral_box', ['game' => $game])
         </div>
         <div class="col-md-6">
             <div id="gameGallery" class="game-gallery carousel slide" data-bs-ride="carousel">

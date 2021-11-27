@@ -17,4 +17,19 @@ class GameRepository extends BaseRepository
     {
         return Game::class;
     }
+
+    /**
+     * Get detail of game with role of user is Referral
+     *
+     * @param string $id Game Id
+     * @param string $advertiserId User ID
+     *
+     * @return mixed
+     */
+    public function detailOfReferral($id, $advertiserId)
+    {
+        return $this->model->where('id', $id)->with(['campaign' => function($q) use ($advertiserId) {
+            return $q->ofReferral($advertiserId);
+        }])->first();
+    }
 }

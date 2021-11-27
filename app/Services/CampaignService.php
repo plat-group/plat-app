@@ -26,6 +26,12 @@ class CampaignService extends BaseService
         $this->gameRepository = $gameRepository;
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
     public function store(Request $request)
     {
         // Get and check exits game by request id
@@ -42,5 +48,23 @@ class CampaignService extends BaseService
         $this->withSuccess(trans('message.campaign_created'));
 
         return $campaign;
+    }
+
+    /**
+     * Save generated link for referral
+     *
+     * @param $referralId
+     * @param $campaignId
+     * @param $gameId
+     *
+     * @return mixed
+     */
+    public function generateLink($referralId, $campaignId, $gameId)
+    {
+        // Find or fail exist record
+        $campaign = $this->repository->ofGame($gameId, $campaignId);
+
+        // Attach record
+        return $campaign->referrals()->attach($referralId);
     }
 }

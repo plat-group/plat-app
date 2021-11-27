@@ -31,9 +31,11 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
      * All game has been push to pool
      */
     define('DETAIL_GAME_ROUTE', 'game.detail.route');
+    define('PLAY_GAME_ROUTE', 'game.play.route');
 
     /**
      * Campaign routes
      */
     define('CREATE_CAMPAIGN_ROUTE', 'campaign.creat.route');
+    define('GENERATE_LINK_CAMPAIGN_ROUTE', 'campaign.generate_link.route');
 }

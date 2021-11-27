@@ -58,5 +58,8 @@ return [
     'campaign_referral_budget_help' => '* Token amount will be paid to referral every time user finish playing game',
     'campaign_user_budget_label' => 'Token for each play for user',
     'campaign_user_budget_help' => '* Token amount will be paid to user every time the game played',
-
+    'generate_link' => 'Generate link',
+    'play_game' => 'Play game',
+    'affiliate_link' => 'Affiliate link',
+    'copy' => 'Copy',
 ];

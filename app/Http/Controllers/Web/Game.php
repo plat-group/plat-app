@@ -25,9 +25,29 @@ class Game extends Controller
      * Show detail game
      *
      * @param string $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show($id)
     {
-        return view('web.game.detail', ['game' => $this->gameService->find($id)]);
+        $assign = [
+            'game' => $this->gameService->detailWithUser($id, optional(request()->user()))
+        ];
+
+        return view('web.game.detail', $assign);
+    }
+
+    /**
+     * User play game with referral link
+     *
+     * @param $id
+     * @param $referralId
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function play($id, $referralId)
+    {
+
+        return view('web.game.play');
     }
 }
