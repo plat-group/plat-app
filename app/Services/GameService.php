@@ -17,6 +17,27 @@ class GameService extends BaseService
     }
 
     /**
+     * Make pagination with conditions
+     *
+     * @param array $conditions
+     *
+     * @return mixed
+     */
+    public function search($conditions = [])
+    {
+        $this->makeBuilder($conditions);
+
+        if ($this->filter->has('referral_id')) {
+            //Filter game of referral
+            $this->builder->ofReferral($this->filter->get('referral_id'));
+            // Clean filter
+            $this->cleanFilterBuilder('referral_id');
+        }
+
+        return $this->endFilter();
+    }
+
+    /**
      * Find detail of game by ID with role of user logged in
      *
      * @param string $id
@@ -32,7 +53,7 @@ class GameService extends BaseService
         }
 
         if ($user->isReferraler()) {
-            return $this->repository->detailOfReferral($id, $user->id);
+            return $this->repository->detailWithReferral($id, $user->id);
         }
 
         return $this->find($id)->loadMissing('campaign');

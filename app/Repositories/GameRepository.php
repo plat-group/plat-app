@@ -26,10 +26,10 @@ class GameRepository extends BaseRepository
      *
      * @return mixed
      */
-    public function detailOfReferral($id, $advertiserId)
+    public function detailWithReferral($id, $advertiserId)
     {
-        return $this->model->where('id', $id)->with(['campaign' => function($q) use ($advertiserId) {
-            return $q->ofReferral($advertiserId);
+        return $this->model->where('id', $id)->with(['campaign' => function ($q) use ($advertiserId) {
+                return $q->withReferral($advertiserId);
         }])->first();
     }
 }

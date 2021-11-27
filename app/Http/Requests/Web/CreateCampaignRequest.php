@@ -33,7 +33,12 @@ class CreateCampaignRequest extends FormRequest
         $validator->after(function ($validator) {
             $sumBudget = $this->input('creator_budget') + $this->input('referral_budget') + $this->input('user_budget');
             if ($this->input('total_budget') < $sumBudget) {
-                $validator->errors()->add('total_budget', trans('validation.total_budget_gte_sum', ['attribute' => 'total budget of campaign']));
+                $validator
+                    ->errors()
+                    ->add(
+                        'total_budget',
+                        trans('validation.total_budget_gte_sum', ['attribute' => 'total budget of campaign'])
+                    );
             }
         });
     }

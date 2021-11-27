@@ -40,6 +40,8 @@ class MyGame extends Controller
     {
         if ($request->user()->isClient()) {
             $games = $this->gameService->search(['owner_id' => $request->user()->id]);
+        } elseif ($request->user()->isReferraler()) {
+            $games = $this->gameService->search(['referral_id' => $request->user()->id]);
         } else {
             $games = $this->gameTemplateService->search(['creator_id' => $request->user()->id]);
         }

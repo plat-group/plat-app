@@ -26,7 +26,15 @@ class Order extends Model
      *
      * @var string[]
      */
-    protected $fillable = ['client_id', 'game_template_id', 'game_id', 'content', 'agreement_amount', 'royalty_fee', 'status'];
+    protected $fillable = [
+        'client_id',
+        'game_template_id',
+        'game_id',
+        'content',
+        'agreement_amount',
+        'royalty_fee',
+        'status',
+    ];
 
     /**
      * The attributes that should be cast.
@@ -48,9 +56,9 @@ class Order extends Model
      */
     public function scopeOfCreator($model, $userId)
     {
-       return $model->whereHas('gameTemplate', function (Builder $builder) use ($userId) {
-           $builder->creator($userId);
-       });
+        return $model->whereHas('gameTemplate', function (Builder $builder) use ($userId) {
+            $builder->creator($userId);
+        });
     }
 
     /**

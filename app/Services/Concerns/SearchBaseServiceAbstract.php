@@ -42,7 +42,7 @@ abstract class SearchBaseServiceAbstract
      *
      * @var Request
      */
-    private $requestHttp;
+    protected $requestHttp;
 
     /**
      * Auto paginate with query parameters

@@ -15,16 +15,16 @@ class OrderService extends BaseService
     /**
      * @var \App\Repositories\GameTemplateRepository
      */
-    protected $gameTemplateRepository;
+    protected GameTemplateRepository $gameTemplateRepo;
 
     /**
      * @param \App\Repositories\OrderRepository $repository
-     * @param \App\Repositories\GameTemplateRepository $gameTemplateRepository
+     * @param \App\Repositories\GameTemplateRepository $gameTemplateRepo
      */
-    public function __construct(OrderRepository $repository, GameTemplateRepository $gameTemplateRepository)
+    public function __construct(OrderRepository $repository, GameTemplateRepository $gameTemplateRepo)
     {
         $this->repository = $repository;
-        $this->gameTemplateRepository = $gameTemplateRepository;
+        $this->gameTemplateRepo = $gameTemplateRepo;
     }
 
     /**
@@ -62,7 +62,7 @@ class OrderService extends BaseService
     public function create(Request $request)
     {
         // Find game template
-        $gameTemplate = $this->gameTemplateRepository->find($request->input('game_template_id'));
+        $gameTemplate = $this->gameTemplateRepo->find($request->input('game_template_id'));
 
         //authorization user can create order
         $request->user()->can('order', $gameTemplate);
@@ -84,7 +84,7 @@ class OrderService extends BaseService
      *
      * @return bool
      */
-    public function confirm($creator, $orderId, $accepted = false)
+    public function confirm($creator, $orderId, $accepted = null)
     {
         $order = $this->repository->ofCreator($creator->id, $orderId);
         if (is_null($order) || !$order->waitingConfirm()) {
