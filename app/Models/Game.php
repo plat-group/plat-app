@@ -32,13 +32,28 @@ class Game extends Model
     /**
      * Query builder find games has status is on the pool
      *
-     * @param GameTemplate $model
+     * @param \Illuminate\Database\Eloquent\Builder $builder
      *
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOnPool($model)
+    public function scopeOnPool($builder)
     {
-        return $model->where('status', ON_POOL_GAME_STATUS);
+        return $builder->where('status', ON_POOL_GAME_STATUS);
+    }
+
+    /**
+     * Make builder filter all game when referral has generated link by referral user
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @param string $referralId UserID of Role Referral
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfReferral($builder, $referralId)
+    {
+        return $builder->whereHas('campaign.referrals', function ($q) use ($referralId) {
+             return $q->where('referral_id', $referralId);
+        });
     }
 
     /**

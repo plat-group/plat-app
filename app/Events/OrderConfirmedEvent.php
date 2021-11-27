@@ -8,7 +8,9 @@ use Illuminate\Queue\SerializesModels;
 
 class OrderConfirmedEvent
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     /**
      * @var \App\Models\Order
@@ -25,9 +27,9 @@ class OrderConfirmedEvent
      *
      * @return void
      */
-    public function __construct($order, $accepted = true)
+    public function __construct($order, $accepted = null)
     {
         $this->order    = $order;
-        $this->accepted = $accepted;
+        $this->accepted = is_null($accepted) ? false : $accepted;
     }
 }

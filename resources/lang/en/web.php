@@ -62,4 +62,9 @@ return [
     'play_game' => 'Play game',
     'affiliate_link' => 'Affiliate link',
     'copy' => 'Copy',
+    'income_histories' => 'Income histories',
+    'game' => 'Game',
+    'time' => 'Time',
+    'earned_token' => 'Earned token',
+    'earned_token_label' => 'Your total earned token',
 ];

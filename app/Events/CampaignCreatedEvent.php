@@ -12,7 +12,9 @@ use Illuminate\Queue\SerializesModels;
 
 class CampaignCreatedEvent
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     /**
      * @var \App\Models\Campaign

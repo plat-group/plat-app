@@ -68,18 +68,20 @@ class Campaign extends Model
     }
 
     /**
-     * Query builder of referrals relationship and get one record when existed.
+     * Build eager loading of referrals relationship and get one record when existed.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param string $referralId
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOfReferral($query, $referralId)
+    public function scopeWithReferral($query, $referralId)
     {
-        return $query->with(['referrals' => function($q) use ($referralId) {
-            return $q->wherePivot('referral_id', $referralId)->limit(1);
-        }]);
+        return $query->with([
+            'referrals' => function ($q) use ($referralId) {
+                return $q->wherePivot('referral_id', $referralId)->limit(1);
+            }
+        ]);
     }
 
     /**
