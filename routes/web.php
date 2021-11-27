@@ -14,6 +14,11 @@ use App\Http\Controllers\Web\{Pool, Market, MyGame, MyOrder, Game};
 |
 */
 
+// Landing page
+Route::get('/', function () {
+    return view('lp.index');
+});
+
 // Authentication
 Route::prefix('auth')->group(function () {
     Route::get('/login', [Login::class, 'showForm'])->name(LOGIN_ROUTE);
@@ -25,7 +30,7 @@ Route::prefix('auth')->group(function () {
 
 
 //Pool
-Route::get('/', [Pool::class, 'index'])->name(HOME_ROUTE);
+Route::get('/app', [Pool::class, 'index'])->name(HOME_ROUTE);
 Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
 
 //Game
