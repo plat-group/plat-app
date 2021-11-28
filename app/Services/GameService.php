@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Events\PlayedGameEvent;
 use App\Repositories\GameRepository;
 use App\Services\Concerns\BaseService;
+use Illuminate\Http\Request;
 
 class GameService extends BaseService
 {
@@ -111,5 +113,27 @@ class GameService extends BaseService
         ];
 
         return $this->repository->create($data);
+    }
+
+    /**
+     * Handle after player finish game
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed
+     */
+    public function finish(Request $request)
+    {
+        $game = $this->find($request->input('game_id'));
+
+        // Fire event
+        PlayedGameEvent::dispatch(
+            $game,
+            $request->input('campaign_id'),
+            $request->input('referral_id'),
+            $request->user()
+        );
+
+        return $game;
     }
 }

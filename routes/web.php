@@ -1,8 +1,17 @@
 <?php
 
+use App\Http\Controllers\Auth\Web\{
+    Login,
+    Register};
+use App\Http\Controllers\Web\{
+    Campaign,
+    Game,
+    Market,
+    MyGame,
+    MyOrder,
+    Pool};
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\Web\{Login, Register};
-use App\Http\Controllers\Web\{Pool, Market, MyGame, MyOrder, Game, Campaign};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,8 +39,10 @@ Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
 
 //Game
 Route::prefix('games')->group(function () {
-    Route::get('/{id}', [Game::class, 'show'])->name(DETAIL_GAME_ROUTE)->whereUuid('id');
-    Route::get('/{id}/play/{referralId}', [Game::class, 'play'])->name(PLAY_GAME_ROUTE)->whereUuid(['id', 'referralId']);
+    Route::get('/{game}', [Game::class, 'show'])->name(DETAIL_GAME_ROUTE)->whereUuid('game');
+    Route::get('/{game}/play/{referralId}', [Game::class, 'play'])
+        ->name(PLAY_GAME_ROUTE)->whereUuid(['game', 'referralId']);
+    Route::post('/{game}/finish', [Game::class, 'finish'])->name(FINISH_GAME_ROUTE)->whereUuid('game');
 });
 
 // Campaign
@@ -53,7 +64,8 @@ Route::prefix('market')->group(function () {
 Route::prefix('my-games')->middleware('auth')->group(function () {
     Route::get('/', [MyGame::class, 'index'])->name(MY_GAME_ROUTE);
     Route::get('/{id}', [MyGame::class, 'show'])->name(DETAIL_GAME_TEMPLATE_ROUTE)->whereUuid('id');
-    Route::get('/create', [MyGame::class, 'create'])->name(CREATE_GAME_ROUTE)->can('create', \App\Models\GameTemplate::class);
+    Route::get('/create', [MyGame::class, 'create'])
+        ->name(CREATE_GAME_ROUTE)->can('create', App\Models\GameTemplate::class);
     Route::post('/store', [MyGame::class, 'store'])->name(STORE_TEMPLATE_GAME_ROUTE);
 });
 
@@ -61,5 +73,6 @@ Route::prefix('my-games')->middleware('auth')->group(function () {
 Route::prefix('orders')->middleware('auth')->group(function () {
     Route::get('/', [MyOrder::class, 'index'])->name(MY_ORDER_GAME_ROUTE);
     Route::get('/{id}/confirms/{action}', [MyOrder::class, 'confirm'])->name(CONFIRM_ORDER_GAME_ROUTE)
-        ->whereUuid('id')->where(['action' => ACCEPTED_ORDER_STATUS.'|'.DENIED_ORDER_STATUS]);
+        ->whereUuid('id')
+        ->where(['action' => ACCEPTED_ORDER_STATUS . '|' . DENIED_ORDER_STATUS]);
 });

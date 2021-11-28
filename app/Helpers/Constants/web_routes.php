@@ -32,6 +32,7 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
      */
     define('DETAIL_GAME_ROUTE', 'game.detail.route');
     define('PLAY_GAME_ROUTE', 'game.play.route');
+    define('FINISH_GAME_ROUTE', 'game.finish.route');
 
     /**
      * Campaign routes
