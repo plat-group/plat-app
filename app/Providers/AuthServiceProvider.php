@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\GameTemplate;
 use App\Policies\GameTemplatePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -27,6 +28,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Auth::provider('near', function ($app, array $config) {
+            return new NearUserProvider($this->app['hash'], $config['model']);
+        });
     }
 }

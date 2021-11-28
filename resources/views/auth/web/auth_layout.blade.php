@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PlatChain - VAIX GROUP</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Fonts -->
     <link href="{{ mix('static/css/web/vendor.css') }}" rel="stylesheet">
     <link href="{{ mix('static/css/web/app.css') }}" rel="stylesheet">
