@@ -62,7 +62,8 @@ function signedInFlow() {
   Array.from(document.querySelectorAll('.signed-in')).forEach(el => el.style.display = '');
 
   // Displaying current account name.
-  document.getElementById('account-id').innerText = window.accountId;
+  var accId = document.getElementById('account-id');
+  if(accId !== undefined && accId !== null) accId.innerText = window.accountId;
 
   // Adding an event to a say-hi button.
 //   document.getElementById('say-hi').addEventListener('click', () => {
