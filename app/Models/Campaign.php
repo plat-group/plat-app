@@ -93,4 +93,14 @@ class Campaign extends Model
     {
         return $this->belongsToMany(User::class, 'campaign_referrals', 'campaign_id', 'referral_id')->withTimestamps();
     }
+
+    /**
+     * Relationship with game
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function game()
+    {
+        return $this->hasOne(Game::class, 'id', 'game_id');
+    }
 }

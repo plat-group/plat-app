@@ -2,44 +2,70 @@
 
 namespace App\View\Components;
 
-use Illuminate\Support\Facades\Session;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\MessageBag;
 use Illuminate\View\Component;
 
 class Alert extends Component
 {
-
-    /**
-     * List messages
-     *
-     * @var array
-     */
-    public $messages = [];
-
     /**
      * Type of message
      *
      * @var string
      */
-    public $type = 'danger';
+    public $type;
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Support\Htmlable|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @var \Illuminate\Contracts\Session\Session
+     */
+    protected $session;
+
+    /**
+     * @param \Illuminate\Contracts\Session\Session $session
+     * @param string $type
+     */
+    public function __construct(Session $session, string $type = 'danger')
+    {
+        $this->session = $session;
+        $this->type = $type;
+    }
+    /**
+     * @return \Illuminate\Contracts\View\View
      */
     public function render()
     {
-        $messages = Session::get('errors', new MessageBag());
+        return view('components.alert');
+    }
+
+    /**
+     * Get message from session
+     *
+     * @return array|string
+     */
+    public function messages()
+    {
+        // Get errors from form validate
+        $messages = $this->session->get('errors', new MessageBag());
         if ($messages->has('message') || $messages->count() > 0) {
             $allBag = $messages->all();
-            $this->messages = count($allBag) > 1 ? $allBag : $allBag[0];
+
+            return count($allBag) > 1 ? $allBag : $allBag[0];
         }
 
-        // Get from session
-        if (Session::has('success') || Session::has('message')) {
-            $this->type = 'success';
-            $this->messages = Session::get('success', Session::get('message'));
-        }
+        // Change type
+        $this->type = 'success';
 
-        return view('components.alert');
+        // Get message
+        return $this->session->get('success', $this->session->get('message'));
+    }
+
+    /**
+     * Determine if the component should be rendered.
+     *
+     * @return bool
+     */
+    public function shouldRender(): bool
+    {
+        return !empty($this->messages());
     }
 }

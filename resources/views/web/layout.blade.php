@@ -94,7 +94,7 @@
         @yield('content')
     </div>
 </div>
-<footer class="">
+<footer class="fixed-bottom">
     <div class="container">
         <div class="row footer-container align-items-center">
             <div class="col-md-6 copyright text-white">
