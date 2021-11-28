@@ -15,7 +15,8 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('email')->index();
+            $table->string('username')->index();
+            $table->string('email')->nullable();
             $table->unsignedTinyInteger('role')->default(USER_ROLE)->index();
             $table->string('name');
             $table->unsignedTinyInteger('gender')->nullable()->default(MALE_GENDER);

@@ -32,8 +32,6 @@ let publicPath = 'public/static/';
 mix
     .js(resourcePath + 'web/js/vendor.js', publicPath + 'js/web')
     .js(resourcePath + 'web/js/app.js', publicPath + 'js/web')
-    .js(resourcePath + 'chain/js/config.js', publicPath + 'js/chain')
-    .js(resourcePath + 'chain/js/main.js', publicPath + 'js/chain')
     .sass(resourcePath + 'web/scss/vendor.scss', publicPath + '/css/web')
     .sass(resourcePath + 'web/scss/app.scss', publicPath + '/css/web')
     .version();
