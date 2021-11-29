@@ -45,12 +45,12 @@ mix
     // Js pages (single page use)
     (glob.sync(resourcePath + $path + '/js/pages/!(_)*.js') || []).forEach(file => {
         let fileName = path.basename(file);
-        mix.js(file, publicPath + '/js/'+ $path +'/pages/' + fileName).version();
+        mix.js(file, publicPath + '/js/' + $path + '/pages/' + fileName).version();
     });
     // Css pages (single page use)
     (glob.sync(resourcePath + $path + '/scss/pages/!(_)*.scss') || []).forEach(file => {
         let fileName = path.basename(file.replace(/\.scss$/, '.css'));
-        mix.sass(file, publicPath + '/css/'+ $path +'/pages/' + fileName).version();
+        mix.sass(file, publicPath + '/css/' + $path + '/pages/' + fileName).version();
     });
 });
 /*
