@@ -25,6 +25,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'role',
+        'username',
         'email',
         'name',
         'gender',
@@ -74,5 +75,15 @@ class User extends Authenticatable
     public function isClient()
     {
         return $this->role == CLIENT_ROLE;
+    }
+
+    /**
+     * Role of user is Referral
+     *
+     * @return bool
+     */
+    public function isReferraler()
+    {
+        return $this->role == REFERRAL_ROLE;
     }
 }

@@ -32,8 +32,10 @@ class MyOrder extends Controller
 
         if ($request->user()->isClient()) {
             $orders = $this->orderService->clientOrders($request->user()->id);
-        } else {
+        } elseif ($request->user()->isCreator()) {
             $orders = $this->orderService->creatorOrders($request->user()->id);
+        } else {
+            return $this->incomeHistories($request);
         }
 
         return view('web.game.my_order', ['orders' => $orders]);
@@ -50,5 +52,17 @@ class MyOrder extends Controller
         $this->orderService->confirm(request()->user(), $orderId, ($action == ACCEPTED_ORDER_STATUS));
 
         return redirect()->back();
+    }
+
+    /**
+     * Income histories of user (Role: Referral/User)
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function incomeHistories(Request $request)
+    {
+        return view('web.income.history');
     }
 }

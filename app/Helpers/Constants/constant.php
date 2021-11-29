@@ -3,6 +3,7 @@
 if (!defined('DEFINE_CONSTANT')) {
     define('DEFINE_CONSTANT', 'DEFINE_CONSTANT');
 
+    define('CURRENCY_CODE', 'Plt');
     define('PAGE_SIZE', 20);
     define('FORM_INPUT_MAX_LENGTH', 255);
 
@@ -24,7 +25,9 @@ if (!defined('DEFINE_CONSTANT')) {
      * Game status
      */
     define('CREATING_GAME_STATUS', 1);
+    define('FINISHED_CREATING_GAME_STATUS', 8);
     define('ON_MARKET_GAME_STATUS', 9);
+    define('ON_POOL_GAME_STATUS', 10);
 
     /**
      * Order status
@@ -33,4 +36,9 @@ if (!defined('DEFINE_CONSTANT')) {
     //For Creator confirm
     define('ACCEPTED_ORDER_STATUS', 2);
     define('DENIED_ORDER_STATUS', 3);
+
+    /**
+     * Campaign
+     */
+    define('MIN_AMOUNT_CAMPAIGN', 0.001);
 }

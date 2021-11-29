@@ -1,5 +1,7 @@
-@if (!empty($messages))
-    <div class="alert alert-{{ $type }}">
+<div class="alert alert-{{ $type }}">
+    @if (!$slot->isEmpty())
+        {{ $slot }}
+    @else
         @if (!is_array($messages))
             <span>{{ $messages }}</span>
         @else
@@ -9,5 +11,5 @@
                 @endforeach
             </ul>
         @endif
-    </div>
-@endif
+    @endif
+</div>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title_page', 'PlatChain - VAIX GROUP')</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Fonts -->
     <link href="{{ mix('static/css/web/vendor.css') }}" rel="stylesheet">
     <link href="{{ mix('static/css/web/app.css') }}" rel="stylesheet">
@@ -23,7 +23,7 @@
                 <ul class="menu-header list-unstyled list-inline mb-0">
                     <li class="list-inline-item menu-item">
                         <a href="{{ route(POOL_GAME_ROUTE) }}" title="{{ trans('web.pool')}}"
-                            @class(['menu-link', 'active' => request()->routeIs(POOL_GAME_ROUTE, HOME_ROUTE)])>
+                            @class(['menu-link', 'active' => request()->routeIs(POOL_GAME_ROUTE, HOME_ROUTE, DETAIL_GAME_ROUTE)])>
                             {{ trans('web.pool') }}
                         </a>
                     </li>
@@ -49,36 +49,29 @@
                         </li>
                     @endauth
                     @guest
-                        <li class="list-inline-item menu-item signed-out" style="display: none;">
-                            <a id="sign-in" class="menu-link" href="#" title="{{ trans('web.login')}}">
+                        <li class="list-inline-item menu-item signed-out">
+                            <a id="sign-in" class="menu-link" href="{{ route(LOGIN_ROUTE) }}" title="{{ trans('web.login')}}">
                                 {{ trans('web.login')}}
                             </a>
                         </li>
-                        {{--
                         <li class="list-inline-item menu-item">
-                            <a class="menu-link" href="{{ route(REGISTER_ROUTE) }}" title="{{ trans('web.register')}}">
+                            <a class="menu-link" href="#" title="{{ trans('web.register')}}">
                                 {{ trans('web.register')}}
                             </a>
                         </li>
-                        --}}
                     @endguest
                 </ul>
             </div>
-        {{-- @auth --}}
-            <div class="col-3 col-md-1 align-self-center order-2 order-md-3 signed-in" style="display: none">
+         @auth
+            <div class="col-3 col-md-1 align-self-center order-2 order-md-3 signed-in">
                 <div class="dropdown-toggle cursor-pointer"
                    id="userDropbox" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                     <img src="https://via.placeholder.com/50" alt="" class="rounded-circle"/>
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="userDropbox">
                     <li>
-                       <span id="account-id" class="dropdown-item-text fw-bold"></span>
-                    </li>
-                    {{--
-                    <li>
                        <span class="dropdown-item-text fw-bold">{{ auth()->user()->name }} </span>
                     </li>
-                    --}}
                     <li><hr class="dropdown-divider"></li>
                     <li>
                         <a class="dropdown-item" href="#" class="" title="{{ trans('web.profile') }}">
@@ -86,14 +79,13 @@
                         </a>
                     </li>
                     <li>
-                        <a id="sign-out" class="dropdown-item" href="#" title="{{ trans('web.logout') }}">
-                        {{-- <a class="dropdown-item" href="{{ route(LOGOUT_ROUTE) }}" title="{{ trans('web.logout') }}"> --}}
+                         <a class="dropdown-item" href="{{ route(LOGOUT_ROUTE) }}" title="{{ trans('web.logout') }}">
                             {{ trans('web.logout') }}
                         </a>
                     </li>
                 </ul>
             </div>
-        {{-- @endauth --}}
+         @endauth
         </div>
     </div>
 </header>
@@ -102,7 +94,7 @@
         @yield('content')
     </div>
 </div>
-<footer class="">
+<footer class="fixed-bottom">
     <div class="container">
         <div class="row footer-container align-items-center">
             <div class="col-md-6 copyright text-white">
@@ -120,7 +112,6 @@
 <script src="{{ asset('js/'.app()->getLocale().'.js') }}"></script>
 <script src="{{ mix('static/js/web/vendor.js') }}" type="text/javascript"></script>
 <script src="{{ mix('static/js/web/app.js') }}" type="text/javascript"></script>
-<script src="{{ mix('static/js/chain/main.js') }}" type="text/javascript"></script>
 @stack('js')
 </body>
 </html>

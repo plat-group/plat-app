@@ -24,12 +24,15 @@ class Register extends AuthController
 
     /**
      * Show form register
+     * @param string $nearAccountId
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function showForm()
+    public function showForm($nearAccountId)
     {
-        return view('auth.web.register');
+        return view('auth.web.register', [
+            'nearId' => $nearAccountId
+        ]);
     }
 
     /**
@@ -44,6 +47,6 @@ class Register extends AuthController
     {
         $this->userService->create($request, $request->input('request_role'));
 
-        return redirect()->route(LOGIN_ROUTE);
+        return redirect()->route(POOL_GAME_ROUTE);
     }
 }

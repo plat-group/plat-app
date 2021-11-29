@@ -15,8 +15,9 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
+            'username' => ['required', 'unique:App\Models\User,username'],
             'request_role' => ['required', Rule::in(array_keys(trans('app.roles')))],
-            'email' => ['required', 'email', 'unique:App\Models\User,email'],
+            'email' => ['required', 'email'],
             'name' => ['required'],
             'gender' => ['required', Rule::in(array_keys(trans('app.genders'))) ],
             'birthday' => ['required', 'date' ],

@@ -2,6 +2,13 @@
 @section('auth_container')
     <x-alert/>
     {{ Form::open(['route' => REGISTER_ROUTE, 'class' => 'register_form has_validate']) }}
+    <div class="mb-3 row ">
+        <label for="walletId" class="col-md-3 col-form-label col-form-label-lg fw-bold">Wallet ID:</label>
+        <div class="col-md-9">
+            <input type="text" name="username" readonly id="walletId" value="{{ $nearId }}"
+                   class="form-control-lg form-control-plaintext fw-bold">
+        </div>
+    </div>
     <div class="form-group mb-4">
         @foreach(trans('app.roles') as $roleId => $roleName)
         <div class="form-check form-check-inline">
@@ -25,24 +32,19 @@
         <x-form::input type="password" name="password" class="required form-control-lg" placeholder="{{ trans('web.password') }}"/>
     </x-form::group>
 
-    <x-form::group class="required">
-        <x-form::select name="gender" class="required form-select-lg" :list="trans('app.genders')" selected="{{ MALE_GENDER }}"/>
-    </x-form::group>
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <x-form::select name="gender" class="required form-select-lg" :list="trans('app.genders')" selected="{{ MALE_GENDER }}"/>
+        </div>
+        <div class="col-md-8">
+            <x-form::input name="birthday" class="required form-control-lg" placeholder="{{ trans('web.birthday') }}" readonly=""
+                           data-toggle="date" data-maxDate="0"/>
+        </div>
+    </div>
 
-    <x-form::group class="required">
-        <x-form::input name="birthday" class="required form-control-lg" placeholder="{{ trans('web.birthday') }}" readonly=""
-                       data-toggle="date" data-maxDate="0"/>
-    </x-form::group>
 
     <div class="d-flex justify-content-center">
         <button class="btn btn-red-pink btn-lg fw-bold px-5">{{ trans('web.btn_signup') }}</button>
     </div>
     {{ Form::close() }}
-
-    <div class="register-box alert alert-gray-400 fs-16 text-black rounded-0 text-center mt-5" role="alert">
-        {{ trans('web.need_login') }}
-        <a href="{{ route(LOGIN_ROUTE) }}" title="{{ trans('web.have_account_need_login') }}" class="link-primary">
-            {{ trans('web.have_account_need_login') }}
-        </a>
-    </div>
 @stop

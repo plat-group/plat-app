@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
+use App\Models\Traits\GameModelHelper;
 use App\Models\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Storage;
 
 class Game extends Model
 {
     use HasFactory;
     use UuidTrait;
     use SoftDeletes;
+    use GameModelHelper;
 
     /**
      * The table associated with the model.
@@ -29,23 +30,30 @@ class Game extends Model
     protected $fillable = ['owner_id', 'name', 'introduction', 'description', 'thumb', 'file', 'status'];
 
     /**
-     * Set attribute thumb_url with full url
+     * Query builder find games has status is on the pool
      *
-     * @return string
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function getThumbUrlAttribute()
+    public function scopeOnPool($builder)
     {
-        return Storage::url($this->thumb);
+        return $builder->where('status', ON_POOL_GAME_STATUS);
     }
 
     /**
-     * Define url for show detail game template
+     * Make builder filter all game when referral has generated link by referral user
      *
-     * @return string
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @param string $referralId UserID of Role Referral
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function getDetailUrlAttribute()
+    public function scopeOfReferral($builder, $referralId)
     {
-        return route(DETAIL_GAME_ROUTE, $this->id);
+        return $builder->whereHas('campaign.referrals', function ($q) use ($referralId) {
+             return $q->where('referral_id', $referralId);
+        });
     }
 
     /**
@@ -58,5 +66,33 @@ class Game extends Model
     public function isOwner($userId)
     {
         return $this->owner_id == $userId;
+    }
+
+    /**
+     * Check if the referral generated the referral link in the game's campaign.
+     * If already created, return the referral link
+     *
+     * @param string $advertiserId User ID has role Referral
+     *
+     * @return string|null
+     */
+    public function referable($advertiserId)
+    {
+        if (is_null($advertiserId) || is_null($this->loadMissing('campaign.referrals')->campaign->referrals->first())) {
+            return null;
+        }
+
+        // generate link
+        return route(PLAY_GAME_ROUTE, [$this->id, $advertiserId]);
+    }
+
+    /**
+     * Relationship campaign of game
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function campaign()
+    {
+        return $this->hasOne(Campaign::class, 'game_id', 'id');
     }
 }

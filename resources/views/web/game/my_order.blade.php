@@ -23,9 +23,9 @@
                     {{ $loop->iteration }}
                 </th>
                 <td class="text-center">
-                    {{ Auth::user()->isCreator() ? $order->client->name : $order->game->creator->name }}
+                    {{ Auth::user()->isCreator() ? $order->client->name : $order->gameTemplate->creator->name }}
                 </td>
-                <td class="">{{ $order->game->name }}</td>
+                <td class="">{{ $order->gameTemplate->name }}</td>
                 <td class="text-end">
                     {{ $order->agreement_amount }}
                 </td>
@@ -38,8 +38,8 @@
                             {{ $order->status_text }}
                         </span>
                         @if (Auth::user()->isClient() && $order->isAccepted())
-                            <a href="#" title="" class="btn btn-red-pink fw-bold ms-auto">
-                                Push to pool
+                            <a href="{{ route(DETAIL_GAME_ROUTE, $order->game_id) }}" title="{{ trans('web.view_game') }}" class="btn btn-red-pink fw-bold ms-auto">
+                                {{ trans('web.view_game') }}
                             </a>
                         @endif
                         @if (Auth::user()->isCreator() && $order->waitingConfirm())
