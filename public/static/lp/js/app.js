@@ -1,7 +1,7 @@
 $(document).ready(function() {
     wow = new WOW({
-        mobile: false,  
-    }) 
+        mobile: false,
+    })
     wow.init();
     $(window).on('load', function (event) {
         $('.preloader').delay(500).fadeOut(500);
@@ -9,13 +9,14 @@ $(document).ready(function() {
     $('.navbar a').click(function(e) {
         e.preventDefault();
         var target = $(this).attr('href');
-        // target.addClass('active');   
-        if( target.length ) {
-            event.preventDefault();
-            $('html, body').animate({
+        // target.addClass('active');
+        if( target.length && target.startsWith('#')) {
+            return $('html, body').animate({
                 scrollTop: $(target).offset().top -120
             }, 500);
         }
+
+        window.location = target;
     })
      //===== Section Menu Active
 
@@ -23,19 +24,19 @@ $(document).ready(function() {
      // Active link switching
     $(window).scroll(function () {
         var scrollbarLocation = $(this).scrollTop();
- 
+
         scrollLink.each(function () {
             var sectionOffset = $(this.hash).offset().top -200
- 
+
             if (sectionOffset <= scrollbarLocation) {
                 $(this).parent().addClass('active');
                 $(this).parent().siblings().removeClass('active');
             }
         });
     });
- 
+
     function scrollFunction() {
-            
+
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
 
             $('.navbar').css({

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title_page', 'PlatChain - VAIX GROUP')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/png">
     <!-- Fonts -->
     <link href="{{ mix('static/css/web/vendor.css') }}" rel="stylesheet">
     <link href="{{ mix('static/css/web/app.css') }}" rel="stylesheet">
