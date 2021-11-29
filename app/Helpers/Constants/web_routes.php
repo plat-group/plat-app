@@ -39,4 +39,9 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
      */
     define('CREATE_CAMPAIGN_ROUTE', 'campaign.creat.route');
     define('GENERATE_LINK_CAMPAIGN_ROUTE', 'campaign.generate_link.route');
+
+    /**
+     * User/Referral/Creator transaction (income history)
+     */
+    define('MY_TRANSACTION_ROUTE', 'transaction.route');
 }

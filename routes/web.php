@@ -9,7 +9,8 @@ use App\Http\Controllers\Web\{
     Market,
     MyGame,
     MyOrder,
-    Pool};
+    Pool,
+    Transaction};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,4 +81,9 @@ Route::prefix('orders')->middleware('auth')->group(function () {
     Route::get('/{id}/confirms/{action}', [MyOrder::class, 'confirm'])->name(CONFIRM_ORDER_GAME_ROUTE)
         ->whereUuid('id')
         ->where(['action' => ACCEPTED_ORDER_STATUS . '|' . DENIED_ORDER_STATUS]);
+});
+
+// Transaction
+Route::prefix('transactions')->middleware('auth')->group(function () {
+    Route::get('/', [Transaction::class, 'index'])->name(MY_TRANSACTION_ROUTE);
 });
