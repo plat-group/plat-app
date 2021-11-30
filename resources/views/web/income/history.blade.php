@@ -23,11 +23,11 @@
             </tr>
             </thead>
             <tbody>
-                @foreach($transactions as $idx => $transaction)
+                @foreach($transactions as $transaction)
                     <tr>
-                        <td class="py-3" scope="col">{{ $idx + 1 }}</td>
+                        <td class="py-3 text-center" scope="col">{{ $loop->iteration }}</td>
                         {{-- <td class="py-3" scope="col">{{ $transaction-> }} </td> --}}
-                        <td class="py-3" scope="col">{{ $transaction->game_id }}</td>
+                        <td class="py-3" scope="col">{{ $transaction->campaign->game->name ?? '' }}</td>
                         <td class="py-3 text-end" scope="col">{{ $transaction->amount }}</td>
                         <td class="py-3 text-end" scope="col">{{ $transaction->created_at }}</td>
                     </tr>

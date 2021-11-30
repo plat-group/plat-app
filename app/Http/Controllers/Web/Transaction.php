@@ -28,11 +28,8 @@ class Transaction extends Controller
      */
     public function index(Request $request)
     {
-        $transactions = $this->transactionService->getTransactions($request->user()->id);
-        $totalEarned = 0;
-        foreach($transactions as $transaction) {
-            $totalEarned += $transaction->amount;
-        }
+        $transactions = $this->transactionService->getTransactions($request->user()->id)->loadMissing('campaign.game');
+        $totalEarned = $transactions->sum('amount');
 
         return view('web.income.history', compact('totalEarned', 'transactions'));
     }

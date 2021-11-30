@@ -1,38 +1,63 @@
 <?php
 
-function isCreator() {
-    return auth() && auth()->user()->role == CREATOR_ROLE;
+function isCreator()
+{
+    return isRole(CREATOR_ROLE);
 }
 
-function isClient() {
-    return auth() && auth()->user()->role == CLIENT_ROLE;
+function isClient()
+{
+    return isRole(CLIENT_ROLE);
 }
 
-function isUser() {
-    return auth() && auth()->user()->role == USER_ROLE;
+function isUser()
+{
+    return isRole(USER_ROLE);
 }
 
-function isReferral() {
-    return auth() && auth()->user()->role == REFERRAL_ROLE;
+function isReferral()
+{
+    return isRole(REFERRAL_ROLE);
 }
 
-function displayMenuPool() {
+if (!function_exists('isRole')) {
+    /**
+     * Global helper for check user role
+     *
+     * @param int $roleCode
+     *
+     * @return bool
+     */
+    function isRole($roleCode)
+    {
+        return optional(auth()->user())->role == $roleCode;
+    }
+}
+
+
+function displayMenuPool()
+{
     return true;
 }
 
-function displayMenuMarket() {
+function displayMenuMarket()
+{
     return true;
 }
 
-function displayMenuMyGame() {
+function displayMenuMyGame()
+{
     return isCreator() || isClient();
 }
 
-function displayMenuMyOrder() {
+function displayMenuMyOrder()
+{
     return isCreator() || isClient();
 }
 
-function displayMenuDashboard() {
+function displayMenuDashboard()
+{
     return isUser() || isReferral();
 }
+
 ?>
