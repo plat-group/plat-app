@@ -19,7 +19,10 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'username' => $this->faker->name() . '.testnet',
+            'role' => $this->faker->numberBetween($min = 1, $max = 4),
+            'balance' => 0,
+            'blocked_balance' => 0
         ];
     }
 

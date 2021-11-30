@@ -41,4 +41,24 @@ class Transaction extends Model
      * @var string|null
      */
     public const UPDATED_AT = null;
+
+    /**
+     * Relationship with Campaign
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function campaign()
+    {
+        return $this->belongsTo(Campaign::class, 'campaign_id', 'id');
+    }
+
+    /**
+     * Relatipnship with User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

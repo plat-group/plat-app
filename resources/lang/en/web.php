@@ -17,6 +17,7 @@ return [
     'market' => 'Market',
     'my_game' => 'My BaGame',
     'my_order' => 'My order',
+    'dashboard' => 'Dashboard',
     'login' => 'Login',
     'logout' => 'Logout',
     'register' => 'Register',
