@@ -23,7 +23,7 @@ class TransactionFactory extends Factory
             'user_id' => $this->faker->randomElement($users),
             'campaign_id' => $this->faker->randomElement($campaigns),
             'referral_id' => $this->faker->randomElement($referrals),
-            'amount' => $this->faker->randomFloat($nbMaxDecimals = 4, $min = 0, $max = 15),
+            'amount' => $this->faker->randomFloat($nbMaxDecimals = 3, $min = 0.05, $max = 0.08),
             'created_at' => $this->faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now')->format('Y/m/d h:i:s'),
         ];
     }
