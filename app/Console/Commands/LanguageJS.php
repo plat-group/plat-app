@@ -26,7 +26,7 @@ class LanguageJS extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return void
      */
     public function handle()
     {
@@ -53,6 +53,6 @@ class LanguageJS extends Command
         }
 
         $content = 'window.i18n = ' . json_encode($strings) . ';';
-        Storage::disk('public')->put('static/js/' . $lang . '.js', $content);
+        Storage::disk('static')->put('js/' . $lang . '.js', $content);
     }
 }
