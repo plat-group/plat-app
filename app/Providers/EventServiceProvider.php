@@ -4,7 +4,10 @@ namespace App\Providers;
 
 use App\Events\CampaignCreatedEvent;
 use App\Events\OrderConfirmedEvent;
+use App\Events\PlayedGameEvent;
+use App\Listeners\PayCoinListener;
 use App\Listeners\PushGameToPoolListener;
+use App\Listeners\SaveTransactionListener;
 use App\Listeners\TransferGameToOwnerListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -24,6 +27,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         CampaignCreatedEvent::class => [
             PushGameToPoolListener::class
+        ],
+        PlayedGameEvent::class => [
+            SaveTransactionListener::class,
+            PayCoinListener::class,
         ],
     ];
 

@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if (env('APP_USE_SSL', false)) {
-            //URL::forceScheme('https');
+            URL::forceScheme('https');
         }
 
         Blade::componentNamespace('App\View\Components\Forms', 'form');

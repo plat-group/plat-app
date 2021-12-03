@@ -27,5 +27,4 @@ class TransactionService extends BaseService
     {
         return $this->repository->getTransactions($userId);
     }
-
 }

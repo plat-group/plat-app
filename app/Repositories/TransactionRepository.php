@@ -29,4 +29,24 @@ class TransactionRepository extends BaseRepository
     {
         return $this->model->where('user_id', $userId)->latest()->get();
     }
+
+    /**
+     * Save history pay reward
+     *
+     * @param float|int $amount
+     * @param string $receiver
+     * @param string $campaign Campaign ID
+     * @param string $advertiser Referral ID
+     *
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function saveHistory($amount, $receiver, $campaign, $advertiser)
+    {
+        return $this->create([
+            'amount' => $amount,
+            'user_id' => $receiver,
+            'campaign_id' => $campaign,
+            'referral_id' => $advertiser,
+        ]);
+    }
 }

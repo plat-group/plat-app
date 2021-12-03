@@ -95,4 +95,12 @@ class Game extends Model
     {
         return $this->hasOne(Campaign::class, 'game_id', 'id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function order()
+    {
+        return $this->hasOne(Order::class, 'game_id', 'id');
+    }
 }
