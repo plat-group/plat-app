@@ -41,7 +41,7 @@ class PayCoinListener implements ShouldQueue
         $smartContractId = $this->getSmartContractId();
 
         $command = 'near call ' . $smartContractId . ' withdraw \''
-                   . $this->makeParameters($campaign) . '\''
+                   . $this->makeParameters($campaign, $event->playerId) . '\''
                    . ' --accountId ' . $smartContractId;
 
         $this->commandlineRun($command);
@@ -56,9 +56,11 @@ class PayCoinListener implements ShouldQueue
      */
     public function commandlineRun($command)
     {
-        // $command = Application::formatCommandString($command) . ' ' . ' > /dev/null 2>&1 &';
         $command .= ' > /dev/null 2>&1 &';
+
+        // Write log for debug command line
         Log::debug("command = $command");
+
         Process::fromShellCommandline($command, base_path())->run();
 
         return true;
@@ -68,22 +70,30 @@ class PayCoinListener implements ShouldQueue
      * Create parameters of Near CLI command
      *
      * @param $campaign
+     * @param string $player
      *
      * @return false|string
      */
-    private function makeParameters($campaign)
+    private function makeParameters($campaign, $player = null)
     {
         $result = [
+            'game_id' => 1,
             'client' => 'nghilt.testnet',
-            'user_id' => 'platuser.testnet',
             'referral_id' => 'platreferral.testnet',
-            'creator_id' => 'platcreator.testnet',
-            'team' => 'platteam.testnet',
-            'amount_user' => $this->toYokto($campaign->user_budget),
             'amount_referral' => $this->toYokto($campaign->referral_budget),
+            'creator_id' => 'platcreator.testnet',
             'amount_creator' => $this->toYokto($campaign->creator_budget),
-            'amount_team' => $this->toYokto(0.01),
+            'team' => 'platteam.testnet',
+            'amount_team' => $this->toYokto(0.001),
         ];
+
+        // Player is not a guest
+        if (!is_null($player)) {
+            $result[] = [
+                'user_id'     => 'platuser.testnet',
+                'amount_user' => $this->toYokto($campaign->user_budget),
+            ];
+        }
 
         return json_encode($result);
     }
@@ -97,10 +107,16 @@ class PayCoinListener implements ShouldQueue
      */
     private function toYokto($number)
     {
-        return $number * pow(10, 24) ;  // $number * 1000000000000000000000000 ;
+        return $number * pow(10, 24) ;  // $number * 1000000000000000000000000;
     }
 
-    private function getSmartContractId() {
+    /**
+     * Get Near Smart Contract
+     *
+     * @return string
+     */
+    private function getSmartContractId()
+    {
         return env('SMART_CONTRACT_ID', 'platserver.testnet');
     }
 }

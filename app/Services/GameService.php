@@ -131,7 +131,7 @@ class GameService extends BaseService
             $game,
             $request->input('campaign_id'),
             $request->input('referral_id'),
-            $request->user()->id
+            optional($request->user())->id
         );
 
         return $game;
