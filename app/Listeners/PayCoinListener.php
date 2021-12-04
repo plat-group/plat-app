@@ -77,6 +77,7 @@ class PayCoinListener implements ShouldQueue
     private function makeParameters($campaign, $player = null)
     {
         $result = [
+            'game_id' => 1,
             'client' => 'nghilt.testnet',
             'referral_id' => 'platreferral.testnet',
             'amount_referral' => $this->toYokto($campaign->referral_budget),
