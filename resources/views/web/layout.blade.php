@@ -81,7 +81,7 @@
             <div class="col-3 col-md-1 align-self-center order-2 order-md-3 signed-in">
                 <div class="dropdown-toggle cursor-pointer"
                    id="userDropbox" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-                    <img src="/static/images/web/avatar.png" alt="" class="rounded-circle" style="width: 50px;"/>
+                    <img src="{{auth()->user()->avatar ? '/upload/' . auth()->user()->avatar : '/static/images/web/avatar.png'}}" alt="" class="rounded-circle" style="width: 50px;"/>
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="userDropbox">
                     <li>
