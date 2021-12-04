@@ -41,10 +41,10 @@ class Campaign extends Model
      * @var array
      */
     protected $casts = [
-        'total_budget' => 'decimal:3',
-        'creator_budget' => 'decimal:3',
-        'referral_budget' => 'decimal:3',
-        'user_budget' => 'decimal:3',
+        'total_budget' => 'decimal:7',
+        'creator_budget' => 'decimal:7',
+        'referral_budget' => 'decimal:7',
+        'user_budget' => 'decimal:7',
     ];
 
     /**

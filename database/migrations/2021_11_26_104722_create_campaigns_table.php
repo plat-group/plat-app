@@ -16,10 +16,10 @@ class CreateCampaignsTable extends Migration
         Schema::create('campaigns', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('game_id')->index();
-            $table->decimal('total_budget', 12, 3)->default(0);
-            $table->decimal('creator_budget', 12, 3)->default(0);
-            $table->decimal('referral_budget', 12, 3)->default(0);
-            $table->decimal('user_budget', 12, 3)->default(0);
+            $table->decimal('total_budget', 12, 7)->default(0);
+            $table->decimal('creator_budget', 12, 7)->default(0);
+            $table->decimal('referral_budget', 12, 7)->default(0);
+            $table->decimal('user_budget', 12, 7)->default(0);
             $table->dateTime('start_at')->nullable();
             $table->dateTime('end_at')->nullable();
             $table->timestamps();

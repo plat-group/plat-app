@@ -36,6 +36,7 @@ class CreateTemplateData extends Seeder
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
         $user->username = 'platcreator.testnet';
         $user->role = CREATOR_ROLE;
+        $user->avatar = 'avatar/user.png';
         $user->balance = 0;
         $user->blocked_balance = 0;
         $user->save();
@@ -47,6 +48,7 @@ class CreateTemplateData extends Seeder
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
         $user->username = 'nghilt.testnet'; // for test
         $user->role = CLIENT_ROLE;
+        $user->avatar = 'avatar/client.png';
         $user->balance = 0;
         $user->blocked_balance = 0;
         $user->save();
@@ -58,6 +60,7 @@ class CreateTemplateData extends Seeder
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
         $user->username = 'platreferral.testnet';
         $user->role = REFERRAL_ROLE;
+        $user->avatar = 'avatar/referral.png';
         $user->balance = 0;
         $user->blocked_balance = 0;
         $user->save();
@@ -69,6 +72,7 @@ class CreateTemplateData extends Seeder
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
         $user->username = 'platuser.testnet';
         $user->role = USER_ROLE;
+        $user->avatar = 'avatar/avatar.png';
         $user->balance = 0;
         $user->blocked_balance = 0;
         $user->save();
@@ -213,10 +217,10 @@ class CreateTemplateData extends Seeder
 
         $campaign = new Campaign();
         $campaign->game_id = $gameId;
-        $campaign->total_budget = 10;
-        $campaign->creator_budget = 0.05;
-        $campaign->referral_budget = 0.06;
-        $campaign->user_budget = 0.08;
+        $campaign->total_budget = 100;
+        $campaign->creator_budget = 0.0005;
+        $campaign->referral_budget = 0.00006;
+        $campaign->user_budget = 0.00008;
         $campaign->start_at = '2021/12/01';
         $campaign->end_at = '2022/12/01';
         $campaign->save();
