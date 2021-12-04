@@ -56,4 +56,18 @@ trait GameModelHelper
     {
         return $this->status == FINISHED_CREATING_GAME_STATUS;
     }
+
+    /**
+     * Game Manager
+     *
+     * @return mixed
+     */
+    public function manager()
+    {
+        if ($this->on_market) {
+            return $this->loadMissing('creator')->creator;
+        }
+
+        return $this->loadMissing('owner')->owner;
+    }
 }
