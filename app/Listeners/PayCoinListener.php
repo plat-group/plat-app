@@ -8,6 +8,7 @@ use Illuminate\Console\Application;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Symfony\Component\Process\Process;
+use Illuminate\Support\Facades\Log;
 
 class PayCoinListener implements ShouldQueue
 {
@@ -37,10 +38,11 @@ class PayCoinListener implements ShouldQueue
     public function handle(PlayedGameEvent $event)
     {
         $campaign = $this->campaignService->find($event->campaignId);
+        $smartContractId = $this->getSmartContractId();
 
-        $command = 'near call platserver.testnet withdraw \''
+        $command = 'near call ' . $smartContractId . ' withdraw \''
                    . $this->makeParameters($campaign) . '\''
-                   . '--accountId platserver.testnet';
+                   . ' --accountId ' . $smartContractId;
 
         $this->commandlineRun($command);
     }
@@ -54,8 +56,9 @@ class PayCoinListener implements ShouldQueue
      */
     public function commandlineRun($command)
     {
-        $command = Application::formatCommandString($command) . ' ' . ' > /dev/null 2>&1 &';
-
+        // $command = Application::formatCommandString($command) . ' ' . ' > /dev/null 2>&1 &';
+        $command .= ' > /dev/null 2>&1 &';
+        Log::debug("command = $command");
         Process::fromShellCommandline($command, base_path())->run();
 
         return true;
@@ -79,7 +82,7 @@ class PayCoinListener implements ShouldQueue
             'amount_user' => $this->toYokto($campaign->user_budget),
             'amount_referral' => $this->toYokto($campaign->referral_budget),
             'amount_creator' => $this->toYokto($campaign->creator_budget),
-            'amount_team' => $this->toYokto(1),
+            'amount_team' => $this->toYokto(0.01),
         ];
 
         return json_encode($result);
@@ -94,6 +97,10 @@ class PayCoinListener implements ShouldQueue
      */
     private function toYokto($number)
     {
-        return $number * 1000000000000000000000000 ;
+        return $number * pow(10, 24) ;  // $number * 1000000000000000000000000 ;
+    }
+
+    private function getSmartContractId() {
+        return env('SMART_CONTRACT_ID', 'platserver.testnet');
     }
 }
