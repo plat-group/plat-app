@@ -80,20 +80,22 @@ class PayCoinListener implements ShouldQueue
             'game_id' => 1,
             'client' => 'nghilt.testnet',
             'referral_id' => 'platreferral.testnet',
-            'amount_referral' => $this->toYokto($campaign->referral_budget),
+            'amount_referral' => '' . $this->toYokto($campaign->referral_budget),
             'creator_id' => 'platcreator.testnet',
             'amount_creator' => $this->toYokto($campaign->creator_budget),
             'team' => 'platteam.testnet',
             'amount_team' => $this->toYokto(0.001),
+            'user_id'     => 'platuser.testnet',
+            'amount_user' => $this->toYokto($campaign->user_budget),
         ];
 
-        // Player is not a guest
-        if (!is_null($player)) {
-            $result[] = [
-                'user_id'     => 'platuser.testnet',
-                'amount_user' => $this->toYokto($campaign->user_budget),
-            ];
-        }
+        // // Player is not a guest
+        // if (!is_null($player)) {
+        //     $result[] = [
+        //         'user_id'     => 'platuser.testnet',
+        //         'amount_user' => '' . $this->toYokto($campaign->user_budget),
+        //     ];
+        // }
 
         return json_encode($result);
     }
@@ -107,7 +109,8 @@ class PayCoinListener implements ShouldQueue
      */
     private function toYokto($number)
     {
-        return $number * pow(10, 24) ;  // $number * 1000000000000000000000000;
+        $val = $number * pow(10, 24) ;  // $number * 1000000000000000000000000;
+        return sprintf("%.0f", $val);
     }
 
     /**

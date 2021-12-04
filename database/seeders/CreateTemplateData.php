@@ -218,9 +218,9 @@ class CreateTemplateData extends Seeder
         $campaign = new Campaign();
         $campaign->game_id = $gameId;
         $campaign->total_budget = 100;
-        $campaign->creator_budget = 0.0005;
-        $campaign->referral_budget = 0.00006;
-        $campaign->user_budget = 0.00008;
+        $campaign->creator_budget = 0.005;
+        $campaign->referral_budget = 0.006;
+        $campaign->user_budget = 0.008;
         $campaign->start_at = '2021/12/01';
         $campaign->end_at = '2022/12/01';
         $campaign->save();
