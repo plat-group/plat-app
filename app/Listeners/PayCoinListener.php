@@ -39,7 +39,7 @@ class PayCoinListener implements ShouldQueue
         $campaign = $this->campaignService->find($event->campaignId);
 
         $command = 'near call platserver.testnet withdraw \''
-                   . $this->makeParameters($campaign) . '\''
+                   . $this->makeParameters($campaign, $event->playerId) . '\''
                    . '--accountId platserver.testnet';
 
         $this->commandlineRun($command);
@@ -65,22 +65,29 @@ class PayCoinListener implements ShouldQueue
      * Create parameters of Near CLI command
      *
      * @param $campaign
+     * @param string $player
      *
      * @return false|string
      */
-    private function makeParameters($campaign)
+    private function makeParameters($campaign, $player = null)
     {
         $result = [
             'client' => 'nghilt.testnet',
-            'user_id' => 'platuser.testnet',
             'referral_id' => 'platreferral.testnet',
-            'creator_id' => 'platcreator.testnet',
-            'team' => 'platteam.testnet',
-            'amount_user' => $this->toYokto($campaign->user_budget),
             'amount_referral' => $this->toYokto($campaign->referral_budget),
+            'creator_id' => 'platcreator.testnet',
             'amount_creator' => $this->toYokto($campaign->creator_budget),
-            'amount_team' => $this->toYokto(1),
+            'team' => 'platteam.testnet',
+            'amount_team' => $this->toYokto(0.001),
         ];
+
+        // the player is not a guest
+        if (!is_null($player)) {
+            $result[] = [
+                'user_id'     => 'platuser.testnet',
+                'amount_user' => $this->toYokto($campaign->user_budget),
+            ];
+        }
 
         return json_encode($result);
     }
@@ -94,6 +101,6 @@ class PayCoinListener implements ShouldQueue
      */
     private function toYokto($number)
     {
-        return $number * 1000000000000000000000000 ;
+        return $number * 1000000000000000000000000;
     }
 }
