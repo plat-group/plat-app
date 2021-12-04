@@ -13,6 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(CreateTemplateData::class);
+    }
+
+    private function createTestData() {
         \App\Models\User::factory(10)->create();
         \App\Models\GameTemplate::factory(10)->create();
         \App\Models\Game::factory(10)->create();

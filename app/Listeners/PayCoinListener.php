@@ -8,6 +8,7 @@ use Illuminate\Console\Application;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Symfony\Component\Process\Process;
+use Illuminate\Support\Facades\Log;
 
 class PayCoinListener implements ShouldQueue
 {
@@ -37,10 +38,11 @@ class PayCoinListener implements ShouldQueue
     public function handle(PlayedGameEvent $event)
     {
         $campaign = $this->campaignService->find($event->campaignId);
+        $smartContractId = $this->getSmartContractId();
 
-        $command = 'near call platserver.testnet withdraw \''
+        $command = 'near call ' . $smartContractId . ' withdraw \''
                    . $this->makeParameters($campaign, $event->playerId) . '\''
-                   . '--accountId platserver.testnet';
+                   . ' --accountId ' . $smartContractId;
 
         $this->commandlineRun($command);
     }
@@ -54,7 +56,10 @@ class PayCoinListener implements ShouldQueue
      */
     public function commandlineRun($command)
     {
-        $command = Application::formatCommandString($command) . ' ' . ' > /dev/null 2>&1 &';
+        $command .= ' > /dev/null 2>&1 &';
+
+        // Write log for debug command line
+        Log::debug("command = $command");
 
         Process::fromShellCommandline($command, base_path())->run();
 
@@ -81,7 +86,7 @@ class PayCoinListener implements ShouldQueue
             'amount_team' => $this->toYokto(0.001),
         ];
 
-        // the player is not a guest
+        // Player is not a guest
         if (!is_null($player)) {
             $result[] = [
                 'user_id'     => 'platuser.testnet',
@@ -101,6 +106,16 @@ class PayCoinListener implements ShouldQueue
      */
     private function toYokto($number)
     {
-        return $number * 1000000000000000000000000;
+        return $number * pow(10, 24) ;  // $number * 1000000000000000000000000;
+    }
+
+    /**
+     * Get Near Smart Contract
+     *
+     * @return string
+     */
+    private function getSmartContractId()
+    {
+        return env('SMART_CONTRACT_ID', 'platserver.testnet');
     }
 }
