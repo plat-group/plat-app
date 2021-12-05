@@ -78,9 +78,9 @@ class PayCoinListener implements ShouldQueue
     {
         $result = [
             'game_id' => 1,
-            'client' => 'nghilt.testnet',
+            'client' => 'platclient.testnet',
             'referral_id' => 'platreferral.testnet',
-            'amount_referral' => '' . $this->toYokto($campaign->referral_budget),
+            'amount_referral' => $this->toYokto($campaign->referral_budget),
             'creator_id' => 'platcreator.testnet',
             'amount_creator' => $this->toYokto($campaign->creator_budget),
             'team' => 'platteam.testnet',
