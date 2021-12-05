@@ -36,7 +36,7 @@ class CreateTemplateData extends Seeder
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
         $user->username = 'platcreator.testnet';
         $user->role = CREATOR_ROLE;
-        $user->avatar = 'avatar/user.png';
+        $user->avatar = 'avatar/creative.png';
         $user->balance = 0;
         $user->blocked_balance = 0;
         $user->save();
