@@ -17,10 +17,10 @@ if (mix.inProduction()) {
     mix.webpackConfig({
         plugins: [
             new S3PusherPlugin({
-                key: process.env.S3_KEY,
-                secret: process.env.S3_SECRET,
-                bucket: process.env.S3_BUCKET,
-                region: process.env.S3_REGION,
+                key: process.env.AWS_ACCESS_KEY_ID,
+                secret: process.env.AWS_SECRET_ACCESS_KEY,
+                bucket: process.env.AWS_BUCKET,
+                region: process.env.AWS_DEFAULT_REGION,
                 // endpoint: process.env.S3_ENDPOINT,
                 prefix: 'static',
                 acl: 'public-read',
