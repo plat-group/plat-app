@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 const glob = require('glob');
 const path = require('path');
+const S3PusherPlugin = require('webpack-s3-pusher');
 
 mix.options({
     processCssUrls : false
@@ -10,6 +11,23 @@ if (!mix.inProduction()) {
     mix.webpackConfig({
         devtool: 'inline-source-map'
     }).sourceMaps();
+}
+
+if (mix.inProduction()) {
+    mix.webpackConfig({
+        plugins: [
+            new S3PusherPlugin({
+                key: process.env.S3_KEY,
+                secret: process.env.S3_SECRET,
+                bucket: process.env.S3_BUCKET,
+                region: process.env.S3_REGION,
+                // endpoint: process.env.S3_ENDPOINT,
+                prefix: 'static',
+                acl: 'public-read',
+                cache: 'max-age=602430',
+            })
+        ]
+    });
 }
 
 /*
