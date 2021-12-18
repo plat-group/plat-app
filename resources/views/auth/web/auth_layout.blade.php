@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PlatChain - VAIX GROUP</title>
+    <title>Plats - GameHub</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Fonts -->
     <link href="{{ mix('static/css/web/vendor.css') }}" rel="stylesheet">
@@ -16,7 +16,7 @@
         <div class="col-md-4 align-self-center">
             <div class="logo text-center mb-5">
                 <a href="{{ url('') }}" title="">
-                    <img src="{{ asset('images/web/logo.svg') }}" alt="PlatChain" style="width: 281px; height: 117px"/>
+                    <img src="{{ asset('images/web/logo.svg') }}" alt="Plats" style="width: 281px; height: 117px"/>
                 </a>
             </div>
             @yield('auth_container')

@@ -59,7 +59,7 @@ function signedOutFlow()
 function signedInFlow()
 {
     if ($('#page_action').val() === 'login') {
-        // User request login to Plat
+        // User request login to Plats
         $.post(ROUTES.LOGIN, {account_id: window.accountId}).done((data) => {
             window.location.replace(data.redirect);
         }).fail((err) => {

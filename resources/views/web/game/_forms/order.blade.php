@@ -6,7 +6,8 @@
             <div class="col-md-5">
                 <x-form::label :label="trans('web.order_form.agreement_amount_label')" class="fs-18 fw-bold"/>
                 <p class="mb-3">{{ trans('web.order_form.agreement_amount_help') }}</p>
-                <x-form::input name="agreement_amount" :value="old('agreement_amount')" class="required" data-rule-number="true"/>
+                <br>
+                <x-form::input name="agreement_amount" :value="old('agreement_amount')" class="required" data-rule-number="true" data-behavior="deposit"/>
             </div>
             <div class="col-md-5">
                 <x-form::label :label="trans('web.order_form.royalty_fee_label')" class="fs-18 fw-bold"/>
@@ -20,7 +21,7 @@
                 <x-form::textarea name="content" rows="5" :value="old('content')"/>
             </div>
             <div class="col-md-2 d-md-flex align-items-end align-items-end">
-                <button type="submit" class="btn btn-red-pink px-5 py-2">
+                <button type="button" id="btn-order" class="btn btn-red-pink px-5 py-2">
                     {{ trans('web.order_form.btn_submit') }}
                 </button>
             </div>
@@ -28,3 +29,6 @@
         </x-form::open>
     </div>
 </div>
+@push('js')
+    <script src="{{ mix('static/js/web/pages/near_deposit.js') }}" type="text/javascript"></script>
+@endpush
