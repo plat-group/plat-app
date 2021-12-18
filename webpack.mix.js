@@ -14,7 +14,7 @@ if (!mix.inProduction()) {
 }
 
 if (mix.inProduction()) {
-    mix.webpackConfig({
+/*    mix.webpackConfig({
         plugins: [
             new S3PusherPlugin({
                 key: process.env.AWS_ACCESS_KEY_ID,
@@ -27,7 +27,7 @@ if (mix.inProduction()) {
                 cache: 'max-age=602430',
             })
         ]
-    });
+    });*/
 }
 
 /*
