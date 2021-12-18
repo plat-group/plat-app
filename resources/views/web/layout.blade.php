@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title_page', 'PlatChain - VAIX GROUP')</title>
+    <title>@yield('title_page', 'Plats-GameHub')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/png">
     <!-- Fonts -->
@@ -30,20 +30,20 @@
                             </a>
                         </li>
                     @endif
-                    @if(displayMenuPool())
-                        <li class="list-inline-item menu-item">
-                            <a href="{{ route(POOL_GAME_ROUTE) }}" title="{{ trans('web.pool')}}"
-                                @class(['menu-link', 'active' => request()->routeIs(POOL_GAME_ROUTE, HOME_ROUTE, DETAIL_GAME_ROUTE)])>
-                                {{ trans('web.pool') }}
-                            </a>
-                        </li>
-                    @endif
                     @if(displayMenuMarket())
                         <li class="list-inline-item menu-item">
                             <a href="{{ route(MARKET_GAME_ROUTE) }}" title="{{ trans('web.market')}}"
                                 @class(['menu-link',
                                     'active' => request()->routeIs(MARKET_GAME_ROUTE, MARKET_GAME_DETAIL_ROUTE)])>
                                 {{ trans('web.market') }}
+                            </a>
+                        </li>
+                    @endif
+                    @if(displayMenuPool())
+                        <li class="list-inline-item menu-item">
+                            <a href="{{ route(POOL_GAME_ROUTE) }}" title="{{ trans('web.pool')}}"
+                                @class(['menu-link', 'active' => request()->routeIs(POOL_GAME_ROUTE, HOME_ROUTE, DETAIL_GAME_ROUTE)])>
+                                {{ trans('web.pool') }}
                             </a>
                         </li>
                     @endif
@@ -69,11 +69,13 @@
                                 {{ trans('web.login')}}
                             </a>
                         </li>
+                        {{--
                         <li class="list-inline-item menu-item">
                             <a class="menu-link" href="#" title="{{ trans('web.register')}}">
                                 {{ trans('web.register')}}
                             </a>
                         </li>
+                        --}}
                     @endguest
                 </ul>
             </div>
@@ -109,7 +111,7 @@
         @yield('content')
     </div>
 </div>
-<footer class="fixed-bottom">
+<footer>
     <div class="container">
         <div class="row footer-container align-items-center">
             <div class="col-md-6 copyright text-white">

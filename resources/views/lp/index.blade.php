@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="static/lp/css/font-awesome.min.css">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/png">
 
-    <title>Plat Solution</title>
+    <title>Plats Solution</title>
 
 
 </head>
@@ -100,7 +100,7 @@
                     <div class="col-lg-5 col-md-5">
                         <img class="img-fluid" src="static/lp/images/plat.png" alt="">
                         <p class="text-white mt-2">
-                            Plat Chain is a platform that helps enterprises create their brand and NFT associated BaGames (Blockchain Advertising Games) and issue that BaGames on multiple Online Advertising services.
+                            Plats Chain is a platform that helps enterprises create their brand and NFT associated BaGames (Blockchain Advertising Games) and issue that BaGames on multiple Online Advertising services.
                         </p>
                     </div>
                 </div>
@@ -335,7 +335,7 @@
                                 Whitepaper Release
                             </li>
                             <li class="pb-2">
-                                Plat Token Testnet V1.0 Launch
+                                Plats Token Testnet V1.0 Launch
                             </li>
                             <li class="pb-2">
                                 The first BaGame release
@@ -348,7 +348,7 @@
                     <div class="col col-xs-12 roadmap-2 pt-5 my-2">
                         <ul class="">
                             <li class="pb-2">
-                                Plat Middleware V1.0 Release
+                                Plats Middleware V1.0 Release
                             </li>
                             <li class="pb-2">
                                 No Code Smart contract
@@ -357,7 +357,7 @@
                                 BaGame convert function
                             </li>
                             <li class="pb-2">
-                                Plat Token Testnet V2.0 Launch
+                                Plats Token Testnet V2.0 Launch
                             </li>
                             <li class="pb-2">
                                 BaGame store V1.0 Release
@@ -371,7 +371,7 @@
                     <div class="col col-xs-12 roadmap-1 pt-5 my-5">
                         <ul class="">
                             <li class="pb-2">
-                                Plat Middleware V2.0 Release
+                                Plats Middleware V2.0 Release
 
                             </li>
                             <li class="pb-2">
