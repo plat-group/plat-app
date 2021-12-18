@@ -29,7 +29,7 @@ class CreateTemplateData extends Seeder
 
     private function createUserData() {
         $user = new User();
-        $user->name = 'NghiCreator';
+        $user->name = 'PlatCreator';
         $user->email = 'creator@plats.network';
         $user->email_verified_at = now();
         // 'password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -42,7 +42,20 @@ class CreateTemplateData extends Seeder
         $user->save();
 
         $user = new User();
-        $user->name = 'NghiClient';
+        $user->name = 'PlatArtist';
+        $user->email = 'artist@plats.network';
+        $user->email_verified_at = now();
+        // 'password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
+        $user->username = 'platartist.testnet';
+        $user->role = CREATOR_ROLE;
+        $user->avatar = 'avatar/creative.png';
+        $user->balance = 0;
+        $user->blocked_balance = 0;
+        $user->save();
+
+        $user = new User();
+        $user->name = 'PlatClient';
         $user->email = 'client@plats.network';
         $user->email_verified_at = now();
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
@@ -54,7 +67,7 @@ class CreateTemplateData extends Seeder
         $user->save();
 
         $user = new User();
-        $user->name = 'NghiReferral';
+        $user->name = 'PlatReferral';
         $user->email = 'referral@plats.network';
         $user->email_verified_at = now();
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
@@ -66,7 +79,7 @@ class CreateTemplateData extends Seeder
         $user->save();
 
         $user = new User();
-        $user->name = 'NghiUser';
+        $user->name = 'PlatUser';
         $user->email = 'user@plats.network';
         $user->email_verified_at = now();
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
@@ -80,8 +93,9 @@ class CreateTemplateData extends Seeder
     }
 
     private function createGameTemplateData() {
-        $creatorId = User::where('email', 'creator@plats.network')->pluck('id')->first();
+        $creatorIds = User::where('role', CREATOR_ROLE)->pluck('id')->all();
 
+        $creatorId = $this->getRandomCreator($creatorIds);
         $game = new GameTemplate();
         $game->creator_id = $creatorId;
         $game->name = 'Supa Racing';
@@ -91,6 +105,7 @@ class CreateTemplateData extends Seeder
         $game->status = ON_MARKET_GAME_STATUS;
         $game->save();
 
+        $creatorId = $this->getRandomCreator($creatorIds);
         $game = new GameTemplate();
         $game->creator_id = $creatorId;
         $game->name = 'Serious Sam';
@@ -102,6 +117,7 @@ class CreateTemplateData extends Seeder
         $game->status = ON_MARKET_GAME_STATUS;
         $game->save();
 
+        $creatorId = $this->getRandomCreator($creatorIds);
         $game = new GameTemplate();
         $game->creator_id = $creatorId;
         $game->name = 'Samurai Simulator';
@@ -111,6 +127,7 @@ class CreateTemplateData extends Seeder
         $game->status = ON_MARKET_GAME_STATUS;
         $game->save();
 
+        $creatorId = $this->getRandomCreator($creatorIds);
         $game = new GameTemplate();
         $game->creator_id = $creatorId;
         $game->name = 'Formula';
@@ -124,6 +141,7 @@ class CreateTemplateData extends Seeder
         $game->status = ON_MARKET_GAME_STATUS;
         $game->save();
 
+        $creatorId = $this->getRandomCreator($creatorIds);
         $game = new GameTemplate();
         $game->creator_id = $creatorId;
         $game->name = 'Forza horizon';
@@ -143,6 +161,7 @@ class CreateTemplateData extends Seeder
         $game->status = ON_MARKET_GAME_STATUS;
         $game->save();
 
+        $creatorId = $this->getRandomCreator($creatorIds);
         $game = new GameTemplate();
         $game->creator_id = $creatorId;
         $game->name = 'iRACING';
@@ -152,6 +171,7 @@ class CreateTemplateData extends Seeder
         $game->status = ON_MARKET_GAME_STATUS;
         $game->save();
 
+        $creatorId = $this->getRandomCreator($creatorIds);
         $game = new GameTemplate();
         $game->creator_id = $creatorId;
         $game->name = 'The Elder Scroll';
@@ -161,6 +181,7 @@ class CreateTemplateData extends Seeder
         $game->status = ON_MARKET_GAME_STATUS;
         $game->save();
 
+        $creatorId = $this->getRandomCreator($creatorIds);
         $game = new GameTemplate();
         $game->creator_id = $creatorId;
         $game->name = 'DIRT5';
@@ -228,5 +249,11 @@ class CreateTemplateData extends Seeder
 
     private function createTransactionData() {
         \App\Models\Transaction::factory(10)->create();
+    }
+
+    private function getRandomCreator($creatorIds) {
+        $count = count($creatorIds);
+        $idx = rand(0, $count - 1);
+        return $creatorIds[$idx];
     }
 }

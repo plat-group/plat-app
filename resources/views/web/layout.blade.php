@@ -34,7 +34,7 @@
                         <li class="list-inline-item menu-item">
                             <a href="{{ route(MARKET_GAME_ROUTE) }}" title="{{ trans('web.market')}}"
                                 @class(['menu-link',
-                                    'active' => request()->routeIs(MARKET_GAME_ROUTE, MARKET_GAME_DETAIL_ROUTE)])>
+                                    'active' => request()->routeIs(HOME_ROUTE, MARKET_GAME_ROUTE, MARKET_GAME_DETAIL_ROUTE)])>
                                 {{ trans('web.market') }}
                             </a>
                         </li>
@@ -42,7 +42,7 @@
                     @if(displayMenuPool())
                         <li class="list-inline-item menu-item">
                             <a href="{{ route(POOL_GAME_ROUTE) }}" title="{{ trans('web.pool')}}"
-                                @class(['menu-link', 'active' => request()->routeIs(POOL_GAME_ROUTE, HOME_ROUTE, DETAIL_GAME_ROUTE)])>
+                                @class(['menu-link', 'active' => request()->routeIs(POOL_GAME_ROUTE, DETAIL_GAME_ROUTE)])>
                                 {{ trans('web.pool') }}
                             </a>
                         </li>
