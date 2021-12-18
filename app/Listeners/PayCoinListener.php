@@ -56,12 +56,14 @@ class PayCoinListener implements ShouldQueue
      */
     public function commandlineRun($command)
     {
-        $command .= ' > /dev/null 2>&1 &';
+        // $command .= ' > /dev/null 2>&1 &';
 
         // Write log for debug command line
         Log::debug("command = $command");
 
-        Process::fromShellCommandline($command, base_path())->run();
+        $process = Process::fromShellCommandline($command, base_path())->run();
+
+        Log::debug($process);
 
         return true;
     }

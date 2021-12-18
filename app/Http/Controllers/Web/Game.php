@@ -48,12 +48,15 @@ class Game extends Controller
      */
     public function play($id, $referralId)
     {
-        $assign = [
-            'game' => $this->gameService->find($id),
-            'referral' => $referralId,
-        ];
+        // $assign = [
+        //     'game' => $this->gameService->find($id),
+        //     'referral' => $referralId,
+        // ];
+        // return view('web.game.play', $assign);
 
-        return view('web.game.play', $assign);
+        $game = $this->gameService->find($id);
+
+        return redirect()->to(sprintf('/upload/game/plat-card-game/index.html?gid=%s&cid=%s&rid=%s', $id, $game->campaign->id, $referralId));
     }
 
     /**
@@ -67,6 +70,8 @@ class Game extends Controller
     {
         $this->gameService->finish($request);
 
-        return redirect()->route(POOL_GAME_ROUTE);
+        return response()->json([
+            'success' => true,
+        ]);
     }
 }
