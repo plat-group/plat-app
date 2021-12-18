@@ -88,6 +88,9 @@ return [
 
     'asset_url' => env('ASSET_URL', env('APP_URL') . '/static'),
 
+    //URL for mix()
+    'mix_url' => env('MIX_ASSET_URL', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
