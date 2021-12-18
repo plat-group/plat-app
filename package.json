@@ -37,7 +37,7 @@
         "popper.js": "^1.16.1",
         "regenerator-runtime": "^0.13.9",
         "select2": "^4.1.0-rc.0",
-        "webpack-s3-pusher": "^2.1.1"
+        "webpack-s3-plugin": "^1.2.0-rc.0"
     },
     "jest": {
         "testPathIgnorePatterns": [
