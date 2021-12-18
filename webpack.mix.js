@@ -1,7 +1,7 @@
 const mix = require('laravel-mix');
 const glob = require('glob');
 const path = require('path');
-const S3PusherPlugin = require('webpack-s3-pusher');
+const S3Plugin = require('webpack-s3-plugin');
 
 mix.options({
     processCssUrls : false
@@ -12,22 +12,27 @@ if (!mix.inProduction()) {
         devtool: 'inline-source-map'
     }).sourceMaps();
 }
-
+//config.output.publicPath = process.env.APP_CDN_URL + '/';
 if (mix.inProduction()) {
-/*    mix.webpackConfig({
+    mix.webpackConfig({
         plugins: [
-            new S3PusherPlugin({
-                key: process.env.AWS_ACCESS_KEY_ID,
-                secret: process.env.AWS_SECRET_ACCESS_KEY,
-                bucket: process.env.AWS_BUCKET,
-                region: process.env.AWS_DEFAULT_REGION,
-                // endpoint: process.env.S3_ENDPOINT,
-                prefix: 'static',
-                acl: 'public-read',
-                cache: 'max-age=602430',
+            new S3Plugin({
+                // Exclude uploading of html
+                exclude: /.*\.html$/,
+                // Only upload css and js
+                include: /.*\.(css|js)/,
+                // s3Options are required
+                s3Options: {
+                    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+                    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+                    region: process.env.AWS_DEFAULT_REGION,
+                },
+                s3UploadOptions: {
+                    Bucket: process.env.AWS_BUCKET
+                }
             })
         ]
-    });*/
+    });
 }
 
 /*
