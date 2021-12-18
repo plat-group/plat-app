@@ -699,7 +699,7 @@
             </div>
         </div>
         <hr/>
-        <h6 class="text-center text-white pt-2">Copyright © 2021, Created by VAIX</h6>
+        <h6 class="text-center text-white pt-2">Copyright © 2021, Powered by Plats team</h6>
         <div id="particles-2" class="particles"></div>
 
     </article>
