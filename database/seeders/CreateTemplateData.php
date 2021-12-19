@@ -59,7 +59,7 @@ class CreateTemplateData extends Seeder
         $user->email = 'client@plats.network';
         $user->email_verified_at = now();
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
-        $user->username = 'nghilt.testnet'; // for test
+        $user->username = 'platclient.testnet'; // for test
         $user->role = CLIENT_ROLE;
         $user->avatar = 'avatar/client.png';
         $user->balance = 0;
@@ -94,6 +94,16 @@ class CreateTemplateData extends Seeder
 
     private function createGameTemplateData() {
         $creatorIds = User::where('role', CREATOR_ROLE)->pluck('id')->all();
+
+        // $creatorId = $this->getRandomCreator($creatorIds);
+        // $game = new GameTemplate();
+        // $game->creator_id = $creatorId;
+        // $game->name = 'Plats game car';
+        // $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
+        // $game->description = 'Our branding car is display for game card so you can enjoy game with knowlegde about my product. Have an interesting time with our games';
+        // $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-car.jpg';
+        // $game->status = ON_MARKET_GAME_STATUS;
+        // $game->save();
 
         $creatorId = $this->getRandomCreator($creatorIds);
         $game = new GameTemplate();
@@ -222,14 +232,21 @@ class CreateTemplateData extends Seeder
 
     private function createGameData() {
         $clientId = User::where('email', 'client@plats.network')->pluck('id')->first();
+        // $gameTemplate = GameTemplate::where('name', 'Plats game car')->first();
 
         $game = new Game();
         $game->owner_id = $clientId;
-        $game->name = 'Vinfast - iRACING';
-        $game->introduction = 'This is a game promote by Vinfast. A Vietnamese Motor company';
-        $game->description = 'We are the world’s premier computer based motorsports racing simulation/game. An iRacing.com membership provides entry into the newest form of competitive motorsport: internet racing. Internet racing is a fun, easy, and inexpensive way for race fans, simracers and gamers alike to enjoy the thrill of the racetrack from the comfort of their home.';
-        $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/bike_tra.png';
-        $game->status = ON_POOL_GAME_STATUS;
+        // $game->name = $gameTemplate->name;
+        // $game->introduction = $gameTemplate->introduction;
+        // $game->description = $gameTemplate->description;
+        // $game->thumb = $gameTemplate->thumb;
+
+        $game->name = 'Plats game car';
+        $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
+        $game->description = 'Our branding car is display for game card so you can enjoy game with knowlegde about my product. Have an interesting time with our games';
+        $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-car.jpg';
+
+        $game->status = FINISHED_CREATING_GAME_STATUS;
         $game->save();
     }
 

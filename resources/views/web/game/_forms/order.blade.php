@@ -21,7 +21,7 @@
                 <x-form::textarea name="content" rows="5" :value="old('content')"/>
             </div>
             <div class="col-md-2 d-md-flex align-items-end align-items-end">
-                <button type="button" id="btn-order" class="btn btn-red-pink px-5 py-2">
+                <button type="submit" id="btn-order" class="btn btn-red-pink px-5 py-2">
                     {{ trans('web.order_form.btn_submit') }}
                 </button>
             </div>

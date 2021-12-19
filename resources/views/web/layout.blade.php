@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-6 col-md-2 me-auto order-1">
                 <a class="app-brand p-0" href="{{ url('') }}">
-                    <img src="{{ asset('images/web/logo.svg') }}" alt="PlatChain" class="w-100"/>
+                    <img src="{{ asset('images/web/logo_gamehub.png') }}" alt="PlatChain" class="w-100"/>
                 </a>
             </div>
             <div class="col-12 col-md-6 align-self-md-center mt-4 mt-md-0 order-3 order-md-2">
