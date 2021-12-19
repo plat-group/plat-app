@@ -4,7 +4,7 @@
         <div class="col-md-4 game-item-highlight">
             <div class="thumb-item mb-3">
                 <a href="#" title="">
-                    <img src="/upload/game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/yellow_car.png" alt="" class="w-100"/>
+                    <img src="https://dhms0p1aun79c.cloudfront.net/game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/yellow_car.png" alt="" class="w-100"/>
                 </a>
             </div>
             <h4 class="item-name text-uppercase fw-bold mb-3">
