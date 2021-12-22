@@ -25,9 +25,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Landing page
-// Route::get('/', function () {
-//     return view('lp.index');
-// });
+Route::get('/', function () {
+    return view('lp.index');
+});
 
 // Authentication
 Route::prefix('auth')->group(function () {
@@ -40,8 +40,8 @@ Route::prefix('auth')->group(function () {
 
 
 //Pool
-Route::get('/', [Market::class, 'index'])->name(HOME_ROUTE);
-// Route::get('/app', [Pool::class, 'index'])->name(HOME_ROUTE);
+// Route::get('/', [Market::class, 'index'])->name(HOME_ROUTE);
+Route::get('/app', [Pool::class, 'index'])->name(HOME_ROUTE);
 Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
 
 //Game
