@@ -2,6 +2,13 @@
 
 namespace App\Providers;
 
+use App\Events\CampaignCreatedEvent;
+use App\Events\OrderConfirmedEvent;
+use App\Events\PlayedGameEvent;
+use App\Listeners\PayCoinListener;
+use App\Listeners\PushGameToPoolListener;
+use App\Listeners\SaveTransactionListener;
+use App\Listeners\TransferGameToOwnerListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -15,8 +22,15 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
+        OrderConfirmedEvent::class => [
+            TransferGameToOwnerListener::class
+        ],
+        CampaignCreatedEvent::class => [
+            PushGameToPoolListener::class
+        ],
+        PlayedGameEvent::class => [
+            SaveTransactionListener::class,
+            PayCoinListener::class,
         ],
     ];
 

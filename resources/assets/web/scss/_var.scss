@@ -1,0 +1,80 @@
+
+$image-path: '/static/images/web/';
+//icon font
+$font-path: '/static/fonts';
+$fa-font-path: $font-path;
+// Body
+$body-bg: #09001F;
+$body-color: #E9DFEE;
+
+$font-size-base: 0.875rem;
+$line-height-base: 1.5;
+
+// Links
+$link-color: #CAC1CD;
+$link-decoration: none;
+
+// Typography
+$font-family-sans-serif:  'Nunito Sans', sans-serif;
+
+// Grid containers
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+);
+
+
+//Colors
+$white: #fff;
+$black: #000;
+$gray-400: #C4C4C4;
+$red-pink: #DC207B;
+$amethyst: #715B85;
+$mauve-400: #4A3A59;
+
+// Create own map
+$custom-colors: (
+    "white": $white,
+    "black": $black,
+    "gray-400": $gray-400,
+    "red-pink": $red-pink,
+    "amethyst": $amethyst,
+    "mauve-400": $mauve-400,
+);
+// Table Colors:
+$table-custom-variants: (
+    "amethyst": $amethyst,
+    "mauve-400": $mauve-400,
+);
+
+// Font size
+$font-sizes: (
+   16: 16px,
+   18: 18px,
+);
+
+// Form
+$input-bg: $amethyst;
+$input-color: #fff;
+$input-disabled-bg: $amethyst;
+
+$input-border-color: $amethyst;
+$input-border-radius: 3px;
+$input-border-radius-lg: 5px;
+
+$input-plaintext-color: #fff;
+
+$input-btn-focus-box-shadow: none;
+$input-btn-focus-width: 0;
+$btn-focus-box-shadow: none;
+$input-height: 40px;
+$input-height-inner: 40px;
+
+
+//Alerts
+$alert-bg-scale: 0;
+$alert-border-scale:0;

@@ -40,7 +40,39 @@ return [
     */
 
     'debug' => (bool) env('APP_DEBUG', false),
+    'debug_blacklist' => [
+        '_ENV' => [
+            'APP_KEY',
+            'DB_PASSWORD',
+            'DB_HOST',
+            'DB_PORT',
+            'DB_DATABASE',
+            'DB_USERNAME',
+            'REDIS_HOST',
+            'REDIS_PASSWORD',
+            'REDIS_PORT',
+            'AWS_ACCESS_KEY_ID',
+            'AWS_SECRET_ACCESS_KEY',
+            'SES_KEY',
+            'SES_SECRET',
+        ],
 
+        '_SERVER' => [
+            'APP_KEY',
+            'DB_PASSWORD',
+            'DB_HOST',
+            'DB_PORT',
+            'DB_DATABASE',
+            'DB_USERNAME',
+            'REDIS_HOST',
+            'REDIS_PASSWORD',
+            'REDIS_PORT',
+            'AWS_ACCESS_KEY_ID',
+            'AWS_SECRET_ACCESS_KEY',
+            'SES_KEY',
+            'SES_SECRET',
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application URL
@@ -54,7 +86,10 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'asset_url' => env('ASSET_URL', null),
+    'asset_url' => env('ASSET_URL', env('APP_URL') . '/static'),
+
+    //URL for mix()
+    'mix_url' => env('MIX_ASSET_URL', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +102,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Tokyo',
 
     /*
     |--------------------------------------------------------------------------
