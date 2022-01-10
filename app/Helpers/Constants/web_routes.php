@@ -44,4 +44,11 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
      * User/Referral/Creator transaction (income history)
      */
     define('MY_TRANSACTION_ROUTE', 'transaction.route');
+
+    /**
+     * Learn to Earn
+     */
+    define('L2E_ROUTE', 'l2e.route');
+    define('CREATE_L2E_ROUTE', 'l2e.create.route');
+    define('STORE_L2E_ROUTE', 'l2e.store.route');
 }

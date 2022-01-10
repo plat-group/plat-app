@@ -10,7 +10,8 @@ use App\Http\Controllers\Web\{
     MyGame,
     MyOrder,
     Pool,
-    Transaction};
+    Transaction,
+    LearnToEarn};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,4 +88,11 @@ Route::prefix('orders')->middleware('auth')->group(function () {
 // Transaction
 Route::prefix('transactions')->middleware('auth')->group(function () {
     Route::get('/', [Transaction::class, 'index'])->name(MY_TRANSACTION_ROUTE);
+});
+
+
+Route::prefix('l2e')->group(function () {
+    Route::get('/', [LearnToEarn::class, 'index'])->name(L2E_ROUTE);
+    Route::get('/create', [LearnToEarn::class, 'create'])->name(CREATE_L2E_ROUTE);
+    Route::post('/create', [LearnToEarn::class, 'store'])->name(STORE_L2E_ROUTE);
 });

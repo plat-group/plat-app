@@ -68,4 +68,5 @@ return [
     'time' => 'Time',
     'earned_token' => 'Earned token',
     'earned_token_label' => 'Your total earned token',
+    'input_upload_video' => 'Upload video'
 ];
