@@ -18,17 +18,18 @@
     <div class="modal fade" id="exercise" tabindex="-1" aria-labelledby="exerciseLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content bg-mauve-400">
-                <div class="modal-body">
-                    <div class="row justify-content-center">
-                        <div class="col-8">
+                <div class="modal-body d-flex">
+                    <div class="row justify-content-center w-100">
+                        <div class="col-12 col-md-6 d-flex align-self-center">
                             <x-form::open action="#" class="form-default has_validate">
                             <div class="question h5 mb-3">
                                 Content question content question content questioncontent question content question content question?
                             </div>
                             <div class="answer-options mb-5">
                                 <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label" for="flexRadioDefault1">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        Default radio
                                     </label>
                                 </div>
                                 <div class="form-check">
