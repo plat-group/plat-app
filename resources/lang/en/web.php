@@ -29,7 +29,11 @@ return [
     'game_intro' => 'Game introduction',
     'upload_game_thumb' => 'Drag and drop thumbnail',
     'upload_game_file' => 'Drag and drop game file',
+    'upload_resource_file' => 'Drag and drop resource file',
     'btn_create_game' => 'Upload',
+    'btn_download_resource' => 'Download Resources',
+    'btn_push_to_pool' => 'Push to Pool',
+    'btn_play_game' => 'Play',
     'next_page_game' => 'More Games',
     'order_form' => [
         'agreement_amount_label' => 'Order token',

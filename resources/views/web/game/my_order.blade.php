@@ -14,6 +14,7 @@
                     <th class="py-3" scope="col">{{ trans('web.agreement_amount') }}</th>
                     <th class="py-3" scope="col">{{ trans('web.royalty_fee') }}</th>
                     <th class="py-3" scope="col">{{ trans('web.status') }}</th>
+                    <th class="py-3" scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -37,11 +38,6 @@
                         <span>
                             {{ $order->status_text }}
                         </span>
-                        @if (Auth::user()->isClient() && $order->isAccepted())
-                            <a href="{{ route(DETAIL_GAME_ROUTE, $order->game_id) }}" title="{{ trans('web.view_game') }}" class="btn btn-red-pink fw-bold ms-auto">
-                                {{ trans('web.view_game') }}
-                            </a>
-                        @endif
                         @if (Auth::user()->isCreator() && $order->waitingConfirm())
                             <a href="{{ route(CONFIRM_ORDER_GAME_ROUTE, [$order->id, ACCEPTED_ORDER_STATUS]) }}" title="{{ trans('web.accept') }}"
                                class="btn btn-red-pink fw-bold ms-auto px-3">
@@ -53,6 +49,17 @@
                             </a>
                         @endif
                     </div>
+                </td>
+                <td class="text-center">
+                    @if (Auth::user()->isClient())
+                        <a href="{{ route(DETAIL_GAME_ROUTE, $order->game_id) }}" title="{{ trans('web.view_game') }}" class="btn btn-red-pink fw-bold ms-auto">
+                            {{ trans('web.view_game') }}
+                        </a>
+                    @elseif (Auth::user()->isCreator())
+                        <a href="{{ route(DETAIL_GAME_TEMPLATE_ROUTE, $order->gameTemplate->id) }}" title="{{ trans('web.view_game') }}" class="btn btn-red-pink fw-bold ms-auto">
+                            {{ trans('web.view_game') }}
+                        </a>
+                    @endif
                 </td>
             </tr>
             @endforeach

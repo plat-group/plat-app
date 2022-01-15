@@ -44,5 +44,9 @@
             </div>
         </div>
     </div>
-    @includeWhen(optional(auth()->user())->can('order', $game), 'web.game._forms.order', ['game' => $game])
+    <!-- For creator -->
+    {{-- @includeWhen(Auth::user()->isCreator(), 'web.game._forms.detail_creator', ['game' => $game]) --}}
+
+    <!-- For client -->
+    {{-- @includeWhen(Auth::user()->isClient(), 'web.game._forms.detail_client', ['game' => $game]) --}}
 @stop
