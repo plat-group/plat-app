@@ -52,7 +52,7 @@
                 </td>
                 <td class="text-center">
                     @if (Auth::user()->isClient())
-                        <a href="{{ route(DETAIL_GAME_ROUTE, $order->game_id) }}" title="{{ trans('web.view_game') }}" class="btn btn-red-pink fw-bold ms-auto">
+                    <a href="{{ route(DETAIL_GAME_ROUTE, $order->gameTemplate->id) }}" title="{{ trans('web.view_game') }}" class="btn btn-red-pink fw-bold ms-auto">
                             {{ trans('web.view_game') }}
                         </a>
                     @elseif (Auth::user()->isCreator())

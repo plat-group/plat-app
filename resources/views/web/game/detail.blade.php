@@ -45,8 +45,8 @@
         </div>
     </div>
     <!-- For creator -->
-    {{-- @includeWhen(Auth::user()->isCreator(), 'web.game._forms.detail_creator', ['game' => $game]) --}}
+    @includeWhen(Auth::user()->isCreator(), 'web.game._forms.detail_creator', ['game' => $game])
 
     <!-- For client -->
-    {{-- @includeWhen(Auth::user()->isClient(), 'web.game._forms.detail_client', ['game' => $game]) --}}
+    @includeWhen(Auth::user()->isClient(), 'web.game._forms.detail_client', ['game' => $game])
 @stop
