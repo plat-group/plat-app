@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Web\CreateGameRequest;
 use App\Http\Requests\Web\FinishGameRequest;
 use App\Services\GameService;
 
@@ -20,6 +21,31 @@ class Game extends Controller
     public function __construct(GameService $gameService)
     {
         $this->gameService = $gameService;
+    }
+
+    /**
+     * Show form create a new template game
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function create($order)
+    {
+        return view('web.game.pool.create', compact('order'));
+    }
+
+    /**
+     * Handle store a new template game
+     *
+     * @param \App\Http\Requests\Web\CreateGameTemplateRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function store(CreateGameRequest $request)
+    {
+        $this->gameService->create($request, $request->user()->id);
+
+        return redirect()->route(MY_GAME_ROUTE);
     }
 
     /**

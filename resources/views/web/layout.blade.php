@@ -50,7 +50,7 @@
                     @if(displayMenuMyGame())
                         <li class="list-inline-item menu-item">
                             <a href="{{ route(MY_GAME_ROUTE) }}" title="{{ trans('web.my_game')}}"
-                                @class(['menu-link', 'active' => request()->routeIs(MY_GAME_ROUTE, CREATE_GAME_ROUTE, DETAIL_GAME_TEMPLATE_ROUTE)])>
+                                @class(['menu-link', 'active' => request()->routeIs(MY_GAME_ROUTE, CREATE_GAME_TEMPLATE_ROUTE, DETAIL_GAME_TEMPLATE_ROUTE)])>
                                 {{ trans('web.my_game') }}
                             </a>
                         </li>

@@ -16,7 +16,7 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
      * My Game routes
      */
     define('MY_GAME_ROUTE', 'game.my.route');
-    define('CREATE_GAME_ROUTE', 'game.create.route');
+    define('CREATE_GAME_TEMPLATE_ROUTE', 'game.create.template.route');
     define('STORE_TEMPLATE_GAME_ROUTE', 'game.store.template.route');
     define('DETAIL_GAME_TEMPLATE_ROUTE', 'game.detail.template.route');
 
@@ -31,6 +31,8 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
      * Game
      * All game has been push to pool
      */
+    define('CREATE_GAME_ROUTE', 'game.create.route');
+    define('STORE_GAME_ROUTE', 'game.store.route');
     define('DETAIL_GAME_ROUTE', 'game.detail.route');
     define('PLAY_GAME_ROUTE', 'game.play.route');
     define('FINISH_GAME_ROUTE', 'game.finish.route');

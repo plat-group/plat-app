@@ -28,6 +28,6 @@ class Pool extends Controller
      */
     public function index()
     {
-        return view('web.game.poll.index', ['games' => $this->gameService->onPool()]);
+        return view('web.game.pool.index', ['games' => $this->gameService->onPool()]);
     }
 }

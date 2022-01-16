@@ -47,6 +47,8 @@ Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
 //Game
 Route::prefix('games')->group(function () {
     Route::get('/{game}', [Game::class, 'show'])->name(DETAIL_GAME_ROUTE)->whereUuid('game');
+    Route::get('/create/{order}', [Game::class, 'create'])->name(CREATE_GAME_ROUTE)->whereUuid('order');
+    Route::post('/store', [Game::class, 'store'])->name(STORE_GAME_ROUTE);
     Route::get('/{game}/play/{referralId}', [Game::class, 'play'])
         ->name(PLAY_GAME_ROUTE)->whereUuid(['game', 'referralId']);
     Route::post('/{game}/finish', [Game::class, 'finish'])->name(FINISH_GAME_ROUTE)->whereUuid('game');
@@ -72,7 +74,7 @@ Route::prefix('my-games')->middleware('auth')->group(function () {
     Route::get('/', [MyGame::class, 'index'])->name(MY_GAME_ROUTE);
     Route::get('/{id}', [MyGame::class, 'show'])->name(DETAIL_GAME_TEMPLATE_ROUTE)->whereUuid('id');
     Route::get('/create', [MyGame::class, 'create'])
-        ->name(CREATE_GAME_ROUTE)->can('create', App\Models\GameTemplate::class);
+        ->name(CREATE_GAME_TEMPLATE_ROUTE)->can('create', App\Models\GameTemplate::class);
     Route::post('/store', [MyGame::class, 'store'])->name(STORE_TEMPLATE_GAME_ROUTE);
 });
 
