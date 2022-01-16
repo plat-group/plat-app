@@ -79,9 +79,12 @@ Route::prefix('my-games')->middleware('auth')->group(function () {
 // My Order
 Route::prefix('orders')->middleware('auth')->group(function () {
     Route::get('/', [MyOrder::class, 'index'])->name(MY_ORDER_GAME_ROUTE);
-    Route::get('/{id}/confirms/{action}', [MyOrder::class, 'confirm'])->name(CONFIRM_ORDER_GAME_ROUTE)
-        ->whereUuid('id')
-        ->where(['action' => ACCEPTED_ORDER_STATUS . '|' . DENIED_ORDER_STATUS]);
+    Route::prefix('/{id}')->group(function () {
+        Route::get('/', [MyOrder::class, 'show'])->name(SHOW_ORDER_GAME_ROUTE)->whereUuid('id');
+        Route::get('/confirms/{action}', [MyOrder::class, 'confirm'])->name(CONFIRM_ORDER_GAME_ROUTE)
+            ->whereUuid('id')
+            ->where(['action' => ACCEPTED_ORDER_STATUS . '|' . DENIED_ORDER_STATUS]);
+    });
 });
 
 // Transaction

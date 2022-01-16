@@ -38,28 +38,22 @@
                         <span>
                             {{ $order->status_text }}
                         </span>
-                        @if (Auth::user()->isCreator() && $order->waitingConfirm())
-                            <a href="{{ route(CONFIRM_ORDER_GAME_ROUTE, [$order->id, ACCEPTED_ORDER_STATUS]) }}" title="{{ trans('web.accept') }}"
-                               class="btn btn-red-pink fw-bold ms-auto px-3">
-                                {{ trans('web.accept') }}
-                            </a>
-                            <a href="{{ route(CONFIRM_ORDER_GAME_ROUTE, [$order->id, DENIED_ORDER_STATUS]) }}" title="{{ trans('web.deny') }}" class="btn btn-mauve-400 fw-bold
-                            px-3">
-                                {{ trans('web.deny') }}
-                            </a>
-                        @endif
                     </div>
                 </td>
                 <td class="text-center">
-                    @if (Auth::user()->isClient())
-                    <a href="{{ route(DETAIL_GAME_ROUTE, $order->gameTemplate->id) }}" title="{{ trans('web.view_game') }}" class="btn btn-red-pink fw-bold ms-auto">
-                            {{ trans('web.view_game') }}
+                    @if (Auth::user()->isCreator() && $order->waitingConfirm())
+                        <a href="{{ route(CONFIRM_ORDER_GAME_ROUTE, [$order->id, ACCEPTED_ORDER_STATUS]) }}" title="{{ trans('web.accept') }}"
+                            class="btn btn-red-pink fw-bold ms-auto px-3">
+                            {{ trans('web.accept') }}
                         </a>
-                    @elseif (Auth::user()->isCreator())
-                        <a href="{{ route(DETAIL_GAME_TEMPLATE_ROUTE, $order->gameTemplate->id) }}" title="{{ trans('web.view_game') }}" class="btn btn-red-pink fw-bold ms-auto">
-                            {{ trans('web.view_game') }}
+                        <a href="{{ route(CONFIRM_ORDER_GAME_ROUTE, [$order->id, DENIED_ORDER_STATUS]) }}" title="{{ trans('web.deny') }}" class="btn btn-mauve-400 fw-bold
+                        px-3">
+                            {{ trans('web.deny') }}
                         </a>
                     @endif
+                    <a href="{{ route(SHOW_ORDER_GAME_ROUTE, $order->id) }}" title="{{ trans('web.view_game') }}" class="btn btn-red-pink fw-bold ms-auto">
+                        {{ trans('web.view_order') }}
+                    </a>
                 </td>
             </tr>
             @endforeach

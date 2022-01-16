@@ -1,11 +1,6 @@
-<div>Order from Client</div>
-@include('web.game._forms.order', ['game' => $game])
-<div>Latest Release</div>
-BlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBla
-<br><br><br><br>
 <div class="box-order-game mt-5">
-    <div>Release to Client</div>
     <div class="inner-box bg-mauve-400 rounded-3 px-4 pt-3 pb-5">
+        <div>Release to Client</div>
         <x-alert/>
         <x-form::open action="{{ route(STORE_TEMPLATE_GAME_ROUTE) }}" files="true" id="sdsadsd" class="create_new_game has_validate">
         <div class="row mb-3">
@@ -38,6 +33,3 @@ BlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBla
         </x-form::open>
     </div>
 </div>
-@push('js')
-    <script src="{{ mix('static/js/web/pages/near_deposit.js') }}" type="text/javascript"></script>
-@endpush

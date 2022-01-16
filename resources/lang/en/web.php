@@ -42,6 +42,12 @@ return [
         'royalty_fee_help' => '* Token amount will be paid to creator every time user finish playing game',
         'btn_submit' => 'Order',
     ],
+    'order_detail' => [
+        'release_title_client' => 'Release from Creator',
+        'release_title_creator' => 'Latest Release',
+        'order_content_client' => 'Order Content',
+        'order_content_creator' => 'Order from Client',
+    ],
     'list_order_status' => [
         ORDERING_ORDER_STATUS => 'Ordering',
         ACCEPTED_ORDER_STATUS => 'Accepted',
@@ -55,6 +61,7 @@ return [
     'accept' => 'Accept',
     'deny' => 'Deny',
     'view_game' => 'View game',
+    'view_order' => 'View order',
     'push_to_pool' => 'Push to pool',
     'campaign_total_budget_label' => 'Total token for this campaign',
     'campaign_creator_budget_label' => 'Token for each play for creator',
