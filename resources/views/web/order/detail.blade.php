@@ -5,7 +5,7 @@
     @include('web.game._common.item_detail', ['game' => $game])
 
     <!-- Order content info -->
-    @include('web.order._forms.order', ['game' => $game])
+    @include('web.order._forms.order', ['order' => $order])
 
     <!-- Uploaded content -->
     @include('web.order._parts.released', ['game' => $game])

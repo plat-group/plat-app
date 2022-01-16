@@ -26,7 +26,11 @@
                 <td class="text-center">
                     {{ Auth::user()->isCreator() ? $order->client->name : $order->gameTemplate->creator->name }}
                 </td>
-                <td class="">{{ $order->gameTemplate->name }}</td>
+                <td class="">
+                    <a href="{{ route(MARKET_GAME_DETAIL_ROUTE, $order->gameTemplate->id) }}">
+                        {{ $order->gameTemplate->name }}
+                    </a>
+                </td>
                 <td class="text-end">
                     {{ $order->agreement_amount }}
                 </td>
@@ -34,7 +38,7 @@
                     {{ $order->royalty_fee }}
                 </td>
                 <td class="">
-                    <div class="hstack gap-3">
+                    <div class="text-center">
                         <span>
                             {{ $order->status_text }}
                         </span>

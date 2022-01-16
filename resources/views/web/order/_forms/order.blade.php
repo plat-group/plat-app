@@ -11,16 +11,17 @@
                 @if(isClient())
                     <x-form::input name="agreement_amount" :value="old('agreement_amount')" class="required" data-rule-number="true" data-behavior="deposit"/>
                     @else
-                    <x-form::input name="agreement_amount" :value="old('agreement_amount')" class="required" data-rule-number="true" data-behavior="deposit" readonly="true"/>
+                    <x-form::input name="agreement_amount" value="{{ $order->agreement_amount }}" class="required" data-rule-number="true" data-behavior="deposit" readonly="true"/>
                 @endif
             </div>
+
             <div class="col-md-5">
                 <x-form::label :label="trans('web.order_form.royalty_fee_label')" class="fs-18 fw-bold"/>
                 <p class="mb-3">{{ trans('web.order_form.royalty_fee_help') }}</p>
                 @if(isClient())
                     <x-form::input name="royalty_fee" :value="old('royalty_fee')" class="required" data-rule-number="true"/>
                 @else
-                    <x-form::input name="royalty_fee" :value="old('royalty_fee')" class="required" data-rule-number="true" readonly="true"/>
+                    <x-form::input name="royalty_fee" value="{{ $order->royalty_fee }}" class="required" data-rule-number="true" readonly="true"/>
                 @endif
             </div>
         </div>
@@ -30,7 +31,7 @@
                 @if(isClient())
                     <x-form::textarea name="content" rows="5" :value="old('content')"/>
                 @else
-                    <x-form::textarea name="content" rows="5" :value="old('content')" readonly="true"/>
+                    <x-form::textarea name="content" rows="5" value="{{ $order->content }}" readonly="true"/>
                 @endif
             </div>
             @if(isClient())

@@ -25,6 +25,7 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
      */
     define('MY_ORDER_GAME_ROUTE', 'order.route');
     define('SHOW_ORDER_GAME_ROUTE', 'order.show.route');
+    define('ORDER_STORE_GAME_ROUTE', 'order.store.game.route');
     define('CONFIRM_ORDER_GAME_ROUTE', 'order.confirm.route'); // For Creator
 
     /**

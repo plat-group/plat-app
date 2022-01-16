@@ -92,6 +92,16 @@ class Order extends Model
     }
 
     /**
+     * Determine whether the order is finished
+     *
+     * @return boolean
+     */
+    public function isFinished()
+    {
+        return $this->status == FINISH_ORDER_STATUS;
+    }
+
+    /**
      * Game Template detail of order by Eloquent relationship
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

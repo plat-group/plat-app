@@ -55,6 +55,16 @@ class MyOrder extends Controller
     }
 
     /**
+     * Creator|Client view detail of order
+     *
+     * @param string $orderId
+     * @param int|string $action
+     */
+    public function storeGame($request) {
+        // TODO need implement
+    }
+
+    /**
      * Creator confirm request order game of client
      *
      * @param string $orderId

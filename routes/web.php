@@ -86,6 +86,7 @@ Route::prefix('orders')->middleware('auth')->group(function () {
         Route::get('/confirms/{action}', [MyOrder::class, 'confirm'])->name(CONFIRM_ORDER_GAME_ROUTE)
             ->whereUuid('id')
             ->where(['action' => ACCEPTED_ORDER_STATUS . '|' . DENIED_ORDER_STATUS]);
+        Route::post('/storeGame', [MyOrder::class, 'storeGame'])->name(ORDER_STORE_GAME_ROUTE);
     });
 });
 

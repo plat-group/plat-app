@@ -7,6 +7,7 @@ use App\Events\OrderCreatedEvent;
 use App\Repositories\GameTemplateRepository;
 use App\Repositories\OrderRepository;
 use App\Services\Concerns\BaseService;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class OrderService extends BaseService
@@ -15,7 +16,7 @@ class OrderService extends BaseService
     /**
      * @var \App\Repositories\GameTemplateRepository
      */
-    protected GameTemplateRepository $gameTemplateRepo;
+    protected $gameTemplateRepo;
 
     /**
      * @param \App\Repositories\OrderRepository $repository
@@ -87,7 +88,7 @@ class OrderService extends BaseService
     public function confirm($creator, $orderId, $accepted = null)
     {
         $order = $this->repository->ofCreator($creator->id, $orderId);
-        if (is_null($order) || !$order->waitingConfirm()) {
+        if (is_null($order) || $order->isFinished()) {
             abort(404);
         }
 
@@ -99,5 +100,50 @@ class OrderService extends BaseService
         OrderConfirmedEvent::dispatch($order, $accepted);
 
         return $this->withSuccess(trans('message.order_status_changed'));
+    }
+
+    /**
+     * Creator confirm request order game of client
+     *
+     * @return bool
+     */
+    public function storeGame(Request $request)
+    {
+        $orderId = $request->order_id;
+        $order = $this->repository->find($orderId);
+        if (is_null($order) || $order->waitingConfirm()) {
+            abort(404);
+        }
+
+        if ($request->hasFile('game_file')) {
+            $order->game_file = $this->uploadGame($request->file('game_file'), $orderId);
+        }
+
+        if ($request->hasFile('resource_file')) {
+            $order->resource_file = $this->uploadGame($request->file('resource_file'), $orderId);
+        }
+        $order->save();
+
+        return $this->withSuccess(trans('message.order_status_changed'));
+    }
+
+    /**
+     * Upload game template
+     *
+     * @param \Illuminate\Http\UploadedFile $file
+     */
+    protected function uploadGame($file, $createId = null)
+    {
+        return Storage::putFile('game/' . $createId, $file);
+    }
+
+    /**
+     * Upload game template
+     *
+     * @param \Illuminate\Http\UploadedFile $file
+     */
+    protected function uploadResource($file, $createId = null)
+    {
+        return Storage::putFile('game/' . $createId, $file);
     }
 }
