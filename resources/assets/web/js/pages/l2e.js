@@ -2,6 +2,15 @@ require('jquery.repeater');
 import {Modal} from "bootstrap";
 
 $(document).ready(function ($) {
+
+    initRepeater();
+
+    resetRadio();
+
+    videoHandle();
+});
+
+function initRepeater() {
     $('.repeater').repeater({
         initEmpty : false,
         show : function () {
@@ -20,11 +29,7 @@ $(document).ready(function ($) {
         ready: function (setIndexes) {
         }
     });
-
-    resetRadio();
-
-    videoHandle();
-});
+}
 
 /**
  *
