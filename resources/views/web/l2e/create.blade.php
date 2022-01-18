@@ -7,7 +7,16 @@
         <x-form::group label="Upload video">
             {{-- <x-form::file name="video_url" class="rounded-3 bg-white text-black required"
                         placeholder="{{ trans('web.input_upload_video') }}"/> --}}
-            <input class="rounded-3 bg-white text-black required" type="file" name="video_url" id="videoUrl">
+            <div  class="row">
+                <div class="col-7">
+                    <input class="rounded-3 bg-white text-black required" type="file" name="video_url" id="videoUrl">
+                </div>
+                <div class="col-4 mt-auto mb-4">
+                    <video width="320" height="240" controls>
+                    Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
         </x-form::group>
         <div class="repeater">
             <div data-repeater-list="timer-group">
@@ -69,5 +78,11 @@
             $('#create-mode').val('new-lesson');
             $('form').submit();
         });
+
+        document.getElementById("videoUrl").onchange = function(event) {
+            let file = event.target.files[0];
+            let blobURL = URL.createObjectURL(file);
+            document.querySelector("video").src = blobURL;
+        }
     </script>
 @endpush
