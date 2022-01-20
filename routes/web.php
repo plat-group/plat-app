@@ -101,3 +101,6 @@ Route::prefix('l2e')->group(function () {
     Route::post('/course/create/step2', [LearningCourse::class, 'create2'])->name(CREATE_STEP2_L2E_COURSE_ROUTE);
     Route::post('/course/store', [LearningCourse::class, 'store'])->name(STORE_L2E_COURSE_ROUTE);
 });
+
+Route::get('/learn/{game}/play/{referralId}', [Game::class, 'play'])
+        ->name(PLAY_LEARN_ROUTE)->whereUuid(['game', 'referralId']);
