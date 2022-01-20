@@ -68,5 +68,14 @@ return [
     'time' => 'Time',
     'earned_token' => 'Earned token',
     'earned_token_label' => 'Your total earned token',
-    'input_upload_video' => 'Upload video'
+    'input_upload_video' => 'Upload video',
+    'learning' => [
+        'menu' => [
+            'dashboard' => 'Dashboard',
+            'market' => 'Market',
+            'hub' => 'Learning Hub',
+            'my_content' => 'My Content',
+            'my_order' => 'My Order'
+        ]
+    ]
 ];

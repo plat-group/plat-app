@@ -1,6 +1,7 @@
 @extends('web.layout')
 @section('content')
     <div class="row gx-5">
+        {{--
         <div class="col-md-4 game-item-highlight">
             <div class="thumb-item mb-3">
                 <a href="#" title="">
@@ -27,6 +28,7 @@
             Your Ultimate Horizon Adventure awaits
             </div>
         </div>
+         --}}
         <div class="col-md-8">
             <div class="row gx-5">
                 @foreach($games as $game)
