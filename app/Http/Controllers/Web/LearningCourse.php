@@ -29,6 +29,6 @@ class LearningCourse extends Controller
         if($mode === 'new-lesson') {
             return $this->create2();
         }
-        dd($request->toArray());
+        return redirect(route(POOL_GAME_ROUTE));
     }
 }

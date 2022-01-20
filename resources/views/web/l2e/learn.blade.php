@@ -126,5 +126,5 @@
     <link href="{{ mix('static/css/web/pages/l2e.css') }}" rel="stylesheet">
 @endpush
 @push('js')
-    <script src="{{ mix('static/js/web/pages/l2e.js') }}" type="text/javascript"></script>
+    <script src="{{ mix('static/js/web/pages/l2e_video.js') }}" type="text/javascript"></script>
 @endpush

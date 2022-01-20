@@ -7,12 +7,12 @@
         <div data-repeater-list="timer-group">
             <div data-repeater-item class="shadow p-3 mb-3">
                 <x-form::group label="Title of course">
-                    <x-form::input name="title" class="form-control-lg bg-white text-black rounded-3 required"
+                    <x-form::input name="title" class="rounded-3 bg-white text-black required"
                         placeholder="Input learning course title"/>
                 </x-form::group>
                 <x-form::group label="Course description">
                     <x-form::textarea name="description" :value="old('description')" placeholder="Input learning course description" rows="7"
-                        class="form-control-lg bg-white text-black rounded-3 required" :data-rule-maxlength="FORM_INPUT_MAX_LENGTH"/>
+                        class="rounded-3 bg-white text-black required" :data-rule-maxlength="FORM_INPUT_MAX_LENGTH"/>
                 </x-form::group>
             </div>
         </div>

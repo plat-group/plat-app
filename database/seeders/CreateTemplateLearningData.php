@@ -188,6 +188,17 @@ class CreateTemplateLearningData extends Seeder
 
         $game->status = ON_POOL_GAME_STATUS;
         $game->save();
+
+        $game = new Game();
+        $game->owner_id = $clientId;
+
+        $game->name = 'NEAR Wallet & Staking';
+        $game->introduction = 'NEAR wallet is a non-custodial, web-based application, that gives you full control over your assets — allowing you to create, play, and stake without restrictions. ';
+        $game->description = 'NEAR wallet is a non-custodial, web-based application, that gives you full control over your assets — allowing you to create, play, and stake without restrictions. Sign-up takes just a few clicks, and once complete the world of staking rewards, NFTs, and more will be accessible and easy to use.';
+        $game->thumb = 'game_template/1ec540bf-d6xd-6c1x-9668-0202a0fb081a/2-Wallet.png';
+
+        $game->status = ON_POOL_GAME_STATUS;
+        $game->save();
     }
 
     private function createCampaignData() {
