@@ -2,6 +2,9 @@
 @extends('web.layout')
 @section('title_page') Plats L2E @stop
 @section('content')
+    <div class="row justify-content-center" style="font-weight: bold;">
+        Lesson 1: What is NEAR?
+    </div>
     <div class="row justify-content-center">
         <div class="col-8">
             <video controls id="learnVideo" class="w-100">
@@ -92,7 +95,7 @@
                             Right
                         </div>
                         <div class="col-12 col-md-8 d-flex align-self-center">
-                            <span class="box">2</span>
+                            <span class="box">7</span>
                         </div>
                     </div>
                     <div class="row justify-content-center w-100">
@@ -100,7 +103,7 @@
                             Wrong
                         </div>
                         <div class="col-12 col-md-8 d-flex align-self-center">
-                            <span class="box">4</span>
+                            <span class="box">1</span>
                         </div>
                     </div>
                     <div class="row justify-content-center w-100">

@@ -93,7 +93,7 @@ Route::prefix('transactions')->middleware('auth')->group(function () {
 });
 
 
-Route::prefix('l2e')->group(function () {
+Route::prefix('l2e')->middleware('auth')->group(function () {
     Route::get('/', [LearnToEarn::class, 'index'])->name(L2E_ROUTE);
     Route::get('/create', [LearnToEarn::class, 'create'])->name(CREATE_L2E_ROUTE);
     Route::post('/create', [LearnToEarn::class, 'store'])->name(STORE_L2E_ROUTE);

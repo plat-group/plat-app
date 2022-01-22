@@ -49,7 +49,7 @@ function signedOutFlow()
         // The contract name that would be authorized to be called by the user's account.
         window.nearConfig.contractName,
         // This is the app name. It can be anything.
-        'Who was the last person to say "Hi!"?',
+        'Plats Network',
         // We can also provide URLs to redirect on success and failure.
         // The current URL is used by default.
     );
@@ -71,32 +71,6 @@ function signedInFlow()
     }
 
     return;
-
-  // fetch who last said hi without requiring button click
-  // but wait a second so the question is legible
-    setTimeout(updateWhoSaidHi, 1000);
-}
-
-// Function to update who said hi
-function updateWhoSaidHi()
-{
-  // JavaScript tip:
-  // This is another example of how to use promises. Since this function is not async,
-  // we can't await for `contract.whoSaidHi()`, instead we attaching a callback function
-  // usin `.then()`.
-    contract.whoSaidHi().then((who) => {
-      // const el = document.getElementById('who');
-      // el.innerText = who || 'No one';
-
-      // // only link to profile if there's a profile to link to
-      // if (who) {
-      //   el.href = 'https://explorer.testnet.near.org/accounts/' + who;
-      // }
-
-      // // change the ? to a !
-      // const parent = el.parentNode;
-      // parent.innerHTML = parent.innerHTML.replace('?', '!');
-    });
 }
 
 // Loads nearAPI and this contract into window scope.

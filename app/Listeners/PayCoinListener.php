@@ -91,16 +91,33 @@ class PayCoinListener implements ShouldQueue
             'amount_user' => $this->toYokto($campaign->user_budget),
         ];
 
-        // // Player is not a guest
-        // if (!is_null($player)) {
-        //     $result[] = [
-        //         'user_id'     => 'platuser.testnet',
-        //         'amount_user' => '' . $this->toYokto($campaign->user_budget),
-        //     ];
-        // }
-
         return json_encode($result);
     }
+    // private function makeParameters($campaign, $player = null)
+    // {
+    //     $result = [
+    //         'game_id' => 1,
+    //         'client' => 'platclient.testnet',
+    //         'referral_id' => 'platreferral.testnet',
+    //         'amount_referral' => $this->toYokto($campaign->referral_budget),
+    //         'creator_id' => 'platcreator.testnet',
+    //         'amount_creator' => $this->toYokto($campaign->creator_budget),
+    //         'team' => 'platteam.testnet',
+    //         'amount_team' => $this->toYokto(0.001),
+    //         'user_id'     => 'platuser.testnet',
+    //         'amount_user' => $this->toYokto($campaign->user_budget),
+    //     ];
+
+    //     // // Player is not a guest
+    //     // if (!is_null($player)) {
+    //     //     $result[] = [
+    //     //         'user_id'     => 'platuser.testnet',
+    //     //         'amount_user' => '' . $this->toYokto($campaign->user_budget),
+    //     //     ];
+    //     // }
+
+    //     return json_encode($result);
+    // }
 
     /**
      * Convert to Yokto for amount withdraw by Near CLI
