@@ -15,7 +15,7 @@ return [
     'have_account_need_login' => 'Sign in →',
     'pool' => 'Game Pool',
     'market' => 'Game Hub',
-    'my_game' => 'My BaGame',
+    'my_game' => 'My Game',
     'my_order' => 'My order',
     'dashboard' => 'Dashboard',
     'login' => 'Login',

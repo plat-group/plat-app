@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title_page', 'Plats-GameHub')</title>
+    <title>@yield('title_page', 'Plats')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/png">
     <!-- Fonts -->
@@ -13,7 +13,11 @@
 </head>
 <body>
 <!-- Menu -->
-@include('web.menus.learning')
+@if(env('APP_TYPE') == 2)
+    @include('web.menus.learning')
+@else
+    @include('web.menus.game')
+@endif
 <div class="main-container py-5">
     <div class="container">
         @yield('content')

@@ -104,3 +104,5 @@ Route::prefix('l2e')->middleware('auth')->group(function () {
 
 Route::get('/learn/{game}/play/{referralId}', [Game::class, 'play'])
         ->name(PLAY_LEARN_ROUTE)->whereUuid(['game', 'referralId']);
+
+Route::view('/test-near', 'web.game.test_near_frontend');
