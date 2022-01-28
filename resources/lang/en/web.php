@@ -29,7 +29,11 @@ return [
     'game_intro' => 'Game introduction',
     'upload_game_thumb' => 'Drag and drop thumbnail',
     'upload_game_file' => 'Drag and drop game file',
+    'upload_resource_file' => 'Drag and drop resource file',
     'btn_create_game' => 'Upload',
+    'btn_download_resource' => 'Download Resources',
+    'btn_push_to_pool' => 'Push to Pool',
+    'btn_play_game' => 'Play',
     'next_page_game' => 'More Games',
     'order_form' => [
         'agreement_amount_label' => 'Order token',
@@ -37,6 +41,12 @@ return [
         'royalty_fee_label' => 'Token for each play',
         'royalty_fee_help' => '* Token amount will be paid to creator every time user finish playing game',
         'btn_submit' => 'Order',
+    ],
+    'order_detail' => [
+        'release_title_client' => 'Release from Creator',
+        'release_title_creator' => 'Latest Release',
+        'order_content_client' => 'Order Content',
+        'order_content_creator' => 'Order from Client',
     ],
     'list_order_status' => [
         ORDERING_ORDER_STATUS => 'Ordering',
@@ -51,6 +61,7 @@ return [
     'accept' => 'Accept',
     'deny' => 'Deny',
     'view_game' => 'View game',
+    'view_order' => 'View order',
     'push_to_pool' => 'Push to pool',
     'campaign_total_budget_label' => 'Total token for this campaign',
     'campaign_creator_budget_label' => 'Token for each play for creator',

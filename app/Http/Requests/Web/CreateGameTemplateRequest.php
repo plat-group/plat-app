@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Web;
 
-use App\Models\Game;
+use App\Models\GameTemplate;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateGameRequest extends FormRequest
+class CreateGameTemplateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,8 +14,7 @@ class CreateGameRequest extends FormRequest
      */
     public function authorize()
     {
-        // return $this->user()->can('create', Game::class);
-        return true;
+        return $this->user()->can('create', GameTemplate::class);
     }
 
     /**

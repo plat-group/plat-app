@@ -36,6 +36,7 @@ if (!defined('DEFINE_CONSTANT')) {
     //For Creator confirm
     define('ACCEPTED_ORDER_STATUS', 2);
     define('DENIED_ORDER_STATUS', 3);
+    define('FINISH_ORDER_STATUS', 9);
 
     /**
      * Campaign

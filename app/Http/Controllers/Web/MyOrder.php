@@ -38,7 +38,30 @@ class MyOrder extends Controller
             return $this->incomeHistories($request);
         }
 
-        return view('web.game.my_order', ['orders' => $orders]);
+        return view('web.order.list', ['orders' => $orders]);
+    }
+
+    /**
+     * Creator|Client view detail of order
+     *
+     * @param string $orderId
+     * @param int|string $action
+     */
+    public function show($orderId) {
+        $order = $this->orderService->find($orderId)->loadMissing('gameTemplate');
+        $game = $order->gameTemplate;
+
+        return view('web.order.detail', compact('order', 'game'));
+    }
+
+    /**
+     * Creator|Client view detail of order
+     *
+     * @param string $orderId
+     * @param int|string $action
+     */
+    public function storeGame($request) {
+        // TODO need implement
     }
 
     /**

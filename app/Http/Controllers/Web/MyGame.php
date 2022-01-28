@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\CreateGameRequest;
+use App\Http\Requests\Web\CreateGameTemplateRequest;
 use App\Services\GameService;
 use App\Services\GameTemplateService;
 use Illuminate\Http\Request;
@@ -78,12 +78,12 @@ class MyGame extends Controller
     /**
      * Handle store a new template game
      *
-     * @param \App\Http\Requests\Web\CreateGameRequest $request
+     * @param \App\Http\Requests\Web\CreateGameTemplateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(CreateGameRequest $request)
+    public function store(CreateGameTemplateRequest $request)
     {
         $this->gameTemplateService->create($request, $request->user()->id);
 
