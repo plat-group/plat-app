@@ -107,9 +107,8 @@ class OrderService extends BaseService
      *
      * @return bool
      */
-    public function storeGame(Request $request)
+    public function storeGame($orderId, Request $request)
     {
-        $orderId = $request->order_id;
         $order = $this->repository->find($orderId);
         if (is_null($order) || $order->waitingConfirm()) {
             abort(404);
@@ -124,7 +123,7 @@ class OrderService extends BaseService
         }
         $order->save();
 
-        return $this->withSuccess(trans('message.order_status_changed'));
+        return $this->withSuccess(trans('message.creator_upload_game_success'));
     }
 
     /**

@@ -27,6 +27,7 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
     define('SHOW_ORDER_GAME_ROUTE', 'order.show.route');
     define('ORDER_STORE_GAME_ROUTE', 'order.store.game.route');
     define('CONFIRM_ORDER_GAME_ROUTE', 'order.confirm.route'); // For Creator
+    define('ORDER_DOWNLOAD_RESOURCE_ROUTE', 'order.download.resource.route'); // For Creator
 
     /**
      * Game

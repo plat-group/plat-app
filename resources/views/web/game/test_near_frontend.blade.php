@@ -18,5 +18,5 @@
     <label id="total-deposit">0</label> PLATS
 @stop
 @push('js')
-    <script src="{{ mix('static/js/web/pages/plats_deposit.js') }}" type="text/javascript"></script>
+    <script src="{{ mix('static/js/web/pages/testsmartcontract.js') }}" type="text/javascript"></script>
 @endpush

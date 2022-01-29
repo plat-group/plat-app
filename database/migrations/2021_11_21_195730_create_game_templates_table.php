@@ -21,6 +21,7 @@ class CreateGameTemplatesTable extends Migration
             $table->text('description')->nullable();
             $table->string('thumb')->nullable();
             $table->string('file')->nullable();
+            $table->string('demo_url')->nullable();
             $table->unsignedTinyInteger('status')->default(CREATING_GAME_STATUS);
             $table->timestamps();
             $table->softDeletes();

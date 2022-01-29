@@ -27,12 +27,16 @@
            </div>
            <div class="row mb-3">
                <div class="col-md-12">
+               <x-form::input name="demo_url" class="form-control-lg rounded-3 bg-white text-black required"
+                               placeholder="{{ trans('web.game_demo_url') }}" />
+                {{--
                    <div class="box-upload upload-file rounded-3">
                        <label for="fileGame" class="form-label align-self-center h4 cursor-pointer">
                            {{ trans('web.upload_game_file') }}
                        </label>
                        <input class="form-control" type="file" name="game_file" id="fileGame">
                    </div>
+                   --}}
                </div>
            </div>
            <div class="row mt-3 mt-md-5">

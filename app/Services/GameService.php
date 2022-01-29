@@ -32,24 +32,23 @@ class GameService extends BaseService
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function create(Request $request, $creatorId)
+    public function create($request, $orderId)
     {
         $data = $request->only(['name', 'introduction']);
-        $orderId = $request->order_id;
-        $data['owner_id'] = $request->user()->id;
+        $data['owner_id'] = $clientId = $request->user()->id;
         // TODO: Need process before publish on the market
         $data['status'] = FINISHED_CREATING_GAME_STATUS;
 
         if ($request->hasFile('thumb')) {
-            $data['thumb'] = $this->uploadThumb($request->file('thumb'), $creatorId);
+            $data['thumb'] = $this->uploadThumb($request->file('thumb'), $clientId);
         }
 
         $order = $this->orderRepository->find($orderId);
-        if ($request->hasFile('game_file')) {
-            $data['file'] = $this->uploadThumb($request->file('game_file'), $creatorId);
-        }
+        $data['file'] = $order->game_file; // Game file do creator upload len
 
         $record = $this->repository->create($data);
+
+        // TODO Call smartcontract to create game data on blockchain
 
         $this->withSuccess(trans('message.game_created'));
 

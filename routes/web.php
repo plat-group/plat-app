@@ -51,7 +51,7 @@ Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
 Route::prefix('games')->group(function () {
     Route::get('/{game}', [Game::class, 'show'])->name(DETAIL_GAME_ROUTE)->whereUuid('game');
     Route::get('/create/{order}', [Game::class, 'create'])->name(CREATE_GAME_ROUTE)->whereUuid('order');
-    Route::post('/store', [Game::class, 'store'])->name(STORE_GAME_ROUTE);
+    Route::post('{order}/store', [Game::class, 'store'])->name(STORE_GAME_ROUTE);
     Route::get('/{game}/play/{referralId}', [Game::class, 'play'])
         ->name(PLAY_GAME_ROUTE)->whereUuid(['game', 'referralId']);
     Route::post('/{game}/finish', [Game::class, 'finish'])->name(FINISH_GAME_ROUTE)->whereUuid('game');
@@ -90,6 +90,7 @@ Route::prefix('orders')->middleware('auth')->group(function () {
             ->whereUuid('id')
             ->where(['action' => ACCEPTED_ORDER_STATUS . '|' . DENIED_ORDER_STATUS]);
         Route::post('/storeGame', [MyOrder::class, 'storeGame'])->name(ORDER_STORE_GAME_ROUTE);
+        Route::get('/download-resource', [MyOrder::class, 'downloadResource'])->name(ORDER_DOWNLOAD_RESOURCE_ROUTE);
     });
 });
 

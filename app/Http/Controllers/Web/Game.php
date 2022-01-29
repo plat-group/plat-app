@@ -24,13 +24,13 @@ class Game extends Controller
     }
 
     /**
-     * Show form create a new template game
+     * Show form create a game from order
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create($order)
+    public function create($orderId)
     {
-        return view('web.game.pool.create', compact('order'));
+        return view('web.game.pool.create', compact('orderId'));
     }
 
     /**
@@ -41,9 +41,9 @@ class Game extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(CreateGameRequest $request)
+    public function store($orderId, CreateGameRequest $request)
     {
-        $this->gameService->create($request, $request->user()->id);
+        $this->gameService->create($request, $orderId);
 
         return redirect()->route(MY_GAME_ROUTE);
     }

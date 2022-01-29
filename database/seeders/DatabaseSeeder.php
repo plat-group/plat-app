@@ -13,8 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(CreateTemplateData::class);
-        $this->call(CreateTemplateLearningData::class);
+        if(env('APP_TYPE') == 2) {
+            $this->call(CreateTemplateLearningData::class);
+        }else {
+            $this->call(CreateTemplateData::class);
+        }
     }
 
     private function createTestData() {

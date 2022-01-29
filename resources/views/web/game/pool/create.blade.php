@@ -4,8 +4,8 @@
     <div class="row justify-content-center">
        <div class="col-12 col-md-10">
            <x-alert/>
-           <x-form::open action="{{ route(STORE_GAME_ROUTE) }}" files="true" id="sdsadsd" class="create_new_game has_validate">
-           <input type="hidden" name="order_id" value="{{$order}}">
+           <x-form::open action="{{ route(STORE_GAME_ROUTE, $orderId) }}" files="true" id="sdsadsd" class="create_new_game has_validate">
+           <input type="hidden" name="order_id" value="{{$orderId}}">
            <div class="row mb-3">
                <div class="col-md-12">
                 <x-form::input name="name" class="form-control-lg rounded-3 bg-white text-black required"
@@ -26,18 +26,6 @@
                    </div>
                </div>
            </div>
-           {{--
-           <div class="row mb-3">
-               <div class="col-md-12">
-                   <div class="box-upload upload-file rounded-3">
-                       <label for="fileGame" class="form-label align-self-center h4 cursor-pointer">
-                           {{ trans('web.upload_game_file') }}
-                       </label>
-                       <input class="form-control" type="file" name="game_file" id="fileGame">
-                   </div>
-               </div>
-           </div>
-           --}}
            <div class="row mt-3 mt-md-5">
                <div class="col-md-3 mx-auto d-grid">
                    <button type="submit" class="btn btn-red-pink btn-lg">
