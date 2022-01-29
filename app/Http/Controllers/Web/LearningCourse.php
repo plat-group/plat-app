@@ -7,22 +7,38 @@ use Illuminate\Http\Request;
 
 class LearningCourse extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return view('web.l2e.learn');
+        //
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('web.l2e.course.create');
+        //
     }
 
     public function create2()
     {
         return view('web.l2e.create');
     }
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $mode = $request->mode;

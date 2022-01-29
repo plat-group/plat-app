@@ -64,7 +64,6 @@ Route::prefix('campaigns')->middleware('auth')->group(function () {
         ->name(GENERATE_LINK_CAMPAIGN_ROUTE)->whereUuid(['id', 'gameId']);
 });
 
-
 //Market
 Route::prefix('market')->group(function () {
     Route::get('/', [Market::class, 'index'])->name(MARKET_GAME_ROUTE);
