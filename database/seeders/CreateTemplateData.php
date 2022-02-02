@@ -248,6 +248,59 @@ class CreateTemplateData extends Seeder
 
         $game->status = FINISHED_CREATING_GAME_STATUS;
         $game->save();
+
+        // TODO: Delete all below
+        $game = new Game();
+        $game->owner_id = $clientId;
+        // $game->name = $gameTemplate->name;
+        // $game->introduction = $gameTemplate->introduction;
+        // $game->description = $gameTemplate->description;
+        // $game->thumb = $gameTemplate->thumb;
+
+        $game->name = 'Plats game car';
+        $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
+        $game->description = 'Our branding car is display for game card so you can enjoy game with knowlegde about my product. Have an interesting time with our games';
+        $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-car.jpg';
+
+        $game->status = FINISHED_CREATING_GAME_STATUS;
+        $game->save();
+
+        $game = new Game();
+        $game->owner_id = $clientId;
+        // $game->name = $gameTemplate->name;
+        // $game->introduction = $gameTemplate->introduction;
+        // $game->description = $gameTemplate->description;
+        // $game->thumb = $gameTemplate->thumb;
+
+        $game->name = 'Plats game car';
+        $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
+        $game->description = 'Our branding car is display for game card so you can enjoy game with knowlegde about my product. Have an interesting time with our games';
+        $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-car.jpg';
+
+        $game->status = FINISHED_CREATING_GAME_STATUS;
+        $game->save();
+
+        $game = new Game();
+        $game->owner_id = $clientId;
+
+        $game->name = 'Plats game car';
+        $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
+        $game->description = 'Our branding car is display for game card so you can enjoy game with knowlegde about my product. Have an interesting time with our games';
+        $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-car.jpg';
+
+        $game->status = FINISHED_CREATING_GAME_STATUS;
+        $game->save();
+
+        $game = new Game();
+        $game->owner_id = $clientId;
+
+        $game->name = 'Plats game car';
+        $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
+        $game->description = 'Our branding car is display for game card so you can enjoy game with knowlegde about my product. Have an interesting time with our games';
+        $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-car.jpg';
+
+        $game->status = FINISHED_CREATING_GAME_STATUS;
+        $game->save();
     }
 
     private function createCampaignData() {
