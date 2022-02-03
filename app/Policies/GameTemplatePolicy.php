@@ -32,6 +32,33 @@ class GameTemplatePolicy
      */
     public function order(User $user, GameTemplate $game)
     {
-        return $game->on_market && $user->isClient() && !$game->isOwner($user->getAuthIdentifier());
+        return $game->on_market && $user->isClient() || $game->isOwner($user->getAuthIdentifier());
+    }
+
+    /**
+     * Determine whether the user can upload content of game (Only creator)
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\GameTemplate $game
+     *
+     * @return bool
+     */
+    public function upload(User $user, GameTemplate $game)
+    {
+        return $game->isOwner($user->getAuthIdentifier());
+    }
+
+    /**
+     * Determine whether the user can upload content of game
+     * Currently same with permission to view order content
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\GameTemplate $game
+     *
+     * @return bool
+     */
+    public function viewUploadedContent(User $user, GameTemplate $game)
+    {
+        return $this->order($user, $game);
     }
 }

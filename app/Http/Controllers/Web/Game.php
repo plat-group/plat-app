@@ -82,7 +82,7 @@ class Game extends Controller
 
         $game = $this->gameService->find($id);
 
-        return redirect()->to(sprintf('/upload/game/plats-card-game/index.html?gid=%s&cid=%s&rid=%s', $id, $game->campaign->id, $referralId));
+        return redirect()->to(sprintf('/upload/%s/index.html?gid=%s&cid=%s&rid=%s', $game->file, $id, $game->campaign->id, $referralId));
     }
 
     /**
