@@ -50,3 +50,13 @@ edit file .env as other project (project name, database connection, logs, etc) a
 8. Run laravel build-in server and access to page
 
 `php artisan serve`
+
+<!-- 
+sudo apt -y install php8.0-mysql
+sudo apt install -y php8.0-simplexml
+sudo apt-get install -y php8.0-curl
+CREATE USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Abc@123';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+mysql -u admin -p
+-->

@@ -8,9 +8,19 @@
 
 
 .box-game-item {
+    &__title {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    &__description {
+        color: #5D656D;
+    }
+
     .thumb-item {
         img {
-            height: 240px;
+            width: 270px;
+            height: 225px;
         }
     }
 }

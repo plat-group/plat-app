@@ -4,18 +4,18 @@ $image-path: '/static/images/web/';
 $font-path: '/static/fonts';
 $fa-font-path: $font-path;
 // Body
-$body-bg: #09001F;
+$body-bg: #DFEAEE;
 $body-color: #E9DFEE;
 
 $font-size-base: 0.875rem;
 $line-height-base: 1.5;
 
 // Links
-$link-color: #CAC1CD;
+$link-color: #414C5C;
 $link-decoration: none;
 
 // Typography
-$font-family-sans-serif:  'Nunito Sans', sans-serif;
+$font-family-sans-serif:  'Saira', sans-serif;
 
 // Grid containers
 $grid-breakpoints: (
@@ -35,6 +35,9 @@ $gray-400: #C4C4C4;
 $red-pink: #DC207B;
 $amethyst: #715B85;
 $mauve-400: #4A3A59;
+$cyan-blue-500: #0067c6;
+$green: #7ADA90;
+$blue-ribbon: #258DFA;
 
 // Create own map
 $custom-colors: (
@@ -44,11 +47,14 @@ $custom-colors: (
     "red-pink": $red-pink,
     "amethyst": $amethyst,
     "mauve-400": $mauve-400,
+    "green": $green,
+    "blue-ribbon": $blue-ribbon,
 );
 // Table Colors:
 $table-custom-variants: (
     "amethyst": $amethyst,
     "mauve-400": $mauve-400,
+    "blue-ribbon": $blue-ribbon
 );
 
 // Font size
