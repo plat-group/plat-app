@@ -10,7 +10,7 @@
                 <br>
                 @if(!$order)
                     <x-form::input name="agreement_amount" :value="old('agreement_amount')" class="required" data-rule-number="true" data-behavior="deposit"/>
-                    @else
+                @else
                     <x-form::input name="agreement_amount" value="{{ $order->agreement_amount }}" class="required" data-rule-number="true" data-behavior="deposit" readonly="true"/>
                 @endif
             </div>
