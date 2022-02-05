@@ -248,7 +248,7 @@ class CreateTemplateData extends Seeder
         $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-near.jpg';
         $game->file = 'game/plats-card-game';
 
-        $game->status = ON_POOL_GAME_STATUS;
+        $game->status = FINISHED_CREATING_GAME_STATUS; // manual push to pool
         $game->save();
     }
 
