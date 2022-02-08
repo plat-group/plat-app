@@ -30,5 +30,11 @@ class LearningCourse extends Model
         'course_name',
         'course_description',
         'thumbnail',
-    ];
+    ];  
+
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, "course_id");
+    }
 }

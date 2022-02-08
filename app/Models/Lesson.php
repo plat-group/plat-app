@@ -32,4 +32,9 @@ class Lesson extends Model
         'content_type',
         'content_description',
     ];
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }

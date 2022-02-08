@@ -4,11 +4,15 @@ namespace App\Services;
 
 use App\Repositories\LearningCourseRepository;
 use App\Services\Concerns\BaseService;
+use App\Services\Traits\UploadFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class LearningCourseService extends BaseService
 {
+    use UploadFile;
+
+    const FOLDER_LEARNING = "learning";
 
     /**
      * @param \App\Repositories\GameTemplateRepository $repository
@@ -36,4 +40,19 @@ class LearningCourseService extends BaseService
         return $this->endFilter();
     }
 
+    public function createCource($request)
+    {
+
+        if ($request->hasFile('thumb')) {
+            $data['thumb'] = $this->uploadThumb(self::FOLDER_LEARNING,  $request->file('thumb'));
+        }
+
+        return $this->repository()->create($data);
+    }
+
+    
+    public function getWholeCourse($id)
+    {
+        
+    }
 }
