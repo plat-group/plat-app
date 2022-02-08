@@ -66,7 +66,7 @@ class PayCoinListener implements ShouldQueue
         $result = [
             'game_id' => $gameId,
             'referral_id' => 'platreferral.testnet',
-            'user_id'     => $player
+            'user_id'     => 'platuser.testnet'
         ];
 
         return json_encode($result);
