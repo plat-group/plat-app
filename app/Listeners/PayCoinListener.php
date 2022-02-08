@@ -44,7 +44,8 @@ class PayCoinListener implements ShouldQueue
         // $command = 'near call ' . $smartContractId . ' withdraw \''
         //            . $this->makeParameters($campaign, $event->playerId) . '\''
         //            . ' --accountId ' . $smartContractId;
-        $command = sprintf('near call %s %s \'%s\' --accountId %s',
+        $command = sprintf('near call %s %s \'%s\' --accountId %s --gas 50000000000000 --depositYocto 1
+        ',
             $smartContractId, 'reward', $this->makeParameters($campaign, $event->playerId), $smartContractId);
 
         $this->commandlineRun($command);
