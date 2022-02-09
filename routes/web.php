@@ -100,12 +100,19 @@ Route::prefix('transactions')->middleware('auth')->group(function () {
 
 
 Route::prefix('l2e')->middleware('auth')->group(function () {
-    Route::get('/', [LearnToEarn::class, 'index'])->name(L2E_ROUTE);
-    Route::get('/create', [LearnToEarn::class, 'create'])->name(CREATE_L2E_ROUTE);
-    Route::post('/create', [LearnToEarn::class, 'store'])->name(STORE_L2E_ROUTE);
-    Route::get('/course/create', [LearningCourse::class, 'create'])->name(CREATE_L2E_COURSE_ROUTE);
+    Route::controller(LearnToEarn::class)->group(function () {
+        Route::get('/', 'index')->name(L2E_ROUTE);
+        Route::get('/create', 'create')->name(CREATE_L2E_ROUTE);
+        Route::post('/create', 'store')->name(STORE_L2E_ROUTE);
+    });
+    Route::prefix('courses')->controller(LearningCourse::class)->group(function () {
+        Route::get('/my-courses', 'myCourses')->name(MY_COURSE_ROUTE);
+        Route::get('/create', 'create')->name(CREATE_COURSE_ROUTE);
+        Route::post('/store', 'store')->name(STORE_COURSE_ROUTE);
+    });
+
+    //Route::get('/course/create', [LearningCourse::class, 'create'])->name(CREATE_L2E_COURSE_ROUTE);
     Route::post('/course/create/step2', [LearningCourse::class, 'create2'])->name(CREATE_STEP2_L2E_COURSE_ROUTE);
-    Route::post('/course/store', [LearningCourse::class, 'store'])->name(STORE_L2E_COURSE_ROUTE);
 });
 
 Route::get('/learn/{game}/play/{referralId}', [Game::class, 'play'])

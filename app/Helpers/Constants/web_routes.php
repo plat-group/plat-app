@@ -56,8 +56,9 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
     define('L2E_ROUTE', 'l2e.route');
     define('CREATE_L2E_ROUTE', 'l2e.create.route');
     define('STORE_L2E_ROUTE', 'l2e.store.route');
-    define('CREATE_L2E_COURSE_ROUTE', 'l2e.create.course.route');
+    define('MY_COURSE_ROUTE', 'l2e.course.management.route');
+    define('CREATE_COURSE_ROUTE', 'l2e.course.create.route');
+    define('STORE_COURSE_ROUTE', 'l2e.course.store.route');
     define('CREATE_STEP2_L2E_COURSE_ROUTE', 'l2e.create.step2.course.route');
-    define('STORE_L2E_COURSE_ROUTE', 'l2e.store.course.route');
     define('PLAY_LEARN_ROUTE', 'l2e.play.course.route');
 }
