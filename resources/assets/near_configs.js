@@ -1,5 +1,5 @@
-const CONTRACT_TOKEN_NAME = process.env.CONTRACT_TOKEN_NAME || 'token.platserver.testnet'; /* TODO: fill this in! */
-const CONTRACT_A2E_NAME = process.env.CONTRACT_A2E_NAME || 'a2e.platserver.testnet'; /* TODO: fill this in! */
+const CONTRACT_TOKEN_NAME = process.env.CONTRACT_TOKEN_NAME || 'plat-token.platserver.testnet'; /* TODO: fill this in! */
+const CONTRACT_A2E_NAME = process.env.CONTRACT_A2E_NAME || 'plat-a2e.platserver.testnet'; /* TODO: fill this in! */
 
 function getConfig (env) {
   switch (env) {
