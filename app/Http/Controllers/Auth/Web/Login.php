@@ -82,11 +82,9 @@ class Login extends Controller
 
         $this->clearLoginAttempts($request);
 
-        if(env('APP_TYPE') == 2) {
-            return response()->json(['redirect' => route(L2E_ROUTE)]);
-        }else{
-            return response()->json(['redirect' => route(POOL_GAME_ROUTE)]);
-        }
+        $redirectRouteName = route(env('APP_TYPE') == 2 ? L2E_ROUTE : POOL_GAME_ROUTE);
+
+        return response()->json(['redirect' => route($redirectRouteName)]);
     }
 
     /**

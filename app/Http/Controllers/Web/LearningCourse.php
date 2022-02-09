@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class LearningCourse extends Controller
 {
+
+    public function myCourses()
+    {
+        return view('web.l2e.course.management');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,6 @@ class LearningCourse extends Controller
     public function index()
     {
         return view('web.l2e.learn');
-        //
     }
 
     /**
@@ -26,7 +31,6 @@ class LearningCourse extends Controller
     public function create()
     {
         return view('web.l2e.course.create');
-        //
     }
 
     public function create2()
