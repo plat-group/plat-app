@@ -12,7 +12,7 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table table-flat table-borderless table-striped table-mauve-400">
+        <table class="table table-flat table-borderless table-striped table-primary-2">
             <thead>
             <tr class="text-uppercase">
                 <th class="py-3" scope="col">{{ trans('web.my_order_id') }}</th>

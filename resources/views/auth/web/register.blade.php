@@ -2,11 +2,11 @@
 @section('auth_container')
     <x-alert/>
     {{ Form::open(['route' => REGISTER_ROUTE, 'class' => 'register_form has_validate']) }}
-    <div class="mb-3 row ">
+    <div class="mb-3 row">
         <label for="walletId" class="col-md-3 col-form-label col-form-label-lg fw-bold">Wallet ID:</label>
         <div class="col-md-9">
             <input type="text" name="username" readonly id="walletId" value="{{ $nearId }}"
-                   class="form-control-lg form-control-plaintext fw-bold">
+                   class="form-control-lg form-control-plaintext fw-bold text-white">
         </div>
     </div>
     <div class="form-group mb-4">
@@ -44,7 +44,7 @@
 
 
     <div class="d-flex justify-content-center">
-        <button class="btn btn-red-pink btn-lg fw-bold px-5">{{ trans('web.btn_signup') }}</button>
+        <button class="btn btn-blue-ribbon text-white btn-lg fw-bold px-5">{{ trans('web.btn_signup') }}</button>
     </div>
     {{ Form::close() }}
 @stop

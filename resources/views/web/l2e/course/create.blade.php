@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <x-form::open action="{{ route(CREATE_STEP2_L2E_COURSE_ROUTE) }}" files="true" id="create-l2e" class="form-default create_l2e has_validate">
-    <div class="col-12 col-md-10 mx-md-auto inner-box bg-mauve-400 rounded-3 p-4 mb-4">
+    <div class="col-12 col-md-10 mx-md-auto inner-box bg-primary-2  rounded-3 p-4 mb-4">
         <div data-repeater-list="timer-group">
             <div data-repeater-item class="shadow p-3 mb-3">
                 <x-form::group label="Title of course">
