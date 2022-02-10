@@ -85,7 +85,7 @@ class Login extends Controller
         if(env('APP_TYPE') == 2) {
             return response()->json(['redirect' => route(L2E_ROUTE)]);
         }else{
-            return response()->json(['redirect' => route(POOL_GAME_ROUTE)]);
+            return response()->json(['redirect' => route(MARKET_GAME_ROUTE)]);
         }
     }
 

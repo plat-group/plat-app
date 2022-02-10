@@ -9,10 +9,11 @@ use App\Repositories\OrderRepository;
 use App\Services\Concerns\BaseService;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use ZipArchive;
 
 class OrderService extends BaseService
 {
-
     /**
      * @var \App\Repositories\GameTemplateRepository
      */
@@ -119,7 +120,7 @@ class OrderService extends BaseService
         }
 
         if ($request->hasFile('resource_file')) {
-            $order->resource_file = $this->uploadGame($request->file('resource_file'), $orderId);
+            $order->resource_file = $this->uploadResource($request->file('resource_file'), $orderId);
         }
         $order->save();
 
@@ -133,7 +134,23 @@ class OrderService extends BaseService
      */
     protected function uploadGame($file, $createId = null)
     {
-        return Storage::putFile('game/' . $createId, $file);
+        // TODO: this function is only for testing
+        // File zip khi giai nen phai khong nam trong folder nao ca
+        // Trong file zip phai co file html
+        $zipPath = Storage::putFile('game/' . $createId, $file);
+        Log::debug($zipPath);
+
+        $zipPathFull = public_path('upload/' . $zipPath);
+        Log::debug($zipPathFull);
+        // Extract zip
+        $zip = new ZipArchive;
+        if($zip->open($zipPathFull) === TRUE) {
+            $zip->extractTo(public_path('upload/game/' . $createId));
+            $zip->close();
+            return 'game/' . $createId; // TODO Need improve
+        }
+        Log::debug('Cannot open zip file');
+        return $zipPath;
     }
 
     /**

@@ -1,5 +1,5 @@
-const CONTRACT_TOKEN_NAME = process.env.CONTRACT_NAME || 'token.nghilt.testnet'; /* TODO: fill this in! */
-const CONTRACT_A2E_NAME = process.env.CONTRACT_NAME || 'a2e.nghilt.testnet'; /* TODO: fill this in! */
+const CONTRACT_TOKEN_NAME = process.env.CONTRACT_TOKEN_NAME || 'plat-token.platserver.testnet'; /* TODO: fill this in! */
+const CONTRACT_A2E_NAME = process.env.CONTRACT_A2E_NAME || 'plat-a2e.platserver.testnet'; /* TODO: fill this in! */
 
 function getConfig (env) {
   switch (env) {
@@ -8,7 +8,8 @@ function getConfig (env) {
       return {
         networkId: 'mainnet',
         nodeUrl: 'https://rpc.mainnet.near.org',
-        contractName: CONTRACT_NAME,
+        contractTokenName: CONTRACT_TOKEN_NAME,
+        contractA2eName: CONTRACT_A2E_NAME,
         walletUrl: 'https://wallet.near.org',
         helperUrl: 'https://helper.mainnet.near.org'
       }

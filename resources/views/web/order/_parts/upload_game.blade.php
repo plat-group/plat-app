@@ -2,7 +2,7 @@
     <div class="text-black mt-5">Release to Client</div>
     <div class="box-order-game mb-5">
         <div class="inner-box bg-primary-2 rounded-3 px-4 pt-3 pb-5">
-            <x-form::open action="{{ route(ORDER_STORE_GAME_ROUTE, $order->id) }}" files="true" id="sdsadsd" class="create_new_game has_validate">
+            <x-form::open action="{{ route(ORDER_STORE_GAME_ROUTE, $order->id) }}" enctype="multipart/form-data" files="true" id="sdsadsd" class="create_new_game has_validate">
             <input type="hidden" name="order_id" value="{{$order->id}}">
 
             <div class="row mb-3">
@@ -21,7 +21,7 @@
                         <label for="fileResource" class="form-label align-self-center h4 cursor-pointer">
                             {{ trans('web.upload_resource_file') }}
                         </label>
-                        <input class="form-control" type="file" name="resource_file" id="fileResource">
+                        <input class="form-control" type="file" name="resource_file" id="fileResource" accept="image/*,.zip">
                     </div>
                 </div>
             </div>

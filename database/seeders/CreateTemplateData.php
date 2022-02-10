@@ -93,18 +93,18 @@ class CreateTemplateData extends Seeder
     }
 
     private function createGameTemplateData() {
-        $creatorIds = User::where('role', CREATOR_ROLE)->pluck('id')->all();
 
-        // $creatorId = $this->getRandomCreator($creatorIds);
+        // $creatorId = User::where('email', 'creator@plats.network')->pluck('id')->first();
         // $game = new GameTemplate();
         // $game->creator_id = $creatorId;
-        // $game->name = 'Plats game car';
+        // $game->name = 'Memory Card Game';
         // $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
-        // $game->description = 'Our branding car is display for game card so you can enjoy game with knowlegde about my product. Have an interesting time with our games';
-        // $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-car.jpg';
+        // $game->description = 'Client who want to adverstising their product\'s brand can connect me to customize game with fully support.';
+        // $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/memory-game.png';
         // $game->status = ON_MARKET_GAME_STATUS;
         // $game->save();
 
+        $creatorIds = User::where('role', CREATOR_ROLE)->pluck('id')->all();
         $creatorId = $this->getRandomCreator($creatorIds);
         $game = new GameTemplate();
         $game->creator_id = $creatorId;
@@ -205,29 +205,29 @@ class CreateTemplateData extends Seeder
     private function createOrderData() {
         $clientId = User::where('email', 'client@plats.network')->pluck('id')->first();
         $gameTemplateId = GameTemplate::pluck('id')->first();
-        $gameId = Game::pluck('id')->first();
-
-        $order = new Order();
-        $order->client_id = $clientId;
-        $order->game_template_id = $gameTemplateId;
-        $order->game_id = $gameId;
-        $order->content = 'Please change banner image by our banner';
-        $order->agreement_amount = 20;
-        $order->royalty_fee = 0.05;
-        $order->status = ACCEPTED_ORDER_STATUS;
-        $order->save();
-
-        $gameTemplateId = GameTemplate::pluck('id')->last();
+        // $gameId = Game::pluck('id')->first();
 
         $order = new Order();
         $order->client_id = $clientId;
         $order->game_template_id = $gameTemplateId;
         // $order->game_id = $gameId;
-        $order->content = 'Please change logo image by our logo';
-        $order->agreement_amount = 40;
-        $order->royalty_fee = 0.1;
-        $order->status = ORDERING_ORDER_STATUS;
+        $order->content = 'Please change banner image by our banner and image of each card by our products';
+        $order->agreement_amount = 20;
+        $order->royalty_fee = 1;
+        $order->status = ACCEPTED_ORDER_STATUS;
         $order->save();
+
+        // $gameTemplateId = GameTemplate::pluck('id')->last();
+
+        // $order = new Order();
+        // $order->client_id = $clientId;
+        // $order->game_template_id = $gameTemplateId;
+        // // $order->game_id = $gameId;
+        // $order->content = 'Please change logo image by our logo';
+        // $order->agreement_amount = 40;
+        // $order->royalty_fee = 0.1;
+        // $order->status = ORDERING_ORDER_STATUS;
+        // $order->save();
     }
 
     // private function createGameData() {
@@ -255,10 +255,20 @@ class CreateTemplateData extends Seeder
 
         $game->name = 'Near Ecosystem Card Game';
         $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
+        $game->description = 'Our branding car is display for game card so you can enjoy game with knowlegde about my product. Have an interesting time with our games';
+        $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-car.jpg';
+        $game->status = ON_POOL_GAME_STATUS;
+        $game->save();
+
+        $game = new Game();
+        $game->owner_id = $clientId;
+        $game->name = 'Near Ecosystem Card Game';
+        $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
         $game->description = 'Let\'s play and learn about NEAR Ecosystem';
         $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-near.jpg';
+        $game->file = 'game/plats-card-game';
 
-        $game->status = FINISHED_CREATING_GAME_STATUS;
+        $game->status = FINISHED_CREATING_GAME_STATUS; // manual push to pool
         $game->save();
     }
 
@@ -267,11 +277,13 @@ class CreateTemplateData extends Seeder
 
         $campaign = new Campaign();
         $campaign->game_id = $gameId;
+        $campaign->content_id = $gameId;
+        $campaign->content_type = CONTENT_TYPE_GAME;
         $campaign->total_budget = 100;
-        $campaign->creator_budget = 0.005;
-        $campaign->referral_budget = 0.006;
-        $campaign->user_budget = 0.008;
-        $campaign->start_at = '2021/12/01';
+        $campaign->creator_budget = 1;
+        $campaign->referral_budget = 2;
+        $campaign->user_budget = 3;
+        $campaign->start_at = '2022/01/01';
         $campaign->end_at = '2022/12/01';
         $campaign->save();
     }

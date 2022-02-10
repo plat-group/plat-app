@@ -7,6 +7,8 @@
     <br>
     <button id="btn-deposit-storage">Deposite Storage</button>
     <br>
+    <button id="btn-deposit-storage-and-deposite-plat">Deposite Storage & Plats</button>
+    <br>
     <button id="btn-create_fast_game">Create Fast game</button>
     <br>
     <input type="text" id="account" placeholder="yourwallet.testnet">

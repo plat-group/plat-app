@@ -13,17 +13,17 @@
             @endif
             @if($order->game_file)
                 icon
-                <a href="{{$order->game_file}}">
+                <a href="/upload/{{$order->game_file}}/index.html" target="_blank">
                 <button type="button" class="btn btn-blue-ribbon text-white btn-lg">
                     {{ trans('web.btn_play_game') }}
                 </button>
                 </a>
             @endif
-        @if(isClient())
-            <a href="{{ route(CREATE_GAME_ROUTE, $order->id) }}" title="{{ trans('web.btn_push_to_pool') }}" class="btn btn-blue-ribbon text-white fw-bold ms-auto">
-                {{ trans('web.btn_push_to_pool') }}
-            </a>
-        @endif
+            @if(isClient())
+                <a href="{{ route(CREATE_GAME_ROUTE, $order->id) }}" title="{{ trans('web.btn_push_to_pool') }}" class="btn btn-blue-ribbon text-white fw-bold ms-auto">
+                    {{ trans('web.btn_push_to_pool') }}
+                </a>
+            @endif
     </div>
 </div>
 @endif

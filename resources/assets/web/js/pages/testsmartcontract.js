@@ -133,6 +133,51 @@ $('#btn-view-total-deposit').click(async function(){
     }
 });
 
+$('#btn-deposit-storage-and-deposite-plat').click(async function(){
+    const client = window.accountId;
+    let res;
+    console.log(window.accountId)
+    console.log(window.nearConfig.contractTokenName)
+    try {
+
+        const result = await window.account.signAndSendTransaction({
+            // receiverId: "token.nghilt.testnet",
+            receiverId: window.nearConfig.contractTokenName,
+            actions: [
+                transactions.functionCall(
+                    'storage_deposit',
+                    {},
+                    10000000000000,
+                    utils.format.parseNearAmount("0.01")
+                ),
+                transactions.functionCall(
+                    'ft_transfer_call',
+                    // { receiver_id: "a2e.nghilt.testnet", amount: utils.format.parseNearAmount("130"), msg: JSON.stringify({game_id : '1ec7de02-931e-61a4-9119-20c9d07b7361'})},
+                    { receiver_id: window.nearConfig.contractA2eName, amount: utils.format.parseNearAmount("130"), msg: JSON.stringify({game_id : '1ec7de02-931e-61a4-9119-20c9d07b7361'})},
+                    250000000000000,
+                    "1"
+                 )
+            ]
+        });
+        console.log("Result: ", result);
+
+    } catch (e) {
+        console.log(e)
+        alert(
+            'Something went wrong! ' +
+            'Maybe you need to sign out and back in? ' +
+            'Check your browser console for more info.'
+        );
+        throw e;
+    } finally {
+        // setTimeout(() => {
+        //     document.querySelector('[data-behavior=waiting-for-transaction]').style.display = 'none';
+        //     document.querySelector('[data-behavior=waiting-for-transaction]').innerText = "Waiting for transaction..."
+        // }, 11000);
+    }
+    console.log(res);
+});
+
 $('#btn-deposit-storage').click(async function(){
     const client = window.accountId;
     let res;
@@ -141,7 +186,8 @@ $('#btn-deposit-storage').click(async function(){
     try {
 
         const result = await window.account.signAndSendTransaction({
-            receiverId: "token.nghilt.testnet",
+            // receiverId: "token.nghilt.testnet",
+            receiverId: window.nearConfig.contractTokenName,
             actions: [
                 transactions.functionCall(
                     'storage_deposit',

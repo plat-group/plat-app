@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\CreateGameRequest;
 use App\Http\Requests\Web\FinishGameRequest;
 use App\Services\GameService;
+use App\Services\UserService;
 
 class Game extends Controller
 {
@@ -15,12 +16,15 @@ class Game extends Controller
      */
     protected $gameService;
 
+    protected $userService;
+
     /**
      * @param \App\Services\GameService $gameService
      */
-    public function __construct(GameService $gameService)
+    public function __construct(GameService $gameService, UserService $userService)
     {
         $this->gameService = $gameService;
+        $this->userService = $userService;
     }
 
     /**
@@ -81,8 +85,9 @@ class Game extends Controller
         // return view('web.game.play', $assign);
 
         $game = $this->gameService->find($id);
+        $referral = $this->userService->find($referralId);
 
-        return redirect()->to(sprintf('/upload/game/plats-card-game/index.html?gid=%s&cid=%s&rid=%s', $id, $game->campaign->id, $referralId));
+        return redirect()->to(sprintf('/upload/%s/index.html?gid=%s&cid=%s&rid=%s', $game->file, $id, $game->campaign->id, $referral->wallet_address));
     }
 
     /**

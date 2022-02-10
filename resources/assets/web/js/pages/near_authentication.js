@@ -38,6 +38,7 @@ function signedInFlow()
         $.post(ROUTES.LOGIN, {account_id: window.accountId}).done((data) => {
             window.location.replace(data.redirect);
         }).fail((err) => {
+            console.log(err);
             window.location.replace(ROUTES.REGISTER + '/' + window.accountId);
         });
     } else {
