@@ -17,7 +17,6 @@ class CreateCampaignReferralsTable extends Migration
             $table->uuid('campaign_id');
             $table->uuid('referral_id');
 
-            // $table->timestamp('created_at')->nullable();
             $table->timestamps();
 
             $table->index(['campaign_id', 'referral_id']);

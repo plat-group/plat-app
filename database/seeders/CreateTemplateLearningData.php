@@ -206,6 +206,8 @@ class CreateTemplateLearningData extends Seeder
 
         $campaign = new Campaign();
         $campaign->game_id = $gameId;
+        $campaign->content_id = $gameId;
+        $campaign->content_type = CONTENT_TYPE_LEARNING;
         $campaign->total_budget = 100;
         $campaign->creator_budget = 0.005;
         $campaign->referral_budget = 0.006;

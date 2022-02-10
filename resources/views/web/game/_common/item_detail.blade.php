@@ -10,11 +10,11 @@
         <div class="game-description text-justify fs-16">
             {{ $game->description }}
         </div>
-        <div class="game-description text-justify fs-16">
+        {{-- <div class="game-description text-justify fs-16">
             <a href="{{ $game->demo_url }}" target="_blank">
                 <button type="submit" class="btn btn-red-pink btn-lg">Play</button>
             </a>
-        </div>
+        </div> --}}
         @includeWhen(optional(auth()->user())->can('createCampaign', $game),
             'web.game._forms.campaign', ['game' => $game])
 

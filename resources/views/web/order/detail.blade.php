@@ -5,11 +5,13 @@
     @include('web.game._common.item_detail', ['game' => $game])
 
     <!-- Order content info -->
-    @include('web.order._forms.order', ['order' => $order])
+    @includeWhen(optional(auth()->user())->can('order', $game), 'web.order._forms.order', ['order' => $order])
 
     <!-- Uploaded content -->
-    @include('web.order._parts.released', ['game' => $game])
+    @includeWhen(optional(auth()->user())->can('viewUploadedContent', $game), 'web.order._parts.released', ['game' => $game])
 
     <!-- Content upload form for creator -->
-    @includeWhen(Auth::user()->isCreator(), 'web.order._parts.upload_game', ['game' => $game])
+    @if($order->status != ORDERING_ORDER_STATUS)
+        @includeWhen(optional(auth()->user())->can('upload', $game), 'web.order._parts.upload_game', ['game' => $game])
+    @endif
 @stop

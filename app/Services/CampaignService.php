@@ -8,6 +8,7 @@ use App\Repositories\GameRepository;
 use App\Repositories\TransactionRepository;
 use App\Services\Concerns\BaseService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CampaignService extends BaseService
 {
@@ -51,7 +52,10 @@ class CampaignService extends BaseService
         // check permission
         $request->user()->can('createCampaign', $game);
 
-        $campaign = $this->repository->create($request->toArray());
+        $campaignObj = $request->toArray();
+        $campaignObj['content_id'] = $request->input('game_id');
+        Log::debug($campaignObj);
+        $campaign = $this->repository->create($campaignObj);
 
         // Fire event
         CampaignCreatedEvent::dispatch($campaign);
