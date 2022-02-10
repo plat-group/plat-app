@@ -10,7 +10,7 @@
     <div class="text-muted">
         By: <span class="link-red-pink">{{ $item->manager()->name }}</span>
         @if ($item->on_pool && isset($item->campaign))
-            <br/> Advertiser's reward: {{ $item->campaign->referral_budget . ' ' . CURRENCY_CODE }}
+            <br/> Advertiser's reward: {{ $item->campaign->referral_budget . ' ' . TOKEN_SYMBOL }}
         @endif
     </div>
 </div>

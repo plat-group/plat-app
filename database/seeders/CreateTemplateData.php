@@ -94,15 +94,15 @@ class CreateTemplateData extends Seeder
 
     private function createGameTemplateData() {
 
-        $creatorId = User::where('email', 'creator@plats.network')->pluck('id')->first();
-        $game = new GameTemplate();
-        $game->creator_id = $creatorId;
-        $game->name = 'Memory Card Game';
-        $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
-        $game->description = 'Client who want to adverstising their product\'s brand can connect me to customize game with fully support.';
-        $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/memory-game.png';
-        $game->status = ON_MARKET_GAME_STATUS;
-        $game->save();
+        // $creatorId = User::where('email', 'creator@plats.network')->pluck('id')->first();
+        // $game = new GameTemplate();
+        // $game->creator_id = $creatorId;
+        // $game->name = 'Memory Card Game';
+        // $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
+        // $game->description = 'Client who want to adverstising their product\'s brand can connect me to customize game with fully support.';
+        // $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/memory-game.png';
+        // $game->status = ON_MARKET_GAME_STATUS;
+        // $game->save();
 
         $creatorIds = User::where('role', CREATOR_ROLE)->pluck('id')->all();
         $creatorId = $this->getRandomCreator($creatorIds);
@@ -237,11 +237,15 @@ class CreateTemplateData extends Seeder
         $game = new Game();
         $game->owner_id = $clientId;
 
-        // $game->name = 'Plats game car';
-        // $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
-        // $game->description = 'Our branding car is display for game card so you can enjoy game with knowlegde about my product. Have an interesting time with our games';
-        // $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-car.jpg';
+        $game->name = 'Plats game car';
+        $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
+        $game->description = 'Our branding car is display for game card so you can enjoy game with knowlegde about my product. Have an interesting time with our games';
+        $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-car.jpg';
+        $game->status = ON_POOL_GAME_STATUS;
+        $game->save();
 
+        $game = new Game();
+        $game->owner_id = $clientId;
         $game->name = 'Near Ecosystem Card Game';
         $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
         $game->description = 'Let\'s play and learn about NEAR Ecosystem';

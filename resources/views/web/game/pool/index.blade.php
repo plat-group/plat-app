@@ -22,9 +22,9 @@
                 </div>
             </div>
             <div class="description lh-lg">
-                Total: 100 PLT<br/>
-                For Referral: 1 PLT / each play<br/>
-                For User: 2 PLT / each play<br/>
+                Total: 100 {{TOKEN_SYMBOL}}<br/>
+                For Referrer: 1 {{TOKEN_SYMBOL}} / each play<br/>
+                For User: 2 {{TOKEN_SYMBOL}} / each play<br/>
             Your Ultimate Horizon Adventure awaits
             </div>
         </div>
