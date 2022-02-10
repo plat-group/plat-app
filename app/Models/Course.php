@@ -6,6 +6,7 @@ use App\Models\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Course extends Model
 {
@@ -31,6 +32,14 @@ class Course extends Model
         'description',
         'thumbnail',
     ];
+
+    /**
+     * @return string
+     */
+    public function getThumbUrlAttribute()
+    {
+        return Storage::url($this->thumbnail);
+    }
 
     /**
      * Creator information by relationship
