@@ -1,18 +1,18 @@
 <x-alert/>
 <div class="row gx-5">
     <div class="col-md-6">
-        <h2 class="fw-bold text-red-pink mb-3">
+        <h2 class="fw-bold text-blue-ribbon mb-3">
             {{ $game->name }}
         </h2>
-        <div class="game-introduction text-justify fs-16 mb-4">
+        <div class="game-introduction fw-bold text-neutral-2 text-justify fs-16 mb-4">
             {{ $game->introduction }}
         </div>
-        <div class="game-description text-justify fs-16">
+        <div class="game-description text-neutral-2 text-justify fs-16">
             {{ $game->description }}
         </div>
         {{-- <div class="game-description text-justify fs-16">
             <a href="{{ $game->demo_url }}" target="_blank">
-                <button type="submit" class="btn btn-red-pink btn-lg">Play</button>
+                <button type="submit" class="btn btn-blue-ribbon text-white btn-lg">Play</button>
             </a>
         </div> --}}
         @includeWhen(optional(auth()->user())->can('createCampaign', $game),

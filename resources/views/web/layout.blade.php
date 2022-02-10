@@ -26,8 +26,8 @@
 <footer>
     <div class="container">
         <div class="row footer-container align-items-center">
-            <div class="col-md-6 copyright text-white">
-                Copyright © 2022 Plats
+            <div class="col-md-2 copyright text-white">
+               Copyright © 2022 Plats
             </div>
             <div class="col ms-auto">
                 <ul class="list-inline socials">

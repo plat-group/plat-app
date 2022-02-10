@@ -1,9 +1,10 @@
 @if($order->status != FINISH_ORDER_STATUS)
-    <div>Release to Client</div>
-    <div class="box-order-game mt-5">
-        <div class="inner-box bg-mauve-400 rounded-3 px-4 pt-3 pb-5">
+    <div class="text-black mt-5">Release to Client</div>
+    <div class="box-order-game mb-5">
+        <div class="inner-box bg-primary-2 rounded-3 px-4 pt-3 pb-5">
             <x-form::open action="{{ route(ORDER_STORE_GAME_ROUTE, $order->id) }}" enctype="multipart/form-data" files="true" id="sdsadsd" class="create_new_game has_validate">
             <input type="hidden" name="order_id" value="{{$order->id}}">
+
             <div class="row mb-3">
                 <div class="col-md-12">
                     <div class="box-upload upload-file rounded-3">
@@ -24,9 +25,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-3 mt-md-5">
+            <div class="row mt-2 mt-md-5">
                 <div class="col-md-3 mx-auto d-grid">
-                    <button type="submit" class="btn btn-red-pink btn-lg">
+                    <button type="submit" class="btn btn-blue-ribbon text-white btn-lg">
                         {{ trans('web.btn_upload_game') }}
                     </button>
                 </div>

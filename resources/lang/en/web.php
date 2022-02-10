@@ -9,7 +9,7 @@ return [
     'login_username' => 'Email',
     'password' => 'Password',
     'btn_login' => 'Login',
-    'btn_signup' => 'Signup',
+    'btn_signup' => 'Register',
     'gender' => 'Sex',
     'birthday' => 'Birthday',
     'have_account_need_login' => 'Sign in →',

@@ -1,14 +1,14 @@
-<div class="box-game-item position-relative">
-    <div class="thumb-item mb-2">
+<div class="box-game-item position-relative mb-4">
+    <div class="thumb-item mb-3">
         <img src="{{ $item->thumb_url }}" alt="{{ $item->name }}" class="w-100"/>
     </div>
-    <h5 class="mb-0">
+    <p class="mb-2 box-game-item__title">
         <a href="{{ $item->detail_url }}" title="{{ $item->name }}" class="stretched-link">
             {{ $item->name }}
         </a>
-    </h5>
-    <div class="text-muted">
-        By: <span class="link-red-pink">{{ $item->manager()->name }}</span>
+    </p>
+    <div class="box-game-item__description fw-bold">
+        By <span class="link-primary">{{ $item->manager()->name }}</span> at {{ $item->updated_at->toFormattedDateString() }}
         @if ($item->on_pool && isset($item->campaign))
             <br/> Advertiser's reward: {{ $item->campaign->referral_budget . ' ' . TOKEN_SYMBOL }}
         @endif
