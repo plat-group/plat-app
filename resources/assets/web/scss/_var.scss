@@ -38,6 +38,9 @@ $mauve-400: #4A3A59;
 $cyan-blue-500: #0067c6;
 $green: #7ADA90;
 $blue-ribbon: #258DFA;
+$neutral-2: #5D656D;
+$primary-2: #479CF6;
+
 
 // Create own map
 $custom-colors: (
@@ -49,12 +52,15 @@ $custom-colors: (
     "mauve-400": $mauve-400,
     "green": $green,
     "blue-ribbon": $blue-ribbon,
+    "neutral-2": $neutral-2,
+    "primary-2": $primary-2
 );
 // Table Colors:
 $table-custom-variants: (
     "amethyst": $amethyst,
     "mauve-400": $mauve-400,
-    "blue-ribbon": $blue-ribbon
+    "blue-ribbon": $blue-ribbon,
+    "primary-2": $primary-2
 );
 
 // Font size
@@ -64,15 +70,15 @@ $font-sizes: (
 );
 
 // Form
-$input-bg: $amethyst;
-$input-color: #fff;
-$input-disabled-bg: $amethyst;
+$input-bg: #7CCAE6;
+$input-color: #1D1D1D;
+$input-disabled-bg: #7CCAE6;
 
-$input-border-color: $amethyst;
+$input-border-color: #7CCAE6;
 $input-border-radius: 3px;
 $input-border-radius-lg: 5px;
 
-$input-plaintext-color: #fff;
+$input-plaintext-color: #1D1D1D;
 
 $input-btn-focus-box-shadow: none;
 $input-btn-focus-width: 0;

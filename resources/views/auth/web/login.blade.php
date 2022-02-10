@@ -15,7 +15,7 @@
         </a>
     </p>
     <div class="d-flex justify-content-center">
-        <button class="btn btn-red-pink btn-lg fw-bold px-5">{{ trans('web.btn_login') }}</button>
+        <button class="btn btn-blue-ribbon text-white btn-lg fw-bold px-5">{{ trans('web.btn_login') }}</button>
     </div>
     {{ Form::close() }}
 

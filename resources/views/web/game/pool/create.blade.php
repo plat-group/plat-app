@@ -28,7 +28,7 @@
            </div>
            <div class="row mt-3 mt-md-5">
                <div class="col-md-3 mx-auto d-grid">
-                   <button type="submit" class="btn btn-red-pink btn-lg">
+                   <button type="submit" class="btn btn-blue-ribbon text-white btn-lg">
                        {{ trans('web.btn_create_game') }}
                    </button>
                </div>

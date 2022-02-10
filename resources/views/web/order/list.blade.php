@@ -47,10 +47,10 @@
                 <td class="text-center">
                     @if (Auth::user()->isCreator() && $order->waitingConfirm())
                         <a href="{{ route(CONFIRM_ORDER_GAME_ROUTE, [$order->id, ACCEPTED_ORDER_STATUS]) }}" title="{{ trans('web.accept') }}"
-                            class="btn btn-red-pink fw-bold ms-auto px-3">
+                            class="btn btn-blue-ribbon text-white fw-bold ms-auto px-3">
                             {{ trans('web.accept') }}
                         </a>
-                        <a href="{{ route(CONFIRM_ORDER_GAME_ROUTE, [$order->id, DENIED_ORDER_STATUS]) }}" title="{{ trans('web.deny') }}" class="btn btn-mauve-400 fw-bold
+                        <a href="{{ route(CONFIRM_ORDER_GAME_ROUTE, [$order->id, DENIED_ORDER_STATUS]) }}" title="{{ trans('web.deny') }}" class="btn btn-primary-2 fw-bold
                         px-3">
                             {{ trans('web.deny') }}
                         </a>

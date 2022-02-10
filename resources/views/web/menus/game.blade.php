@@ -49,11 +49,11 @@
                             </a>
                         </li>
                     @endif
-                    
+
                 </ul>
             </div>
 
-      
+
         <div class="col-3 col-md-1 align-self-center order-2 order-md-3 menu-header signed-in">
             @guest
                 <li class="list-inline-item menu-item text-decoration-underline">
@@ -78,7 +78,7 @@
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="userDropbox">
                     <li>
-                       <span class="dropdown-item-text fw-bold">{{ auth()->user()->name }} </span>
+                       <span class="dropdown-item-text fw-bold"  style="z-index: 100;">{{ auth()->user()->name }} </span>
                     </li>
                     <li><hr class="dropdown-divider"></li>
                     <li>

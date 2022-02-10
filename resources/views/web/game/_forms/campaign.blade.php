@@ -1,5 +1,5 @@
 <div class="box-campaign-game mt-5">
-    <div class="inner-box bg-mauve-400 rounded-3 p-4">
+    <div class="inner-box bg-primary-2  rounded-3 p-4">
         <x-form::open action="{{ route(CREATE_CAMPAIGN_ROUTE) }}" class="form-default has_validate">
             <x-form::input type="hidden" name="game_id" id="game_id" :value="$game->id"/>
             <div class="row gx-5">
@@ -27,7 +27,7 @@
                                    data-rule-number="true" :data-rule-min="MIN_AMOUNT_CAMPAIGN"/>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <button type="submit" id="btn-push-to-pool" class="btn btn-red-pink px-5 py-2">
+                    <button type="submit" id="btn-push-to-pool" class="btn btn-blue-ribbon text-white px-5 py-2">
                         {{ trans('web.push_to_pool') }}
                     </button>
                     <span class="ms-3">{{ trans('message.campaign_form_helper') }}</span>
