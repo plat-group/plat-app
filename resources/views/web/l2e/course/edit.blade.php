@@ -34,15 +34,24 @@
         @for ($i = 1; $i < 5; $i++)
         <div class="card text-white bg-mauve-400 mb-3">
             <div class="row g-0">
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            Lesson {{ $i }}
-                        </h5>
-                        <p class="card-text">
-                            Learner can get basic knowleage about NEAR and can create simple smart contract
-                        </p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <div class="col-md-8 p-4">
+                    <div class="row h-100">
+                        <div class="col-12 lesson-content">
+                            <h5 class="fw-bold">
+                                Lesson {{ $i }}
+                            </h5>
+                            <div class="lesson-desc">
+                                Learner can get basic knowleage about NEAR and can create simple smart contract
+                            </div>
+                        </div>
+                        <div class="col-12 lesson-actions mt-auto">
+                            <a href="#" class="btn btn-sm btn-primary" title="">
+                                edit
+                            </a>
+                            <a href="#" class="btn btn-sm btn-primary" title="">
+                                delete
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
