@@ -4,7 +4,6 @@ namespace App\Listeners;
 
 use App\Services\GameService;
 use App\Listeners\Traits\SmartContract;
-use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Log;
 
 class PushGameToPoolListener
@@ -45,6 +44,7 @@ class PushGameToPoolListener
         $smartContractId = $this->getSmartContractId();
 
         Log::info('call to smartcontract create_fast_game');
+        Log::info('param = ' . $this->makeParameters($campaign));
         // Call smartcontract to create game information on blockchain
         $command = 'near call ' . $smartContractId . ' create_fast_game \''
                    . $this->makeParameters($campaign) . '\''
@@ -75,10 +75,18 @@ class PushGameToPoolListener
     {
         $gameId = $campaign->game_id;
 
+        // $game = $campaign->game();
+        // $clientWalletAddress = $game->owner()->wallet_address;
+        $clientWalletAddress = 'platclient.testnet';
+
+        // $gameTemplate = $game->order()->gameTemplate();
+        // $creatorWalletAddress = $gameTemplate->creator()->wallet_address();
+        $creatorWalletAddress = 'platcreator.testnet';
+
         $result = [
             'game_id' => $gameId,
-            'creator_id' => 'platcreator.testnet',
-            'client_id' => 'platclient.testnet',
+            'creator_id' => $creatorWalletAddress,
+            'client_id' => $clientWalletAddress,
             'amount_creator' => $this->toYokto($campaign->creator_budget),
             'amount_referral' => $this->toYokto($campaign->referral_budget),
             'amount_user' => $this->toYokto($campaign->user_budget),
@@ -86,27 +94,4 @@ class PushGameToPoolListener
 
         return json_encode($result);
     }
-
-    // /**
-    //  * Run a commandline
-    //  *
-    //  * @param $command
-    //  *
-    //  * @return bool
-    //  */
-    // public function commandlineRun($command, $campaign)
-    // {
-    //     $smartContractId = $this->getSmartContractId();
-
-    //     $process = new Process(['near', 'call', $smartContractId, 'create_fast_game', '\''
-    //     . $this->makeParameters($campaign) . '\''
-    //     , ' --accountId', $smartContractId]);
-    //     $process->run();
-
-    //     $process->run(function ($type, $buffer) {
-    //         Log::debug($buffer);
-    //     });
-
-    //     return true;
-    // }
 }

@@ -7,8 +7,6 @@ use App\Events\PlayedGameEvent;
 use App\Services\CampaignService;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use Symfony\Component\Process\Process;
-use Illuminate\Support\Facades\Log;
 
 class PayCoinListener implements ShouldQueue
 {
@@ -41,11 +39,7 @@ class PayCoinListener implements ShouldQueue
         $campaign = $this->campaignService->find($event->campaignId);
         $smartContractId = $this->getSmartContractId();
 
-        // $command = 'near call ' . $smartContractId . ' withdraw \''
-        //            . $this->makeParameters($campaign, $event->playerId) . '\''
-        //            . ' --accountId ' . $smartContractId;
-        $command = sprintf('near call %s %s \'%s\' --accountId %s --gas 50000000000000 --depositYocto 1
-        ',
+        $command = sprintf('near call %s %s \'%s\' --accountId %s --gas 50000000000000 --depositYocto 1',
             $smartContractId, 'reward', $this->makeParameters($campaign, $event->playerId), $smartContractId);
 
         $this->commandlineRun($command);
