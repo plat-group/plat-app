@@ -9,7 +9,7 @@ use App\Models\GameTemplate;
 use App\Models\Order;
 use App\Models\User;
 
-class CreateTemplateData extends Seeder
+class CreateNearGameData extends Seeder
 {
     /**
      * Run the database seeds.
@@ -59,7 +59,19 @@ class CreateTemplateData extends Seeder
         $user->email = 'client@plats.network';
         $user->email_verified_at = now();
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
-        $user->username = 'platclient.testnet'; // for test
+        $user->username = 'platclient.testnet';
+        $user->role = CLIENT_ROLE;
+        $user->avatar = 'avatar/client.png';
+        $user->balance = 0;
+        $user->blocked_balance = 0;
+        $user->save();
+
+        $user = new User();
+        $user->name = 'NearClient';
+        $user->email = 'nearclient@plats.network';
+        $user->email_verified_at = now();
+        $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
+        $user->username = 'nearclient.testnet'; // for test
         $user->role = CLIENT_ROLE;
         $user->avatar = 'avatar/client.png';
         $user->balance = 0;
@@ -200,10 +212,20 @@ class CreateTemplateData extends Seeder
         $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/bike.png';
         $game->status = ON_MARKET_GAME_STATUS;
         $game->save();
+
+        $creatorId = $this->getRandomCreator($creatorIds);
+        $game = new GameTemplate();
+        $game->creator_id = $creatorId;
+        $game->name = 'Memory Card game';
+        $game->introduction = 'This is a very simple and interesting game';
+        $game->description = 'This is a very simple and interesting game';
+        $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/memory-game.png';
+        $game->status = ON_MARKET_GAME_STATUS;
+        $game->save();
     }
 
     private function createOrderData() {
-        $clientId = User::where('email', 'client@plats.network')->pluck('id')->first();
+        $clientId = User::where('email', 'nearclient@plats.network')->pluck('id')->first();
         $gameTemplateId = GameTemplate::pluck('id')->first();
         $gameId = Game::pluck('id')->first();
 
@@ -223,9 +245,9 @@ class CreateTemplateData extends Seeder
         $order->client_id = $clientId;
         $order->game_template_id = $gameTemplateId;
         // $order->game_id = $gameId;
-        $order->content = 'Please change logo image by our logo';
+        $order->content = 'Please change logo image by our ecosystems dapp\'s logo';
         $order->agreement_amount = 40;
-        $order->royalty_fee = 0.1;
+        $order->royalty_fee = 1;
         $order->status = ORDERING_ORDER_STATUS;
         $order->save();
     }
@@ -247,7 +269,7 @@ class CreateTemplateData extends Seeder
     // }
 
     private function createGameData() {
-        $clientId = User::where('email', 'client@plats.network')->pluck('id')->first();
+        $clientId = User::where('email', 'nearclient@plats.network')->pluck('id')->first();
         // $gameTemplate = GameTemplate::where('name', 'Plats game car')->first();
 
         $game = new Game();
@@ -256,7 +278,7 @@ class CreateTemplateData extends Seeder
         $game->name = 'Near Ecosystem Card Game';
         $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
         $game->description = 'Let\'s play and learn about NEAR Ecosystem';
-        $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-near.jpg';
+        $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-near.png';
 
         $game->status = FINISHED_CREATING_GAME_STATUS;
         $game->save();
@@ -268,10 +290,10 @@ class CreateTemplateData extends Seeder
         $campaign = new Campaign();
         $campaign->game_id = $gameId;
         $campaign->total_budget = 100;
-        $campaign->creator_budget = 0.005;
-        $campaign->referral_budget = 0.006;
-        $campaign->user_budget = 0.008;
-        $campaign->start_at = '2021/12/01';
+        $campaign->creator_budget = 0.5;
+        $campaign->referral_budget = 0.8;
+        $campaign->user_budget = 1;
+        $campaign->start_at = '2022/01/01';
         $campaign->end_at = '2022/12/01';
         $campaign->save();
     }
@@ -285,4 +307,5 @@ class CreateTemplateData extends Seeder
         $idx = rand(0, $count - 1);
         return $creatorIds[$idx];
     }
+
 }

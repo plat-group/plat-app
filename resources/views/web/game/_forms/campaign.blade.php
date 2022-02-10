@@ -17,7 +17,7 @@
                 <div class="col-md-12 mt-4">
                     <x-form::label :label="trans('web.campaign_referral_budget_label')" class="fs-18 fw-bold"/>
                     <p class="mb-3">{{ trans('web.campaign_referral_budget_help') }}</p>
-                    <x-form::input name="referral_budget" :value="old('budget_referral')" class="required w-50"
+                    <x-form::input name="referral_budget" :value="old('referral_budget')" class="required w-50"
                                    data-rule-number="true" :data-rule-min="MIN_AMOUNT_CAMPAIGN"/>
                 </div>
                 <div class="col-md-12 mt-4">
