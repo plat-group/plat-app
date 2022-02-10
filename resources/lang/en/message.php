@@ -7,6 +7,6 @@ return [
     'created_order_game_template' => 'Created an order request for the game. Waiting for accept, please!',
     'order_status_changed' => 'Status of the order has been changed!',
     'creator_upload_game_success' => 'Game uploaded Successfully!',
-    'campaign_form_helper' => '*Campaign will be finished once total token empty',
+    'campaign_form_helper' => '*A campaign will be finished once total assigned tokens are used up',
     'campaign_created' => 'Successful campaign created!',
 ];

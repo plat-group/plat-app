@@ -7,7 +7,7 @@
             {{ trans('web.earned_token_label') }}
         </h3>
         <div class="box-total-number">
-            <span>{{ $totalEarned }} {{ CURRENCY_CODE }}</span>
+            <span>{{ $totalEarned }} {{ TOKEN_SYMBOL }}</span>
         </div>
     </div>
 

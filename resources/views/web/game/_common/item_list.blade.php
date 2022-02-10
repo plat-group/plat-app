@@ -10,7 +10,7 @@
     <div class="box-game-item__description fw-bold">
         By <span class="link-primary">{{ $item->manager()->name }}</span> at {{ $item->updated_at->toFormattedDateString() }}
         @if ($item->on_pool && isset($item->campaign))
-            <br/> Advertiser's reward: {{ $item->campaign->referral_budget . ' ' . CURRENCY_CODE }}
+            <br/> Advertiser's reward: {{ $item->campaign->referral_budget . ' ' . TOKEN_SYMBOL }}
         @endif
     </div>
 </div>

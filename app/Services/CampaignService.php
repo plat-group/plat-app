@@ -66,7 +66,7 @@ class CampaignService extends BaseService
     }
 
     /**
-     * Save generated link for referral
+     * Save generated link for referrer
      *
      * @param $referralId
      * @param $campaignId
