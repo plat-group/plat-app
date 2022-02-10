@@ -31,6 +31,7 @@ $table-variants: map-merge($table-variants, $table-custom-variants);
 
 // 6. Add additional custom code here
 @import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/card";
 @import "~bootstrap/scss/forms";
 @import "~bootstrap/scss/buttons";
 @import "~bootstrap/scss/navbar";
