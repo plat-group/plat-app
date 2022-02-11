@@ -87,7 +87,7 @@ class Game extends Controller
         $game = $this->gameService->find($id);
         $referral = $this->userService->find($referralId);
 
-        return redirect()->to(sprintf('/upload/%s/index.html?gid=%s&cid=%s&rid=%s', $game->file, $id, $game->campaign->id, $referral->wallet_address));
+        return redirect()->to(sprintf('/upload/%s/index.html?gid=%s&cid=%s&rid=%s', $game->file, $id, $game->campaign->id, $referralId));
     }
 
     /**
