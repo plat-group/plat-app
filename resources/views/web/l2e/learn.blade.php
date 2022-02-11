@@ -92,7 +92,7 @@
                 <div class="modal-body">
                     <div class="row justify-content-center w-100">
                         <div class="col-12 col-md-3 d-flex align-self-center">
-                            Right
+                            Correct
                         </div>
                         <div class="col-12 col-md-8 d-flex align-self-center">
                             <span class="box">7</span>
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                     <div class="row justify-content-center w-100">
-                        Congratulation. You've received <span class="earned"><strong>100</strong></span>Plats token.
+                    Congratulations. You've received<span class="earned"><strong>100</strong></span>Plats tokens.
                     </div>
                 </div>
                 <div class="modal-footer">

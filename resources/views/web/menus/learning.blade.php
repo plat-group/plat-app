@@ -1,12 +1,12 @@
-<header class="py-4">
+<header class="pb-2">
     <div class="container">
-        <div class="row">
-            <div class="col-6 col-md-2 me-auto order-1">
+        <div class="row py-2 text-center">
+            <div class="col-3 col-md-2 me-auto order-1">
                 <a class="app-brand p-0" href="{{ url('') }}">
                     <img src="{{ asset('images/web/logo_learninghub.png') }}" alt="PlatChain" class="w-100"/>
                 </a>
             </div>
-            <div class="col-12 col-md-6 align-self-md-center mt-4 mt-md-0 order-3 order-md-2">
+            <div class="col-6 col-md-9 align-self-md-center mt-4 mt-md-0 order-3 order-md-2">
                 <ul class="menu-header list-unstyled list-inline mb-0">
                     @if(displayMenuDashboard())
                         <li class="list-inline-item menu-item">
@@ -27,9 +27,9 @@
                     @endif
                     @if(displayMenuPool())
                         <li class="list-inline-item menu-item">
-                            <a href="{{ route(POOL_GAME_ROUTE) }}" title="{{ trans('web.learning.menu.hub')}}"
+                            <a href="{{ route(POOL_GAME_ROUTE) }}" title="{{ trans('web.learning.menu.pool')}}"
                                 @class(['menu-link', 'active' => request()->routeIs(POOL_GAME_ROUTE, DETAIL_GAME_ROUTE)])>
-                                {{ trans('web.learning.menu.hub') }}
+                                {{ trans('web.learning.menu.pool') }}
                             </a>
                         </li>
                     @endif
@@ -65,8 +65,8 @@
                     @endguest
                 </ul>
             </div>
-         @auth
-            <div class="col-3 col-md-1 align-self-center order-2 order-md-3 signed-in">
+            @auth
+            <div class="col-3 col-md-1 align-self-center order-2 order-md-3 menu-header signed-in">
                 <div class="dropdown-toggle cursor-pointer"
                    id="userDropbox" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                     <img src="{{auth()->user()->avatar ? '/upload/' . auth()->user()->avatar : '/static/images/web/avatar.png'}}" alt="" class="rounded-circle" style="width: 50px;"/>
@@ -88,7 +88,7 @@
                     </li>
                 </ul>
             </div>
-         @endauth
+            @endauth
         </div>
     </div>
 </header>

@@ -1,12 +1,12 @@
 <header class="pb-2">
     <div class="container">
         <div class="row py-2 text-center">
-            <div class="col-3 col-md-2 me-auto order-1">
+            <div class="col-2 col-md-2 me-auto order-1">
                 <a class="app-brand p-0" href="{{ url('') }}">
                     <img src="{{ asset('images/web/logo_gamehub.png') }}" alt="PlatChain" class="w-100 h-100"/>
                 </a>
             </div>
-            <div class="col-6 col-md-9 align-self-md-center mt-4 mt-md-0 order-3 order-md-2">
+            <div class="col-6 col-md-8 align-self-md-center mt-4 mt-md-0 order-3 order-md-2" style="text-align: right;">
                 <ul class="menu-header list-unstyled list-inline mb-0">
                     @if(displayMenuDashboard())
                         <li class="list-inline-item menu-item">
@@ -54,7 +54,7 @@
             </div>
 
 
-        <div class="col-3 col-md-1 align-self-center order-2 order-md-3 menu-header signed-in">
+        <div class="col-3 col-md-2 align-self-center order-2 order-md-3 menu-header signed-in" style="text-align: right;">
             @guest
                 <li class="list-inline-item menu-item text-decoration-underline">
                     <a id="sign-in" class="menu-link fw-normal" href="{{ route(LOGIN_ROUTE) }}" title="{{ trans('web.login')}}">

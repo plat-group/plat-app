@@ -86,8 +86,8 @@ return [
     'learning' => [
         'menu' => [
             'dashboard' => 'Dashboard',
-            'market' => 'Market',
-            'hub' => 'Learning Hub',
+            'market' => 'Hub',
+            'pool' => 'Pool',
             'my_content' => 'My Content',
             'my_order' => 'My Order'
         ]

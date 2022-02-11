@@ -6,24 +6,24 @@
             <x-form::input type="hidden" name="game_template_id" :value="$game->id"/>
         <div class="mb-4">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <x-form::label :label="trans('web.order_form.agreement_amount_label')" class="fs-18 fw-bold"/>
                     <p>{{ trans('web.order_form.agreement_amount_help') }}</p>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <x-form::label :label="trans('web.order_form.royalty_fee_label')" class="fs-18 fw-bold"/>
                     <p class="mb-3">{{ trans('web.order_form.royalty_fee_help') }}</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                    @if(!$order)
                         <x-form::input name="agreement_amount" :value="old('agreement_amount')" class="required" data-rule-number="true" data-behavior="deposit"/>
                     @else
                         <x-form::input name="agreement_amount" value="{{ $order->agreement_amount }}" class="required" data-rule-number="true" data-behavior="deposit" readonly="true"/>
                     @endif
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     @if(!$order)
                         <x-form::input name="royalty_fee" :value="old('royalty_fee')" class="required" data-rule-number="true"/>
                     @else
