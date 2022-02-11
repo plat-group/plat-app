@@ -27,6 +27,7 @@ return [
     'create_new_game' => 'Upload new game',
     'game_name' => 'Game title',
     'game_intro' => 'Game introduction',
+    'game_description' => 'Description',
     'upload_game_thumb' => 'Drag and drop thumbnail',
     'upload_game_file' => 'Drag and drop game file',
     'game_demo_url' => 'Demo URL',

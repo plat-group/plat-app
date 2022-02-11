@@ -78,7 +78,7 @@
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="userDropbox">
                     <li>
-                       <span class="dropdown-item-text fw-bold"  style="z-index: 100;">{{ auth()->user()->name }} </span>
+                       <span class="dropdown-item-text fw-bold">{{ auth()->user()->name }} </span>
                     </li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
