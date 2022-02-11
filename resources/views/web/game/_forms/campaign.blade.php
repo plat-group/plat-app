@@ -30,7 +30,7 @@
                     <button type="button" id="btn-push-to-pool" class="btn btn-blue-ribbon text-white px-5 py-2">
                         {{ trans('web.push_to_pool') }}
                     </button>
-                    <span class="ms-3">{{ trans('message.campaign_form_helper') }}</span>
+                    <p class="mb-3">{{ trans('message.campaign_form_helper') }}</p>
                 </div>
             </div>
         </x-form::open>
