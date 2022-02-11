@@ -4,9 +4,9 @@
         <h2 class="fw-bold text-blue-ribbon mb-3">
             {{ $game->name }}
         </h2>
-        <div class="game-introduction fw-bold text-neutral-2 text-justify fs-16 mb-4">
+        <!-- <div class="game-introduction fw-bold text-neutral-2 text-justify fs-16 mb-4">
             {{ $game->introduction }}
-        </div>
+        </div> -->
         <div class="game-description text-neutral-2 text-justify fs-16">
             {{ $game->description }}
         </div>
