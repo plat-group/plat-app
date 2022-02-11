@@ -47,7 +47,7 @@ class GameTemplateService extends BaseService
      */
     public function create(Request $request, $creatorId)
     {
-        $data = $request->only(['name', 'introduction', 'demo_url']);
+        $data = $request->only(['name', 'introduction', 'description', 'demo_url']);
         $data['creator_id'] = $creatorId;
         // TODO: Need process before publish on the market
         $data['status'] = ON_MARKET_GAME_STATUS;
