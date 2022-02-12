@@ -1,4 +1,4 @@
-<div class="box-referral-game mt-5">
+<div class="box-referral-game mt-3 mb-3">
     <div class="inner-box bg-primary-2  rounded-3 p-3">
         <div class="row gx-5 mb-4">
             <div class="col-md-12">
