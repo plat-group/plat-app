@@ -82,11 +82,6 @@
                     </li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
-                        <a class="dropdown-item" href="#" class="" title="{{ trans('web.profile') }}">
-                            {{ trans('web.profile') }}
-                        </a>
-                    </li>
-                    <li>
                          <a class="dropdown-item" href="{{ route(LOGOUT_ROUTE) }}" title="{{ trans('web.logout') }}">
                             {{ trans('web.logout') }}
                         </a>
