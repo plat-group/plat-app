@@ -35,3 +35,8 @@
         border-radius: 9px;
     }
 }
+
+img {
+    z-index: -1;
+    position: relative;
+}
