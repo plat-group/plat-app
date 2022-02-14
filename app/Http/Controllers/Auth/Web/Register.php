@@ -47,6 +47,10 @@ class Register extends AuthController
     {
         $this->userService->create($request, $request->input('request_role'));
 
-        return redirect()->route(POOL_GAME_ROUTE);
+        if(env('APP_TYPE') == 2) {
+            return redirect()->route(L2E_ROUTE);
+        }else{
+            return redirect()->route(POOL_GAME_ROUTE);
+        }
     }
 }

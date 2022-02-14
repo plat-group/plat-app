@@ -47,7 +47,7 @@ class GameTemplateService extends BaseService
      */
     public function create(Request $request, $creatorId)
     {
-        $data = $request->only(['name', 'introduction']);
+        $data = $request->only(['name', 'introduction', 'description', 'demo_url']);
         $data['creator_id'] = $creatorId;
         // TODO: Need process before publish on the market
         $data['status'] = ON_MARKET_GAME_STATUS;
@@ -55,6 +55,10 @@ class GameTemplateService extends BaseService
         if ($request->hasFile('thumb')) {
             $data['thumb'] = $this->uploadThumb($request->file('thumb'), $creatorId);
         }
+
+        // if ($request->hasFile('game_file')) {
+        //     $data['file'] = $this->uploadGame($request->file('game_file'), $creatorId);
+        // }
 
         $record = $this->repository->create($data);
 
@@ -72,4 +76,14 @@ class GameTemplateService extends BaseService
     {
         return Storage::putFile('game_template/' . $createId, $file);
     }
+
+    /**
+     * Upload game template
+     *
+     * @param \Illuminate\Http\UploadedFile $file
+     */
+    // protected function uploadGame($file, $createId = null)
+    // {
+    //     return Storage::putFile('game_template/' . $createId . '/game', $file);
+    // }
 }

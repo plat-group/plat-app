@@ -84,6 +84,7 @@ class Game extends Model
 
         // generate link
         return route(PLAY_GAME_ROUTE, [$this->id, $advertiserId]);
+        // return route(PLAY_LEARN_ROUTE, [$this->id, $advertiserId]);
     }
 
     /**

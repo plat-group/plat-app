@@ -3,7 +3,7 @@
 if (!defined('DEFINE_CONSTANT')) {
     define('DEFINE_CONSTANT', 'DEFINE_CONSTANT');
 
-    define('CURRENCY_CODE', 'Plt');
+    define('TOKEN_SYMBOL', 'Plt');
     define('PAGE_SIZE', 20);
     define('FORM_INPUT_MAX_LENGTH', 255);
 
@@ -36,9 +36,17 @@ if (!defined('DEFINE_CONSTANT')) {
     //For Creator confirm
     define('ACCEPTED_ORDER_STATUS', 2);
     define('DENIED_ORDER_STATUS', 3);
+    define('FINISH_ORDER_STATUS', 9);
 
     /**
      * Campaign
      */
     define('MIN_AMOUNT_CAMPAIGN', 0.001);
+
+    /**
+     * Content type
+     */
+    define('CONTENT_TYPE_GAME', 1);
+    define('CONTENT_TYPE_LEARNING', 2);
+
 }

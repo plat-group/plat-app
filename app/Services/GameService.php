@@ -4,18 +4,75 @@ namespace App\Services;
 
 use App\Events\PlayedGameEvent;
 use App\Repositories\GameRepository;
+use App\Repositories\OrderRepository;
 use App\Services\Concerns\BaseService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GameService extends BaseService
 {
 
+    protected $orderRepository;
+
     /**
      * @param \App\Repositories\GameRepository $repository
      */
-    public function __construct(GameRepository $repository)
+    public function __construct(GameRepository $repository, OrderRepository $orderRepository)
     {
         $this->repository = $repository;
+        $this->orderRepository = $orderRepository;
+    }
+
+    /**
+     * Create a game for client
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param string $creatorId
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function create($request, $orderId)
+    {
+        $data = $request->only(['name', 'introduction']);
+        $data['owner_id'] = $clientId = $request->user()->id;
+        // TODO: Need process before publish on the market
+        $data['status'] = FINISHED_CREATING_GAME_STATUS;
+
+        if ($request->hasFile('thumb')) {
+            $data['thumb'] = $this->uploadThumb($request->file('thumb'), $clientId);
+        }
+
+        $order = $this->orderRepository->find($orderId);
+        $data['file'] = $order->game_file; // Game file do creator upload len
+
+        $record = $this->repository->create($data);
+
+        // TODO Call smartcontract to create game data on blockchain
+
+        $this->withSuccess(trans('message.game_created'));
+
+        return $record;
+    }
+
+    /**
+     * Upload thumb image of game
+     *
+     * @param \Illuminate\Http\UploadedFile $file
+     */
+    protected function uploadThumb($file, $createId = null)
+    {
+        return Storage::putFile('game_template/' . $createId, $file);
+    }
+
+    /**
+     * Upload game template
+     *
+     * @param \Illuminate\Http\UploadedFile $file
+     */
+    protected function uploadGame($file, $createId = null)
+    {
+        return Storage::putFile('game_template/' . $createId, $file);
     }
 
     /**

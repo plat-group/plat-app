@@ -37,3 +37,5 @@ $table-variants: map-merge($table-variants, $table-custom-variants);
 @import "~bootstrap/scss/dropdown";
 @import "~bootstrap/scss/carousel";
 @import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/close";

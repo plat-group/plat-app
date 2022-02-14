@@ -38,7 +38,34 @@ class MyOrder extends Controller
             return $this->incomeHistories($request);
         }
 
-        return view('web.game.my_order', ['orders' => $orders]);
+        return view('web.order.list', ['orders' => $orders]);
+    }
+
+    /**
+     * Creator|Client view detail of order
+     *
+     * @param string $orderId
+     * @param int|string $action
+     */
+    public function show($orderId)
+    {
+        $order = $this->orderService->find($orderId)->loadMissing('gameTemplate');
+        $game = $order->gameTemplate;
+
+        return view('web.order.detail', compact('order', 'game'));
+    }
+
+    /**
+     * Creator upload game and other resource associate to order
+     *
+     * @param string $orderId
+     * @param int|string $action
+     */
+    public function storeGame($orderId, Request $request)
+    {
+        $this->orderService->storeGame($orderId, $request);
+
+        return $this->show($orderId);
     }
 
     /**
@@ -64,5 +91,15 @@ class MyOrder extends Controller
     public function incomeHistories(Request $request)
     {
         return view('web.income.history');
+    }
+
+    /**
+     * Download resource file
+     */
+    public function downloadResource($orderId)
+    {
+        $order = $this->orderService->find($orderId);
+        $filePath = public_path('upload') . '/' . $order->resource_file;
+        return response()->download($filePath);
     }
 }

@@ -4,7 +4,7 @@
         "dev": "npm run development",
         "development": "mix",
         "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "watch-pool": "mix watch -- --watch-options-pool=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production"
@@ -12,6 +12,8 @@
     "devDependencies": {
         "assemblyscript": "^0.19.3",
         "axios": "^0.21",
+        "browser-sync": "^2.27.7",
+        "browser-sync-webpack-plugin": "^2.3.0",
         "jest": "^27.3.1",
         "jest-environment-node": "^27.3.1",
         "laravel-mix": "^6.0.6",
@@ -32,6 +34,8 @@
         "jquery": "^3.6.0",
         "jquery-datetimepicker": "^2.5.21",
         "jquery-validation": "^1.19.3",
+        "jquery.maskedinput": "^1.4.1",
+        "jquery.repeater": "^1.2.1",
         "near-api-js": "^0.43.1",
         "path": "^0.12.7",
         "popper.js": "^1.16.1",

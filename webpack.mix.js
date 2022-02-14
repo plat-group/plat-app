@@ -12,6 +12,7 @@ if (!mix.inProduction()) {
         devtool: 'inline-source-map'
     }).sourceMaps();
 }
+
 //config.output.publicPath = process.env.APP_CDN_URL + '/';
 if (mix.inProduction()) {
     mix.webpackConfig({
@@ -102,3 +103,5 @@ fontSources.forEach(fPath => {
         }
     });
 });
+
+mix.browserSync('127.0.0.1:8000');
