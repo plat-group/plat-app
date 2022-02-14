@@ -1,1 +1,0 @@
-window.i18n = {"message":[]};
