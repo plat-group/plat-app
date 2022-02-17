@@ -39,7 +39,7 @@ return [
     'btn_play_game' => 'Play',
     'next_page_game' => 'More Games',
     'order_form' => [
-        'agreement_amount_label' => 'Order value',
+        'agreement_amount_label' => 'Order token',
         'agreement_amount_help' => '* Token amount will be paid to Creator after Client\'s approval',
         'royalty_fee_label' => 'Tokens per play',
         'royalty_fee_help' => '* Token amount will be paid to Creator every time User finishes playing the game',
@@ -58,7 +58,7 @@ return [
     ],
     'my_order_id' => 'ID',
     'order_game' => 'Order game',
-    'agreement_amount' => 'Order value',
+    'agreement_amount' => 'Order token',
     'royalty_fee' => 'Token per play',
     'status' => 'Status',
     'accept' => 'Accept',
