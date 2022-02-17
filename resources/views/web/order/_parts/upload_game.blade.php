@@ -8,7 +8,7 @@
             <div class="row mb-3">
                 <div class="col-md-12">
                     <div class="box-upload upload-file rounded-3">
-                        <label for="fileGame" class="form-label align-self-center h4 cursor-pointer">
+                        <label for="fileGame" class="form-label align-self-center h4 cursor-pointer text-white">
                             {{ trans('web.upload_game_file') }}
                         </label>
                         <input class="form-control" type="file" name="game_file" id="fileGame">
@@ -18,7 +18,7 @@
             <div class="row mb-3">
                 <div class="col-md-12">
                     <div class="box-upload upload-file rounded-3">
-                        <label for="fileResource" class="form-label align-self-center h4 cursor-pointer">
+                        <label for="fileResource" class="form-label align-self-center h4 cursor-pointer text-white">
                             {{ trans('web.upload_resource_file') }}
                         </label>
                         <input class="form-control" type="file" name="resource_file" id="fileResource" accept="image/*,.zip">
