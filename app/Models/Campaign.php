@@ -59,13 +59,11 @@ class Campaign extends Model
      */
     public function scopeOfGame($query, $gameId, $campaignId = null)
     {
-        $query = $query->where('game_id', $gameId);
-
         if (!is_null($campaignId)) {
             return $query->where('id', $campaignId);
         }
 
-        return $query;
+        return $query->where('game_id', $gameId);
     }
 
     /**

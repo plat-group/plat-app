@@ -82,8 +82,18 @@ class Login extends Controller
 
         $this->clearLoginAttempts($request);
 
-        $redirectRouteName = env('APP_TYPE') == 2 ? L2E_ROUTE : POOL_GAME_ROUTE;
+        $redirectRouteName = MARKET_GAME_ROUTE; // Default URL
 
+        if(env('APP_TYPE') == 2) {
+            $redirectRouteName = L2E_ROUTE;
+        }else{
+            // referrer should redirect to pool
+            if(isReferral()) {
+                $redirectRouteName = POOL_GAME_ROUTE;
+            }elseif(isUser()) {
+                $redirectRouteName = MY_TRANSACTION_ROUTE;
+            }
+        }
         return response()->json(['redirect' => route($redirectRouteName)]);
     }
 

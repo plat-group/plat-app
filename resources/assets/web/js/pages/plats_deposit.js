@@ -8,7 +8,7 @@ window.nearConfig = getConfig(process.env.NODE_ENV || "development");
 
 const {  utils, transactions } = require('near-api-js');
 export const nearUtils = utils;
-const DEFAULT_GAS = 300000000000000;
+const DEFAULT_GAS = 100000000000000;
 
 // When load
 $(function () {
@@ -44,6 +44,12 @@ $('#btn-push-to-pool').on('click', async function(){
         const result = await window.account.signAndSendTransaction({
             receiverId: window.nearConfig.contractTokenName,
             actions: [
+                transactions.functionCall(
+                    'storage_deposit',
+                    {},
+                    DEFAULT_GAS,
+                    utils.format.parseNearAmount("0.01")
+                ),
                 transactions.functionCall(
                     'ft_transfer_call',
                     {

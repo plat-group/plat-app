@@ -17,7 +17,7 @@
     @if ($games->hasMorePages())
     <div class="row mt-4">
         <div class="col-md-2 btn-more-game d-grid mx-auto">
-            <a href="{{ $games->nextPageUrl() }}" title="{{ trans('web.next_page_game') }}" class="btn btn-red-pink btn-lg fw-bold">
+            <a href="{{ $games->nextPageUrl() }}" title="{{ trans('web.next_page_game') }}" class="btn btn-blue-ribbon text-white btn-lg fw-bold">
                 {{ trans('web.next_page_game') }}
             </a>
             <div class="bottom-gradient"></div>

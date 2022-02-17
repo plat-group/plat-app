@@ -26,7 +26,7 @@
     <!-- Modal -->
     <div class="modal fade" id="exercise2" tabindex="-1" aria-labelledby="exerciseLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content bg-mauve-400">
+            <div class="modal-content bg-primary-2 ">
                 <div class="modal-body d-flex">
                     <div class="row justify-content-center w-100">
                         <div class="col-12 col-md-6 d-flex align-self-center">
@@ -62,7 +62,7 @@
     <!-- Modal Remain for testing -->
     <div class="modal fade" id="exercise" tabindex="-1" role="dialog" aria-labelledby="exerciseLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content bg-mauve-400">
+            <div class="modal-content bg-primary-2 ">
             <div class="modal-body">
                     <div class="question h5 mb-3">
                         Content question content question content questioncontent question content question content question?
@@ -92,14 +92,14 @@
     <!-- Modal Reward -->
     <div class="modal fade" id="reward" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content bg-mauve-400">
+            <div class="modal-content bg-primary-2 ">
                 <div class="modal-header">
                     <h5 class="modal-title">Lesson Finish!</h5>
                 </div>
                 <div class="modal-body">
                     <div class="row justify-content-center w-100">
                         <div class="col-12 col-md-3 d-flex align-self-center">
-                            Right
+                            Correct
                         </div>
                         <div class="col-12 col-md-8 d-flex align-self-center">
                             <span class="box">7</span>
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                     <div class="row justify-content-center w-100">
-                        Congratulation. You've received <span class="earned"><strong>100</strong></span>Plats token.
+                    Congratulations. You've received<span class="earned"><strong>100</strong></span>Plats tokens.
                     </div>
                 </div>
                 <div class="modal-footer">
