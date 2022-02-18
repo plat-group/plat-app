@@ -27,7 +27,7 @@
 </div>
 <div class="row">
     <div class="col-12 col-md-10 mx-md-auto">
-        <a href="#" title="" class="btn btn-warning mb-3">
+        <a href="{{ route(CREATE_LESSON_ROUTE, $course->id) }}" title="" class="btn btn-warning mb-3">
             + Add new lesson for course
         </a>
 

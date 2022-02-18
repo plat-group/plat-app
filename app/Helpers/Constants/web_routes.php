@@ -54,12 +54,12 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
      * Learn to Earn
      */
     define('L2E_ROUTE', 'l2e.route');
-    define('CREATE_L2E_ROUTE', 'l2e.create.route');
+    define('LESSON_ROUTE', 'l2e.lesson.route');
+    define('CREATE_LESSON_ROUTE', 'l2e.lesson.create.route');
     define('STORE_L2E_ROUTE', 'l2e.store.route');
     define('MY_COURSE_ROUTE', 'l2e.course.management.route');
     define('CREATE_COURSE_ROUTE', 'l2e.course.create.route');
     define('EDIT_COURSE_ROUTE', 'l2e.course.edit.route');
     define('STORE_COURSE_ROUTE', 'l2e.course.store.route');
-    define('CREATE_STEP2_L2E_COURSE_ROUTE', 'l2e.create.step2.course.route');
     define('PLAY_LEARN_ROUTE', 'l2e.play.course.route');
 }
