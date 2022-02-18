@@ -1,5 +1,5 @@
 @extends('web.layout')
-@section('title_page') Plats L2E - create course @stop
+@section('title_page') Plats L2E - Create course @stop
 @section('content')
 <div class="row">
     <x-form::open action="{{ route(CREATE_STEP2_L2E_COURSE_ROUTE) }}" files="true" id="create-l2e" class="form-default create_l2e has_validate">
@@ -17,8 +17,9 @@
             </div>
         </div>
     </div>
+    <x-forms.input type="hidden" name="id" value="0"/>
     <div class="d-grid gap-2 col-3 mx-auto">
-        <button class="btn btn-success" type="submit">Next</button>
+        <button class="btn btn-success" type="submit">Save</button>
     </div>
     </x-form::open>
 </div>

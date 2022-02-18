@@ -14,12 +14,12 @@ class CreateLessonsTable extends Migration
     public function up()
     {
         Schema::create('lessons', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->uuid('course_id');
+            $table->uuid('id')->primary();
+            $table->uuid('course_id')->index();
             $table->string('name');
             $table->text('content_url');
             $table->tinyInteger('content_type')->default(0)->comment('0: video, 1: pdf, 2: powerpoint, 3:word, 4: excel');
-            $table->text('content_description');
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

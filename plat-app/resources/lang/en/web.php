@@ -91,5 +91,7 @@ return [
             'my_content' => 'My Content',
             'my_order' => 'My Order'
         ]
-    ]
+    ],
+    'course_management' => 'Course Management',
+    'create_new_course' => 'Create new course',
 ];

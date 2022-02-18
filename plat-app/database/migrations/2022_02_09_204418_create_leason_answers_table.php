@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLearningCoursesTable extends Migration
+class CreateLeasonAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateLearningCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('lesson_answers', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('creator_id')->index();
-            $table->string('name');
-            $table->text('description');
-            $table->string('thumbnail')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
+            $table->uuid('question_id')->index();
+            $table->string('answer');
+            $table->tinyInteger('correct')->default(0);
         });
     }
 
@@ -31,6 +28,6 @@ class CreateLearningCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('lesson_answers');
     }
 }
