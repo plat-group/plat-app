@@ -1,0 +1,42 @@
+@import "../var";
+
+.game-item-highlight {
+    .thumb-item {
+        border: 1px solid #E9DFEE;
+        box-sizing: border-box;
+        filter: drop-shadow(0px 5px 11px rgba(225, 215, 215, 0.47));
+    }
+}
+
+
+.box-game-item {
+    &__title {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    &__description {
+        color: #5D656D;
+    }
+
+    .thumb-item {
+        img {
+            width: 270px;
+            height: 225px;
+        }
+    }
+}
+
+.btn-more-game {
+    .bottom-gradient {
+        height: 11px;
+        background: $cyan-blue-500;
+        color: $white;
+        border-radius: 9px;
+    }
+}
+
+img {
+    z-index: -1;
+    position: relative;
+}

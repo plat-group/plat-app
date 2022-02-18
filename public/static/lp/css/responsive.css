@@ -1,0 +1,194 @@
+
+@media (max-width: 992px) {
+    
+    header nav.navbar li.icon-social{
+        padding: 1em 1rem;
+        
+    }
+    
+    header nav.navbar .navbar-toggler{
+        margin-top: 3rem;
+
+    }
+    div#banner{
+        min-height: 100vh;
+
+        background-position-x: 90%;
+    }
+    .roadmap{
+        width: 100%;
+        padding: 10%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .fixed-top{
+        width: 100%;
+    }
+    .roadmap-3{
+        margin: 0 0;
+
+    }
+    .adivision{
+        width: 50% !important;
+    }
+    .w-50{
+        width: 80% !important;
+    }
+    img.w-50 {
+        width: 50% !important;
+    }
+    .px-md-5{
+        padding : 0 2rem;
+    }
+    
+    
+    
+}
+@media (min-width: 992px){
+    /* #banner{
+        min-height: 100vh !important;
+    } */
+}
+
+@media (max-width: 1024px) {
+    div#banner{
+        min-height: 75vh !important;
+        background-position-X : 90%;
+    }
+    #detail{
+        padding-top: 5rem;
+    }
+    .roadmap-1,.roadmap-2 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width:50%;
+        padding : 4rem 1rem;
+        /* margin-right : .5rem; */
+        
+        
+    }
+    .px-5 {
+        padding-left: 7rem !important;
+        padding-right: 3rem !important;
+    }
+    .roadmap-3{
+        margin-top: 0;
+    }
+    .w-md-33 {
+        -ms-flex: 0 0 33.33%;
+        flex: 0 0 33.33%;
+        /* max-width:33.33%; */
+    }
+}
+@media (max-width: 600px){
+    .roadmap-1,.roadmap-2 {
+        width: 100%;
+        /* padding: 0; */
+        flex-basis: initial !important;
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+        /* -ms-flex: 0 0 50%; */
+        /* flex: 0 0 50%; */
+        max-width: 100%;
+        padding-top: 3rem !important;
+      
+       
+    }
+    #frame-4{
+        min-height:190px;
+    }
+    .frame-3 {
+        padding-top :1.5rem;
+    }
+    .px-5 {
+        padding-left: 4.5rem !important;
+    }
+    .roadmap-3{
+        margin-top: 0;
+    }
+    .one{
+        order:1;
+
+    }
+    .tow{
+        order: 2;
+    }
+    .three{
+        order:5;
+        margin-left: 1rem !important;
+    }
+    .fore{
+        order:3;
+    }
+    .five{
+        order:4;
+    }
+    .six{
+        order: 4;
+        margin-left: 1rem !important;
+
+    }
+    .content {
+        margin-top:0;
+    }
+}
+@media only screen and (max-width: 768px) {
+    
+    .content {
+        margin-top:0;
+    }
+    .roadmap-1,.roadmap-2 {
+        width: 100%;
+        /* padding: 0; */
+        flex-basis: initial !important;
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+        /* -ms-flex: 0 0 50%; */
+        /* flex: 0 0 50%; */
+        max-width: 100%;
+        padding-top: 3rem !important;
+      
+       
+    }
+    #frame-4{
+        min-height:190px;
+    }
+    .frame-3 {
+        padding-top :1.5rem;
+    }
+    .px-5 {
+        padding-left: 4.5rem !important;
+    }
+    .roadmap-3{
+        margin-top: 0;
+    }
+    .one{
+        order:1;
+
+    }
+    .tow{
+        order: 2;
+    }
+    .three{
+        order:5;
+        margin-left: 1rem !important;
+    }
+    .fore{
+        order:3;
+    }
+    .five{
+        order:4;
+    }
+    .six{
+        order: 4;
+        margin-left: 1rem !important;
+
+    }
+    .content {
+        margin-top:0;
+    }
+    .d-none {
+        display: none !important;
+    }
+}
+
