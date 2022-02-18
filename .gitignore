@@ -18,3 +18,5 @@ plat-app/*.iml
 plat-app/forlocal
 plat-sc/payments/target/*
 plat-sc/plats-token/target/*
+.phpunit.result.cache
+.vscode

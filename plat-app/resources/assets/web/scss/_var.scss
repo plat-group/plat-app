@@ -40,6 +40,7 @@ $green: #7ADA90;
 $blue-ribbon: #258DFA;
 $neutral-2: #5D656D;
 $primary-2: #479CF6;
+$primary-1: #003D84;
 
 
 // Create own map
@@ -53,14 +54,16 @@ $custom-colors: (
     "green": $green,
     "blue-ribbon": $blue-ribbon,
     "neutral-2": $neutral-2,
-    "primary-2": $primary-2
+    "primary-2": $primary-2,
+    "primary-1": $primary-1
 );
 // Table Colors:
 $table-custom-variants: (
     "amethyst": $amethyst,
     "mauve-400": $mauve-400,
     "blue-ribbon": $blue-ribbon,
-    "primary-2": $primary-2
+    "primary-2": $primary-2,
+    "primary-1": $primary-1
 );
 
 // Font size
