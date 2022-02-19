@@ -55,6 +55,8 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
      */
     define('L2E_ROUTE', 'l2e.route');
     define('LESSON_ROUTE', 'l2e.lesson.route');
+    define('DETAIL_LESSON_ROUTE', 'l2e.lesson.detail.route');
+
     define('DETAIL_COURSE_ROUTE', 'l2e.course.detail.route');
     define('PLAY_LEARN_ROUTE', 'l2e.play.course.route');
 

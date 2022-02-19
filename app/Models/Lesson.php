@@ -41,6 +41,6 @@ class Lesson extends Model
      */
     public function getThumbUrlAttribute()
     {
-        return Storage::url($this->thumbnail);
+        return Storage::url($this->thumb);
     }
 }
