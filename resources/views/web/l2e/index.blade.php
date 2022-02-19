@@ -16,7 +16,7 @@
                         <img src="{{ $item->thumb_url }}" alt="{{ $item->name }}" class="w-100"/>
                     </div>
                     <h5 class="mb-0">
-                        <a href="{{ route(EDIT_COURSE_ROUTE, $item->id) }}" title="{{ $item->name }}" class="stretched-link">
+                        <a href="{{ route(DETAIL_COURSE_ROUTE, $item->id) }}" title="{{ $item->name }}" class="stretched-link">
                             {{ $item->name }}
                         </a>
                     </h5>

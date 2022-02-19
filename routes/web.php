@@ -110,6 +110,8 @@ Route::prefix('l2e')->middleware('auth')->group(function () {
         Route::get('/create', 'create')->name(CREATE_COURSE_ROUTE);
         Route::get('/edit/{id}', 'edit')->name(EDIT_COURSE_ROUTE);
         Route::post('/store', 'store')->name(STORE_COURSE_ROUTE);
+
+        Route::get('/{id}', 'detail')->name(DETAIL_COURSE_ROUTE)->whereUuid('id');
     });
 
     Route::prefix('lessons')->controller(Lesson::class)->group(function () {
