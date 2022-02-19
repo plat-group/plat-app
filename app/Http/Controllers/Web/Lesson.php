@@ -3,14 +3,22 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Services\LessonService;
 use Illuminate\Http\Request;
 
 class Lesson extends Controller
 {
+    /**
+     * @var \App\Services\LessonService
+     */
+    protected $lessonService;
 
-    public function index()
+    /**
+     *
+     */
+    public function __construct(LessonService $lessonService)
     {
-        return view('web.l2e.learn');
+        $this->lessonService = $lessonService;
     }
 
     /**
@@ -20,7 +28,11 @@ class Lesson extends Controller
      */
     public function detail($id)
     {
-        return view('web.l2e.learn');
+        $assign = [
+            'lesson' => $this->lessonService->find($id, ['questions.answers'])
+        ];
+
+        return view('web.l2e.learn', $assign);
     }
 
     public function create($course)

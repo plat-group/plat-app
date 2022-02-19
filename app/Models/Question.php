@@ -30,4 +30,20 @@ class Question extends Model
         'question_at',
         'question',
     ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function answers()
+    {
+        return $this->hasMany(LessonAnswer::class, 'question_id', 'id');
+    }
 }

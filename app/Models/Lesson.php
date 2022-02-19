@@ -35,12 +35,27 @@ class Lesson extends Model
         'description',
     ];
 
-
     /**
      * @return string
      */
     public function getThumbUrlAttribute()
     {
-        return Storage::url($this->thumb);
+        return Storage::url($this->thumbnail);
+    }
+
+    /**
+     * @return string
+     */
+    public function getVideoUrlAttribute()
+    {
+        return Storage::url($this->content_url);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'lesson_id', 'id');
     }
 }

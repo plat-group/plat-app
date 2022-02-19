@@ -12,6 +12,7 @@ use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\LessonAnswer;
 use App\Models\Question;
+use Ramsey\Uuid\Uuid;
 
 class CreateTemplateLearningData extends Seeder
 {
@@ -106,7 +107,7 @@ class CreateTemplateLearningData extends Seeder
 
         $course = new Course();
 
-        $course->id = 'near-learning-course-1';
+        $course->id = Uuid::uuid6();
         $course->creator_id = $clientId;
         $course->name = 'Basic NEAR Protocol learning course';
         $course->description = 'Reimagine finance, creativity, and community with NEAR';

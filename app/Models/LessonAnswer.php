@@ -11,7 +11,6 @@ class LessonAnswer extends Model
 {
     use HasFactory;
     use UuidTrait;
-    use SoftDeletes;
 
     /**
      * The table associated with the model.
@@ -26,8 +25,15 @@ class LessonAnswer extends Model
      * @var string[]
      */
     protected $fillable = [
-        'LessonAnswer',
+        'question_id',
         'answer',
         'correct',
     ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['correct'];
 }
