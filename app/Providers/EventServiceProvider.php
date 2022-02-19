@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Events\CampaignCreatedEvent;
+use App\Events\LessonCompletedEvent;
 use App\Events\OrderConfirmedEvent;
 use App\Events\PlayedGameEvent;
 use App\Listeners\PayCoinListener;
@@ -30,6 +31,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         PlayedGameEvent::class => [
             SaveTransactionListener::class,
+            PayCoinListener::class,
+        ],
+        LessonCompletedEvent::class => [
             PayCoinListener::class,
         ],
     ];

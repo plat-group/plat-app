@@ -11,6 +11,8 @@ use App\Models\User;
 
 class CreateTemplateData extends Seeder
 {
+    const NEAR_GAME_ID = '1ec91689-7688-6146-9854-20c9d07b7361';
+
     /**
      * Run the database seeds.
      *
@@ -35,6 +37,7 @@ class CreateTemplateData extends Seeder
         // 'password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
         $user->username = 'platcreator.testnet';
+        $user->wallet_address = 'platcreator.testnet';
         $user->role = CREATOR_ROLE;
         $user->avatar = 'avatar/creative.png';
         $user->balance = 0;
@@ -48,6 +51,7 @@ class CreateTemplateData extends Seeder
         // 'password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
         $user->username = 'platartist.testnet';
+        $user->wallet_address = 'platartist.testnet';
         $user->role = CREATOR_ROLE;
         $user->avatar = 'avatar/creative.png';
         $user->balance = 0;
@@ -60,6 +64,7 @@ class CreateTemplateData extends Seeder
         $user->email_verified_at = now();
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
         $user->username = 'platclient.testnet'; // for test
+        $user->wallet_address = 'platclient.testnet'; // for test
         $user->role = CLIENT_ROLE;
         $user->avatar = 'avatar/client.png';
         $user->balance = 0;
@@ -67,11 +72,13 @@ class CreateTemplateData extends Seeder
         $user->save();
 
         $user = new User();
+        $user->id = '1ec916ce-f2b3-67f8-87f9-20c9d07b7361';
         $user->name = 'PlatReferral';
         $user->email = 'referral@plats.network';
         $user->email_verified_at = now();
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
         $user->username = 'platreferral.testnet';
+        $user->wallet_address = 'platreferral.testnet';
         $user->role = REFERRAL_ROLE;
         $user->avatar = 'avatar/referral.png';
         $user->balance = 0;
@@ -84,6 +91,7 @@ class CreateTemplateData extends Seeder
         $user->email_verified_at = now();
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
         $user->username = 'platuser.testnet';
+        $user->wallet_address = 'platuser.testnet';
         $user->role = USER_ROLE;
         $user->avatar = 'avatar/avatar.png';
         $user->balance = 0;
@@ -210,41 +218,24 @@ class CreateTemplateData extends Seeder
         $order = new Order();
         $order->client_id = $clientId;
         $order->game_template_id = $gameTemplateId;
-        // $order->game_id = $gameId;
         $order->content = 'Please change banner image by our banner and image of each card by our products';
         $order->agreement_amount = 20;
         $order->royalty_fee = 1;
         $order->status = ACCEPTED_ORDER_STATUS;
         $order->save();
 
-        // $gameTemplateId = GameTemplate::pluck('id')->last();
+        $gameTemplateId = GameTemplate::pluck('id')->first();
 
-        // $order = new Order();
-        // $order->client_id = $clientId;
-        // $order->game_template_id = $gameTemplateId;
-        // // $order->game_id = $gameId;
-        // $order->content = 'Please change logo image by our logo';
-        // $order->agreement_amount = 40;
-        // $order->royalty_fee = 0.1;
-        // $order->status = ORDERING_ORDER_STATUS;
-        // $order->save();
+        $order = new Order();
+        $order->client_id = $clientId;
+        $order->game_template_id = $gameTemplateId;
+        $order->game_id = self::NEAR_GAME_ID;
+        $order->content = 'Please change logo image by our logo';
+        $order->agreement_amount = 40;
+        $order->royalty_fee = 1;
+        $order->status = ACCEPTED_ORDER_STATUS;
+        $order->save();
     }
-
-    // private function createGameData() {
-    //     $clientId = User::where('email', 'client@plats.network')->pluck('id')->first();
-    //     // $gameTemplate = GameTemplate::where('name', 'Plats game car')->first();
-
-    //     $game = new Game();
-    //     $game->owner_id = $clientId;
-
-    //     $game->name = 'Plats game car';
-    //     $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';
-    //     $game->description = 'Our branding car is display for game card so you can enjoy game with knowlegde about my product. Have an interesting time with our games';
-    //     $game->thumb = 'game_template/1ec540bf-d6ed-6c1e-9668-0202a0fb081a/plat-game-car.jpg';
-
-    //     $game->status = FINISHED_CREATING_GAME_STATUS;
-    //     $game->save();
-    // }
 
     private function createGameData() {
         $clientId = User::where('email', 'client@plats.network')->pluck('id')->first();
@@ -261,6 +252,7 @@ class CreateTemplateData extends Seeder
         $game->save();
 
         $game = new Game();
+        $game->id = self::NEAR_GAME_ID;
         $game->owner_id = $clientId;
         $game->name = 'Near Ecosystem Card Game';
         $game->introduction = 'An Easy and interesting memory game with awesome graphic feature';

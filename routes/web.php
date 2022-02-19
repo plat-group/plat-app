@@ -16,6 +16,7 @@ use App\Http\Controllers\Web\{
     Lesson
 };
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,14 @@ Route::prefix('auth')->group(function () {
 
 
 //Pool
-Route::get('/', [Market::class, 'index'])->name(HOME_ROUTE);
+Route::get('/', function () {
+    if (env('APP_TYPE') == 2) {
+        return Redirect::route(L2E_ROUTE);
+    }
+
+    return Redirect::route(MARKET_GAME_ROUTE);
+})->name(HOME_ROUTE);
+
 // Route::get('/app', [Pool::class, 'index'])->name(HOME_ROUTE);
 Route::get('/pool', [Pool::class, 'index'])->name(POOL_GAME_ROUTE);
 
@@ -115,6 +123,7 @@ Route::prefix('l2e')->middleware('auth')->group(function () {
     Route::prefix('lessons')->controller(Lesson::class)->group(function () {
         Route::get('/create/{course}', 'create')->name(CREATE_LESSON_ROUTE);
         Route::post('/create', 'store')->name(STORE_L2E_ROUTE);
+        Route::post('/submit-assignments', 'submitAssignments')->name(SUBMIT_ASSIGNMENTS_L2E_ROUTE);
         Route::get('/{id}', 'detail')->name(DETAIL_LESSON_ROUTE);
     });
 });

@@ -52,10 +52,20 @@ class Lesson extends Model
     }
 
     /**
+     * Relationship with questions of lesson
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function questions()
     {
         return $this->hasMany(Question::class, 'lesson_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function course()
+    {
+        return $this->hasOne(Course::class, 'id', 'course_id');
     }
 }
