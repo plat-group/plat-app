@@ -48,3 +48,6 @@
     </div>
     {{ Form::close() }}
 @stop
+@push('js')
+    <script src="{{ mix('static/js/web/pages/near_storage_deposit.js') }}" type="text/javascript"></script>
+@endpush

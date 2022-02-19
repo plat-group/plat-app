@@ -7,18 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Question extends Model
+class LessonAnswer extends Model
 {
     use HasFactory;
     use UuidTrait;
-    use SoftDeletes;
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'lesson_questions';
+    protected $table = 'lesson_answers';
 
     /**
      * The attributes that are mass assignable.
@@ -26,9 +25,9 @@ class Question extends Model
      * @var string[]
      */
     protected $fillable = [
-        'lesson_id',
-        'question_at',
-        'question',
+        'question_id',
+        'answer',
+        'correct',
     ];
 
     /**
@@ -36,14 +35,5 @@ class Question extends Model
      *
      * @var array
      */
-    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
-
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function answers()
-    {
-        return $this->hasMany(LessonAnswer::class, 'question_id', 'id');
-    }
+    protected $hidden = ['correct'];
 }

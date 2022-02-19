@@ -2,22 +2,14 @@
 @extends('web.layout')
 @section('title_page') Plats L2E @stop
 @section('content')
-@if (Auth::user()->isCreator())
-    <div class="d-flex justify-content-end mb-4">
-        <a href="{{ route(MY_COURSE_ROUTE) }}" title="{{ trans('web.course_management') }}" class="btn btn-inner-glow rounded-pill fw-bold px-4 py-2">
-            {{ trans('web.course_management') }}
-        </a>
-    </div>
-@endif
-    <div class="row justify-content-center" style="font-weight: bold;">
-        Lesson 1: What is NEAR?
-    </div>
-    <div class="row justify-content-center">
+    <h3 class="fw-bold text-blue-ribbon text-center">
+        {{ $lesson->name }}
+    </h3>
+    <div class="row justify-content-center mb-5">
         <div class="col-8">
             <video controls id="learnVideo" class="w-100">
                 {{-- <source src="{{ Storage::url('l2e-video/demo-video.webm') }}" type="video/webm"> --}}
-
-                <source src="{{ Storage::url('l2e-video/what-is-near.mp4') }}"
+                <source src="{{ $lesson->video_url }}"
                         type="video/mp4">
                 Sorry, your browser doesn't support embedded videos.
             </video>
@@ -136,5 +128,8 @@
     <link href="{{ mix('static/css/web/pages/l2e.css') }}" rel="stylesheet">
 @endpush
 @push('js')
+    <script>
+        const VideoQuestions = @json($lesson->questions)
+    </script>
     <script src="{{ mix('static/js/web/pages/l2e_video.js') }}" type="text/javascript"></script>
 @endpush
