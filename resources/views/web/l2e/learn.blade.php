@@ -2,13 +2,6 @@
 @extends('web.layout')
 @section('title_page') Plats L2E @stop
 @section('content')
-@if (Auth::user()->isCreator())
-    <div class="d-flex justify-content-end mb-4">
-        <a href="{{ route(MY_COURSE_ROUTE) }}" title="{{ trans('web.course_management') }}" class="btn btn-inner-glow rounded-pill fw-bold px-4 py-2">
-            {{ trans('web.course_management') }}
-        </a>
-    </div>
-@endif
     <div class="row justify-content-center" style="font-weight: bold;">
         Lesson 1: What is NEAR?
     </div>

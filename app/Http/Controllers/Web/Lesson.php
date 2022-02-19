@@ -13,6 +13,16 @@ class Lesson extends Controller
         return view('web.l2e.learn');
     }
 
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function detail($id)
+    {
+        return view('web.l2e.learn');
+    }
+
     public function create($course)
     {
         return view('web.l2e.lesson.create');
