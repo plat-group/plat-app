@@ -323,6 +323,22 @@ class CreateTemplateLearningData extends Seeder
         $game->save();
     }
 
+    private function createCampaignData()
+    {
+        $courseId = Course::pluck('id')->first();
+
+        $campaign = new Campaign();
+        $campaign->content_id = $courseId;
+        $campaign->content_type = CAMPAIGN_LEARN;
+        $campaign->total_budget = 100;
+        $campaign->creator_budget = 1;
+        $campaign->referral_budget = 1;
+        $campaign->user_budget = 2;
+        $campaign->start_at = '2022/01/01';
+        $campaign->end_at = '2022/12/01';
+        $campaign->save();
+    }
+
     private function createOrderData()
     {
         $clientId = User::where('email', 'client@plats.network')->pluck('id')->first();
@@ -378,22 +394,6 @@ class CreateTemplateLearningData extends Seeder
 
         $game->status = ON_POOL_GAME_STATUS;
         $game->save();
-    }
-
-    private function createCampaignData()
-    {
-        $courseId = Course::pluck('id')->first();
-
-        $campaign = new Campaign();
-        $campaign->content_id = $courseId;
-        $campaign->content_type = CAMPAIGN_LEARN;
-        $campaign->total_budget = 100;
-        $campaign->creator_budget = 1;
-        $campaign->referral_budget = 1;
-        $campaign->user_budget = 2;
-        $campaign->start_at = '2022/01/01';
-        $campaign->end_at = '2022/12/01';
-        $campaign->save();
     }
 
     private function createTransactionData()

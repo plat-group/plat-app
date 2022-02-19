@@ -116,7 +116,7 @@ class PushToPoolListener
         $creatorWalletAddress = 'platcreator.testnet';
 
         $result = [
-            'content_id' => $campaign->content_id,
+            'game_id' => $campaign->content_id,
             'creator_id' => $creatorWalletAddress,
             'client_id' => $clientWalletAddress,
             'amount_creator' => $this->toYokto($campaign->creator_budget),
