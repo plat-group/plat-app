@@ -116,7 +116,7 @@ Route::prefix('l2e')->middleware('auth')->group(function () {
     Route::prefix('lessons')->controller(Lesson::class)->group(function () {
         Route::get('/create/{course}', 'create')->name(CREATE_LESSON_ROUTE);
         Route::post('/create', 'store')->name(STORE_L2E_ROUTE);
-        Route::get('/{id}', 'detail')->name(DETAIL_LESSON_ROUTE)->whereUuid('id');
+        Route::get('/{id}', 'detail')->name(DETAIL_LESSON_ROUTE);
     });
 });
 
