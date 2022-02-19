@@ -25,6 +25,7 @@ function resetRadio()
 
 
 let count = 0;
+let answered = {};
 
 const video = document.getElementById('learnVideo');
 
@@ -40,62 +41,76 @@ function videoHandle()
     if (!video) {
         return;
     }
+
     video.addEventListener('timeupdate', (event) => {
-        var data = getData()[count];
-        if(data) {
-            var time = data.question_at;
-            if (video.currentTime >= time) {
-                video.pause();
-                count++;
-                updateQuestionData(data);
-                myModalEl.show();
-            }
+        let data = getData()[count];
+        if (!data) {
+            return;
+        }
+
+        let time = data.question_at;
+        if (video.currentTime >= time) {
+            video.pause();
+            count++;
+            updateQuestionData(data);
+            myModalEl.show();
         }
     });
 
     video.addEventListener('ended', (event) => {
-        const rewardModalEl = new Modal(document.getElementById('reward'), {
-            backdrop: 'static',
-            keyboard: false
+        LOADING.page();
+        let parameters = {
+            'course_id' : courseId,
+            'lesson_id' : lessonId,
+            'answered' : answered,
+        };
+
+        $.post(SUBMIT_ASSIGNMENTS_ROUTE, parameters).done((data) => {
+            $('.js-correct-number').html(data.correct);
+            $('.js-wrong-number').html(data.wrong);
+            $('.js-earned').html(data.earned);
+
+            new Modal(document.getElementById('reward'), {
+                backdrop: 'static',
+                keyboard: false
+            }).show();
+        }).always(() => {
+            LOADING.unblock();
         });
-        rewardModalEl.show();
     });
 
-    $('#send').click(function(){
+    $('#send').click(function () {
+        //Save answered
+        let $listAnswer = $('.answer-options');
+        let selected =  $listAnswer.find('input[name="answer"]:checked').val();
+        let questionId =  $listAnswer.find('input[name="question_id"]').val();
+        answered[questionId] = selected;
+
         myModalEl.hide();
         video.play();
     });
 }
 
-function updateQuestionData(question) {
+function updateQuestionData(question)
+{
     $('.question').html(question.question);
 
-    // create anwser checkbox
-    var answers = question.answers;
-    $('.answer-options').html('');
-    for(let i = 0; i < answers.length; i++) {
-        let answerObj = answers[i];
-        $('.answer-options').append(
-            '<div class="form-check">' +
-                '<input class="form-check-input" type="radio" name="answer" id="' + answerObj.id + '">' +
-                '<label class="form-check-label" for="' + answerObj.id + '">' + answerObj.answer + '</label>' +
-            '</div>'
-        );
-    }
+    // create answers
+    let answers = question.answers;
+
+    let htmlAnswers = '';
+    $.each(answers, function (key, answer) {
+        htmlAnswers += '<div class="form-check">';
+        htmlAnswers += '<input class="form-check-input" value="' + answer.id + '" type="radio" name="answer" id="answer' + key + '">';
+        htmlAnswers += '<label class="form-check-label" for="answer' + key + '">' + answer.answer + '</label>';
+        htmlAnswers += '<input type="hidden" name="question_id" value="' + question.id + '"/>';
+        htmlAnswers += '</div>';
+    });
+
+    $('.answer-options').html(htmlAnswers);
 }
 
-function getData() {
-
-    return VideoQuestions;
-    /*return [
-        {'time': 18, 'question': 'What technology does NEAR use to increase number of transactions and scalability?', 'answers': ['Sharding','Side-chain','Hub']},
-        {'time': 40, 'question': 'Who is the founder NEAR protocol?', 'answers': ['Alexander Skidanov','Ilya Polosukhin','Both A and B']},
-        {'time': 49, 'question': 'Which consensus mechanism does NEAR implement?', 'answers': ['Proof of Stake','Proof of Work','BFT']},
-        {'time': 61, 'question': 'Which role ensures network security?', 'answers': ['Validator','Nominator','Noone']},
-        {'time': 61, 'question': 'What do validators do in NEAR?', 'answers': ['Nothing','Staking ','Delegating']},
-        {'time': 61, 'question': 'What happens if validators is malacious?', 'answers': ['Có phần thưởng','Mất hết lượng Staking','Sẽ ko dc làm Validators nữa']},
-        {'time': 67, 'question': 'Can normal users staking or not?', 'answers': ['Có','Không']},
-        {'time': 91, 'question': 'How developer in Ethereum can develop Dapps in NEAR?', 'answers': ['Aurora','Rainbow Bridge','Both A and B']},
-        {'time': 138, 'question': 'How to register near mainnet wallet?', 'answers': ['<tên địa chỉ>.near','<tên địa chỉ>.testnet','<tên địa chỉ>.near-testnet']}
-    ]*/
+function getData()
+{
+    return videoQuestions;
 }

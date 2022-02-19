@@ -71,8 +71,22 @@ class Campaign extends Model
             return $query->where('id', $campaignId);
         }
 
-        return $query->where('game_id', $gameId);
+        return $query->where('content_id', $gameId)->where('content_type', CAMPAIGN_GAME);
     }
+
+    /**
+     * Query find data of Course
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param $courseId
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfCourse($query, $courseId)
+    {
+        return $query->where('content_id', $courseId)->where('content_type', CAMPAIGN_LEARN);
+    }
+
 
     /**
      * Build eager loading of referrals relationship and get one record when existed.

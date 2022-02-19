@@ -68,4 +68,5 @@ if (!defined('DEFINE_FRONTEND_ROUTER')) {
 
     define('CREATE_LESSON_ROUTE', 'l2e.lesson.create.route');
     define('STORE_L2E_ROUTE', 'l2e.store.route');
+    define('SUBMIT_ASSIGNMENTS_L2E_ROUTE', 'l2e.lesson.submit_assignments.route');
 }

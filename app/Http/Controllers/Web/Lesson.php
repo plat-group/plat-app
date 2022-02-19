@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Web\SubmitAssignmentsRequest;
 use App\Services\LessonService;
 use Illuminate\Http\Request;
 
@@ -33,6 +34,18 @@ class Lesson extends Controller
         ];
 
         return view('web.l2e.learn', $assign);
+    }
+
+    /**
+     * Scoring for user assignments
+     *
+     * @param \App\Http\Requests\Web\SubmitAssignmentsRequest $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function submitAssignments(SubmitAssignmentsRequest $request)
+    {
+        return response()->json($this->lessonService->submitAssignments($request));
     }
 
     public function create($course)
