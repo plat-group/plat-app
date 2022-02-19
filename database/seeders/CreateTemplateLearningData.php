@@ -80,7 +80,7 @@ class CreateTemplateLearningData extends Seeder
         $lesson->name = 'NEAR Sharding in a Nutshell';
         $lesson->description = "NEAR’s blockchain uses a revolutionary new type of sharding tool called Nightshade to help create infinite scalability and speed. In this lesson, we explore how it works and why it makes sure the NEAR network is primed for mass adoption.";
         $lesson->thumbnail = 'l2e/image/3-Sharding.png';
-        $lesson->content_url = 'l2e/video/xxx';
+        $lesson->content_url = 'l2e/video/NEAR-Sharding-in-a Nutshell.mp4';
         $lesson->content_type = 0;
         $lesson->save();
 
@@ -90,7 +90,7 @@ class CreateTemplateLearningData extends Seeder
         $lesson->name = 'The Rainbow Bridge';
         $lesson->description = 'Rainbow Bridge is a gateway to other blockchains. The Bridge allows users to seamlessly connect NEAR with other blockchains allowing the movement of tokens into new ecosystems with little more than a few clicks. As a trustless, permissionless tool for cross-chain transfers, it’s the easiest, and simplest way to move assets between NEAR and Ethereum.';
         $lesson->thumbnail = 'l2e/image/4-Rainbow-Bridge.png';
-        $lesson->content_url = 'l2e/video/xxx';
+        $lesson->content_url = 'l2e/video/The-Rainbow-Bridge.mp4';
         $lesson->content_type = 0;
         $lesson->save();
 
@@ -100,7 +100,7 @@ class CreateTemplateLearningData extends Seeder
         $lesson->name = 'What is Aurora?';
         $lesson->description = 'Aurora allows Ethereum\'s most popular applications to leverage NEAR\'s powerful blockchain protocol to dramatically increase scalability and efficiency while cutting fees by up to 99.99%.';
         $lesson->thumbnail = 'l2e/image/5-Aurora.png';
-        $lesson->content_url = 'l2e/video/xxx';
+        $lesson->content_url = 'l2e/video/What-is-Aurora.mp4';
         $lesson->content_type = 0;
         $lesson->save();
 
@@ -209,7 +209,34 @@ class CreateTemplateLearningData extends Seeder
                     ],
                     'answers' => ['<tên địa chỉ>.near' => true, '<tên địa chỉ>.testnet' => false, '<tên địa chỉ>.near-testnet' => false],
                 ]
-            ]
+            ],
+            'basic-near-lesson-2' => [
+                ['question' => ['point' => 33, 'text' => 'What is near wallet?'],	'answers' => ['web-based, own your assets, token, nft, ...' => true, 'extension-based, own your assets, token, nft' => false, 'own your assets, token, nft,...' => false]],
+                ['question' => ['point' => 33, 'text' => 'What permissions in near wallet do you have?'],	'answers' => ['full control' => true, 'only using token' => false, 'restricted permission' => false]],
+                ['question' => ['point' => 63, 'text' => 'How to create near wallet?'],	'answers' => ['wallet.near.org' => true, 'near.wallet.org' => false, 'near.wallet.com' => false]],
+                ['question' => ['point' => 87, 'text' => 'Is it possible to staking in NEAR Wallet?'],	'answers' => ['No' => false, 'Yes' => true, 'Not supported yet' => false]],
+                ['question' => ['point' => 87, 'text' => 'How to staking in NEAR wallet?'],	'answers' => ['choose a validator -> select amount of NEAR to stake' => false, 'select multiple validators -> select amount of NEAR to stake' => false, 'login near wallet -> select multile validators->select amount of NEAR to stake ' => true]],
+                ['question' => ['point' => 104, 'text' => 'When we receive a reward after staking for validators?'],	'answers' => ['12 hours' => true, '1 days' => false, '18 hours' => false]],
+            ],
+            'basic-near-lesson-3' => [
+                ['question' => ['point' => 16, 'text' => 'What problems when the network become more secure?'],	'answers' => ['TPS increase (transaction per second)' => false, 'Lower TPS' => true, 'More Decentralize' => false]],
+                ['question' => ['point' => 54, 'text' => 'What is sharding?'],	'answers' => ['divide database into small chunks ' => false, 'A and C' => true, 'multiple nodes can verify multiple blocks' => false]],
+                ['question' => ['point' => 54, 'text' => 'What problems will sharding solve in blockchain?'],	'answers' => ['secure,fast, scalable' => false, 'secure, fast, scalable, decentralized' => true, 'fast, scalable, decentralized' => false]],
+                ['question' => ['point' => 60, 'text' => 'What is the ideal TPS in NEAR'],	'answers' => ['10,000 TPS' => false, '100,000 TPS' => true, '50,000 TPS' => false]],
+                ['question' => ['point' => 94, 'text' => 'What sharding technology near has?'],	'answers' => ['Shard' => false, 'IceShard' => false, 'Nightshard' => true]],
+            ],
+            'basic-near-lesson-4' => [
+                ['question' => ['point' => 40, 'text' => 'Rainbow bridge is a bridge between which 2 platforms?'],	'answers' => ['Near vs ETH' => true, 'Near vs Aurora' => false, 'Both A and B' => false]],
+                ['question' => ['point' => 50, 'text' => 'What can\'t rainbow bridge do?'],	'answers' => ['Transfer assets' => false, 'Call PRC ' => false, 'call multi-contract' => true]],
+                ['question' => ['point' => 63, 'text' => 'What token standard is supported to exchange between Near <-> ETH'],	'answers' => ['Erc-721' => false, 'Erc-20' => true, 'Both A and B' => false]],
+                ['question' => ['point' => 117, 'text' => 'Which of the following protocols does the rainbow bridge use?'],	'answers' => ['Trustless, permission' => false, 'Trust, permissionless' => false, 'Trustless, permissionless' => true]],
+                ['question' => ['point' => 109, 'text' => 'How long does it take to transfer tokens from ETH to Near'],	'answers' => ['6 minutes' => false, '7 minutes' => true, '8 minutes' => false]],
+            ],
+            'basic-near-lesson-5' => [
+                ['question' => ['point' => 30, 'text' => 'What problems does Aurora solve on the ETH network?'],	'answers' => ['High speed, low gas fee' => true, 'Use ETH asset with gas fee cheap' => false, 'Both A and B' => false]],
+                ['question' => ['point' => 45, 'text' => 'What is Aurora'],	'answers' => ['Bridge with ETH and Near' => false, 'DEX' => false, 'EVM' => true]],
+                ['question' => ['point' => 90, 'text' => 'What wallet does Aurora users use ?'],	'answers' => ['Near wallet' => false, 'Metamask wallet' => true, 'Both A and B' => false]],
+            ],
         ];
 
         if(env('APP_ENV') === 'local') {
@@ -273,10 +300,5 @@ class CreateTemplateLearningData extends Seeder
         $order->royalty_fee = 0.05;
         $order->status = ACCEPTED_ORDER_STATUS;
         $order->save();
-    }
-
-    private function createTransactionData()
-    {
-        \App\Models\Transaction::factory(10)->create();
     }
 }
