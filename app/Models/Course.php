@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
-class Lesson extends Model
+class Course extends Model
 {
     use HasFactory;
     use UuidTrait;
@@ -19,7 +19,7 @@ class Lesson extends Model
      *
      * @var string
      */
-    protected $table = 'lessons';
+    protected $table = 'courses';
 
     /**
      * The attributes that are mass assignable.
@@ -27,14 +27,11 @@ class Lesson extends Model
      * @var string[]
      */
     protected $fillable = [
-        'course_id',
+        'creator_id',
         'name',
-        'thumb',
-        'content_url',
-        'content_type',
-        'content_description',
+        'description',
+        'thumbnail',
     ];
-
 
     /**
      * @return string
@@ -42,5 +39,23 @@ class Lesson extends Model
     public function getThumbUrlAttribute()
     {
         return Storage::url($this->thumbnail);
+    }
+
+    /**
+     * Creator information by relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'creator_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, 'course_id', 'id');
     }
 }

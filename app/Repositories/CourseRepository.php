@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Models\LearningCourse;
+use App\Models\Course;
 use App\Repositories\Concerns\BaseRepository;
 
-class LearningCourseRepository extends BaseRepository
+class CourseRepository extends BaseRepository
 {
     /**
      * Specify Model class name
@@ -14,6 +14,6 @@ class LearningCourseRepository extends BaseRepository
      */
     public function model()
     {
-        return LearningCourse::class;
+        return Course::class;
     }
 }

@@ -3,7 +3,7 @@
     <x-alert/>
     {{ Form::open(['route' => LOGIN_ROUTE, 'class' => 'has_validate']) }}
     <x-form::group class="required">
-        <x-form::input type="email" name="email" class="required form-control-lg" placeholder="{{ trans('web.login_username') }}"/>
+        <x-form::input type="email" name="account_id" class="required form-control-lg" placeholder="{{ trans('web.login_username') }}"/>
     </x-form::group>
     <x-form::group class="required">
         <x-form::input type="password" name="password" class="required form-control-lg" placeholder="{{ trans('web.password') }}"/>
@@ -37,6 +37,3 @@
       • <a href="#signout" id="sign-out">sign out</a>
     </p>
 @stop
-@push('js')
-    <script src="{{ mix('static/js/chain/main.js') }}" type="text/javascript"></script>
-@endpush
