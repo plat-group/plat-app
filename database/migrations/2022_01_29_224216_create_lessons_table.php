@@ -17,6 +17,7 @@ class CreateLessonsTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('course_id')->index();
             $table->string('name');
+            $table->string('thumbnail')->nullable();
             $table->text('content_url');
             $table->tinyInteger('content_type')->default(0)->comment('0: video, 1: pdf, 2: powerpoint, 3:word, 4: excel');
             $table->text('description')->nullable();

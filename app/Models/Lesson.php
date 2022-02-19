@@ -29,10 +29,10 @@ class Lesson extends Model
     protected $fillable = [
         'course_id',
         'name',
-        'thumb',
+        'thumbnail',
         'content_url',
         'content_type',
-        'content_description',
+        'description',
     ];
 
 

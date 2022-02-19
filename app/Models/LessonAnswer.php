@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Question extends Model
+class LessonAnswer extends Model
 {
     use HasFactory;
     use UuidTrait;
@@ -18,7 +18,7 @@ class Question extends Model
      *
      * @var string
      */
-    protected $table = 'lesson_questions';
+    protected $table = 'lesson_answers';
 
     /**
      * The attributes that are mass assignable.
@@ -26,8 +26,8 @@ class Question extends Model
      * @var string[]
      */
     protected $fillable = [
-        'lesson_id',
-        'question_at',
-        'question',
+        'LessonAnswer',
+        'answer',
+        'correct',
     ];
 }

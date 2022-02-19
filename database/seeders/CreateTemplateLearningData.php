@@ -10,8 +10,8 @@ use App\Models\Order;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\LessonAnswer;
 use App\Models\Question;
-use Illuminate\Support\Facades\DB;
 
 class CreateTemplateLearningData extends Seeder
 {
@@ -111,6 +111,7 @@ class CreateTemplateLearningData extends Seeder
         $course->name = 'Basic NEAR Protocol learning course';
         $course->description = 'Reimagine finance, creativity, and community with NEAR';
         $course->thumbnail = 'l2e/image/basic_near_course.png';
+        $course->status = ON_POOL_STATUS;
         $course->save();
     }
 
@@ -123,7 +124,7 @@ class CreateTemplateLearningData extends Seeder
         $lesson->id = 'basic-near-lesson-1';
         $lesson->name = 'What is NEAR?';
         $lesson->description = 'NEAR is a layer-1 blockchain that is simple to use, super fast, and incredibly secure. NEAR has been awarded the Climate Neutral Product Label from the South Pole and is actively helping users and developers reimagine finance, community, and creativity. Get to grips with what NEAR is, how it works, and discover why it’s so powerful for developers and users.';
-        $lesson->thumb = 'l2e/image/1-What-is-NEAR.png';
+        $lesson->thumbnail = 'l2e/image/1-What-is-NEAR.png';
         $lesson->content_url = 'l2e/video/what-is-near.mp4';
         $lesson->content_type = 0;
         $lesson->save();
@@ -133,7 +134,7 @@ class CreateTemplateLearningData extends Seeder
         $lesson->id = 'basic-near-lesson-2';
         $lesson->name = 'NEAR Wallet & Staking';
         $lesson->description = 'NEAR wallet is a non-custodial, web-based application, that gives you full control over your assets — allowing you to create, play, and stake without restrictions. Sign-up takes just a few clicks, and once complete the world of staking rewards, NFTs, and more will be accessible and easy to use.';
-        $lesson->thumb = 'l2e/image/2-Wallet.png';
+        $lesson->thumbnail = 'l2e/image/2-Wallet.png';
         $lesson->content_url = 'l2e/video/NEAR-Wallet-Staking.mp4';
         $lesson->content_type = 0;
         $lesson->save();
@@ -143,7 +144,7 @@ class CreateTemplateLearningData extends Seeder
         $lesson->course_id = $courseId;
         $lesson->name = 'NEAR Sharding in a Nutshell';
         $lesson->description = "NEAR’s blockchain uses a revolutionary new type of sharding tool called Nightshade to help create infinite scalability and speed. In this lesson, we explore how it works and why it makes sure the NEAR network is primed for mass adoption.";
-        $lesson->thumb = 'l2e/image/3-Sharding.png';
+        $lesson->thumbnail = 'l2e/image/3-Sharding.png';
         $lesson->content_url = 'l2e/video/xxx';
         $lesson->content_type = 0;
         $lesson->save();
@@ -153,7 +154,7 @@ class CreateTemplateLearningData extends Seeder
         $lesson->course_id = $courseId;
         $lesson->name = 'The Rainbow Bridge';
         $lesson->description = 'Rainbow Bridge is a gateway to other blockchains. The Bridge allows users to seamlessly connect NEAR with other blockchains allowing the movement of tokens into new ecosystems with little more than a few clicks. As a trustless, permissionless tool for cross-chain transfers, it’s the easiest, and simplest way to move assets between NEAR and Ethereum.';
-        $lesson->thumb = 'l2e/image/4-Rainbow-Bridge.png';
+        $lesson->thumbnail = 'l2e/image/4-Rainbow-Bridge.png';
         $lesson->content_url = 'l2e/video/xxx';
         $lesson->content_type = 0;
         $lesson->save();
@@ -163,7 +164,7 @@ class CreateTemplateLearningData extends Seeder
         $lesson->course_id = $courseId;
         $lesson->name = 'What is Aurora?';
         $lesson->description = 'Aurora allows Ethereum\'s most popular applications to leverage NEAR\'s powerful blockchain protocol to dramatically increase scalability and efficiency while cutting fees by up to 99.99%.';
-        $lesson->thumb = 'l2e/image/5-Aurora.png';
+        $lesson->thumbnail = 'l2e/image/5-Aurora.png';
         $lesson->content_url = 'l2e/video/xxx';
         $lesson->content_type = 0;
         $lesson->save();
@@ -180,8 +181,8 @@ class CreateTemplateLearningData extends Seeder
                 $question = new Question();
                 $question->lesson_id = $lessonId;
                 $question->id = $lessonId . '-question-' . ($idx + 1);
-                $question->question_point = $questionData['point'];
-                $question->question = $questionData['question'];
+                $question->question_at = $questionData['point'];
+                $question->question = $questionData['text'];
                 $question->save();
 
                 // Register answer
@@ -189,83 +190,16 @@ class CreateTemplateLearningData extends Seeder
                 $this->registerLessonAnswer($lessonId, $answers);
             }
         }
-
-        // $lesson1Id = Lesson::where('id', 'basic-near-lesson-1')->pluck('id')->first();
-
-        // $question = new Question();
-        // $question->lesson_id = $lesson1Id;
-        // $question->id = 'basic-near-lesson-1-question-1';
-        // $question->question_point = '18';
-        // $question->question = 'What technology does NEAR use to increase number of transactions and scalability?';
-        // $question->save();
-
-        // $question = new Question();
-        // $question->lesson_id = $lesson1Id;
-        // $question->id = 'basic-near-lesson-1-question-2';
-        // $question->question_point = '40';
-        // $question->question = 'Who is the founder NEAR protocol?';
-        // $question->save();
-
-        // $question = new Question();
-        // $question->lesson_id = $lesson1Id;
-        // $question->id = 'basic-near-lesson-1-question-3';
-        // $question->question_point = '49';
-        // $question->question = 'Which consensus mechanism does NEAR implement?';
-        // $question->save();
-
-        // $question = new Question();
-        // $question->lesson_id = $lesson1Id;
-        // $question->id = 'basic-near-lesson-1-question-4';
-        // $question->question_point = '61';
-        // $question->question = 'Which role ensures network security?';
-        // $question->save();
-
-        // $question = new Question();
-        // $question->lesson_id = $lesson1Id;
-        // $question->id = 'basic-near-lesson-1-question-5';
-        // $question->question_point = '77';
-        // $question->question = 'What do validators do in NEAR?';
-        // $question->save();
-
-        // $question = new Question();
-        // $question->lesson_id = $lesson1Id;
-        // $question->id = 'basic-near-lesson-1-question-6';
-        // $question->question_point = '85';
-        // $question->question = 'What happens if validators is malacious?';
-        // $question->save();
-
-        // $question = new Question();
-        // $question->lesson_id = $lesson1Id;
-        // $question->id = 'basic-near-lesson-1-question-7';
-        // $question->question_point = '89';
-        // $question->question = 'Can normal users staking or not?';
-        // $question->save();
-
-        // $question = new Question();
-        // $question->lesson_id = $lesson1Id;
-        // $question->id = 'basic-near-lesson-1-question-8';
-        // $question->question_point = '91';
-        // $question->question = 'How developer in Ethereum can develop Dapps in NEAR?';
-        // $question->save();
-
-        // $question = new Question();
-        // $question->lesson_id = $lesson1Id;
-        // $question->id = 'basic-near-lesson-1-question-9';
-        // $question->question_point = '138';
-        // $question->question = 'How to register near mainnet wallet?';
-        // $question->save();
-
-
     }
 
     private function registerLessonAnswer($lessonId, $answers)
     {
         foreach ($answers as $answer => $isCorrect) {
-            DB::table('lesson_answers')->save([
-                'question_id' => $lessonId,
-                'answer' => $answer,
-                'correct' => $isCorrect
-            ]);
+            $lessonAnswer = new LessonAnswer();
+            $lessonAnswer->question_id = $lessonId;
+            $lessonAnswer->answer = $answer;
+            $lessonAnswer->correct = $isCorrect;
+            $lessonAnswer->save();
         }
     }
 
