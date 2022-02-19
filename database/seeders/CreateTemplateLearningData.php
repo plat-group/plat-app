@@ -448,9 +448,8 @@ class CreateTemplateLearningData extends Seeder
         $gameId = Game::pluck('id')->first();
 
         $campaign = new Campaign();
-        $campaign->game_id = $gameId;
         $campaign->content_id = $gameId;
-        $campaign->content_type = CONTENT_TYPE_LEARNING;
+        $campaign->content_type = CAMPAIGN_LEARN;
         $campaign->total_budget = 100;
         $campaign->creator_budget = 0.005;
         $campaign->referral_budget = 0.006;

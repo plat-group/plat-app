@@ -6,13 +6,14 @@ use App\Http\Controllers\Auth\Web\{
 use App\Http\Controllers\Web\{
     Campaign,
     Game,
-    LearningCourse,
     Market,
     MyGame,
     MyOrder,
     Pool,
     Transaction,
-    LearnToEarn
+    LearningCourse,
+    Learning,
+    Lesson
 };
 use Illuminate\Support\Facades\Route;
 
@@ -100,21 +101,24 @@ Route::prefix('transactions')->middleware('auth')->group(function () {
 
 
 Route::prefix('l2e')->middleware('auth')->group(function () {
+    Route::controller(Learning::class)->group(function () {
+        Route::get('/', 'index')->name(L2E_ROUTE);
+    });
+
     Route::prefix('courses')->controller(LearningCourse::class)->group(function () {
         Route::get('/my-courses', 'myCourses')->name(MY_COURSE_ROUTE);
         Route::get('/create', 'create')->name(CREATE_COURSE_ROUTE);
         Route::get('/edit/{id}', 'edit')->name(EDIT_COURSE_ROUTE);
         Route::post('/store', 'store')->name(STORE_COURSE_ROUTE);
+
+        Route::get('/{id}', 'detail')->name(DETAIL_COURSE_ROUTE)->whereUuid('id');
     });
 
-    Route::controller(LearnToEarn::class)->group(function () {
-        Route::get('/', 'index')->name(L2E_ROUTE);
-        Route::get('/create', 'create')->name(CREATE_L2E_ROUTE);
+    Route::prefix('lessons')->controller(Lesson::class)->group(function () {
+        Route::get('/', 'index')->name(LESSON_ROUTE);
+        Route::get('/create/{course}', 'create')->name(CREATE_LESSON_ROUTE);
         Route::post('/create', 'store')->name(STORE_L2E_ROUTE);
     });
-
-    //Route::get('/course/create', [LearningCourse::class, 'create'])->name(CREATE_L2E_COURSE_ROUTE);
-    Route::post('/course/create/step2', [LearningCourse::class, 'create2'])->name(CREATE_STEP2_L2E_COURSE_ROUTE);
 });
 
 Route::get('/learn/{game}/play/{referralId}', [Game::class, 'play'])

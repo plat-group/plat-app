@@ -42,11 +42,12 @@ if (!defined('DEFINE_CONSTANT')) {
      * Campaign
      */
     define('MIN_AMOUNT_CAMPAIGN', 0.001);
+    define('CAMPAIGN_GAME', 1);
+    define('CAMPAIGN_LEARN', 2);
 
     /**
-     * Content type
+     * Courses
      */
-    define('CONTENT_TYPE_GAME', 1);
-    define('CONTENT_TYPE_LEARNING', 2);
-
+    define('DRAFT_STATUS', 1);
+    define('ON_POOL_STATUS', 10);
 }

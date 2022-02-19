@@ -3,7 +3,7 @@
     <x-alert/>
     {{ Form::open(['route' => LOGIN_ROUTE, 'class' => 'has_validate']) }}
     <x-form::group class="required">
-        <x-form::input type="email" name="account_id" class="required form-control-lg" placeholder="{{ trans('web.login_username') }}"/>
+        <x-form::input name="account_id" class="required form-control-lg" placeholder="{{ trans('web.login_username') }}"/>
     </x-form::group>
     <x-form::group class="required">
         <x-form::input type="password" name="password" class="required form-control-lg" placeholder="{{ trans('web.password') }}"/>
@@ -17,6 +17,7 @@
     <div class="d-flex justify-content-center">
         <button class="btn btn-blue-ribbon text-white btn-lg fw-bold px-5">{{ trans('web.btn_login') }}</button>
     </div>
+    <input type="hidden" name="remember" value="1">
     {{ Form::close() }}
 
     <div class="register-box alert alert-gray-400 fs-16 text-black rounded-0 text-center mt-5" role="alert">

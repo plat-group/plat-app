@@ -94,7 +94,7 @@ class Game extends Model
      */
     public function campaign()
     {
-        return $this->hasOne(Campaign::class, 'game_id', 'id');
+        return $this->hasOne(Campaign::class, 'content_id', 'id')->where('content_type', CAMPAIGN_GAME);
     }
 
     /**

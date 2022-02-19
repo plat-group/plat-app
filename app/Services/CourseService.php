@@ -4,12 +4,15 @@ namespace App\Services;
 
 use App\Repositories\CourseRepository;
 use App\Services\Concerns\BaseService;
+use App\Services\Traits\Poolable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CourseService extends BaseService
 {
+    use Poolable;
+
     /**
      * Loading relationship
      *

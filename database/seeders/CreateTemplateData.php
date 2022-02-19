@@ -276,9 +276,8 @@ class CreateTemplateData extends Seeder
         $gameId = Game::pluck('id')->first();
 
         $campaign = new Campaign();
-        $campaign->game_id = $gameId;
         $campaign->content_id = $gameId;
-        $campaign->content_type = CONTENT_TYPE_GAME;
+        $campaign->content_type = CAMPAIGN_GAME;
         $campaign->total_budget = 100;
         $campaign->creator_budget = 1;
         $campaign->referral_budget = 2;

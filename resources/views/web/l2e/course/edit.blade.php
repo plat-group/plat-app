@@ -5,29 +5,23 @@
     <div class="col-12">
         <x-alert/>
     </div>
-    <x-form::open action="{{ route(STORE_COURSE_ROUTE) }}" files="true" id="create-l2e" class="form-default create_l2e has_validate">
-    <div class="col-12 col-md-10 mx-md-auto inner-box bg-mauve-400 rounded-3 p-4 mb-4">
-        <x-form::group label="Title of course">
-            <x-form::input name="name" class="rounded-3 bg-white text-black required"
-                           placeholder="Input learning course title" :value="$course->name"/>
-        </x-form::group>
-        <x-form::group label="Course description">
-            <x-form::textarea name="description" :value="$course->description"
-                              placeholder="Input learning course description" rows="7"
-                              class="rounded-3 bg-white text-black required"/>
-        </x-form::group>
-
-        <x-forms.input type="hidden" name="id" value="{{ $course->id }}"/>
-
-        <div class="d-grid gap-2 col-3 mx-auto">
-            <button class="btn btn-success" type="submit">Update course</button>
+    <div class="col-md-7">
+        <div class="inner-box bg-mauve-400 rounded-3 p-4 mb-4">
+            @include('web.l2e.course._form')
         </div>
     </div>
-    </x-form::open>
+    <div class="col-md-5">
+    @include('web.campaign.create_l2e', ['contentId' => old('id')])
+    </div>
+
+{{--    <div class="col-12 col-md-10 mx-md-auto ">
+
+    </div>--}}
+
 </div>
 <div class="row">
     <div class="col-12 col-md-10 mx-md-auto">
-        <a href="#" title="" class="btn btn-warning mb-3">
+        <a href="{{ route(CREATE_LESSON_ROUTE, $course->id) }}" title="" class="btn btn-warning mb-3">
             + Add new lesson for course
         </a>
 

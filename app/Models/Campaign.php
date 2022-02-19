@@ -26,8 +26,8 @@ class Campaign extends Model
      * @var string[]
      */
     protected $fillable = [
-        'game_id',
         'content_id',
+        'content_type',
         'total_budget',
         'creator_budget',
         'referral_budget',
@@ -47,6 +47,14 @@ class Campaign extends Model
         'referral_budget' => 'decimal:7',
         'user_budget' => 'decimal:7',
     ];
+
+    /**
+     * @return bool
+     */
+    public function isGameBelong()
+    {
+        return $this->content_type == CAMPAIGN_GAME;
+    }
 
     /**
      * Search all campaigns of game
