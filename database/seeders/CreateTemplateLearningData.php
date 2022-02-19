@@ -181,23 +181,24 @@ class CreateTemplateLearningData extends Seeder
                 $questionData = $questionObj['question'];
                 $question = new Question();
                 $question->lesson_id = $lessonId;
-                $question->id = $lessonId . '-question-' . ($idx + 1);
+                $questionId = $lessonId . '-question-' . ($idx + 1);
+                $question->id = $questionId;
                 $question->question_at = $questionData['point'];
                 $question->question = $questionData['text'];
                 $question->save();
 
                 // Register answer
                 $answers = $questionObj['answers'];
-                $this->registerLessonAnswer($lessonId, $answers);
+                $this->registerLessonAnswer($questionId, $answers);
             }
         }
     }
 
-    private function registerLessonAnswer($lessonId, $answers)
+    private function registerLessonAnswer($questionId, $answers)
     {
         foreach ($answers as $answer => $isCorrect) {
             $lessonAnswer = new LessonAnswer();
-            $lessonAnswer->question_id = $lessonId;
+            $lessonAnswer->question_id = $questionId;
             $lessonAnswer->answer = $answer;
             $lessonAnswer->correct = $isCorrect;
             $lessonAnswer->save();
@@ -380,15 +381,15 @@ class CreateTemplateLearningData extends Seeder
 
     private function createCampaignData()
     {
-        $gameId = Game::pluck('id')->first();
+        $courseId = Course::pluck('id')->first();
 
         $campaign = new Campaign();
-        $campaign->content_id = $gameId;
+        $campaign->content_id = $courseId;
         $campaign->content_type = CAMPAIGN_LEARN;
         $campaign->total_budget = 100;
-        $campaign->creator_budget = 0.005;
-        $campaign->referral_budget = 0.006;
-        $campaign->user_budget = 0.008;
+        $campaign->creator_budget = 1;
+        $campaign->referral_budget = 1;
+        $campaign->user_budget = 2;
         $campaign->start_at = '2022/01/01';
         $campaign->end_at = '2022/12/01';
         $campaign->save();
