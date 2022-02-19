@@ -1,7 +1,8 @@
 <div class="box-campaign-game mt-5 mb-5 text-white">
     <div class="inner-box bg-primary-2 rounded-3 p-4">
         <x-form::open action="{{ route(CREATE_CAMPAIGN_ROUTE) }}" class="form-default has_validate" id="campaign">
-            <x-form::input type="hidden" name="game_id" id="game_id" :value="$game->id"/>
+            <x-form::input type="hidden" name="content_id" id="game_id" :value="$game->id"/>
+            <x-form::input type="hidden" name="content_type" :value="CAMPAIGN_GAME"/>
             <div class="row gx-5">
                 <div class="col-md-12">
                     <x-form::label :label="trans('web.campaign_total_budget_label')" class="fs-18 fw-bold"/>

@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         if(env('APP_TYPE') == 1) {
             $this->call(CreateTemplateData::class);
-            // $this->call(CreateNearGameData::class);
         }else {
             $this->call(CreateTemplateLearningData::class);
         }
