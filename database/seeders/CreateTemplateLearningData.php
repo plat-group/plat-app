@@ -180,23 +180,24 @@ class CreateTemplateLearningData extends Seeder
                 $questionData = $questionObj['question'];
                 $question = new Question();
                 $question->lesson_id = $lessonId;
-                $question->id = $lessonId . '-question-' . ($idx + 1);
+                $questionId = $lessonId . '-question-' . ($idx + 1);
+                $question->id = $questionId;
                 $question->question_at = $questionData['point'];
                 $question->question = $questionData['text'];
                 $question->save();
 
                 // Register answer
                 $answers = $questionObj['answers'];
-                $this->registerLessonAnswer($lessonId, $answers);
+                $this->registerLessonAnswer($questionId, $answers);
             }
         }
     }
 
-    private function registerLessonAnswer($lessonId, $answers)
+    private function registerLessonAnswer($questionId, $answers)
     {
         foreach ($answers as $answer => $isCorrect) {
             $lessonAnswer = new LessonAnswer();
-            $lessonAnswer->question_id = $lessonId;
+            $lessonAnswer->question_id = $questionId;
             $lessonAnswer->answer = $answer;
             $lessonAnswer->correct = $isCorrect;
             $lessonAnswer->save();
