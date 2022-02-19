@@ -30,4 +30,16 @@ class CampaignRepository extends BaseRepository
     {
         return $this->model->ofGame($gameId, $id)->firstOrFail();
     }
+
+    /**
+     * Get campaign of course
+     *
+     * @param string $courseId
+     *
+     * @return mixed
+     */
+    public function ofCourse($courseId)
+    {
+        return $this->model->ofCourse($courseId)->firstOrFail();
+    }
 }
