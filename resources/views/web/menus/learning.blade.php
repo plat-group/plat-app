@@ -18,13 +18,15 @@
                     @endif
                     @if(displayMenuMarket())
                         <li class="list-inline-item menu-item">
-                            <a href="{{ route(MARKET_GAME_ROUTE) }}" title="{{ trans('web.learning.menu.market')}}"
+                            <a href="{{ route(L2E_ROUTE) }}" title="{{ trans('web.learning.menu.market')}}"
                                 @class(['menu-link',
-                                    'active' => request()->routeIs(HOME_ROUTE, MARKET_GAME_ROUTE, MARKET_GAME_DETAIL_ROUTE)])>
+                                    'active' => request()->routeIs(HOME_ROUTE, MARKET_GAME_ROUTE, MARKET_GAME_DETAIL_ROUTE, L2E_ROUTE)])>
                                 {{ trans('web.learning.menu.market') }}
                             </a>
                         </li>
                     @endif
+                    {{--
+                        Tam thoi khong mo pool
                     @if(displayMenuPool())
                         <li class="list-inline-item menu-item">
                             <a href="{{ route(POOL_GAME_ROUTE) }}" title="{{ trans('web.learning.menu.pool')}}"
@@ -33,6 +35,7 @@
                             </a>
                         </li>
                     @endif
+                     --}}
                     @if(displayMenuMyGame())
                         <li class="list-inline-item menu-item">
                             <a href="{{ route(MY_GAME_ROUTE) }}" title="{{ trans('web.learning.menu.my_content')}}"

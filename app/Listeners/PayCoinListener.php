@@ -3,7 +3,6 @@
 namespace App\Listeners;
 
 use App\Listeners\Traits\SmartContract;
-use App\Events\PlayedGameEvent;
 use App\Services\CampaignService;
 use App\Services\UserService;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -35,10 +34,10 @@ class PayCoinListener implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  PlayedGameEvent  $event
+     * @param $event
      * @return void
      */
-    public function handle(PlayedGameEvent $event)
+    public function handle($event)
     {
         $campaign = $this->campaignService->find($event->campaignId);
         $smartContractId = $this->getSmartContractId();
@@ -78,7 +77,7 @@ class PayCoinListener implements ShouldQueue
 
         $result = [
             'game_id' => $contentId,
-            'user_id'     => $userWallet
+            'user_id' => $userWallet
         ];
 
         if($refererWallet) {

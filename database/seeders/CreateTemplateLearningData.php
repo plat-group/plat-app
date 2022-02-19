@@ -11,12 +11,12 @@ use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\LessonAnswer;
 use App\Models\Question;
-use Ramsey\Uuid\Uuid;
 
 class CreateTemplateLearningData extends Seeder
 {
 
-    const DEFAULT_COURSE_ID1 = 'basic-near-lesson-1';
+    const DEFAULT_COURSE_ID1 = 'basic-near-course-1';
+    const DEFAULT_LESSON_ID1 = 'basic-near-lesson-1';
 
     /**
      * Run the database seeds.
@@ -42,7 +42,7 @@ class CreateTemplateLearningData extends Seeder
 
         $course = new Course();
 
-        $course->id = Uuid::uuid6();
+        $course->id = self::DEFAULT_COURSE_ID1;
         $course->creator_id = $clientId;
         $course->name = 'Basic NEAR Protocol learning course';
         $course->description = 'Reimagine finance, creativity, and community with NEAR';
@@ -57,7 +57,7 @@ class CreateTemplateLearningData extends Seeder
 
         $lesson = new Lesson();
         $lesson->course_id = $courseId;
-        $lesson->id = self::DEFAULT_COURSE_ID1;
+        $lesson->id = self::DEFAULT_LESSON_ID1;
         $lesson->name = 'What is NEAR?';
         $lesson->description = 'NEAR is a layer-1 blockchain that is simple to use, super fast, and incredibly secure. NEAR has been awarded the Climate Neutral Product Label from the South Pole and is actively helping users and developers reimagine finance, community, and creativity. Get to grips with what NEAR is, how it works, and discover why it’s so powerful for developers and users.';
         $lesson->thumbnail = 'l2e/image/1-What-is-NEAR.png';
@@ -104,6 +104,18 @@ class CreateTemplateLearningData extends Seeder
         $lesson->content_url = 'l2e/video/xxx';
         $lesson->content_type = 0;
         $lesson->save();
+
+        if(env('APP_ENV') === 'local') {
+            $lesson = new Lesson();
+            $lesson->id = 'basic-near-lesson-test';
+            $lesson->course_id = $courseId;
+            $lesson->name = 'Test';
+            $lesson->description = 'Aurora allows Ethereum\'s most popular applications to leverage NEAR\'s powerful blockchain protocol to dramatically increase scalability and efficiency while cutting fees by up to 99.99%.';
+            $lesson->thumbnail = 'l2e/image/5-Aurora.png';
+            $lesson->content_url = 'l2e/video/test.mov';
+            $lesson->content_type = 0;
+            $lesson->save();
+        }
     }
 
     private function createQuestionAndAnswerData()
@@ -142,8 +154,8 @@ class CreateTemplateLearningData extends Seeder
 
     private function getLessonData()
     {
-        return [
-            self::DEFAULT_COURSE_ID1 => [
+        $data = [
+            self::DEFAULT_LESSON_ID1 => [
                 [
                     'question' => [
                         'point' => 18, 'text' => 'What technology does NEAR use to increase number of transactions and scalability?',
@@ -200,8 +212,38 @@ class CreateTemplateLearningData extends Seeder
                 ]
             ]
         ];
-    }
 
+        if(env('APP_ENV') === 'local') {
+            $data['basic-near-lesson-test'] = [
+                [
+                    'question' => [
+                        'point' => 1, 'text' => 'How developer in Ethereum can develop Dapps in NEAR?',
+                    ],
+                    'answers' => ['Aurora' => false, 'Rainbow Bridge' => false, 'Both A and B' => true],
+                ],
+                [
+                    'question' => [
+                        'point' => 2, 'text' => 'How to register near mainnet wallet?',
+                    ],
+                    'answers' => ['<tên địa chỉ>.near' => true, '<tên địa chỉ>.testnet' => false, '<tên địa chỉ>.near-testnet' => false],
+                ],
+                [
+                    'question' => [
+                        'point' => 3, 'text' => 'How to register near mainnet wallet?',
+                    ],
+                    'answers' => ['<tên địa chỉ>.near' => true, '<tên địa chỉ>.testnet' => false, '<tên địa chỉ>.near-testnet' => false],
+                ],
+                [
+                    'question' => [
+                        'point' => 4, 'text' => 'How to register near mainnet wallet?',
+                    ],
+                    'answers' => ['<tên địa chỉ>.near' => true, '<tên địa chỉ>.testnet' => false, '<tên địa chỉ>.near-testnet' => false],
+                ]
+            ];
+        }
+
+        return $data;
+    }
 
     private function createCampaignData()
     {
@@ -225,7 +267,7 @@ class CreateTemplateLearningData extends Seeder
         $order = new Order();
         $order->client_id = $clientId;
         $order->game_template_id = $gameTemplateId;
-        $order->game_id = self::DEFAULT_COURSE_ID1;
+        $order->game_id = self::DEFAULT_LESSON_ID1;
         $order->content = 'Please change banner image by our banner';
         $order->agreement_amount = 20;
         $order->royalty_fee = 0.05;

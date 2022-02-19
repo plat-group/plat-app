@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-12 lesson-actions mt-auto">
                     <a href="{{ route(DETAIL_LESSON_ROUTE, $lesson->id) }}" class="btn btn-primary" title="{{ $lesson->name }}">
-                        Play to earn
+                        Learn to earn
                     </a>
                 </div>
             </div>
