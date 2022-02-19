@@ -28,12 +28,13 @@ class CreateTemplateLearningData extends Seeder
         $this->createGameTemplateData();
         $this->createGameData();
         $this->createOrderData();
-        $this->createCampaignData();
-        $this->createTransactionData();
 
         $this->createCourseData();
         $this->createLessonData();
         $this->createQuestionAndAnswerData();
+
+        $this->createCampaignData();
+        $this->createTransactionData();
     }
 
     private function createUserData()
