@@ -14,7 +14,6 @@ use App\Models\Question;
 
 class CreateTemplateLearningData extends Seeder
 {
-
     const DEFAULT_COURSE_ID1 = 'basic-near-course-1';
     const DEFAULT_LESSON_ID1 = 'basic-near-lesson-1';
 
@@ -248,6 +247,7 @@ class CreateTemplateLearningData extends Seeder
     private function createCampaignData()
     {
         $campaign = new Campaign();
+        $campaign->id = 'campaign-7688-6146-9854-20c9d07b7361';
         $campaign->content_id = self::DEFAULT_COURSE_ID1;
         $campaign->content_type = CAMPAIGN_LEARN;
         $campaign->total_budget = 100;

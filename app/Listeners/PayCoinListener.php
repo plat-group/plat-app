@@ -40,7 +40,6 @@ class PayCoinListener implements ShouldQueue
     public function handle($event)
     {
         $campaign = $this->campaignService->find($event->campaignId);
-        $smartContractId = $this->getSmartContractId();
 
         $referalId = $event->referralId;
         $playerId = $event->playerId;
@@ -57,6 +56,7 @@ class PayCoinListener implements ShouldQueue
             $userWallet = $user->wallet_address;
         }
 
+        $smartContractId = $this->getSmartContractId();
         $command = sprintf('near call %s %s \'%s\' --accountId %s --gas 50000000000000 --depositYocto 1',
             $smartContractId, 'reward', $this->makeParameters($campaign, $userWallet, $refererWallet), $smartContractId);
 

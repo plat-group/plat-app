@@ -53,4 +53,14 @@ trait SmartContract
     {
         return env('MAIN_SMART_CONTRACT_ID', 'platserver.testnet');
     }
+
+    /**
+     * Get Plat token Smart Contract
+     *
+     * @return string
+     */
+    protected function getTokenSmartContractId()
+    {
+        return env('TOKEN_SMART_CONTRACT_ID', 'token.platserver.testnet');
+    }
 }
