@@ -6,7 +6,7 @@ use App\Events\CampaignCreatedEvent;
 use App\Events\OrderConfirmedEvent;
 use App\Events\PlayedGameEvent;
 use App\Listeners\PayCoinListener;
-use App\Listeners\PushGameToPoolListener;
+use App\Listeners\PushToPoolListener;
 use App\Listeners\SaveTransactionListener;
 use App\Listeners\TransferGameToOwnerListener;
 use Illuminate\Auth\Events\Registered;
@@ -26,7 +26,7 @@ class EventServiceProvider extends ServiceProvider
             TransferGameToOwnerListener::class
         ],
         CampaignCreatedEvent::class => [
-            PushGameToPoolListener::class
+            PushToPoolListener::class
         ],
         PlayedGameEvent::class => [
             SaveTransactionListener::class,

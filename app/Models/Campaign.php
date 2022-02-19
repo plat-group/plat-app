@@ -49,6 +49,14 @@ class Campaign extends Model
     ];
 
     /**
+     * @return bool
+     */
+    public function isGameBelong()
+    {
+        return $this->content_type == CAMPAIGN_GAME;
+    }
+
+    /**
      * Search all campaigns of game
      *
      * @param \Illuminate\Database\Eloquent\Builder $query

@@ -6,11 +6,13 @@ use App\Events\PlayedGameEvent;
 use App\Repositories\GameRepository;
 use App\Repositories\OrderRepository;
 use App\Services\Concerns\BaseService;
+use App\Services\Traits\Poolable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class GameService extends BaseService
 {
+    use Poolable;
 
     protected $orderRepository;
 
@@ -132,22 +134,6 @@ class GameService extends BaseService
         $this->builder->onPool();
 
         return $this->endFilter();
-    }
-
-    /**
-     * Push game on the pool
-     *
-     * @param string $gameId
-     */
-    public function pushToPool($gameId)
-    {
-        // Get record of game
-        $game = $this->repository->find($gameId);
-
-        $game->status = ON_POOL_GAME_STATUS;
-        $game->save();
-
-        return $game;
     }
 
     /**

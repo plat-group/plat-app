@@ -44,4 +44,10 @@ if (!defined('DEFINE_CONSTANT')) {
     define('MIN_AMOUNT_CAMPAIGN', 0.001);
     define('CAMPAIGN_GAME', 1);
     define('CAMPAIGN_LEARN', 2);
+
+    /**
+     * Courses
+     */
+    define('DRAFT_STATUS', 1);
+    define('ON_POOL_STATUS', 10);
 }
