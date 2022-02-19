@@ -50,4 +50,12 @@ class Course extends Model
     {
         return $this->belongsTo(User::class, 'creator_id', 'id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, 'course_id', 'id');
+    }
 }

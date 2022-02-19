@@ -6,6 +6,7 @@ use App\Models\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Lesson extends Model
 {
@@ -28,8 +29,18 @@ class Lesson extends Model
     protected $fillable = [
         'course_id',
         'name',
+        'thumb',
         'content_url',
         'content_type',
         'content_description',
     ];
+
+
+    /**
+     * @return string
+     */
+    public function getThumbUrlAttribute()
+    {
+        return Storage::url($this->thumbnail);
+    }
 }

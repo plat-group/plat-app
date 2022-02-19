@@ -30,6 +30,20 @@ class LearningCourse extends Controller
     }
 
     /**
+     * Show detail information of course
+     *
+     * @param string $id
+     */
+    public function detail($id)
+    {
+        $assign = [
+            'course' => $this->courseService->find($id, ['lessons'])
+        ];
+
+        return view('web.l2e.course.detail', $assign);
+    }
+
+    /**
      * @return \Illuminate\Contracts\View\View
      */
     public function myCourses(Request $request)
