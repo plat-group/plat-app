@@ -108,6 +108,16 @@ class Campaign extends Model
      */
     public function game()
     {
-        return $this->hasOne(Game::class, 'id', 'game_id');
+        return $this->hasOne(Game::class, 'id', 'content_id');
+    }
+
+    /**
+     * Relationship with Learning course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function learnCourse()
+    {
+        return $this->hasOne(Course::class, 'id', 'content_id');
     }
 }

@@ -23,11 +23,14 @@ $(function () {
     }
 
     // Submit
-    // TODO need get from localstorage
-    $('input[name="total_budget"]').val(100);
-    $('input[name="creator_budget"]').val(1);
-    $('input[name="referral_budget"]').val(2);
-    $('input[name="user_budget"]').val(3);
+    // Get input data from localstorage
+    const pStorage = window.localStorage;
+    let dataStr = pStorage.getItem('campaign_data');
+    const data = JSON.parse(dataStr);
+    $('input[name="total_budget"]').val(data.total_budget);
+    $('input[name="creator_budget"]').val(data.creator_budget);
+    $('input[name="referral_budget"]').val(data.referral_budget);
+    $('input[name="user_budget"]').val(data.user_budget);
 
     $('#campaign').trigger('submit');
 
@@ -37,6 +40,19 @@ $(function () {
 $('#btn-push-to-pool').on('click', async function(){
     const gameId = $('#game_id').val();
     const depositAmount = $('#total_budget').val();
+    const creatorBudget = $('#creator_budget').val();
+    const referralBudget = $('#referral_budget').val();
+    const userBudget = $('#user_budget').val();
+
+    const data = {
+        total_budget: depositAmount,
+        creator_budget: creatorBudget,
+        referral_budget: referralBudget,
+        user_budget: userBudget
+    }
+    const pStorage = window.localStorage;
+    pStorage.setItem('campaign_data', JSON.stringify(data));
+
     console.log(gameId)
     console.log(depositAmount)
     try {
