@@ -43,7 +43,6 @@ class CreateTemplateLearningData extends Seeder
         $user->name = 'PlatCreator';
         $user->email = 'creator@plats.network';
         $user->email_verified_at = now();
-        // 'password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
         $user->username = 'platcreator.testnet';
         $user->role = CREATOR_ROLE;
@@ -56,7 +55,6 @@ class CreateTemplateLearningData extends Seeder
         $user->name = 'PlatArtist';
         $user->email = 'artist@plats.network';
         $user->email_verified_at = now();
-        // 'password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         $user->password = '$2y$10$.V.lal6ud9lixfGLUI9GtO9dNbn0RgPkGGpbo42p1MKFELIZ6tKbu'; // 11111111
         $user->username = 'platartist.testnet';
         $user->role = CREATOR_ROLE;
