@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <img src="{{ $lesson->thumb_url }}" class="img-fluid w-100 rounded-end" alt="{{ $lesson->name }}">
+            <img src="{{ $lesson->thumbnail }}" class="img-fluid w-100 rounded-end" alt="{{ $lesson->name }}">
         </div>
     </div>
 </div>

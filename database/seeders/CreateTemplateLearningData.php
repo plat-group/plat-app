@@ -379,15 +379,15 @@ class CreateTemplateLearningData extends Seeder
 
     private function createCampaignData()
     {
-        $gameId = Game::pluck('id')->first();
+        $courseId = Course::pluck('id')->first();
 
         $campaign = new Campaign();
-        $campaign->content_id = $gameId;
+        $campaign->content_id = $courseId;
         $campaign->content_type = CAMPAIGN_LEARN;
         $campaign->total_budget = 100;
-        $campaign->creator_budget = 0.005;
-        $campaign->referral_budget = 0.006;
-        $campaign->user_budget = 0.008;
+        $campaign->creator_budget = 1;
+        $campaign->referral_budget = 1;
+        $campaign->user_budget = 2;
         $campaign->start_at = '2022/01/01';
         $campaign->end_at = '2022/12/01';
         $campaign->save();

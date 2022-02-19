@@ -99,7 +99,6 @@ Route::prefix('transactions')->middleware('auth')->group(function () {
     Route::get('/', [Transaction::class, 'index'])->name(MY_TRANSACTION_ROUTE);
 });
 
-
 Route::prefix('l2e')->middleware('auth')->group(function () {
     Route::controller(Learning::class)->group(function () {
         Route::get('/', 'index')->name(L2E_ROUTE);
@@ -110,13 +109,13 @@ Route::prefix('l2e')->middleware('auth')->group(function () {
         Route::get('/create', 'create')->name(CREATE_COURSE_ROUTE);
         Route::get('/edit/{id}', 'edit')->name(EDIT_COURSE_ROUTE);
         Route::post('/store', 'store')->name(STORE_COURSE_ROUTE);
-        Route::get('/{id}', 'detail')->name(DETAIL_COURSE_ROUTE)->whereUuid('id');
+        Route::get('/{id}', 'detail')->name(DETAIL_COURSE_ROUTE);//->whereUuid('id');
     });
 
     Route::prefix('lessons')->controller(Lesson::class)->group(function () {
         Route::get('/create/{course}', 'create')->name(CREATE_LESSON_ROUTE);
         Route::post('/create', 'store')->name(STORE_L2E_ROUTE);
-        Route::get('/{id}', 'detail')->name(DETAIL_LESSON_ROUTE)->whereUuid('id');
+        Route::get('/{id}', 'detail')->name(DETAIL_LESSON_ROUTE);//->whereUuid('id');
     });
 });
 

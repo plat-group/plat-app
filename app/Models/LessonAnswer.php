@@ -26,7 +26,7 @@ class LessonAnswer extends Model
      * @var string[]
      */
     protected $fillable = [
-        'LessonAnswer',
+        'question_id',
         'answer',
         'correct',
     ];
