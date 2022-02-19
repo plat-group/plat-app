@@ -6,9 +6,8 @@ use App\Models\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Storage;
 
-class Lesson extends Model
+class LessonAnswer extends Model
 {
     use HasFactory;
     use UuidTrait;
@@ -19,7 +18,7 @@ class Lesson extends Model
      *
      * @var string
      */
-    protected $table = 'lessons';
+    protected $table = 'lesson_answers';
 
     /**
      * The attributes that are mass assignable.
@@ -27,20 +26,8 @@ class Lesson extends Model
      * @var string[]
      */
     protected $fillable = [
-        'course_id',
-        'name',
-        'thumbnail',
-        'content_url',
-        'content_type',
-        'description',
+        'LessonAnswer',
+        'answer',
+        'correct',
     ];
-
-
-    /**
-     * @return string
-     */
-    public function getThumbUrlAttribute()
-    {
-        return Storage::url($this->thumb);
-    }
 }

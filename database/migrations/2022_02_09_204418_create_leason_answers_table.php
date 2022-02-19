@@ -18,6 +18,7 @@ class CreateLeasonAnswersTable extends Migration
             $table->uuid('question_id')->index();
             $table->string('answer');
             $table->tinyInteger('correct')->default(0);
+            $table->timestamps();
         });
     }
 

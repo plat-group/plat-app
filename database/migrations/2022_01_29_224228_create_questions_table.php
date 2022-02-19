@@ -16,7 +16,7 @@ class CreateQuestionsTable extends Migration
         Schema::create('lesson_questions', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('lesson_id')->index();
-            $table->unsignedInteger('question_point');
+            $table->unsignedInteger('question_at');
             $table->string('question');
             $table->timestamps();
             $table->softDeletes();

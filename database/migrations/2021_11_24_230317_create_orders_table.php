@@ -22,7 +22,8 @@ class CreateOrdersTable extends Migration
             $table->decimal('agreement_amount', 12, 7)->default(0);
             $table->decimal('royalty_fee', 12, 7)->default(0);
             $table->unsignedTinyInteger('status')->default(ORDERING_ORDER_STATUS);
-
+            $table->string('resource_file')->nullable();
+            $table->string('game_file')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
