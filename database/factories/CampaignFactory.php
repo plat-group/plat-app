@@ -16,7 +16,8 @@ class CampaignFactory extends Factory
     {
         $games = Game::pluck('id')->all();
         return [
-            'game_id' => $this->faker->randomElement($games),
+            'content_id' => $this->faker->randomElement($games),
+            'content_type' => CAMPAIGN_GAME,
             'total_budget' => $this->faker->randomFloat($nbMaxDecimals = 4, $min = 100, $max = 500),
             'creator_budget' => $this->faker->randomFloat($nbMaxDecimals = 4, $min = 100, $max = 150),
             'referral_budget' => $this->faker->randomFloat($nbMaxDecimals = 4, $min = 100, $max = 150),

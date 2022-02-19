@@ -42,11 +42,6 @@ if (!defined('DEFINE_CONSTANT')) {
      * Campaign
      */
     define('MIN_AMOUNT_CAMPAIGN', 0.001);
-
-    /**
-     * Content type
-     */
-    define('CONTENT_TYPE_GAME', 1);
-    define('CONTENT_TYPE_LEARNING', 2);
-
+    define('CAMPAIGN_GAME', 1);
+    define('CAMPAIGN_LEARN', 2);
 }

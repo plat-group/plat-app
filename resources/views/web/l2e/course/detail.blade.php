@@ -3,21 +3,22 @@
 @section('content')
     <div class="row mb-5">
         <div class="col-md-6">
-            <h1 class="course-name">
+            <h1 class="course-name text-blue-ribbon">
                 {{ $course->name }}
             </h1>
-            <div class="course-desc">
+            <div class="course-desc text-neutral-2 text-justify fs-16">
                 {{ $course->description }}
             </div>
         </div>
         <div class="col-md-6">
-            @if (Auth::user()->isReferraler())
+            @include('web.campaign.referral_box')
+            {{--@if (Auth::user()->isReferraler())
                 @include('web.game._forms.referral_box')
             @else
             <div class="course-thumb" style="max-width: 300px">
                 <img class="w-100" src="{{ $course->thumb_url }}" alt="{{ $course->name }}"/>
             </div>
-            @endif
+            @endif--}}
         </div>
     </div>
     <div class="lesson-list">

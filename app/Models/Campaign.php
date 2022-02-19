@@ -26,8 +26,8 @@ class Campaign extends Model
      * @var string[]
      */
     protected $fillable = [
-        'game_id',
         'content_id',
+        'content_type',
         'total_budget',
         'creator_budget',
         'referral_budget',
