@@ -16,3 +16,7 @@ yarn-error.log
 .idea
 *.iml
 forlocal
+payments/target/*
+plats-token/target/*
+.phpunit.result.cache
+.vscode
