@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            @include('web.campaign.referral_box')
+            @include('web.campaign.referral_box', ['campaign' => []])
             {{--@if (Auth::user()->isReferraler())
                 @include('web.game._forms.referral_box')
             @else

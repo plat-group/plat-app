@@ -68,8 +68,14 @@ class LearningCourse extends Controller
      */
     public function edit($id)
     {
+        $course = $this->courseService->find($id);
+
+        if (empty(request()->old()) || old('id') != $id) {
+            $this->flashSession($course->makeVisible(['thumb'])->toArray());
+        }
+
         $assign = [
-            'course' => $this->courseService->find($id)
+            'course' => $course
         ];
 
         return view('web.l2e.course.edit', $assign);

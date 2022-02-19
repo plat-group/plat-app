@@ -14,9 +14,10 @@ class CreateCampaignRequest extends FormRequest
     public function rules()
     {
         return [
-            'game_id' => ['required', 'uuid'],
+            'content_id' => ['required', 'uuid'],
+            'content_type' => ['required'],
             'total_budget' => ['required', 'numeric', 'min:' . MIN_AMOUNT_CAMPAIGN],
-            'creator_budget' => ['required', 'numeric', 'min:' . MIN_AMOUNT_CAMPAIGN],
+            'creator_budget' => ['required_if:content_type,' . CAMPAIGN_GAME, 'numeric', 'min:' . MIN_AMOUNT_CAMPAIGN],
             'referral_budget' => ['required', 'numeric', 'min:' . MIN_AMOUNT_CAMPAIGN],
             'user_budget' => ['required', 'numeric', 'min:' . MIN_AMOUNT_CAMPAIGN],
         ];

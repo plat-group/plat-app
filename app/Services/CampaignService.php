@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Events\CampaignCreatedEvent;
 use App\Repositories\CampaignRepository;
+use App\Repositories\CourseRepository;
 use App\Repositories\GameRepository;
 use App\Repositories\TransactionRepository;
 use App\Services\Concerns\BaseService;
@@ -19,7 +20,12 @@ class CampaignService extends BaseService
     protected $gameRepository;
 
     /**
-     * @var
+     * @var \App\Repositories\CourseRepository
+     */
+    protected $courseRepository;
+
+    /**
+     * @var TransactionRepository
      */
     protected $transactionRepository;
 
@@ -27,15 +33,18 @@ class CampaignService extends BaseService
      * @param \App\Repositories\CampaignRepository $repository
      * @param \App\Repositories\GameRepository $gameRepository
      * @param \App\Repositories\TransactionRepository $transactionRepository
+     * @param \App\Repositories\CourseRepository $courseRepository
      */
     public function __construct(
         CampaignRepository $repository,
         GameRepository $gameRepository,
-        TransactionRepository $transactionRepository
+        TransactionRepository $transactionRepository,
+        CourseRepository $courseRepository
     ) {
         $this->repository = $repository;
         $this->gameRepository = $gameRepository;
         $this->transactionRepository = $transactionRepository;
+        $this->courseRepository = $courseRepository;
     }
 
     /**
@@ -46,16 +55,11 @@ class CampaignService extends BaseService
      */
     public function store(Request $request)
     {
-        // Get and check exits game by request id
-        $game = $this->gameRepository->find($request->input('game_id'));
+        // Get and check exits record by request id
+        $this->contentByType($request->input('content_id'), $request->input('content_type'));
+        //TODO: verify permission user can create campaign
 
-        // check permission
-        $request->user()->can('createCampaign', $game);
-
-        $campaignObj = $request->toArray();
-        $campaignObj['content_id'] = $request->input('game_id');
-        Log::debug($campaignObj);
-        $campaign = $this->repository->create($campaignObj);
+        $campaign = $this->repository->create($request->toArray());
 
         // Fire event
         CampaignCreatedEvent::dispatch($campaign);
@@ -117,5 +121,22 @@ class CampaignService extends BaseService
         );
 
         return true;
+    }
+
+    /**
+     * Get the record to which the campaign belongs
+     *
+     * @param string $relationId
+     * @param int $type
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed
+     */
+    public function contentByType($relationId, $type = CAMPAIGN_GAME)
+    {
+        if ($type == CAMPAIGN_GAME) {
+            return $this->gameRepository->find($relationId);
+        }
+
+        return $this->courseRepository->find($relationId);
     }
 }

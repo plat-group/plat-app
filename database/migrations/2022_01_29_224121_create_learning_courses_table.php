@@ -19,6 +19,7 @@ class CreateLearningCoursesTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('thumbnail')->nullable();
+            $table->tinyInteger('status')->nullable()->default(DRAFT_STATUS);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -31,6 +31,7 @@ class Course extends Model
         'name',
         'description',
         'thumbnail',
+        'status',
     ];
 
     /**

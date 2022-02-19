@@ -2,11 +2,12 @@
 
 namespace App\Listeners;
 
+use App\Services\CourseService;
 use App\Services\GameService;
 use App\Listeners\Traits\SmartContract;
 use Illuminate\Support\Facades\Log;
 
-class PushGameToPoolListener
+class PushToPoolListener
 {
     use SmartContract;
 
@@ -16,13 +17,24 @@ class PushGameToPoolListener
     protected $gameService;
 
     /**
+     * @var \App\Services\CourseService
+     */
+    protected $courseService;
+
+    /**
+     * @var \App\Models\Campaign
+     */
+    protected $campaign;
+
+    /**
      * Create the event listener.
      *
      * @return void
      */
-    public function __construct(GameService $gameService)
+    public function __construct(GameService $gameService, CourseService $courseService)
     {
         $this->gameService = $gameService;
+        $this->courseService = $courseService;
     }
 
     /**
@@ -34,9 +46,22 @@ class PushGameToPoolListener
      */
     public function handle($event)
     {
+        $this->campaign = $event->campaign;
+        if ($this->campaign->isGameBelong()) {
+            return $this->gameToPool();
+        }
+
+        return $this->courseToPool();
+    }
+
+    /**
+     * @return bool
+     */
+    protected function gameToPool()
+    {
         // TODO: Need interface
-        $campaign = $event->campaign;
-        $gameId = $campaign->game_id;
+        $campaign = $this->campaign;
+        $gameId = $campaign->content_id;
         if (!$gameId) {
             return true;
         }
@@ -64,6 +89,16 @@ class PushGameToPoolListener
     }
 
     /**
+     * @return bool
+     */
+    protected function courseToPool()
+    {
+        $this->courseService->pushToPool($this->campaign->content_id);
+
+        return true;
+    }
+
+    /**
      * Create parameters of Near CLI command
      *
      * @param $campaign
@@ -73,9 +108,6 @@ class PushGameToPoolListener
      */
     private function makeParameters($campaign)
     {
-        $gameId = $campaign->game_id;
-
-        // $game = $campaign->game();
         // $clientWalletAddress = $game->owner()->wallet_address;
         $clientWalletAddress = 'platclient.testnet';
 
@@ -84,7 +116,7 @@ class PushGameToPoolListener
         $creatorWalletAddress = 'platcreator.testnet';
 
         $result = [
-            'game_id' => $gameId,
+            'content_id' => $campaign->content_id,
             'creator_id' => $creatorWalletAddress,
             'client_id' => $clientWalletAddress,
             'amount_creator' => $this->toYokto($campaign->creator_budget),
