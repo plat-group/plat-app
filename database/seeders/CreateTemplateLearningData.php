@@ -154,60 +154,15 @@ class CreateTemplateLearningData extends Seeder
     {
         $data = [
             self::DEFAULT_LESSON_ID1 => [
-                [
-                    'question' => [
-                        'point' => 18, 'text' => 'What technology does NEAR use to increase number of transactions and scalability?',
-                    ],
-                    'answers' => ['Sharding' => true, 'Side-chain' => false, 'Hub' => false]
-                ],
-                [
-                    'question' => [
-                        'point' => 40, 'text' => 'Who is the founder NEAR protocol?',
-                    ],
-                    'answers' => ['Alexander Skidanov' => false, 'Ilya Polosukhin' => false, 'Both A and B' => true],
-                ],
-                [
-                    'question' => [
-                        'point' => 49, 'text' => 'Which consensus mechanism does NEAR implement?',
-                    ],
-                    'answers' => ['Proof of Stake' => true, 'Proof of Work' => false, 'BFT' => false],
-                ],
-                [
-                    'question' => [
-                        'point' => 61, 'text' => 'Which role ensures network security?',
-                    ],
-                    'answers' => ['Validator' => true, 'Nominator' => false, 'Noone' => false],
-                ],
-                [
-                    'question' => [
-                        'point' => 62, 'text' => 'What do validators do in NEAR?',
-                    ],
-                    'answers' => ['Nothing' => false, 'Staking ' => true, 'Delegating' => false],
-                ],
-                [
-                    'question' => [
-                        'point' => 63, 'text' => 'What happens if validators is malacious?',
-                    ],
-                    'answers' => ['Có phần thưởng' => false, 'Mất hết lượng Staking' => false, 'Sẽ ko dc làm Validators nữa' => false, 'Both' => true],
-                ],
-                [
-                    'question' => [
-                        'point' => 67, 'text' => 'Can normal users staking or not?',
-                    ],
-                    'answers' => ['Có' => false, 'Không' => true, '' => false],
-                ],
-                [
-                    'question' => [
-                        'point' => 91, 'text' => 'How developer in Ethereum can develop Dapps in NEAR?',
-                    ],
-                    'answers' => ['Aurora' => false, 'Rainbow Bridge' => false, 'Both A and B' => true],
-                ],
-                [
-                    'question' => [
-                        'point' => 138, 'text' => 'How to register near mainnet wallet?',
-                    ],
-                    'answers' => ['<tên địa chỉ>.near' => true, '<tên địa chỉ>.testnet' => false, '<tên địa chỉ>.near-testnet' => false],
-                ]
+                ['question' => ['point' => 22, 'text' => 'What technology does NEAR use to increase number of transactions and scalability?'],	'answers' => ['Sharding' => true, 'Side-chain' => false, 'Hub' => false]],
+                ['question' => ['point' => 34, 'text' => 'Who is the founder NEAR protocol?'],	'answers' => ['Alexander Skidanov' => false, 'Ilya Polosukhin' => false, 'Both A and B' => true]],
+                ['question' => ['point' => 47, 'text' => 'Which consensus mechanism does NEAR implement?'],	'answers' => ['Proof of Stake' => true, 'Proof of Work' => false, 'BFT' => false]],
+                ['question' => ['point' => 61, 'text' => 'Which role ensures network security?'],	'answers' => ['Validator' => true, 'Nominator' => false, 'None' => false]],
+                ['question' => ['point' => 62, 'text' => 'What do validators do in NEAR?'],	'answers' => ['Nothing' => false, 'Staking ' => true, 'Delegating' => false]],
+                ['question' => ['point' => 63, 'text' => 'What happens if validators is malacious?'],	'answers' => ['Lose all reward' => false, 'Lose all staking amount' => false, 'Lose role validators' => false ,'All of them' => true]],
+                ['question' => ['point' => 71, 'text' => 'Can normal users staking or not?'],	'answers' => ['Yes' => false, 'No' => true]],
+                ['question' => ['point' => 101, 'text' => 'How developer in Ethereum can develop Dapps in NEAR?'],	'answers' => ['Aurora' => false, 'Rainbow Bridge' => false, 'Both A and B' => true]],
+                ['question' => ['point' => 140, 'text' => 'How to register near mainnet wallet?'],	'answers' => ['{address_name}.near' => true, '{address_name}.testnet' => false, '{address_name}.near-protocol' => false]],
             ],
             'basic-near-lesson-2' => [
                 ['question' => ['point' => 33, 'text' => 'What is near wallet?'],	'answers' => ['web-based, own your assets, token, nft, ...' => true, 'extension-based, own your assets, token, nft' => false, 'own your assets, token, nft,...' => false]],

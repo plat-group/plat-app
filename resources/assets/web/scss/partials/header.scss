@@ -23,9 +23,15 @@ header {
             }
         }
     }
-}
-header {
-    background: image-url('bg_header.png');
+
+    &.gamehub {
+        background: image-url('bg_header_gamehub.png');
+        background-size: cover;
+    }
+    &.learning {
+        background: image-url('bg_header_learning.png');
+        background-size: cover;
+    }
 }
 @include media-breakpoint-down(md) {
     header {

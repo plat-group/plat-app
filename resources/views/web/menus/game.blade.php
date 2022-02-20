@@ -1,4 +1,4 @@
-<header class="pb-2">
+<header class="pb-2 gamehub">
     <div class="container">
         <div class="row py-2 text-center">
             <div class="col-2 col-md-2 me-auto order-1">

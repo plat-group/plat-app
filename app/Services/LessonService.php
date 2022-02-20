@@ -82,7 +82,7 @@ class LessonService extends BaseService
             LessonCompletedEvent::dispatch(
                 $lesson->withoutRelations(),
                 $campaign->id,
-                null,
+                '1ec916ce-f2b3-67f8-87f9-20c9d07b7361', // tam thoi team plat se refer cho learn
                 optional($request->user())->id
             );
         }
