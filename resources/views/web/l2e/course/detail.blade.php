@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            @if (Auth::user()->isReferraler())
+            @if (isReferral())
                 @include('web.campaign.referral_box')
             @else
             <div class="course-thumb" style="max-width: 300px">

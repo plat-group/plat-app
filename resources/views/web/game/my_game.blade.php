@@ -1,6 +1,6 @@
 @extends('web.layout')
 @section('content')
-@if (Auth::user()->isCreator())
+@if (isCreator())
     <div class="d-flex justify-content-end mb-4">
         <a href="{{ route(CREATE_GAME_TEMPLATE_ROUTE) }}" title="{{ trans('web.create_new_game') }}" class="btn btn-inner-glow rounded-pill fw-bold px-4 py-2">
             {{ trans('web.create_new_game') }}
