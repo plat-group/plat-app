@@ -25,11 +25,13 @@ header {
     }
 
     &.gamehub {
-        background: image-url('bg_header_gamehub.png');
+        background: image-url('bg_header.png');
+        /*background: image-url('bg_header_gamehub.png');*/
         background-size: cover;
     }
     &.learning {
-        background: image-url('bg_header_learning.png');
+        background: image-url('bg_header.png');
+        /*background: image-url('bg_header_learning.png');*/
         background-size: cover;
     }
 }
